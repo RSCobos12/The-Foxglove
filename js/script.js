@@ -1,0 +1,1 @@
+console.log("The Foxglove Invitational homepage is live.");

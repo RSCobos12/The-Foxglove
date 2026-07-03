@@ -1,0 +1,160 @@
+:root {
+  --navy: #031024;
+  --royal-blue: #071b3a;
+  --gold: #c8a45d;
+  --cream: #f4efe3;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 26px 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+}
+
+.brand {
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.nav a {
+  color: var(--cream);
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.nav a:hover {
+  color: var(--gold);
+}
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  background-image: url("../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(3, 16, 36, 0.45), rgba(3, 16, 36, 0.92)),
+    radial-gradient(circle, rgba(200, 164, 93, 0.12), rgba(3, 16, 36, 0.75));
+}
+
+.hero-content {
+  position: relative;
+  max-width: 900px;
+  animation: fadeUp 1.4s ease forwards;
+}
+
+.crest {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 28px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 26px;
+  letter-spacing: 2px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(52px, 8vw, 110px);
+  line-height: 0.92;
+  margin: 0 0 28px;
+  font-weight: normal;
+}
+
+.intro {
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-button {
+  display: inline-block;
+  margin-top: 36px;
+  padding: 15px 30px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-size: 12px;
+  transition: 0.3s ease;
+}
+
+.hero-button:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    padding: 22px 24px;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .nav a {
+    margin: 0 8px;
+    font-size: 11px;
+  }
+
+  .crest {
+    width: 76px;
+    height: 76px;
+    font-size: 22px;
+  }
+}
