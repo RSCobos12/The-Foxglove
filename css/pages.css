@@ -1,0 +1,74 @@
+.page-body {
+  background: var(--navy-dark);
+  color: var(--cream);
+}
+
+.page-hero {
+  min-height: 58vh;
+  background:
+    linear-gradient(rgba(2, 11, 28, 0.45), rgba(2, 11, 28, 0.86)),
+    url("../images/monterey-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 120px 24px 70px;
+}
+
+.page-crest {
+  width: 115px;
+  height: 115px;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+
+.page-kicker {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.page-title {
+  font-size: clamp(58px, 9vw, 118px);
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  line-height: 0.9;
+}
+
+.page-content {
+  background: var(--navy);
+  padding: 80px 9%;
+  text-align: center;
+}
+
+.page-content h2 {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 26px;
+}
+
+.page-content p {
+  max-width: 780px;
+  margin: 0 auto 22px;
+  font-size: 22px;
+  line-height: 1.55;
+}
+
+.page-back {
+  display: inline-block;
+  margin-top: 34px;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 13px 22px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+}

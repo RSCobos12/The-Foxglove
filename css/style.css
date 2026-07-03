@@ -8,6 +8,7 @@
 @import url("welcome.css");
 @import url("cards.css");
 @import url("footer.css");
+@import url("pages.css");
 
 :root{
     --navy:#061735;

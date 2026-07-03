@@ -1,14 +1,22 @@
+.cards-section {
+  background: var(--navy);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  padding: 0 28px 86px;
+}
+
 .cards-heading {
   grid-column: 1 / -1;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 22px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .cards-heading span {
-  width: 120px;
+  width: 130px;
   height: 1px;
   background: var(--gold);
 }
@@ -19,128 +27,115 @@
   letter-spacing: 6px;
   font-size: 16px;
 }
-.cards-section {
-  background: var(--navy);
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-  padding: 0 22px 78px;
-}
 
 .feature-card {
-  border: 1px solid rgba(198,161,91,.55);
-  background: linear-gradient(
-      180deg,
-      rgba(255,255,255,.03),
-      rgba(0,0,0,.18)
-  );
-
+  border: 1px solid rgba(198, 161, 91, 0.65);
   color: var(--cream);
   text-decoration: none;
-  text-align: center;
-
-  min-height: 370px;
-
+  background:
+    linear-gradient(
+        180deg,
+        rgba(255,255,255,.035) 0%,
+        rgba(255,255,255,.01) 22%,
+        rgba(0,0,0,.18) 100%
+    );
+  min-height: 430px;
   display: flex;
   flex-direction: column;
-
   overflow: hidden;
-
-  transition:
-      transform .35s ease,
-      box-shadow .35s ease,
-      border-color .35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.feature-card:hover{
+.feature-card::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(198,161,91,.9),
+        transparent
+    );
+}
 
-    transform:translateY(-10px);
+.feature-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--gold);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.38);
+}
 
-    border-color:var(--gold);
+.feature-card img {
+  order: -1;
+  width: 100%;
+  height: 205px;
+  object-fit: cover;
+  opacity: 0.88;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  border-bottom: 1px solid rgba(198, 161, 91, 0.35);
+}
 
-    box-shadow:
-        0 18px 40px rgba(0,0,0,.35);
+.feature-card:hover img {
+  opacity: 1;
+  transform: scale(1.05);
+}
 
+.card-top {
+  padding: 34px 26px 30px;
+  text-align: center;
 }
 
 .card-icon {
   color: var(--gold);
-  font-size: 34px;
-  margin-top: 20px;
-  line-height: 1;
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
 }
 
 .feature-card h3 {
   color: var(--gold);
   text-transform: uppercase;
   font-weight: normal;
-  font-size: 22px;
-  letter-spacing: 1.7px;
-  line-height: 1.1;
-  margin: 16px 10px 10px;
+  font-size: 23px;
+  letter-spacing: 2px;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.card-line {
+  width: 46px;
+  height: 1px;
+  background: var(--gold);
+  margin: 20px auto;
 }
 
 .feature-card p {
-  font-size: 17px;
-  line-height: 1.3;
-  margin: 0 18px 18px;
+  font-size: 18px;
+  line-height: 1.35;
+  margin: 0;
 }
 
-.feature-card img{
-
-    width:100%;
-
-    height:170px;
-
-    object-fit:cover;
-
-    margin-top:auto;
-
-    opacity:.88;
-
-    transition:.35s;
-
-}
-.feature-card:hover img{
-
-    opacity:1;
-
-    transform:scale(1.04);
-
+@media (max-width: 1100px) {
+  .cards-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 700px) {
   .cards-section {
     grid-template-columns: 1fr;
   }
 }
-.card-top{
-    padding:26px 22px 24px;
+
+.card-cta {
+  margin-top: 22px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-size: 11px;
+  opacity: 0.85;
 }
 
-.card-line{
-    width:42px;
-    height:1px;
-    background:var(--gold);
-    margin:18px auto;
-}
-
-.section-divider {
-    background: var(--navy);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    padding: 12px 0 38px;
-}
-
-.section-divider span {
-    width: 180px;
-    height: 1px;
-    background: rgba(198,161,91,.45);
-}
-
-.divider-mark {
-    color: var(--gold);
-    font-size: 18px;
+.feature-card:hover .card-cta {
+  opacity: 1;
 }
