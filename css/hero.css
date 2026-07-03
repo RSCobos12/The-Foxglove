@@ -7,47 +7,41 @@
   display: grid;
   place-items: center;
   text-align: center;
-  padding-top: 120px;
+  padding-top: 130px;
 }
 
 .hero-shade {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(
-      rgba(2,11,28,.05),
-      rgba(2,11,28,.66)
-    ),
-    radial-gradient(
-      circle at center,
-      rgba(198,161,91,.08),
-      transparent 44%
-    );
+    linear-gradient(rgba(2, 11, 28, 0.22), rgba(2, 11, 28, 0.78)),
+    radial-gradient(circle at center, rgba(198, 161, 91, 0.1), transparent 48%);
 }
 
 .hero-title {
   position: relative;
-  margin-top: 95px;
+  margin-top: 80px;
 }
 
 .hero-title p {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-transform: uppercase;
-  letter-spacing: 8px;
-  font-size: clamp(28px,4vw,44px);
+  letter-spacing: 10px;
+  font-size: clamp(32px, 4vw, 48px);
 }
 
 .hero-title h1 {
   margin: 0;
   font-weight: normal;
   text-transform: uppercase;
-  letter-spacing: 12px;
-  font-size: clamp(80px,12vw,156px);
-  line-height: .82;
+  letter-spacing: 14px;
+  font-size: clamp(92px, 14vw, 190px);
+  line-height: 0.82;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
 
 .divider {
-  margin-top: 40px;
+  margin-top: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +49,7 @@
 }
 
 .divider span {
-  width: 175px;
+  width: 180px;
   height: 1px;
   background: var(--gold);
 }

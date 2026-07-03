@@ -1,7 +1,7 @@
 .welcome {
   background: var(--navy);
   text-align: center;
-  padding: 85px 24px 105px;
+  padding: 85px 24px 85px;
   border-top: 1px solid var(--gold);
 }
 
@@ -42,4 +42,29 @@
 
 .welcome-close {
   margin-top: 34px;
+}
+
+.welcome {
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome::before,
+.welcome::after {
+  content: "♧";
+  position: absolute;
+  top: 35%;
+  color: rgba(198, 161, 91, 0.16);
+  font-size: 190px;
+  line-height: 1;
+  transform: rotate(-18deg);
+}
+
+.welcome::before {
+  left: 6%;
+}
+
+.welcome::after {
+  right: 6%;
+  transform: rotate(18deg) scaleX(-1);
 }
