@@ -9,25 +9,24 @@
 
 <body>
   <header class="site-header">
-    <div class="brand">THE FOXGLOVE</div>
+    <a class="brand" href="#hero">THE FOXGLOVE</a>
 
     <nav class="nav">
-      <a href="#">Invitation</a>
-      <a href="#">Schedule</a>
-      <a href="#">Courses</a>88'
-      <a href="#">RSVP</a>
+      <a href="#welcome">Welcome</a>
+      <a href="#courses">Courses</a>
+      <a href="#dinner">Dinner</a>
+      <a href="#rsvp">RSVP</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-overlay"></div>
+    <section id="hero" class="hero">
+      <div class="hero-shade"></div>
 
       <div class="hero-content">
-        <img class="crest-logo" src="assets/logos/Foxglove Logo With Background.jpeg" alt="The Foxglove crest">
+        <img class="crest-logo" src="assets/logos/foxglove-logo.png" alt="The Foxglove crest" />
 
-        <p class="eyebrow">A Private Golf Tradition</p>
-
+        <p class="eyebrow">Monterey, California</p>
         <h1>The Foxglove Invitational</h1>
 
         <p class="intro">
@@ -35,8 +34,46 @@
           and the memories forged in brotherhood.
         </p>
 
-        <a href="#" class="hero-button">Enter the Tournament</a>
+        <a class="button" href="#welcome">Enter the Tournament</a>
       </div>
+
+      <a class="scroll-cue" href="#welcome">Scroll</a>
+    </section>
+
+    <section id="welcome" class="section welcome-section">
+      <p class="section-kicker">Welcome</p>
+      <h2>A tradition born on the coast.</h2>
+      <p>
+        The Foxglove Invitational is a private golf gathering built around
+        competition, ceremony, friendship, and the kind of stories that grow
+        better with every retelling.
+      </p>
+    </section>
+
+    <section id="courses" class="section split-section">
+      <div>
+        <p class="section-kicker">The Courses</p>
+        <h2>Coastal golf. Championship memories.</h2>
+      </div>
+      <p>
+        From wind-shaped fairways to ocean air and firm greens, every round is
+        chosen to feel worthy of the occasion.
+      </p>
+    </section>
+
+    <section id="dinner" class="section dinner-section">
+      <p class="section-kicker">Champions Dinner</p>
+      <h2>Fine whiskey. Good cigars. Proper ceremony.</h2>
+      <p>
+        The table is set for a night of stories, toasts, and the kind of
+        brotherhood that gives the tournament its soul.
+      </p>
+    </section>
+
+    <section id="rsvp" class="section rsvp-section">
+      <p class="section-kicker">RSVP</p>
+      <h2>Answer the call.</h2>
+      <a class="button" href="mailto:">Request Your Place</a>
     </section>
   </main>
 
