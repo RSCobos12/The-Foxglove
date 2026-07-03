@@ -1,221 +1,33 @@
-:root {
-  --navy: #031024;
-  --blue: #071b3a;
-  --gold: #c8a45d;
-  --cream: #f4efe3;
-  --muted: #cfc6b2;
+/* ========================================
+   THE FOXGLOVE
+   MASTER STYLESHEET
+======================================== */
+
+@import url("header.css");
+@import url("hero.css");
+@import url("welcome.css");
+@import url("cards.css");
+@import url("footer.css");
+
+:root{
+    --navy:#061735;
+    --navy-dark:#020b1c;
+    --gold:#c6a15b;
+    --cream:#f6efe1;
 }
 
-* {
-  box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  background: var(--navy);
-  color: var(--cream);
-}
-
-.site-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 24px 52px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 50;
-  background: linear-gradient(rgba(3, 16, 36, 0.75), transparent);
-}
-
-.brand,
-.nav a {
-  color: var(--cream);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-size: 12px;
-}
-
-.brand {
-  color: var(--gold);
-  font-weight: bold;
-}
-
-.nav a {
-  margin-left: 30px;
-}
-
-.nav a:hover,
-.brand:hover {
-  color: var(--gold);
-}
-
-.hero {
-  min-height: 100vh;
-  position: relative;
-  background-image: url("../images/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 120px 24px 80px;
-}
-
-.hero-shade {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at center, rgba(200, 164, 93, 0.12), transparent 35%),
-    linear-gradient(rgba(3, 16, 36, 0.35), rgba(3, 16, 36, 0.92));
-}
-
-.hero-content {
-  position: relative;
-  max-width: 950px;
-  animation: fadeUp 1.4s ease forwards;
-}
-
-.crest-logo {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-  margin: 0 auto 26px;
-  display: block;
-  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.55));
-}
-
-.eyebrow,
-.section-kicker {
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-size: 12px;
-}
-
-h1,
-h2 {
-  font-weight: normal;
-  margin: 0;
-}
-
-h1 {
-  font-size: clamp(54px, 8vw, 112px);
-  line-height: 0.92;
-  margin-bottom: 28px;
-}
-
-h2 {
-  font-size: clamp(38px, 5vw, 74px);
-  line-height: 1;
-  margin-bottom: 24px;
-}
-
-.intro,
-.section p {
-  font-size: clamp(18px, 2vw, 23px);
-  line-height: 1.65;
-  color: var(--muted);
-}
-
-.intro {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.button {
-  display: inline-block;
-  margin-top: 36px;
-  padding: 15px 32px;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-size: 12px;
-  transition: 0.3s ease;
-}
-
-.button:hover {
-  background: var(--gold);
-  color: var(--navy);
-}
-
-.scroll-cue {
-  position: absolute;
-  bottom: 30px;
-  color: var(--gold);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 11px;
-}
-
-.section {
-  padding: 110px 9%;
-  background: var(--navy);
-}
-
-.welcome-section {
-  max-width: 1000px;
-}
-
-.split-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 70px;
-  background: var(--blue);
-}
-
-.dinner-section {
-  background:
-    linear-gradient(rgba(3, 16, 36, 0.88), rgba(3, 16, 36, 0.94)),
-    url("../assets/photos/Foxglove Menu 1.png");
-  background-size: cover;
-  background-position: center;
-}
-
-.rsvp-section {
-  text-align: center;
-  background: #020b18;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 760px) {
-  .site-header {
-    padding: 20px 22px;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .nav a {
-    margin: 0 8px;
-    font-size: 10px;
-  }
-
-  .crest-logo {
-    width: 110px;
-    height: 110px;
-  }
-
-  .split-section {
-    grid-template-columns: 1fr;
-  }
+body{
+    background:var(--navy-dark);
+    color:var(--cream);
+    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
 }

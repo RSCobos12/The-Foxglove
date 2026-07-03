@@ -4,79 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Foxglove Invitational</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
   <header class="site-header">
-    <a class="brand" href="#hero">THE FOXGLOVE</a>
-
     <nav class="nav">
-      <a href="#welcome">Welcome</a>
+      <a class="active" href="#">Home</a>
+      <a href="#welcome">The Foxglove</a>
+      <a href="#schedule">Schedule</a>
       <a href="#courses">Courses</a>
-      <a href="#dinner">Dinner</a>
-      <a href="#rsvp">RSVP</a>
+
+      <div class="crest">
+        <img src="assets/logos/foxglove-logo-clean.png" alt="The Foxglove crest" />
+      </div>
+
+      <a href="#winners">Past Winners</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#scores">Scores</a>
+      <a class="rsvp" href="#rsvp">RSVP</a>
     </nav>
   </header>
 
   <main>
-    <section id="hero" class="hero">
+    <section class="hero">
       <div class="hero-shade"></div>
 
-      <div class="hero-content">
-        <img class="crest-logo" src="assets/logos/foxglove-logo.png" alt="The Foxglove crest" />
-
-        <p class="eyebrow">Monterey, California</p>
-        <h1>The Foxglove Invitational</h1>
-
-        <p class="intro">
-          An annual gathering devoted to fine whiskey, good cigars, quality golf,
-          and the memories forged in brotherhood.
-        </p>
-
-        <a class="button" href="#welcome">Enter the Tournament</a>
+      <div class="hero-title">
+        <p>The</p>
+        <h1>Foxglove</h1>
+        <div class="divider">
+          <span></span>
+          <b>✦</b>
+          <span></span>
+        </div>
       </div>
-
-      <a class="scroll-cue" href="#welcome">Scroll</a>
     </section>
 
-    <section id="welcome" class="section welcome-section">
-      <p class="section-kicker">Welcome</p>
-      <h2>A tradition born on the coast.</h2>
-      <p>
-        The Foxglove Invitational is a private golf gathering built around
-        competition, ceremony, friendship, and the kind of stories that grow
-        better with every retelling.
-      </p>
-    </section>
+    <section id="welcome" class="welcome">
+  <div class="welcome-inner">
+    <div class="section-heading">
+      <span></span>
+      <h2>Welcome to The Foxglove</h2>
+      <span></span>
+    </div>
 
-    <section id="courses" class="section split-section">
-      <div>
-        <p class="section-kicker">The Courses</p>
-        <h2>Coastal golf. Championship memories.</h2>
-      </div>
-      <p>
-        From wind-shaped fairways to ocean air and firm greens, every round is
-        chosen to feel worthy of the occasion.
-      </p>
-    </section>
+    <p>
+      This is not simply a tournament.<br>
+      It is a tradition—an invitation to step away from the noise<br>
+      and into something enduring.
+    </p>
 
-    <section id="dinner" class="section dinner-section">
-      <p class="section-kicker">Champions Dinner</p>
-      <h2>Fine whiskey. Good cigars. Proper ceremony.</h2>
-      <p>
-        The table is set for a night of stories, toasts, and the kind of
-        brotherhood that gives the tournament its soul.
-      </p>
-    </section>
+    <p>
+      Here, we gather as brothers and competitors.<br>
+      We drink fine whiskey. We smoke good cigars.<br>
+      We play quality golf on storied grounds.<br>
+      And in doing so, we build memories that last a lifetime.
+    </p>
 
-    <section id="rsvp" class="section rsvp-section">
-      <p class="section-kicker">RSVP</p>
-      <h2>Answer the call.</h2>
-      <a class="button" href="mailto:">Request Your Place</a>
-    </section>
+    <p>
+      The Foxglove is a celebration of the bonds we share,<br>
+      the rivalries that sharpen us, and the moments<br>
+      that remind us why we play.
+    </p>
+
+    <p class="welcome-close">
+      Welcome, gentlemen.<br>
+      Let the games begin.
+    </p>
+  </div>
+</section>
   </main>
-
-  <script src="js/script.js"></script>
 </body>
 </html>

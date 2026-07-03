@@ -1,0 +1,62 @@
+.site-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  padding: 36px 38px 0;
+}
+
+.nav {
+  height: 92px;
+  border-bottom: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 31px;
+}
+
+.nav a {
+  color: var(--cream);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.nav a:hover,
+.nav .active {
+  color: var(--gold);
+}
+
+.nav .active::after {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 2px;
+  background: var(--gold);
+  margin: 12px auto 0;
+}
+
+.rsvp {
+  color: var(--gold) !important;
+  border: 1px solid var(--gold);
+  padding: 12px 20px;
+}
+
+.crest {
+  width: 210px;
+  height: 210px;
+  display: grid;
+  place-items: center;
+  transform: translateY(58px);
+  margin: 0 14px;
+  flex-shrink: 0;
+}
+
+.crest img {
+  width: 210px;
+  height: 210px;
+  object-fit: contain;
+  display: block;
+}

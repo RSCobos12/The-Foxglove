@@ -1,0 +1,66 @@
+.hero {
+  min-height: 100vh;
+  position: relative;
+  background-image: url("../images/monterey-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding-top: 120px;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(2,11,28,.05),
+      rgba(2,11,28,.66)
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(198,161,91,.08),
+      transparent 44%
+    );
+}
+
+.hero-title {
+  position: relative;
+  margin-top: 95px;
+}
+
+.hero-title p {
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  font-size: clamp(28px,4vw,44px);
+}
+
+.hero-title h1 {
+  margin: 0;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  font-size: clamp(80px,12vw,156px);
+  line-height: .82;
+}
+
+.divider {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+.divider span {
+  width: 175px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.divider b {
+  color: var(--gold);
+  font-size: 18px;
+}

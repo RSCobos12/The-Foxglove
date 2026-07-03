@@ -1,0 +1,45 @@
+.welcome {
+  background: var(--navy);
+  text-align: center;
+  padding: 85px 24px 105px;
+  border-top: 1px solid var(--gold);
+}
+
+.welcome-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+.section-heading span {
+  width: 130px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-heading h2 {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 7px;
+  font-weight: normal;
+  font-size: 18px;
+  margin: 0;
+}
+
+.welcome p {
+  color: var(--cream);
+  font-size: 22px;
+  line-height: 1.45;
+  margin: 0 auto 24px;
+}
+
+.welcome-close {
+  margin-top: 34px;
+}
