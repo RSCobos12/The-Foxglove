@@ -33,12 +33,12 @@
   color: var(--cream);
   text-decoration: none;
   background:
-    linear-gradient(
-        180deg,
-        rgba(255,255,255,.035) 0%,
-        rgba(255,255,255,.01) 22%,
-        rgba(0,0,0,.18) 100%
-    );
+  linear-gradient(
+    180deg,
+    rgba(255,255,255,.035) 0%,
+    rgba(255,255,255,.01) 22%,
+    rgba(0,0,0,.18) 100%
+  );
   min-height: 430px;
   display: flex;
   flex-direction: column;
@@ -47,16 +47,16 @@
 }
 
 .feature-card::before {
-    content: "";
-    display: block;
-    height: 3px;
-    width: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(198,161,91,.9),
-        transparent
-    );
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(198,161,91,.9),
+    transparent
+  );
 }
 
 .feature-card:hover {

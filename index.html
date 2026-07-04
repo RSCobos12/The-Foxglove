@@ -35,14 +35,20 @@
     <section class="hero">
       <div class="hero-shade"></div>
 
-      <div class="hero-title">
-        <p>The</p>
-        <h1>Foxglove</h1>
+      <div class="hero-title fade-up">
+        <p class="fade-up delay-1">The</p>
+        <h1 class="fade-up delay-2">FOXGLOVE</h1>
+
+
         <div class="divider">
-          <span></span>
-          <b>✦</b>
-          <span></span>
-        </div>
+    <span class="fade-up delay-3"></span>
+    <b class="fade-up delay-3">✦</b>
+    <span class="fade-up delay-3"></span>
+</div>
+
+<a href="#welcome" class="hero-button fade-up delay-4">
+  Begin your journey
+</a>
       </div>
     </section>
 
@@ -55,29 +61,38 @@
     </div>
 
     <p>
-      This is not simply a tournament.<br>
-      It is a tradition—an invitation to step away from the noise<br>
-      and into something enduring.
+      Every tradition begins with a single gathering.<br>
+      Ours is built on spirited golf, fine beverages, a touch of tobacco<br>
+      and the kind of brotherhood that only a little relentless trash talk can produce.
     </p>
 
     <p>
-      Here, we gather as brothers and competitors.<br>
-      We drink fine whiskey. We smoke good cigars.<br>
-      We play quality golf on storied grounds.<br>
-      And in doing so, we build memories that last a lifetime.
+      Like the foxglove flower itself, there is a touch of poison here.<br>
+      Beautiful at first glance, yet carrying just enough toxicity to keep<br>
+      every wager personal, every birdie celebrated a little too loudly,<br>
+      and every missed putt remembered far longer than it should be.<br>
+      It's all in good fun- and perhaps a mild personality flaw or two.
     </p>
 
     <p>
-      The Foxglove is a celebration of the bonds we share,<br>
-      the rivalries that sharpen us, and the moments<br>
-      that remind us why we play.
+      Leave your excuses behind. Bring your best game, your sharpest<br>
+      wit, and the courage to back up every word.
     </p>
 
     <p class="welcome-close">
-      Welcome, gentlemen.<br>
-      Let the games begin.
+      Play to win. Chirp ruthlessly. Shake hands afterwards.<br>
+      Drink fine whiskey. Smoke quality cigars. Swing your swing.
     </p>
   </div>
+
+  <p class="welcome-closing">
+    Welcome, gentlemen.<br>
+    The challenge is simple: Earn the stories.
+</p>
+
+<div class="welcome-signature">
+    — The Foxglove
+</div>
 </section>
 
 <div class="section-divider">
@@ -93,7 +108,7 @@
     <span></span>
   </div>
 
- <a class="feature-card" href="pages/past-winners.html">
+ <a class="feature-card fade-up delay-1" href="pages/past-winners.html">
 
     <div class="card-top">
 
@@ -113,12 +128,12 @@
 
     </div>
 
-    <img src="assets/photos/Foxglove Invite 1.png"
+    <img src="assets/cards/past-winners.png"
          alt="Past Winners">
 
 </a>
 
-  <a class="feature-card" href="pages/gallery.html">
+  <a class="feature-card fade-up delay-2" href="pages/gallery.html">
 
     <div class="card-top">
 
@@ -134,10 +149,10 @@
 
     </div>
 
-    <img src="assets/photos/Foxglove Jacket 1.png" alt="Photo gallery">
+    <img src="assets/cards/gallery.jpg" alt="Photo gallery">
   </a>
 
-  <a class="feature-card" href="pages/scores.html">
+  <a class="feature-card fade-up delay-3" href="pages/scores.html">
 
     <div class="card-top">
 
@@ -153,10 +168,10 @@
 
     </div>
 
-    <img src="assets/photos/Foxglove Invite 1.png" alt="Scores">
+    <img src="assets/cards/scores.jpg" alt="Scores">
   </a>
 
-  <a class="feature-card" href="pages/schedule.html">
+  <a class="feature-card fade-up delay-4" href="pages/schedule.html">
 
     <div class="card-top">
 
@@ -172,10 +187,10 @@
 
     </div>
 
-    <img src="assets/photos/Foxglove Menu 1.png" alt="Schedule">
+    <img src="assets/cards/schedule.jpg" alt="Schedule">
   </a>
 
-  <a class="feature-card" href="pages/rsvp.html">
+  <a class="feature-card fade-up delay-5" href="pages/rsvp.html">
 
     <div class="card-top">
 
@@ -191,7 +206,7 @@
 
     </div>
     
-    <img src="assets/photos/Foxglove Jacket 1.png" alt="RSVP">
+    <img src="assets/cards/rsvp.jpg" alt="RSVP">
   </a>
 </section>
 <footer class="site-footer">
@@ -202,5 +217,22 @@
   <p>The Foxglove.</p>
 </footer>
   </main>
+  <script>
+const header = document.querySelector(".site-header");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 80) {
+
+        header.classList.add("scrolled");
+
+    } else {
+
+        header.classList.remove("scrolled");
+
+    }
+
+});
+</script>
 </body>
 </html>

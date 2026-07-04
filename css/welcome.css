@@ -68,3 +68,21 @@
   right: 6%;
   transform: rotate(18deg) scaleX(-1);
 }
+
+.welcome-closing {
+  margin-top: 46px;
+  color: var(--gold);
+  font-size: 20px;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.welcome-signature {
+  margin-top: 18px;
+  color: rgba(198, 161, 91, 0.75);
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}

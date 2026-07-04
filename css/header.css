@@ -1,25 +1,26 @@
 .site-header {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 20;
-  padding: 36px 38px 0;
+  padding: 24px 38px 0;
+  transition: all .35s ease;
 }
 
 .nav {
-  height: 92px;
+  height: 104px;
   border-bottom: 1px solid var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 31px;
+  gap: 34px;
 }
 
 .nav a {
   color: var(--cream);
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 1.7px;
+  letter-spacing: 1.9px;
   font-size: 12px;
   white-space: nowrap;
 }
@@ -32,7 +33,7 @@
 .nav .active::after {
   content: "";
   display: block;
-  width: 42px;
+  width: 48px;
   height: 2px;
   background: var(--gold);
   margin: 12px auto 0;
@@ -41,22 +42,60 @@
 .rsvp {
   color: var(--gold) !important;
   border: 1px solid var(--gold);
-  padding: 12px 20px;
+  padding: 13px 22px;
 }
 
 .crest {
-  width: 210px;
-  height: 210px;
+  width: 230px;
+  height: 230px;
   display: grid;
   place-items: center;
-  transform: translateY(58px);
-  margin: 0 14px;
+  transform: translateY(64px);
+  margin: 0 18px;
   flex-shrink: 0;
 }
 
 .crest img {
-  width: 210px;
-  height: 210px;
+  width: 230px;
+  height: 230px;
   object-fit: contain;
   display: block;
+}
+
+.nav a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav a:not(.rsvp)::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -16px;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav a:not(.rsvp):hover::before {
+  width: 38px;
+}
+
+.rsvp {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.rsvp:hover {
+  background: var(--gold);
+  color: var(--navy-dark) !important;
+}
+
+.site-header.scrolled {
+    background: rgba(4, 15, 34, .92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding-top: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.28);
 }

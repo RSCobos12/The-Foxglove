@@ -58,3 +58,22 @@
   color: var(--gold);
   font-size: 18px;
 }
+
+.hero-button {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 13px 30px;
+  border: 1px solid rgba(198, 161, 91, 0.85);
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2.6px;
+  font-size: 11px;
+  background: rgba(2, 11, 28, 0.18);
+  transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+  background: var(--gold);
+  color: var(--navy-dark);
+}
