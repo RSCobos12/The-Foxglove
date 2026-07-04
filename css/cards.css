@@ -2,8 +2,8 @@
   background: var(--navy);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-  padding: 0 28px 86px;
+  gap: 18px;
+  padding: 52px 28px 86px;
 }
 
 .cards-heading {
@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   gap: 22px;
-  margin-bottom: 22px;
+  margin-bottom: 42px;
 }
 
 .cards-heading span {
@@ -25,7 +25,7 @@
   color: var(--gold);
   text-transform: uppercase;
   letter-spacing: 6px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .feature-card {
@@ -61,8 +61,10 @@
 
 .feature-card:hover {
   transform: translateY(-10px);
-  border-color: var(--gold);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.38);
+  border-color: #d8b46a;
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.42),
+    0 0 18px rgba(198, 161, 91, 0.18);
 }
 
 .feature-card img {
@@ -77,7 +79,8 @@
 
 .feature-card:hover img {
   opacity: 1;
-  transform: scale(1.05);
+  transform: scale(1.08);
+  filter: brightness(1.08);
 }
 
 .card-top {
@@ -134,6 +137,23 @@
   letter-spacing: 2.5px;
   font-size: 11px;
   opacity: 0.85;
+  transition: color .3s ease;
+}
+
+.card-cta::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform .3s ease;
+}
+
+.feature-card:hover .card-cta::after {
+  transform: translateX(6px);
+}
+
+.feature-card:hover .card-cta::after {
+  transform: translateX(6px);
+}
 }
 
 .feature-card:hover .card-cta {

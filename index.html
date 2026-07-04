@@ -13,6 +13,14 @@
 </head>
 
 <body>
+
+  <div class="page-loader" id="pageLoader">
+  <img src="assets/logos/foxglove-logo-clean.png" alt="The Foxglove crest">
+  <div class="loader-line"></div>
+  <p>The Foxglove</p>
+</div>
+
+
   <header class="site-header">
     <nav class="nav">
       <a class="active" href="#">Home</a>
@@ -46,6 +54,10 @@
     <span class="fade-up delay-3"></span>
 </div>
 
+<p class="hero-established fade-up delay-4">
+    EST &bull; MMXXVI
+</p>
+
 <a href="#welcome" class="hero-button fade-up delay-4">
   Begin your journey
 </a>
@@ -53,6 +65,14 @@
     </section>
 
     <section id="welcome" class="welcome">
+      <div class="welcome-transition">
+    <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+        <path
+            fill="#081b3a"
+            d="M0,20 C360,140 1080,0 1440,80 L1440,140 L0,140 Z">
+        </path>
+    </svg>
+</div>
   <div class="welcome-inner">
     <div class="section-heading">
       <span></span>
@@ -124,7 +144,7 @@
             behind.
         </p>
 
-        <div class="card-cta">Explore →</div>
+        <div class="card-cta">Learn about our champions</div>
 
     </div>
 
@@ -145,7 +165,7 @@
 
     <p>Memories from The Foxglove</p>
 
-    <div class="card-cta">Explore →</div>
+    <div class="card-cta">View memories</div>
 
     </div>
 
@@ -164,7 +184,7 @@
 
     <p>Results & leaderboards by year</p>
 
-    <div class="card-cta">Explore →</div>
+    <div class="card-cta">View results</div>
 
     </div>
 
@@ -183,7 +203,7 @@
 
     <p>Three days of golf, fellowship & debauchery</p>
 
-    <div class="card-cta">Explore →</div>
+    <div class="card-cta">See what's in store</div>
 
     </div>
 
@@ -202,7 +222,7 @@
 
     <p>Join us for this year’s event</p>
 
-    <div class="card-cta">Explore →</div>
+    <div class="card-cta">Let's begin</div>
 
     </div>
     
@@ -235,5 +255,16 @@ window.addEventListener("scroll", () => {
 
 });
 </script>
+
+<script>
+  const loader = document.getElementById("pageLoader");
+
+  if (sessionStorage.getItem("foxgloveLoaderSeen")) {
+    loader.style.display = "none";
+  } else {
+    sessionStorage.setItem("foxgloveLoaderSeen", "true");
+  }
+</script>
+
 </body>
 </html>

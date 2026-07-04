@@ -97,5 +97,57 @@
 .delay-5 {
 
   animation-delay: 1s;
-  
+
+}
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--navy-dark);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 22px;
+  animation: loaderFade 1.8s ease forwards;
+  animation-delay: 1.6s;
+}
+
+.page-loader img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.loader-line {
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  animation: lineReveal 0.9s ease forwards;
+  animation-delay: 0.45s;
+}
+
+.page-loader p {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 14px;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes lineReveal {
+  to {
+    width: 180px;
+  }
+}
+
+@keyframes loaderFade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
