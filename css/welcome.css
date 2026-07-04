@@ -62,26 +62,6 @@
   overflow: hidden;
 }
 
-.welcome::before,
-.welcome::after {
-  content: "♧";
-  position: absolute;
-  top: 35%;
-  color: rgba(198, 161, 91, 0.16);
-  font-size: 190px;
-  line-height: 1;
-  transform: rotate(-18deg);
-}
-
-.welcome::before {
-  left: 6%;
-}
-
-.welcome::after {
-  right: 6%;
-  transform: rotate(18deg) scaleX(-1);
-}
-
 .welcome-closing {
   margin-top: 46px;
   color: var(--gold);
@@ -117,4 +97,21 @@
   font-size: 13px;
   letter-spacing: 4px;
   text-transform: uppercase;
+}
+
+.welcome-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 78%;
+  transform: translate(-50%, -50%);
+  opacity: 0.16;
+  pointer-events: none;
+  z-index: 1;
+  filter: grayscale(1) brightness(1.15) contrast(1.1);
+}
+
+.welcome-inner {
+  position: relative;
+  z-index: 2;
 }

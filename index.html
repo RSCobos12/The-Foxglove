@@ -41,9 +41,22 @@
 
   <main>
     <section class="hero">
-      <div class="hero-shade"></div>
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="assets/photos/hero-poster.jpg">
 
-      <div class="hero-title fade-up">
+    <source src="assets/videos/hero.mp4" type="video/mp4">
+
+  </video>
+
+  <div class="hero-shade"></div>
+
+  <div class="hero-title fade-up">
         <p class="fade-up delay-1">The</p>
         <h1 class="fade-up delay-2">FOXGLOVE</h1>
 
@@ -65,14 +78,17 @@
     </section>
 
     <section id="welcome" class="welcome">
-      <div class="welcome-transition">
+  <img class="welcome-watermark" src="assets/botanical/foxglove-watermark.png" alt="">
+
+  <div class="welcome-transition">
     <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
-        <path
-            fill="#081b3a"
-            d="M0,20 C360,140 1080,0 1440,80 L1440,140 L0,140 Z">
-        </path>
+      <path
+        fill="#081b3a"
+        d="M0,20 C360,140 1080,0 1440,80 L1440,140 L0,140 Z">
+      </path>
     </svg>
-</div>
+  </div>
+
   <div class="welcome-inner">
     <div class="section-heading">
       <span></span>
@@ -82,7 +98,7 @@
 
     <p>
       Every tradition begins with a single gathering.<br>
-      Ours is built on spirited golf, fine beverages, a touch of tobacco<br>
+      Ours is built on spirited golf, fine beverages, a touch of tobacco,<br>
       and the kind of brotherhood that only a little relentless trash talk can produce.
     </p>
 
@@ -103,16 +119,16 @@
       Play to win. Chirp ruthlessly. Shake hands afterwards.<br>
       Drink fine whiskey. Smoke quality cigars. Swing your swing.
     </p>
+
+    <p class="welcome-closing">
+      Welcome, gentlemen.<br>
+      The challenge is simple: Earn the stories.
+    </p>
+
+    <div class="welcome-signature">
+      — The Foxglove
+    </div>
   </div>
-
-  <p class="welcome-closing">
-    Welcome, gentlemen.<br>
-    The challenge is simple: Earn the stories.
-</p>
-
-<div class="welcome-signature">
-    — The Foxglove
-</div>
 </section>
 
 <div class="section-divider">
@@ -132,7 +148,7 @@
 
     <div class="card-top">
 
-        <div class="card-icon">I</div>
+        <img class="card-icon" src="assets/icons/foxglove-icon-gold-transparent.png" alt="">
 
         <h3>Past Winners</h3>
 
@@ -157,7 +173,7 @@
 
     <div class="card-top">
 
-    <div class="card-icon">II</div>
+    <img class="card-icon" src="assets/icons/foxglove-icon-gold-transparent.png" alt="">
 
     <h3>Photo Gallery</h3>
 
@@ -176,7 +192,7 @@
 
     <div class="card-top">
 
-    <div class="card-icon">III</div>
+    <img class="card-icon" src="assets/icons/foxglove-icon-gold-transparent.png" alt="">
 
     <h3>Yearly Scores</h3>
 
@@ -195,7 +211,7 @@
 
     <div class="card-top">
 
-    <div class="card-icon">IV</div>
+    <img class="card-icon" src="assets/icons/foxglove-icon-gold-transparent.png" alt="">
 
     <h3>Schedule</h3>
 
@@ -214,7 +230,7 @@
 
     <div class="card-top">
 
-    <div class="card-icon">V</div>
+    <img class="card-icon" src="assets/icons/foxglove-icon-gold-transparent.png" alt="">
 
     <h3>RSVP</h3>
 
