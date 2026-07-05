@@ -15,7 +15,7 @@
 .welcome {
   background: var(--navy);
   text-align: center;
-  padding: 35px 24px 95px;
+  padding: 115px 24px 110px;
 }
 
 .welcome-inner {
@@ -49,8 +49,8 @@
 .welcome p {
   color: var(--cream);
   font-size: 22px;
-  line-height: 1.45;
-  margin: 0 auto 24px;
+  line-height: 1.55;
+  margin: 0 auto 30px;
 }
 
 .welcome-close {
@@ -99,19 +99,46 @@
   text-transform: uppercase;
 }
 
-.welcome-watermark {
+.welcome-botanical {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 78%;
-  transform: translate(-50%, -50%);
-  opacity: 0.16;
+  top: 54%;
+  width: 330px;
+  opacity: 0.08;
   pointer-events: none;
   z-index: 1;
-  filter: grayscale(1) brightness(1.15) contrast(1.1);
+  filter: grayscale(1);
 }
 
-.welcome-inner {
-  position: relative;
-  z-index: 2;
+.welcome-botanical-left {
+  left: 8%;
+  object-position: left center;
+}
+
+.welcome-botanical-right {
+  right: 16%;
+  object-position: right center;
+}
+
+.welcome-botanical {
+  position: absolute;
+  top: 54%;
+  width: 260px;
+  height: 360px;
+  object-fit: cover;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1;
+  filter: grayscale(1);
+}
+
+.welcome-botanical-left {
+  left: 8%;
+  object-position: left center;
+  transform: translateY(-50%);
+}
+
+.welcome-botanical-right {
+  left: 70%;
+  object-position: right center;
+  transform: translateY(-50%);
 }

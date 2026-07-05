@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 34px;
+  gap: 26px;
 }
 
 .nav a {
@@ -25,18 +25,8 @@
   white-space: nowrap;
 }
 
-.nav a:hover,
-.nav .active {
+.nav a:hover {
   color: var(--gold);
-}
-
-.nav .active::after {
-  content: "";
-  display: block;
-  width: 48px;
-  height: 2px;
-  background: var(--gold);
-  margin: 12px auto 0;
 }
 
 .rsvp {

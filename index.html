@@ -17,7 +17,7 @@
   <div class="page-loader" id="pageLoader">
   <img src="assets/logos/foxglove-logo-clean.png" alt="The Foxglove crest">
   <div class="loader-line"></div>
-  <p>The Foxglove</p>
+
 </div>
 
 
@@ -41,11 +41,15 @@
 
   <main>
     <section class="hero">
+
+  <img
+    class="hero-poster-image"
+    src="assets/images/monterey-hero.jpg"
+    alt="">
+
   <video
     class="hero-video"
-    autoplay
     muted
-    loop
     playsinline
     preload="metadata"
     poster="assets/photos/hero-poster.jpg">
@@ -78,7 +82,8 @@
     </section>
 
     <section id="welcome" class="welcome">
-  <img class="welcome-watermark" src="assets/botanical/foxglove-watermark.png" alt="">
+  <img class="welcome-botanical welcome-botanical-left" src="assets/botanical/foxglove-left.png" alt="">
+<img class="welcome-botanical welcome-botanical-right" src="assets/botanical/foxglove-right.png" alt="">
 
   <div class="welcome-transition">
     <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
@@ -282,5 +287,40 @@ window.addEventListener("scroll", () => {
   }
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const hero = document.querySelector(".hero");
+  const video = document.querySelector(".hero-video");
+
+  function runHeroCycle() {
+
+    hero.classList.remove("video-active");
+
+    setTimeout(() => {
+
+      video.currentTime = 0;
+      video.play();
+
+      setTimeout(() => {
+        hero.classList.add("video-active");
+      }, 250);
+
+    }, 2000);
+
+    video.onended = () => {
+
+      hero.classList.remove("video-active");
+
+      setTimeout(runHeroCycle, 15000);
+
+    };
+
+  }
+
+  runHeroCycle();
+
+});
+</script>
 </body>
 </html>

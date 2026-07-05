@@ -108,14 +108,14 @@
   display: grid;
   place-items: center;
   align-content: center;
-  gap: 22px;
+  gap: 6px;
   animation: loaderFade 1.8s ease forwards;
   animation-delay: 1.6s;
 }
 
 .page-loader img {
-  width: 120px;
-  height: 120px;
+  width: 135px;
+  height: 135px;
   object-fit: contain;
   opacity: 0;
   animation: fadeIn 0.8s ease forwards;
@@ -127,16 +127,6 @@
   background: var(--gold);
   animation: lineReveal 0.9s ease forwards;
   animation-delay: 0.45s;
-}
-
-.page-loader p {
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 6px;
-  font-size: 14px;
-  opacity: 0;
-  animation: fadeIn 0.8s ease forwards;
-  animation-delay: 0.8s;
 }
 
 @keyframes lineReveal {
