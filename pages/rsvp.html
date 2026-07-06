@@ -6,40 +6,100 @@
     <title>RSVP | The Foxglove</title>
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/rsvp.css">
 </head>
 
 <body class="page-body">
 
-<section class="page-hero">
+    <header class="site-header">
+  <nav class="nav">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#welcome">The Foxglove</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="courses.html">Courses</a>
 
-    <img class="page-crest"
-         src="../assets/logos/foxglove-logo-clean.png"
-         alt="The Foxglove">
-
-    <div class="page-kicker">
-        The Foxglove Invitational
+    <div class="crest">
+      <img src="../assets/logos/foxglove-logo-clean.png"
+           alt="The Foxglove crest">
     </div>
 
-    <h1 class="page-title">
-        RSVP
-    </h1>
+    <a href="past-winners.html">Past Winners</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="scores.html">Scores</a>
+    <a class="active rsvp" href="rsvp.html">RSVP</a>
+  </nav>
+</header>
+
+<section class="rsvp-hero">
+  <div class="rsvp-hero-overlay"></div>
 
 </section>
 
-<section class="page-content">
+<section class="rsvp-content">
+  <div class="rsvp-divider">
+    <span></span>
+    <img src="../assets/icons/foxglove-icon-gold-transparent.png" alt="">
+    <span></span>
+  </div>
 
-    <h2>Coming Soon</h2>
-
+  <div class="rsvp-intro">
+    <h2>Your presence is what makes The Foxglove what it is.</h2>
     <p>
-        Invitees will be able to RSVP for the tournament here.
+      Kindly respond by confirming your attendance for our
+      <strong>2027 event.</strong>
     </p>
+  </div>
 
-    <a class="page-back"
-       href="../index.html">
-       Return Home
-    </a>
+  <form class="rsvp-form">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" name="firstName">
+      </div>
 
+      <div class="form-field">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" name="lastName">
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="attendance">Will You Be Attending?</label>
+      <select id="attendance" name="attendance">
+        <option value=""></option>
+        <option value="yes">Yes, thank you.</option>
+        <option value="no">Unfortunately, I am unable to attend.</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email Address</label>
+      <input id="email" type="email" name="email">
+    </div>
+
+    <div class="form-field">
+      <label for="dietary">Dietary Restrictions?</label>
+      <textarea id="dietary" name="dietary"></textarea>
+    </div>
+
+    <div class="form-field">
+      <label for="requests">Special Requests?</label>
+      <textarea id="requests" name="requests"></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
 </section>
+
+<footer class="site-footer">
+  <div></div>
+  <img src="../assets/logos/foxglove-logo-clean.png" alt="The Foxglove crest">
+  <p>The Foxglove</p>
+</footer>
+
+<script src="../js/script.js"></script>
 
 </body>
 </html>
