@@ -93,6 +93,28 @@ Future shared components may include:
 - Modals
 - Member authentication
 
+# Placeholder Content
+
+Placeholder content exists only to validate design, layout, and functionality.
+
+No placeholder names, scores, images, quotes, statistics, years, or event details should be treated as permanent unless explicitly approved.
+
+Pages should be built so that placeholder content can be replaced without requiring layout changes.
+
+The system should support future dynamic content, including:
+
+- Winner names
+- Scores
+- Photos
+- Videos
+- Reflections
+- Dinner locations
+- Courses played
+- RSVP details
+- Member-specific information
+
+Build the system, not the sample data.
+
 ---
 
 # Color Standards
