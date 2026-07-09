@@ -1,328 +1,115 @@
 # The Foxglove Invitational Website
 
 **Project Version:** 1.0  
-**Project Status:** Phase I Complete | Phase II Ready  
+**Project Status:** Phase II In Progress  
 **Owner:** Scott Cobos  
-**Last Updated:** July 5, 2026
+**Development Partner:** ChatGPT (OpenAI)  
+**Last Updated:** July 8, 2026
 
 ---
 
 # Project Vision
 
-The Foxglove is more than a golf tournament website.
+The Foxglove Invitational is more than a golf tournament website.
 
-It is intended to become the digital home of a tradition built around championship golf, brotherhood, competition, premium hospitality, and lasting memories.
+It is the digital home of an annual tradition built around championship golf, brotherhood, competition, premium hospitality, and unforgettable memories.
 
-Every design decision should reinforce those values.
+Every page should contribute to a timeless experience that reflects the prestige of the tournament.
 
-The website should feel timeless rather than trendy.
+The objective is not to build the biggest website.
 
----
-
-# Current Project Status
-
-## ✅ Phase I — Foundation (Complete)
-
-Completed:
-
-- Homepage Version 1.0
-- Brand Identity
-- Foxglove Crest
-- Foxglove Seal
-- Homepage Style Guide
-- Homepage Sign-Off
-- Design System
-
-Documentation:
-
-- homepage-style-guide.md
-- homepage-signoff.md
-
----
-
-# 🚧 Phase II — Core Experience
-
-Build Order
-
-- [ ] RSVP
-- [ ] Past Winners
-- [ ] Gallery
-- [ ] Schedule
-- [ ] The Foxglove
-- [ ] Courses
-- [ ] Scores
----
-
-# Future Phases
-
-## Phase III
-
-Member Experience
-
-- Login
-- Member Dashboard
-- RSVP Administration
-- Tournament Administration
-- Protected Content
-
----
-
-## Phase IV
-
-Launch
-
-- Mobile Optimization
-- Accessibility Review
-- Performance Optimization
-- SEO
-- Production Deployment
-- Domain Launch
-
----
-
-# Development Workflow
-
-Every page follows this process.
-
-## 1. Vision
-
-What should visitors feel?
-
----
-
-## 2. Story
-
-Determine the emotional purpose of the page.
-
----
-
-## 3. Visual Mockup
-
-No coding.
-
-Create and approve a complete visual concept.
-
----
-
-## 4. Approval
-
-The design must be approved before implementation.
-
----
-
-## 5. VS Code Build
-
-Implement the approved design.
-
----
-
-## 6. White Glove Review
-
-Refine:
-
-- spacing
-- typography
-- motion
-- interaction
-- consistency
-
----
-
-## 7. Sign-Off
-
-Create a sign-off document.
-
-Freeze Version 1.0.
-
----
-
-## 8. Documentation
-
-Update:
-
-- style guides
-- sign-off
-- roadmap
-- README (if applicable)
-
----
-
-# Design Standards
-
-The homepage establishes the visual benchmark.
-
-Every new page should inherit:
-
-- Header
-- Footer
-- Typography
-- Motion
-- Color Palette
-- Card Style
-- Botanical Treatment
-- Iconography
-
-Do not introduce a new design language unless it clearly improves the overall experience.
+The objective is to build one that people remember.
 
 ---
 
 # Design Philosophy
 
+Every design decision should reinforce the Foxglove identity.
+
 Choose restraint over decoration.
 
 Choose atmosphere over information.
 
+Choose confidence over complexity.
+
 Choose timelessness over trends.
+
+Luxury is communicated through precision, consistency, and intentional design.
 
 Every element must earn its place.
 
-Luxury is communicated through confidence rather than excess.
+---
+
+# Development Workflow
+
+Every major feature follows the same workflow.
+
+1. Vision
+2. Story
+3. Visual Direction / Mockup
+4. Approval
+5. VS Code Implementation
+6. White Glove Review
+7. Git Commit
+8. Documentation Update
+9. Version Sign-Off
+
+No implementation begins before the visual direction has been approved.
+
+No feature is considered complete until it has passed the White Glove Review.
 
 ---
 
-# Project Rules
-
-1. No coding until the visual mockup is approved.
-
-2. No page is considered complete until it passes a White Glove Review.
-
-3. Every completed page receives a sign-off document.
-
-4. Homepage Version 1.0 is frozen and serves as the design benchmark.
-
-5. Future homepage changes should be treated as enhancements, not unfinished work.
-
----
-
-# Documentation
-
-Current project documents:
-
-- README.md
-- homepage-style-guide.md
-- homepage-signoff.md
-
-Future documents:
-
-- component-library.md
-- website-style-guide.md
-- phase-2-roadmap.md
-- change-log.md
-- release-notes.md
-
----
-
-# Current Milestone
-
-🏆 Homepage Version 1.0 Approved
-
-Completion Date:
-
-July 5, 2026
-
----
-
-# Next Session
-
-Begin Phase II.
-
-Page:
-
-**RSVP**
-
-Objectives:
-
-- Define the story.
-- Define the emotional journey.
-- Create a complete visual mockup.
-- Approve the mockup.
-- Begin VS Code implementation.
-
----
-
-# Guiding Principle
-
-> A visitor should leave remembering how **The Foxglove felt**, not how many features it had.
-
-This principle should guide every future design decision.
-
----
-
-# Working Relationship
-
-Project approach:
-
-- Design first.
-- Approve the visual direction before writing code.
-- Make one design adjustment at a time.
-- Prefer refinement over adding features.
-- Favor premium, restrained design over visual complexity.
-- Document major decisions before moving to the next phase.
-- Sign off on milestones before beginning new work.
-
-The goal is to build a timeless website that can grow with The Foxglove for many years while maintaining a consistent visual identity.
-
----
-
-# Current Project Status
-
-## Completed Pages
-
-### ✅ Homepage (v1.0)
-
-- Shared navigation
-- Shared footer
-- Hero section
-- Responsive layout
-- Foundation of The Foxglove visual identity
-
-### ✅ RSVP (v1.0)
-
-- Hero image
-- Editorial introduction
-- RSVP form
-- Shared components integrated
-
-### ✅ Past Winners (v1.0)
-
-- Editorial hero
-- Winner grid
-- Winner detail panel
-- Winner presentation hover video
-- Future winner placeholders
-- Future-ready architecture
-
----
-
-# Current Development Roadmap
+# Public Website Roadmap
 
 ## Phase II
 
-✅ Homepage
-
-✅ RSVP
-
-✅ Past Winners
-
-⬜ Gallery
-
-⬜ Courses
+| Page | Status |
+|-------|:------:|
+| Homepage | ✅ Complete |
+| RSVP | ✅ Complete |
+| Past Winners | ✅ Complete |
+| Courses | ✅ Complete |
+| Gallery | ⬜ Pending |
+| Schedule | ⬜ Pending |
+| The Foxglove | ⬜ Pending |
 
 ---
 
-## Phase III
+# Private Member Experience (Phase III)
+
+Planned features include:
 
 - Member Login
 - Member Dashboard
-- Authentication
-- Admin Portal
-- Dynamic Content
+- Player Directory
+- Tournament Schedule
+- Live Scores
+- Tournament Administration
+- RSVP Administration
+- Protected Member Content
+
+The complete member architecture will be finalized before Phase III begins.
 
 ---
 
-# Shared Components
+# Launch Preparation (Phase IV)
 
-The following should remain consistent throughout the website:
+- Mobile Optimization
+- Accessibility Review
+- Performance Optimization
+- SEO
+- Cross-Browser Testing
+- Production Deployment
+- Domain Launch
+
+---
+
+# Shared Design Standards
+
+Every public page inherits the same design language.
+
+Shared components include:
 
 - Header
 - Navigation
@@ -330,41 +117,185 @@ The following should remain consistent throughout the website:
 - Typography
 - Color Palette
 - Animation Style
+- Button Styles
+- Card Design Language
+- Foxglove Branding
 
-Only the page body should change between pages.
+Each page should maintain its own personality while remaining unmistakably part of The Foxglove.
 
 ---
 
-# Current Navigation
+# Current Public Navigation
 
 - Home
-- Courses
 - Past Winners
 - Gallery
+- Courses
 - RSVP
+- Player Directory *(Coming Soon)*
 
-(Member Login will be added during Phase III.)
+Player Directory becomes active during Phase III.
+
+---
+
+# Current Progress
+
+## Homepage
+
+**Status:** ✅ Version 1.0 Complete
+
+Completed:
+
+- Hero
+- Welcome Section
+- Countdown
+- Navigation
+- Footer
+- Animations
+- Responsive Layout
+
+---
+
+## RSVP
+
+**Status:** ✅ Version 1.0 Complete
+
+Completed:
+
+- Hero
+- RSVP Form
+- Form Validation
+- Shared Components
+- Responsive Layout
+
+---
+
+## Past Winners
+
+**Status:** ✅ Version 1.0 Complete
+
+Completed:
+
+- Editorial Hero
+- Champions Grid
+- Winner Detail Panel
+- Hover Presentation Videos
+- Future Champion Architecture
+- Responsive Layout
+
+---
+
+## Courses
+
+**Status:** ✅ Version 1.0 Complete
+
+Completed:
+
+- Hero Section
+- Editorial Introduction
+- Reusable Course Card Component
+- Responsive Two-Column Course Grid
+- Hover Animations
+- Scroll Reveal Animation
+- Shared Components
+- Responsive Layout
+
+---
+
+## Gallery
+
+**Status:** ⬜ Pending
+
+Next Steps:
+
+- Vision
+- Story
+- Visual Mockup
+- Approval
+- Implementation
+
+---
+
+# Reusable Components
+
+Approved components currently in use:
+
+- Shared Header
+- Shared Navigation
+- Shared Footer
+- Hero Framework
+- Editorial Introduction Framework
+- Feature Card
+- Course Card
+- Scroll Reveal Animation
+
+Future reusable components:
+
+- Gallery Grid
+- Timeline
+- Statistics Panels
+- Scorecards
+- Modal Windows
+
+---
+
+# Project Rules
+
+1. Mockup approval before coding.
+2. White Glove Review before every Git commit.
+3. Every completed page receives Version 1.0 sign-off.
+4. Homepage Version 1.0 serves as the visual benchmark.
+5. Shared components remain consistent across every page.
+6. Assets should be gathered before implementation begins.
+7. Reusable components are built once, approved, then duplicated.
+8. Make one design adjustment at a time.
+9. Never sacrifice consistency for speed.
 
 ---
 
 # Documentation
 
-Project documentation can be found in:
+Current
 
-- docs/project-standards.md
-- docs/parking-lot.md
+- README.md
+- homepage-style-guide.md
+- homepage-signoff.md
+
+Planned
+
+- component-library.md
+- website-style-guide.md
+- change-log.md
+- release-notes.md
 
 ---
 
-# Next Session
+# Working Relationship
 
-1. Update shared navigation to reflect the revised sitemap.
-2. Begin Gallery page.
-3. White Glove Review.
-4. Commit Gallery v1.0.
+Development philosophy:
+
+- Design first.
+- Build intentionally.
+- Approve before implementation.
+- Build one reusable component at a time.
+- Review thoroughly.
+- Refine instead of redesign.
+- Prioritize long-term maintainability.
+
+The objective is to build a website capable of growing with The Foxglove Invitational for many years while preserving one cohesive visual language.
 
 ---
 
-Last Updated
+# Current Milestone
 
-Past Winners v1.0
+## Gallery Page
+
+Current objective:
+
+Develop the complete visual direction for the Gallery page before implementation begins.
+
+---
+
+# Guiding Principle
+
+> "A visitor should leave remembering how **The Foxglove felt**, not how many features it had."
