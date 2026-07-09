@@ -114,3 +114,29 @@
     font-size: 22px;
     margin: 0;
 }
+
+.courses-list {
+    background: var(--navy);
+    padding: 52px 28px 86px;
+}
+
+.courses-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+
+@media (max-width: 900px) {
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+  .courses-list {
+    grid-template-columns: 1fr;
+  }
+}

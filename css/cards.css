@@ -154,7 +154,6 @@
 .feature-card:hover .card-cta::after {
   transform: translateX(6px);
 }
-}
 
 .feature-card:hover .card-cta {
   opacity: 1;
