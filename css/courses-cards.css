@@ -14,7 +14,11 @@
   overflow: hidden;
   min-height: 255px;
   color: var(--cream);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  transition:
+  opacity 0.7s ease,
+  transform 0.7s ease,
+  box-shadow 0.35s ease,
+  border-color 0.35s ease;
 }
 
 .course-card:hover {
@@ -144,4 +148,14 @@
   .course-stats strong {
     font-size: 1.55rem;
   }
+}
+
+.course-card {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.course-card.course-card-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
