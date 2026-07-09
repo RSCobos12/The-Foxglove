@@ -26,10 +26,10 @@ async function loadSharedComponents() {
 
 function setActiveNav() {
   const currentPath = window.location.pathname;
-  const navLinks = document.querySelectorAll(".nav a");
+  const navLinks = document.querySelectorAll(".nav a[href]");
 
   navLinks.forEach((link) => {
-    const linkPath = new URL(link.href).pathname;
+    const linkPath = new URL(link.href, window.location.origin).pathname;
 
     if (linkPath === currentPath) {
       link.classList.add("active");

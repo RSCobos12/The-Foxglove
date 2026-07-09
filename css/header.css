@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 26px;
+  gap: 54px;
 }
 
 .nav a {
@@ -40,7 +40,7 @@
   height: 230px;
   display: grid;
   place-items: center;
-  transform: translateY(64px);
+  transform: translate(42px, 64px);
   margin: 0 18px;
   flex-shrink: 0;
 }
@@ -88,4 +88,10 @@
     -webkit-backdrop-filter: blur(14px);
     padding-top: 10px;
     box-shadow: 0 8px 30px rgba(0,0,0,.28);
+}
+
+.coming-soon {
+  opacity: .55;
+  cursor: default;
+  pointer-events: none;
 }

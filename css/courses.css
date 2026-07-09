@@ -1,0 +1,116 @@
+/* ==========================================
+   HERO
+========================================== */
+
+.courses-hero {
+  position: relative;
+  height: 64vh;
+  min-height: 520px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      rgba(3, 14, 30, 0.18),
+      rgba(3, 14, 30, 0.72)
+    ),
+    url("../assets/courses/hero.jpg");
+
+  background-size: cover;
+  background-position: center 60%;
+
+  overflow: hidden;
+}
+
+.courses-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 360px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(5,18,40,0) 0%,
+    rgba(5,18,40,.20) 35%,
+    rgba(5,18,40,.65) 60%,
+    rgba(5,18,40,.90) 82%,
+    var(--navy-dark) 100%
+);
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.courses-hero-content {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+  width: min(760px, 90%);
+
+  margin-top: 170px;
+}
+
+.courses-hero h1 {
+  color: var(--cream);
+  font-size: clamp(42px, 5vw, 76px);
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin: 0 0 24px;
+}
+
+.courses-hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+
+  width: min(600px, 88%);
+  margin: 0 auto 36px;
+}
+
+.courses-hero-divider span {
+  height: 1px;
+  flex: 1;
+  background: var(--gold);
+}
+
+.courses-hero-divider img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.courses-hero p {
+  color: var(--cream);
+  font-size: 28px;
+  font-style: italic;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* ==========================================
+   INTRODUCTION
+========================================== */
+
+.courses-intro {
+    padding: 40px 24px 80px;
+}
+
+.courses-intro-content {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.courses-intro-content p {
+    color: rgba(245, 241, 232, 0.88);
+    line-height: 1.8;
+    font-size: 22px;
+    margin: 0;
+}
