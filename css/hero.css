@@ -145,3 +145,163 @@
   position: relative;
   z-index: 3;
 }
+
+@media (max-width: 700px) {
+
+  .hero {
+    min-height: 100vh;
+    padding-top: 90px;
+    background-position: center;
+  }
+
+  .hero-title {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    transform: translateY(-55px);
+
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-title p {
+    font-size: 22px;
+    letter-spacing: 6px;
+    margin-bottom: 12px;
+  }
+
+  .hero-title h1 {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+
+    font-size: clamp(40px, 10.5vw, 50px);
+    letter-spacing: 2px;
+    line-height: .9;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .divider {
+    margin-top: 28px;
+    gap: 12px;
+  }
+
+  .divider span {
+    width: 80px;
+  }
+
+  .hero-established {
+    transform: scale(.75);
+    letter-spacing: 7px;
+    margin-top: 14px;
+  }
+
+  .hero-button {
+    margin-top: 24px;
+    padding: 12px 22px;
+  }
+
+}
+
+  .hero-title {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 18px;
+
+  transform: translateY(-55px);
+
+  text-align: center;
+  overflow: hidden;
+}
+
+  .hero-title p {
+    font-size: 22px;
+    letter-spacing: 6px;
+    margin-bottom: 12px;
+  }
+
+  .hero-title h1 {
+  font-size: clamp(42px, 11vw, 50px);
+  letter-spacing: 2px;
+  line-height: .9;
+  white-space: nowrap;
+}
+
+  .divider {
+    margin-top: 28px;
+    gap: 12px;
+  }
+
+  .divider span {
+    width: 80px;
+  }
+
+  .hero-established {
+    transform: scale(.75);
+    letter-spacing: 7px;
+    margin-top: 14px;
+  }
+
+  .hero-button {
+    margin-top: 24px;
+    padding: 12px 22px;
+  }
+
+}
+
+  .hero-title {
+    margin-top: 0;
+    transform: translateY(-70px);
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .hero-title p {
+    margin-bottom: 12px;
+    letter-spacing: 6px;
+    font-size: 24px;
+  }
+
+  .hero-title h1 {
+    width: 100%;
+    font-size: clamp(54px, 15vw, 72px);
+    letter-spacing: 5px;
+    line-height: 0.9;
+    white-space: nowrap;
+  }
+
+  .divider {
+    margin-top: 30px;
+    gap: 12px;
+  }
+
+  .divider span {
+    width: 82px;
+  }
+
+  .hero-established {
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 7px;
+    transform: none;
+    opacity: 0.45;
+  }
+
+  .hero-button {
+    margin-top: 24px;
+    padding: 12px 22px;
+    max-width: 280px;
+  }
+}
+
+.hero-video {
+  visibility: hidden;
+}
+
+.hero-video.is-ready {
+  visibility: visible;
+}

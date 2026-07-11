@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     const buildYearData = (year, fallbackYear = year) => ({
         featured: `../assets/gallery/featured/${fallbackYear}.jpg`,
         images: Array.from(
             { length: 13 },
             (_, index) =>
-                `../assets/gallery/masonry/${fallbackYear}/${String(index + 1).padStart(3, "0")}.jpg`
+                `../assets/gallery/masonry/${fallbackYear}/${String(
+                    index + 1
+                ).padStart(3, "0")}.jpg`
         )
     });
 
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         2028: buildYearData(2028),
         2029: buildYearData(2029),
 
+        // Temporary placeholders until these years have real photography.
         2030: buildYearData(2030, 2027),
         2031: buildYearData(2031, 2027),
         2032: buildYearData(2032, 2027),
@@ -28,14 +30,25 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".featured-year h2");
 
     const featuredImage =
-        document.querySelector(".featured-image img");
+        document.querySelector(".featured-photo");
+
+    const featuredPlaceholder =
+        document.querySelector(".featured-placeholder");
+
+    const placeholderYear =
+        document.querySelector(".placeholder-year");
 
     const galleryImages = Array.from(
-        document.querySelectorAll(".gallery-item img")
+        document.querySelectorAll(".gallery-photo")
     );
 
-    const fadeContainers =
-        document.querySelectorAll(".gallery-fade-content");
+    const galleryPlaceholders = Array.from(
+        document.querySelectorAll(".gallery-placeholder")
+    );
+
+    const fadeContainers = document.querySelectorAll(
+        ".gallery-fade-content"
+    );
 
     const lightbox =
         document.querySelector("#gallery-lightbox");
@@ -60,39 +73,57 @@ document.addEventListener("DOMContentLoaded", () => {
     let featuredMode = false;
 
     function replaceGalleryContent(year) {
-
         const selectedGallery = galleryData[year];
 
         if (!selectedGallery) return;
 
         featuredYearHeading.textContent = year;
+        placeholderYear.textContent = year;
+
+        featuredImage.onload = () => {
+            featuredPlaceholder.style.display = "none";
+        };
+
+        featuredImage.onerror = () => {
+            featuredPlaceholder.style.display = "flex";
+        };
 
         featuredImage.src = selectedGallery.featured;
-        featuredImage.alt =
-            `The Foxglove Invitational ${year}`;
+        featuredImage.alt = `The Foxglove Invitational ${year}`;
 
         galleryImages.forEach((image, index) => {
+    const placeholder = galleryPlaceholders[index];
 
-            image.src = selectedGallery.images[index];
+    image.onload = () => {
+        image.style.display = "block";
 
-            image.alt =
-                `The Foxglove Invitational ${year} gallery image ${index + 1}`;
+        if (placeholder) {
+            placeholder.style.display = "none";
+        }
+    };
 
-        });
+    image.onerror = () => {
+        image.style.display = "none";
 
+        if (placeholder) {
+            placeholder.style.display = "flex";
+        }
+    };
+
+    image.src = selectedGallery.images[index];
+    image.alt =
+        `The Foxglove Invitational ${year} gallery image ${index + 1}`;
+});
     }
 
     function updateGallery(year, animate = true) {
-
         if (!galleryData[year]) return;
 
         window.clearTimeout(transitionTimer);
 
         if (!animate) {
-
             replaceGalleryContent(year);
             return;
-
         }
 
         fadeContainers.forEach((container) => {
@@ -100,23 +131,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         transitionTimer = window.setTimeout(() => {
-
             replaceGalleryContent(year);
 
-            requestAnimationFrame(() => {
-
+            window.requestAnimationFrame(() => {
                 fadeContainers.forEach((container) => {
                     container.classList.remove("is-fading");
                 });
-
             });
-
         }, 350);
-
     }
 
-        function showLightboxImage(index) {
-
+    function showLightboxImage(index) {
         const totalImages = galleryImages.length;
 
         currentImageIndex =
@@ -130,27 +155,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
         counter.textContent =
             `${currentImageIndex + 1} / ${totalImages}`;
-
     }
 
     function openGalleryLightbox(index) {
+        const selectedImage = galleryImages[index];
+
+        if (!selectedImage.complete || selectedImage.naturalWidth === 0) {
+            return;
+        }
 
         featuredMode = false;
-
         lightbox.classList.remove("is-featured");
 
         showLightboxImage(index);
 
         lightbox.classList.add("is-open");
         lightbox.setAttribute("aria-hidden", "false");
-
         document.body.classList.add("lightbox-open");
 
         closeButton.focus();
-
     }
 
     function openFeaturedLightbox() {
+        if (!featuredImage.complete || featuredImage.naturalWidth === 0) {
+            return;
+        }
 
         featuredMode = true;
 
@@ -159,48 +188,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
         lightbox.classList.add("is-featured");
         lightbox.classList.add("is-open");
-
         lightbox.setAttribute("aria-hidden", "false");
-
         document.body.classList.add("lightbox-open");
 
         closeButton.focus();
-
     }
 
     function closeLightbox() {
-
         lightbox.classList.remove("is-open");
         lightbox.classList.remove("is-featured");
-
         lightbox.setAttribute("aria-hidden", "true");
-
         document.body.classList.remove("lightbox-open");
 
         featuredMode = false;
-
     }
 
     function showPreviousImage() {
-
         if (featuredMode) return;
 
         showLightboxImage(currentImageIndex - 1);
-
     }
 
     function showNextImage() {
-
         if (featuredMode) return;
 
         showLightboxImage(currentImageIndex + 1);
-
     }
 
     yearButtons.forEach((button) => {
-
         button.addEventListener("click", () => {
-
             const selectedYear = button.dataset.year;
 
             yearButtons.forEach((yearButton) => {
@@ -208,11 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             button.classList.add("active");
-
             updateGallery(selectedYear);
-
         });
-
     });
 
     featuredImage.addEventListener(
@@ -221,11 +234,9 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     galleryImages.forEach((image, index) => {
-
         image.addEventListener("click", () => {
             openGalleryLightbox(index);
         });
-
     });
 
     closeButton.addEventListener(
@@ -244,15 +255,12 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     lightbox.addEventListener("click", (event) => {
-
         if (event.target === lightbox) {
             closeLightbox();
         }
-
     });
 
     document.addEventListener("keydown", (event) => {
-
         if (!lightbox.classList.contains("is-open")) {
             return;
         }
@@ -261,22 +269,14 @@ document.addEventListener("DOMContentLoaded", () => {
             closeLightbox();
         }
 
-        if (
-            event.key === "ArrowLeft" &&
-            !featuredMode
-        ) {
+        if (event.key === "ArrowLeft" && !featuredMode) {
             showPreviousImage();
         }
 
-        if (
-            event.key === "ArrowRight" &&
-            !featuredMode
-        ) {
+        if (event.key === "ArrowRight" && !featuredMode) {
             showNextImage();
         }
-
     });
 
     updateGallery("2027", false);
-
 });

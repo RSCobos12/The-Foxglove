@@ -142,6 +142,9 @@
    ========================================================= */
 
 .gallery-navigation {
+    position: relative;
+    z-index: 10;
+
     background: var(--navy);
     padding: 42px 30px 38px;
 }
@@ -168,6 +171,8 @@
 }
 
 .gallery-year {
+    position: relative;
+z-index: 11;
     flex: 0 0 auto;
 
     background: transparent;
@@ -186,6 +191,7 @@
     transition:
         color .3s ease,
         border-color .3s ease;
+        
 }
 
 @media (min-width: 901px) {
@@ -245,17 +251,59 @@
 }
 
 .featured-image {
+    position: relative;
     overflow: hidden;
     border: 1px solid rgba(198,161,91,.55);
     cursor: pointer;
 }
 
-
-.featured-image img {
+.featured-photo {
     display: block;
     width: 100%;
     height: 560px;
     object-fit: cover;
+}
+
+.featured-placeholder {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px;
+    text-align: center;
+
+    background: rgba(8, 15, 28, 0.96);
+}
+
+.featured-placeholder-logo {
+    width: 90px;
+    margin-bottom: 28px;
+    opacity: 0.95;
+}
+
+.featured-placeholder h3 {
+    margin: 0 0 18px;
+
+    color: var(--gold);
+    font-size: 1.65rem;
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+.featured-placeholder-text {
+    max-width: 560px;
+
+    color: var(--cream);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.placeholder-year {
+    color: var(--gold);
 }
 
 /* =========================================================
@@ -291,11 +339,13 @@
 }
 
 .gallery-item {
+    position: relative;
     overflow: hidden;
     border: 1px solid rgba(198,161,91,.28);
+    cursor: pointer;
 }
 
-.gallery-item img {
+.gallery-photo {
     display: block;
     width: 100%;
     height: 100%;
@@ -306,7 +356,38 @@
         filter .45s ease;
 }
 
-.gallery-item:hover img {
+.gallery-placeholder {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+    padding: 24px;
+
+    text-align: center;
+
+    background: rgba(8, 15, 28, 0.96);
+}
+
+.gallery-placeholder-logo {
+    width: 54px;
+    height: auto;
+    opacity: 0.9;
+}
+
+.gallery-placeholder span {
+    color: var(--gold);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.gallery-item:hover .gallery-photo {
     transform: scale(1.02);
     filter: brightness(1.03);
 }

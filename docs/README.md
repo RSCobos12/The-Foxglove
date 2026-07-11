@@ -204,15 +204,24 @@ Completed:
 
 ## Gallery
 
-**Status:** ⬜ Pending
+**Status:** ✅ Version 1.0 Complete
 
-Next Steps:
+Completed:
 
-- Vision
-- Story
-- Visual Mockup
-- Approval
-- Implementation
+- Custom Gallery hero
+- Year navigation for 2027–2035
+- Horizontally scrollable year navigation
+- Featured image for each year
+- Curated 13-image gallery layout
+- Year-based content switching
+- Fade transition between years
+- Gallery lightbox
+- Previous and next navigation
+- Keyboard controls
+- Click-outside and Escape-to-close behavior
+- Image counter
+- Featured-image lightbox mode
+- Future-ready architecture for Phase III admin and member uploads
 
 ---
 

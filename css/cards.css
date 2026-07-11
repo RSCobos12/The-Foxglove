@@ -158,3 +158,36 @@
 .feature-card:hover .card-cta {
   opacity: 1;
 }
+
+@media (max-width: 700px) {
+  .cards-section {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 48px 18px 72px;
+  }
+
+  .cards-heading {
+    min-width: 0;
+    gap: 12px;
+  }
+
+  .cards-heading span {
+    width: auto;
+    max-width: 70px;
+    flex: 1 1 50px;
+  }
+
+  .cards-heading p {
+    flex: 0 1 auto;
+    font-size: 14px;
+    letter-spacing: 3px;
+    white-space: nowrap;
+  }
+
+  .feature-card,
+  .card-top {
+    min-width: 0;
+    width: 100%;
+  }
+}

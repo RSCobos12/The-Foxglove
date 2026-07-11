@@ -32,15 +32,17 @@
     alt="">
 
   <video
-    class="hero-video"
-    muted
-    playsinline
-    preload="metadata"
-    poster="assets/photos/hero-poster.jpg">
+  class="hero-video"
+  muted
+  playsinline
+  preload="metadata"
+  poster="assets/images/monterey-hero.jpg">
 
-    <source src="assets/videos/hero.mp4" type="video/mp4">
+  <source
+    src="assets/videos/hero.mp4"
+    type="video/mp4">
 
-  </video>
+</video>
 
   <div class="hero-shade"></div>
 
@@ -255,37 +257,55 @@ window.addEventListener("scroll", () => {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-
   const hero = document.querySelector(".hero");
   const video = document.querySelector(".hero-video");
 
-  function runHeroCycle() {
+  if (!hero || !video) return;
 
+  let cycleTimer;
+
+  function showVideo() {
+    video.classList.add("is-ready");
+  }
+
+  async function startHeroVideo() {
     hero.classList.remove("video-active");
+    video.currentTime = 0;
 
-    setTimeout(() => {
+    try {
+      await video.play();
 
-      video.currentTime = 0;
-      video.play();
+      showVideo();
 
       setTimeout(() => {
         hero.classList.add("video-active");
       }, 250);
-
-    }, 2000);
-
-    video.onended = () => {
-
-      hero.classList.remove("video-active");
-
-      setTimeout(runHeroCycle, 15000);
-
-    };
-
+    } catch (error) {
+      console.log("Hero video failed:", error);
+    }
   }
 
-  runHeroCycle();
+  function runHeroCycle() {
+    clearTimeout(cycleTimer);
 
+    cycleTimer = setTimeout(() => {
+      startHeroVideo();
+    }, 2000);
+  }
+
+  video.addEventListener("loadeddata", showVideo);
+  video.addEventListener("canplay", showVideo);
+
+  video.addEventListener("ended", () => {
+    hero.classList.remove("video-active");
+
+    cycleTimer = setTimeout(() => {
+      runHeroCycle();
+    }, 15000);
+  });
+
+  video.load();
+  runHeroCycle();
 });
 </script>
 

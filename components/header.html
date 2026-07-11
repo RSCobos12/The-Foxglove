@@ -1,5 +1,6 @@
 <header class="site-header">
-  <nav class="nav">
+
+  <nav class="nav desktop-nav">
     <a href="/index.html">Home</a>
     <a href="/pages/past-winners.html">Past Winners</a>
     <a href="/pages/gallery.html">Gallery</a>
@@ -12,4 +13,31 @@
     <a class="coming-soon">Player Directory</a>
     <a class="rsvp" href="/pages/rsvp.html">RSVP</a>
   </nav>
+
+  <div class="mobile-header">
+    <a class="mobile-crest" href="/index.html" aria-label="The Foxglove homepage">
+      <img src="/assets/logos/foxglove-logo-clean.png" alt="The Foxglove crest">
+    </a>
+
+    <button
+      class="mobile-menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="/index.html">Home</a>
+    <a href="/pages/past-winners.html">Past Winners</a>
+    <a href="/pages/gallery.html">Gallery</a>
+    <a href="/pages/courses.html">Courses</a>
+    <a class="coming-soon">Player Directory</a>
+    <a class="rsvp" href="/pages/rsvp.html">RSVP</a>
+  </nav>
+
 </header>
