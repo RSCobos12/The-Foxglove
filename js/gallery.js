@@ -1,0 +1,282 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+    const buildYearData = (year, fallbackYear = year) => ({
+        featured: `../assets/gallery/featured/${fallbackYear}.jpg`,
+        images: Array.from(
+            { length: 13 },
+            (_, index) =>
+                `../assets/gallery/masonry/${fallbackYear}/${String(index + 1).padStart(3, "0")}.jpg`
+        )
+    });
+
+    const galleryData = {
+        2027: buildYearData(2027),
+        2028: buildYearData(2028),
+        2029: buildYearData(2029),
+
+        2030: buildYearData(2030, 2027),
+        2031: buildYearData(2031, 2027),
+        2032: buildYearData(2032, 2027),
+        2033: buildYearData(2033, 2027),
+        2034: buildYearData(2034, 2027),
+        2035: buildYearData(2035, 2027)
+    };
+
+    const yearButtons = document.querySelectorAll(".gallery-year");
+
+    const featuredYearHeading =
+        document.querySelector(".featured-year h2");
+
+    const featuredImage =
+        document.querySelector(".featured-image img");
+
+    const galleryImages = Array.from(
+        document.querySelectorAll(".gallery-item img")
+    );
+
+    const fadeContainers =
+        document.querySelectorAll(".gallery-fade-content");
+
+    const lightbox =
+        document.querySelector("#gallery-lightbox");
+
+    const lightboxImage =
+        document.querySelector(".gallery-lightbox-image");
+
+    const closeButton =
+        document.querySelector(".gallery-lightbox-close");
+
+    const previousButton =
+        document.querySelector(".gallery-lightbox-prev");
+
+    const nextButton =
+        document.querySelector(".gallery-lightbox-next");
+
+    const counter =
+        document.querySelector(".gallery-lightbox-counter");
+
+    let currentImageIndex = 0;
+    let transitionTimer = null;
+    let featuredMode = false;
+
+    function replaceGalleryContent(year) {
+
+        const selectedGallery = galleryData[year];
+
+        if (!selectedGallery) return;
+
+        featuredYearHeading.textContent = year;
+
+        featuredImage.src = selectedGallery.featured;
+        featuredImage.alt =
+            `The Foxglove Invitational ${year}`;
+
+        galleryImages.forEach((image, index) => {
+
+            image.src = selectedGallery.images[index];
+
+            image.alt =
+                `The Foxglove Invitational ${year} gallery image ${index + 1}`;
+
+        });
+
+    }
+
+    function updateGallery(year, animate = true) {
+
+        if (!galleryData[year]) return;
+
+        window.clearTimeout(transitionTimer);
+
+        if (!animate) {
+
+            replaceGalleryContent(year);
+            return;
+
+        }
+
+        fadeContainers.forEach((container) => {
+            container.classList.add("is-fading");
+        });
+
+        transitionTimer = window.setTimeout(() => {
+
+            replaceGalleryContent(year);
+
+            requestAnimationFrame(() => {
+
+                fadeContainers.forEach((container) => {
+                    container.classList.remove("is-fading");
+                });
+
+            });
+
+        }, 350);
+
+    }
+
+        function showLightboxImage(index) {
+
+        const totalImages = galleryImages.length;
+
+        currentImageIndex =
+            (index + totalImages) % totalImages;
+
+        const selectedImage =
+            galleryImages[currentImageIndex];
+
+        lightboxImage.src = selectedImage.src;
+        lightboxImage.alt = selectedImage.alt;
+
+        counter.textContent =
+            `${currentImageIndex + 1} / ${totalImages}`;
+
+    }
+
+    function openGalleryLightbox(index) {
+
+        featuredMode = false;
+
+        lightbox.classList.remove("is-featured");
+
+        showLightboxImage(index);
+
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("lightbox-open");
+
+        closeButton.focus();
+
+    }
+
+    function openFeaturedLightbox() {
+
+        featuredMode = true;
+
+        lightboxImage.src = featuredImage.src;
+        lightboxImage.alt = featuredImage.alt;
+
+        lightbox.classList.add("is-featured");
+        lightbox.classList.add("is-open");
+
+        lightbox.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("lightbox-open");
+
+        closeButton.focus();
+
+    }
+
+    function closeLightbox() {
+
+        lightbox.classList.remove("is-open");
+        lightbox.classList.remove("is-featured");
+
+        lightbox.setAttribute("aria-hidden", "true");
+
+        document.body.classList.remove("lightbox-open");
+
+        featuredMode = false;
+
+    }
+
+    function showPreviousImage() {
+
+        if (featuredMode) return;
+
+        showLightboxImage(currentImageIndex - 1);
+
+    }
+
+    function showNextImage() {
+
+        if (featuredMode) return;
+
+        showLightboxImage(currentImageIndex + 1);
+
+    }
+
+    yearButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const selectedYear = button.dataset.year;
+
+            yearButtons.forEach((yearButton) => {
+                yearButton.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+            updateGallery(selectedYear);
+
+        });
+
+    });
+
+    featuredImage.addEventListener(
+        "click",
+        openFeaturedLightbox
+    );
+
+    galleryImages.forEach((image, index) => {
+
+        image.addEventListener("click", () => {
+            openGalleryLightbox(index);
+        });
+
+    });
+
+    closeButton.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+    previousButton.addEventListener(
+        "click",
+        showPreviousImage
+    );
+
+    nextButton.addEventListener(
+        "click",
+        showNextImage
+    );
+
+    lightbox.addEventListener("click", (event) => {
+
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+
+    });
+
+    document.addEventListener("keydown", (event) => {
+
+        if (!lightbox.classList.contains("is-open")) {
+            return;
+        }
+
+        if (event.key === "Escape") {
+            closeLightbox();
+        }
+
+        if (
+            event.key === "ArrowLeft" &&
+            !featuredMode
+        ) {
+            showPreviousImage();
+        }
+
+        if (
+            event.key === "ArrowRight" &&
+            !featuredMode
+        ) {
+            showNextImage();
+        }
+
+    });
+
+    updateGallery("2027", false);
+
+});

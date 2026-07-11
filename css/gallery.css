@@ -1,0 +1,551 @@
+/* =========================================================
+   GALLERY PAGE
+   The Foxglove Invitational
+   ========================================================= */
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.gallery-hero {
+    position: relative;
+
+    height: 62vh;
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            rgba(6, 15, 34, .42),
+            rgba(6, 15, 34, .68)
+        ),
+        url("../assets/photos/gallery-hero.png");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.gallery-hero-content {
+    text-align: center;
+    max-width: 900px;
+    padding: 0 30px;
+
+    transform: translateY(50px);
+}
+
+.gallery-hero h1 {
+    color: var(--cream);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 22px;
+}
+
+.gallery-hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 22px;
+}
+
+.gallery-hero-divider span {
+    width: 130px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.gallery-hero-divider img {
+    width: 22px;
+    height: auto;
+}
+
+.gallery-hero p {
+    color: var(--cream);
+    font-size: 24px;
+    line-height: 1.45;
+    font-style: italic;
+    opacity: 0.95;
+}
+
+/* =========================================================
+   PAGE SECTIONS
+   ========================================================= */
+
+.gallery-intro {
+    background: var(--navy);
+}
+
+.gallery-navigation {
+    background: var(--navy);
+}
+
+.featured-year {
+    background: var(--navy);
+}
+
+.gallery-grid {
+    background: var(--navy);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .gallery-hero {
+        min-height: 560px;
+        height: 70vh;
+    }
+
+    .gallery-hero-divider span {
+        width: 80px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .gallery-hero {
+        min-height: 500px;
+        padding: 0 24px;
+    }
+
+    .gallery-hero h1 {
+        font-size: 3rem;
+    }
+
+    .gallery-hero p {
+        font-size: 20px;
+    }
+
+    .gallery-hero-divider {
+        gap: 16px;
+    }
+
+    .gallery-hero-divider span {
+        width: 55px;
+    }
+
+    .gallery-hero-divider img {
+        width: 18px;
+    }
+
+}
+
+/* =========================================================
+   TOURNAMENT YEARS
+   ========================================================= */
+
+.gallery-navigation {
+    background: var(--navy);
+    padding: 42px 30px 38px;
+}
+
+.gallery-years {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: flex-start;
+    gap: 34px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    white-space: nowrap;
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.gallery-years::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-year {
+    flex: 0 0 auto;
+
+    background: transparent;
+    border: none;
+
+    color: var(--cream);
+
+    font-family: inherit;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    padding-bottom: 8px;
+
+    transition:
+        color .3s ease,
+        border-color .3s ease;
+}
+
+@media (min-width: 901px) {
+    .gallery-years {
+        justify-content: center;
+    }
+}
+
+.gallery-year:hover {
+    color: var(--gold);
+}
+
+.gallery-year.active {
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+}
+
+/* =========================================================
+   FEATURED YEAR
+   ========================================================= */
+
+.featured-year {
+    background: var(--navy);
+    padding: 0px 30px 90px;
+}
+
+.featured-year-content {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.featured-year h2 {
+    color: var(--gold);
+    text-align: center;
+    font-size: 3rem;
+    font-weight: normal;
+    letter-spacing: 6px;
+    margin-bottom: 14px;
+}
+
+.featured-year-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 30px;
+}
+
+.featured-year-divider span {
+    width: 120px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.featured-year-divider img {
+    width: 20px;
+}
+
+.featured-image {
+    overflow: hidden;
+    border: 1px solid rgba(198,161,91,.55);
+    cursor: pointer;
+}
+
+
+.featured-image img {
+    display: block;
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+}
+
+/* =========================================================
+   GALLERY GRID
+   ========================================================= */
+
+.gallery-grid {
+    background: var(--navy);
+    padding: 24px 30px 100px;
+}
+
+.gallery-grid-container {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.gallery-row {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.gallery-row.two-column {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.gallery-row.full-width {
+    grid-template-columns: 1fr;
+}
+
+.gallery-row.four-column {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.gallery-item {
+    overflow: hidden;
+    border: 1px solid rgba(198,161,91,.28);
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition:
+        transform .45s ease,
+        filter .45s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.02);
+    filter: brightness(1.03);
+}
+
+.gallery-row.two-column .gallery-item {
+    aspect-ratio: 4 / 3;
+}
+
+.gallery-row.full-width .gallery-item {
+    aspect-ratio: 16 / 7;
+}
+
+.gallery-row.four-column .gallery-item {
+    aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 900px) {
+
+    .gallery-row.two-column,
+    .gallery-row.four-column {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-row.full-width .gallery-item {
+        aspect-ratio: 4 / 3;
+    }
+
+}
+
+/* =========================================================
+   GALLERY LIGHTBOX
+   ========================================================= */
+
+.gallery-item {
+    cursor: pointer;
+}
+
+.gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 90px;
+
+    background: rgba(3, 8, 18, 0.94);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.gallery-lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.gallery-lightbox.is-featured .gallery-lightbox-arrow,
+.gallery-lightbox.is-featured .gallery-lightbox-counter {
+    display: none;
+}
+
+.gallery-lightbox-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    max-width: 1500px;
+}
+
+.gallery-lightbox-image {
+    display: block;
+
+    max-width: 100%;
+    max-height: 88vh;
+
+    object-fit: contain;
+
+    border: 1px solid rgba(198, 161, 91, 0.55);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+
+    transform: scale(0.97);
+    opacity: 0;
+
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.gallery-lightbox.is-open .gallery-lightbox-image {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.gallery-lightbox-close {
+    position: absolute;
+    top: 26px;
+    right: 34px;
+
+    border: none;
+    background: transparent;
+
+    color: var(--cream);
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.gallery-lightbox-close:hover {
+    color: var(--gold);
+    transform: scale(1.08);
+}
+
+.gallery-lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    border: none;
+    background: transparent;
+
+    color: var(--cream);
+    font-size: 2.2rem;
+
+    cursor: pointer;
+
+    padding: 20px;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.gallery-lightbox-arrow:hover {
+    color: var(--gold);
+}
+
+.gallery-lightbox-prev {
+    left: 50px;
+}
+
+.gallery-lightbox-next {
+    right: 50px;
+}
+
+.gallery-lightbox-prev:hover {
+    transform: translateY(-50%) translateX(-4px);
+}
+
+.gallery-lightbox-next:hover {
+    transform: translateY(-50%) translateX(4px);
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+@media (max-width: 700px) {
+
+    .gallery-lightbox {
+        padding: 70px 20px 40px;
+    }
+
+    .gallery-lightbox-arrow {
+        top: auto;
+        bottom: 16px;
+        transform: none;
+        font-size: 1.8rem;
+    }
+
+    .gallery-lightbox-prev {
+    left: 50px;
+}
+
+.gallery-lightbox-next {
+    right: 50px;
+}
+
+    .gallery-lightbox-prev:hover,
+    .gallery-lightbox-next:hover {
+        transform: none;
+    }
+
+    .gallery-lightbox-close {
+        top: 18px;
+        right: 22px;
+    }
+
+}
+
+.gallery-lightbox-counter {
+    position: absolute;
+    bottom: 42px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: var(--cream);
+    opacity: 0.75;
+
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    user-select: none;
+}
+
+/* =========================================================
+   YEAR CONTENT TRANSITION
+   ========================================================= */
+
+.gallery-fade-content {
+    opacity: 1;
+    transition: opacity 0.35s ease;
+}
+
+.gallery-fade-content.is-fading {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery-fade-content {
+        transition: none;
+    }
+}
+

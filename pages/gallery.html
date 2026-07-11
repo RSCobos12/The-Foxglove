@@ -1,46 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Gallery | The Foxglove</title>
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/gallery.css">
 </head>
 
-<body class="page-body">
+<body>
 
-<section class="page-hero">
+    <div id="site-header"></div>
 
-    <img class="page-crest"
-         src="../assets/logos/foxglove-logo-clean.png"
-         alt="The Foxglove">
+    <main>
 
-    <div class="page-kicker">
-        The Foxglove Invitational
+        <section class="gallery-hero">
+
+    <div class="gallery-hero-content">
+
+        <h1>Gallery</h1>
+
+        <div class="gallery-hero-divider">
+            <span></span>
+            <img src="../assets/icons/foxglove-icon-gold-transparent.png" alt="">
+            <span></span>
+        </div>
+
+        <p>Every tradition leaves a trail of memories.</p>
+
     </div>
 
-    <h1 class="page-title">
-        Gallery
-    </h1>
+</section>
+
+        <section class="gallery-intro">
+            <!-- Editorial Introduction -->
+        </section>
+
+        <section class="gallery-navigation">
+
+    <nav class="gallery-years">
+
+        <button class="gallery-year active" data-year="2027">2027</button>
+        <button class="gallery-year" data-year="2028">2028</button>
+        <button class="gallery-year" data-year="2029">2029</button>
+        <button class="gallery-year" data-year="2030">2030</button>
+        <button class="gallery-year" data-year="2031">2031</button>
+        <button class="gallery-year" data-year="2032">2032</button>
+        <button class="gallery-year" data-year="2033">2033</button>
+        <button class="gallery-year" data-year="2034">2034</button>
+        <button class="gallery-year" data-year="2035">2035</button>
+
+    </nav>
 
 </section>
 
-<section class="page-content">
+        <section class="featured-year">
 
-    <h2>Coming Soon</h2>
+    <div class="featured-year-content gallery-fade-content">
 
-    <p>
-        Participants and spectators alike will be able to view and upload
-        photos and videos from the tournament here.
-    </p>
+        <h2>2027</h2>
 
-    <a class="page-back"
-       href="../index.html">
-       Return Home
-    </a>
+        <div class="featured-year-divider">
+            <span></span>
+            <img src="../assets/icons/foxglove-icon-gold-transparent.png" alt="">
+            <span></span>
+        </div>
+
+        <div class="featured-image">
+
+            <img
+                src="../assets/photos/gallery-feature-2027.jpg"
+                alt="The Foxglove Invitational 2027">
+
+        </div>
+
+    </div>
 
 </section>
+
+        <section class="gallery-grid">
+
+    <div class="gallery-grid-container gallery-fade-content">
+
+        <!-- Row 1 -->
+        <div class="gallery-row two-column">
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/001.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/002.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="gallery-row full-width">
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/003.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="gallery-row two-column">
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/004.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/005.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="gallery-row full-width">
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/006.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="gallery-row two-column">
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/007.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/008.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- Row 6 -->
+        <div class="gallery-row full-width">
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/009.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- Final Row -->
+        <div class="gallery-row four-column">
+
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/010.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/011.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/012.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="../assets/gallery/masonry/2027/013.jpg" alt="">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    </main>
+
+    <div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true">
+
+    <button
+        class="gallery-lightbox-close"
+        type="button"
+        aria-label="Close image viewer">
+        ×
+    </button>
+
+    <button
+        class="gallery-lightbox-arrow gallery-lightbox-prev"
+        type="button"
+        aria-label="View previous image">
+        ←
+    </button>
+
+    <div class="gallery-lightbox-content">
+
+    <img
+        class="gallery-lightbox-image"
+        src=""
+        alt="">
+
+    <div class="gallery-lightbox-counter">
+        1 / 13
+    </div>
+
+</div>
+
+    <button
+        class="gallery-lightbox-arrow gallery-lightbox-next"
+        type="button"
+        aria-label="View next image">
+        →
+    </button>
+
+</div>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/gallery.js"></script>
 
 </body>
+
 </html>
