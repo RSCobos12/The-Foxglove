@@ -2,16 +2,17 @@
 
 # Master Project Roadmap
 
-**Project Version:** 1.0  
-**Project Status:** Phase II Complete | Phase II.5 Beginning  
+**Project Version:** v1.0-responsive  
+**Project Status:** Public Website Complete | Phase II.5 Ready  
 **Owner:** Scott Cobos  
+**Development Partner:** ChatGPT (OpenAI)  
 **Last Updated:** July 11, 2026
 
 ---
 
 # Project Vision
 
-The Foxglove website is more than a golf tournament website.
+The Foxglove Invitational website is more than a golf tournament website.
 
 It is intended to become the permanent digital home of The Foxglove Invitational, preserving its history while supporting future tournaments through thoughtful design, premium presentation, and long-term scalability.
 
@@ -22,6 +23,8 @@ Every feature should reinforce:
 - Championship Golf
 - Premium Hospitality
 - Timeless Design
+
+The objective is to build a platform that grows with the tournament while preserving one cohesive identity.
 
 ---
 
@@ -39,6 +42,8 @@ Every feature should feel intentional.
 
 Luxury is communicated through restraint.
 
+Long-term maintainability is as important as visual quality.
+
 ---
 
 # Development Workflow
@@ -47,13 +52,18 @@ Every major feature follows the same process.
 
 1. Vision
 2. Story
-3. Visual Mockup
+3. Visual Direction / Mockup
 4. Approval
 5. VS Code Implementation
 6. White Glove Review
-7. Git Commit
-8. Documentation Update
-9. Version Sign-Off
+7. Responsive Review
+8. Git Commit
+9. Documentation Update
+10. Version Sign-Off
+
+No feature begins before design approval.
+
+No feature is considered complete until both desktop and mobile experiences have been approved.
 
 ---
 
@@ -68,11 +78,12 @@ Every major feature follows the same process.
 Completed:
 
 - Brand Identity
-- Design Language
-- Homepage Version 1.0
+- Foxglove Crest
+- Foxglove Visual Language
+- Homepage Framework
 - Shared Navigation
 - Shared Footer
-- Shared Components
+- Shared Design System
 - Initial Documentation
 
 Deliverables:
@@ -87,7 +98,7 @@ Deliverables:
 
 **Status:** Complete
 
-Completed Public Pages:
+Completed Pages:
 
 - Homepage
 - RSVP
@@ -95,57 +106,62 @@ Completed Public Pages:
 - Courses
 - Gallery
 
-Completed Features:
+Completed Systems:
 
 - Shared Header
+- Shared Desktop Navigation
+- Shared Mobile Navigation
 - Shared Footer
-- Responsive-ready architecture
+- Hero Framework
+- Card Framework
+- Editorial Layout Framework
+- Gallery Framework
 - Gallery Lightbox
-- Editorial Layout System
-- Year Navigation
-- Future-ready Gallery Architecture
+- Winner Presentation System
+- Scroll Reveal Animation
+- Responsive Design System
+
+Result:
+
+**Public Website Version 1.0 Complete**
 
 ---
 
-# 🚧 Phase II.5 — Public Website Completion
+# 🚧 Phase II.5 — Production Readiness
 
-**Status:** In Progress
+**Status:** Next Phase
 
-Objectives:
+Objective:
 
-## Responsive Optimization
+Prepare the complete public website for long-term development before beginning the member platform.
 
-Optimize every completed page for:
+---
 
-- Desktop
-- Laptop
-- Tablet
-- iPhone
-- Android
-- Mobile Browsers
+## Code Review
 
-Pages:
-
-- Homepage
-- RSVP
-- Past Winners
-- Courses
-- Gallery
+- Remove duplicate CSS
+- Remove unused CSS
+- Remove unused JavaScript
+- Verify project organization
+- Standardize formatting
+- Standardize comments
+- Review reusable components
 
 ---
 
 ## Accessibility Review
 
-Complete a full accessibility review.
-
-Including:
+Verify:
 
 - Keyboard navigation
 - Focus states
-- Color contrast
-- Screen reader support
 - Semantic HTML
+- Screen-reader compatibility
 - Form accessibility
+- Alt text
+- Color contrast
+- Reduced-motion compatibility
+- Touch-target sizing
 
 ---
 
@@ -154,45 +170,84 @@ Including:
 Optimize:
 
 - Images
+- Videos
 - CSS
 - JavaScript
-- Animations
 - Asset loading
+- Font loading
+- Lazy loading
+- Animation performance
 
 ---
 
-## Public Website Version 1.0 Sign-Off
+## Cross-Browser Review
 
-Final review of:
+Verify complete functionality in:
 
-- Design
-- Consistency
-- Performance
-- Accessibility
-- Mobile Experience
-
-Result:
-
-**Public Website Version 1.0 Approved**
+- Chrome
+- Safari
+- Firefox
+- Edge
+- iPhone Safari
+- iPhone Chrome
+- Tablet browsers
 
 ---
 
-# 🚧 Phase III — Admin & Member Tools
+## Technical Review
+
+Verify:
+
+- Console errors
+- Network errors
+- Asset paths
+- Navigation
+- Forms
+- Mobile navigation
+- Responsive layouts
+- Internal links
+- Shared components
+
+---
+
+## Deliverable
+
+**Public Website v1.0 Production-Ready Approval**
+
+---
+
+# ⏳ Phase III — Admin & Member Platform
 
 **Status:** Planned
+
+Development begins only after Phase II.5 approval.
+
+---
+
+## Authentication
+
+Build:
+
+- Member Login
+- Administrator Login
+- Password Recovery
+- Session Management
+- Role-Based Permissions
+
+---
 
 ## Administration
 
 Build:
 
-- Secure Admin Login
 - Admin Dashboard
+- Tournament-Year Management
+- Member Management
+- RSVP Management
 - Gallery Management
 - Featured Image Management
-- Member Upload Approval
-- RSVP Management
-- Member Management
-- Tournament Year Management
+- Upload Approval System
+- Champion Management
 
 ---
 
@@ -200,11 +255,25 @@ Build:
 
 Build:
 
-- Secure Member Login
 - Member Dashboard
+- Player Directory
 - Gallery Uploads
 - Upload Status
 - Profile Management
+- Protected Content
+
+---
+
+## Tournament Management
+
+Build:
+
+- Tournament Administration
+- Handicap Management
+- Player Pairings
+- Live Scoring
+- Leaderboards
+- Score Validation
 
 ---
 
@@ -213,45 +282,49 @@ Build:
 Implement:
 
 - Database
-- Authentication
-- Role-Based Permissions
-- Cloud Image Storage
+- Authentication Provider
+- Cloud Storage
+- Secure Form Processing
 - Audit Logging
+- Backup Strategy
 
 ---
 
-# 🚀 Phase IV — Production Launch
+# ⏳ Phase IV — Production Launch
 
 **Status:** Planned
 
 Launch Preparation:
 
-- Production Testing
-- Cross-Browser Testing
-- Final Bug Review
+- Production Deployment
 - Domain Configuration
+- SSL
 - Analytics
 - Security Review
-- Backup Strategy
-- Go Live
+- Cross-Browser Validation
+- Final Regression Testing
+- Backup Verification
+- Go-Live Approval
 
 ---
 
-# Long-Term Vision
+# Future Roadmap
 
-Future enhancements may include:
+Potential future enhancements:
 
-- Live Tournament Scoring
-- Mobile Companion App
-- Tournament Statistics
-- Historical Archive
-- Apparel Store
+- Native iOS App
+- Native Android App
 - Rules & Regulations App
+- Historical Tournament Archive
+- Apparel Store
+- Tournament Statistics
 - Member Messaging
 - Push Notifications
+- Live Event Updates
+- Tournament Committee Tools
 - Multi-Year Tournament Administration
 
-These features are intentionally outside Version 1.0 and will be evaluated individually after production launch.
+Each enhancement will receive its own planning, approval, implementation, and sign-off process.
 
 ---
 
@@ -261,24 +334,41 @@ These features are intentionally outside Version 1.0 and will be evaluated indiv
 |--------|:------:|
 | Phase I — Foundation | ✅ Complete |
 | Phase II — Public Website | ✅ Complete |
-| Phase II.5 — Public Website Completion | 🚧 In Progress |
-| Phase III — Admin & Member Tools | ⬜ Planned |
+| Phase II.5 — Production Readiness | 🚧 Ready to Begin |
+| Phase III — Admin & Member Platform | ⬜ Planned |
 | Phase IV — Production Launch | ⬜ Planned |
 
 ---
 
 # Current Objective
 
-**Responsive Optimization**
+## Phase II.5 — Production Readiness
 
-Current focus:
+Immediate priorities:
 
-Begin responsive optimization of the Homepage.
+1. Code cleanup
+2. Accessibility review
+3. Performance optimization
+4. Cross-browser verification
+5. Technical architecture review
+6. Production-ready approval
 
-The Homepage will establish the responsive design standards that every remaining public page will inherit.
+The public website design is now considered locked unless a specific improvement is approved.
+
+---
+
+# Current Release
+
+**v1.0-responsive**
+
+Official GitHub Release:
+
+**The Foxglove Website v1.0 – Public Experience**
+
+This release marks the completion of the public-facing Foxglove website and serves as the foundation for all future development.
 
 ---
 
 # Guiding Principle
 
-> Build something worthy of becoming a tradition.
+> **Build something worthy of becoming a tradition.**

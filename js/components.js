@@ -8,10 +8,20 @@ async function loadComponent(selector, filePath) {
 
   if (!element) return;
 
-  const response = await fetch(filePath);
-  const html = await response.text();
+  try {
+    const response = await fetch(filePath);
 
-  element.innerHTML = html;
+    if (!response.ok) {
+      throw new Error(
+        `Failed to load component from "${filePath}". HTTP status: ${response.status}`
+      );
+    }
+
+    const html = await response.text();
+    element.innerHTML = html;
+  } catch (error) {
+    console.error(`Unable to load component for "${selector}":`, error);
+  }
 }
 
 async function loadSharedComponents() {

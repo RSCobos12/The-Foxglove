@@ -1,10 +1,20 @@
 # The Foxglove Invitational Website
 
-**Project Version:** 1.0  
-**Project Status:** Phase II In Progress  
+**Project Version:** v1.0-responsive  
+**Project Status:** Public Website Complete | Phase II.5 Ready  
 **Owner:** Scott Cobos  
 **Development Partner:** ChatGPT (OpenAI)  
-**Last Updated:** July 8, 2026
+**Last Updated:** July 11, 2026
+
+---
+
+# Current Release
+
+## v1.0-responsive
+
+The complete public-facing Foxglove website has been designed, implemented, refined, and optimized for desktop and mobile devices.
+
+The current release is preserved through Git and published as an official GitHub Release.
 
 ---
 
@@ -14,7 +24,7 @@ The Foxglove Invitational is more than a golf tournament website.
 
 It is the digital home of an annual tradition built around championship golf, brotherhood, competition, premium hospitality, and unforgettable memories.
 
-Every page should contribute to a timeless experience that reflects the prestige of the tournament.
+Every page should contribute to a timeless experience that reflects the prestige and personality of the tournament.
 
 The objective is not to build the biggest website.
 
@@ -46,23 +56,46 @@ Every major feature follows the same workflow.
 
 1. Vision
 2. Story
-3. Visual Direction / Mockup
+3. Visual Direction or Mockup
 4. Approval
 5. VS Code Implementation
 6. White Glove Review
-7. Git Commit
-8. Documentation Update
-9. Version Sign-Off
+7. Responsive Review
+8. Git Commit
+9. Documentation Update
+10. Version Sign-Off
 
 No implementation begins before the visual direction has been approved.
 
-No feature is considered complete until it has passed the White Glove Review.
+No feature is considered complete until it has passed the White Glove and responsive reviews.
 
 ---
 
-# Public Website Roadmap
+# Project Roadmap
 
-## Phase II
+## ✅ Phase I — Foundation
+
+**Status:** Complete
+
+Completed:
+
+- Brand identity
+- Foxglove crest and visual language
+- Color and typography systems
+- Shared design standards
+- Homepage foundation
+- Shared header
+- Shared navigation
+- Shared footer
+- Initial project documentation
+
+---
+
+## ✅ Phase II — Public Website
+
+**Status:** Complete
+
+Completed public pages:
 
 | Page | Status |
 |-------|:------:|
@@ -70,58 +103,353 @@ No feature is considered complete until it has passed the White Glove Review.
 | RSVP | ✅ Complete |
 | Past Winners | ✅ Complete |
 | Courses | ✅ Complete |
-| Gallery | ⬜ Pending |
-| Schedule | ⬜ Pending |
-| The Foxglove | ⬜ Pending |
+| Gallery | ✅ Complete |
+
+Pages no longer included in the public website scope:
+
+- Schedule
+- The Foxglove
+- Scores
 
 ---
 
-# Private Member Experience (Phase III)
+## ✅ Responsive Optimization
 
-Planned features include:
+**Status:** Complete
 
-- Member Login
-- Member Dashboard
+The complete public website has been reviewed and optimized for desktop and mobile use.
+
+Completed:
+
+- Mobile navigation
+- Full-screen mobile menu
+- Responsive heroes
+- Mobile typography adjustments
+- Mobile paragraph wrapping
+- Responsive card grids
+- Responsive course grid
+- Responsive Gallery layout
+- Responsive Past Winners layout
+- Mobile form refinements
+- Mobile footer refinements
+- Horizontal overflow corrections
+- Real-device testing on iPhone 16
+- Safari Web Inspector debugging
+
+The Homepage, RSVP, Past Winners, Gallery, and Courses pages are approved for mobile use.
+
+---
+
+## 🚧 Phase II.5 — Production Readiness
+
+**Status:** Next Phase
+
+Objectives:
+
+### Accessibility Review
+
+- Keyboard navigation
+- Focus states
+- Semantic HTML
+- Form labels and validation
+- Alt-text review
+- Screen-reader support
+- Color contrast
+- Touch-target sizing
+- Reduced-motion support
+
+### Performance Review
+
+- Image compression
+- Image format review
+- Video optimization
+- Lazy loading
+- Asset loading
+- Font loading
+- CSS efficiency
+- JavaScript efficiency
+
+### Cross-Browser Review
+
+Test the complete website in:
+
+- Chrome
+- Safari
+- Firefox
+- Edge
+- iPhone Chrome
+- iPhone Safari
+- Tablet-sized browsers
+- Standard desktop browsers
+
+### Technical Review
+
+- Remove genuine duplicate or conflicting code
+- Verify media queries
+- Check asset paths
+- Check console errors
+- Check failed network requests
+- Verify links
+- Verify forms
+- Confirm no horizontal overflow
+- Confirm desktop styling has not regressed
+
+### Phase II.5 Result
+
+**Public Website v1.0 Production-Ready Approval**
+
+---
+
+## ⏳ Phase III — Admin and Member Tools
+
+**Status:** Planned
+
+Phase III begins after the public website passes the production-readiness review.
+
+### Authentication and Permissions
+
+- Secure member login
+- Secure administrator login
+- Password-protected content
+- Role-based permissions
+- Session management
+- Account recovery
+
+### Admin Dashboard
+
+- Central administration interface
+- Member management
+- Tournament-year management
+- Content-management controls
+- Activity and approval tracking
+
+### RSVP Administration
+
+- Save RSVP submissions to a database
+- Attendance management
+- Dietary restriction review
+- Special-request review
+- Confirmation emails
+- RSVP export tools
+- Submission status tracking
+
+### Gallery Management
+
+- Admin image uploads
+- Featured-image management
+- Member upload permissions
+- Maximum of 3 member uploads per year
+- Maximum of 13 Gallery images per year
+- Individual admin approval for member uploads
+- Upload status tracking
+- Year-based Gallery management
+
+### Past Winners Management
+
+- Add and edit champions
+- Update winner details
+- Upload champion photographs
+- Upload champion presentation videos
+- Manage future winner placeholders
+
+### Member Experience
+
+- Member dashboard
 - Player Directory
-- Tournament Schedule
-- Live Scores
-- Tournament Administration
-- RSVP Administration
-- Protected Member Content
+- Member profile management
+- Gallery submission tools
+- Submission-status review
+- Protected member content
 
-The complete member architecture will be finalized before Phase III begins.
+### Infrastructure
+
+- Database integration
+- Cloud file storage
+- Authentication provider
+- Role-based access controls
+- Secure form processing
+- Audit logging
+- Backup procedures
 
 ---
 
-# Launch Preparation (Phase IV)
+## ⏳ Phase IV — Deployment and Domain Launch
 
-- Mobile Optimization
-- Accessibility Review
-- Performance Optimization
-- SEO
-- Cross-Browser Testing
-- Production Deployment
-- Domain Launch
+**Status:** Planned
+
+Deployment will occur after Phase III tools are complete and tested.
+
+Launch preparation:
+
+- Production hosting configuration
+- Production database configuration
+- Environment variables
+- Security review
+- Final regression testing
+- Domain connection
+- SSL certificate
+- Analytics
+- Error monitoring
+- Backup verification
+- Final launch checklist
+- Go-live approval
+
+---
+
+# Public Website
+
+## Homepage
+
+**Status:** ✅ Version 1.0 Responsive Complete
+
+Completed:
+
+- Cinematic hero
+- Hero poster and video presentation
+- Welcome section
+- Explore the Invitational cards
+- Shared navigation
+- Shared footer
+- Page loader
+- Scroll animations
+- Desktop layout
+- Mobile hero optimization
+- Mobile 2×2 card grid
+- Mobile navigation
+- Mobile footer
+- Real-device testing
+
+---
+
+## RSVP
+
+**Status:** ✅ Version 1.0 Responsive Complete
+
+Completed:
+
+- RSVP hero
+- Introductory message
+- First and last name fields
+- Attendance selection
+- Email field
+- Dietary restrictions
+- Special requests
+- Submit action
+- Branded confirmation message
+- Responsive form layout
+- Mobile field-label refinement
+- Shared navigation and footer
+
+The current confirmation is front-end only.
+
+Database storage and true submission confirmation will be implemented during Phase III.
+
+---
+
+## Past Winners
+
+**Status:** ✅ Version 1.0 Responsive Complete
+
+Completed:
+
+- Editorial hero
+- Winner grid
+- Winner detail panel
+- Champion photography
+- Champion presentation video
+- Future champion placeholders
+- Desktop hover presentation
+- Mobile automatic presentation cycle
+- Responsive full-width hero
+- Mobile detail panel above winner grid
+- Compact mobile typography and spacing
+- Shared navigation and footer
+
+---
+
+## Courses
+
+**Status:** ✅ Version 1.0 Responsive Complete
+
+Completed:
+
+- Courses hero
+- Editorial desktop introduction
+- Reusable Course Card component
+- Course imagery
+- Course descriptions
+- Course statistics
+- Course links
+- Scroll-reveal animations
+- Desktop two-column grid
+- Mobile two-column card grid
+- Mobile hero refinement
+- Mobile-first card proportions
+- Shared navigation and footer
+
+The editorial introduction remains visible on desktop and is hidden on mobile so the course cards can carry the page.
+
+---
+
+## Gallery
+
+**Status:** ✅ Version 1.0 Responsive Complete
+
+Completed:
+
+- Custom Gallery hero
+- Year navigation for 2027–2035
+- Horizontally scrollable year navigation
+- Featured-image system
+- Featured-image placeholders
+- 13-image annual Gallery structure
+- Gallery image placeholders
+- Year-based content switching
+- Automatic placeholder-year updates
+- Fade transition between years
+- Desktop editorial masonry layout
+- Mobile two-column photo grid
+- Gallery lightbox
+- Featured-image lightbox mode
+- Previous and next navigation
+- Keyboard navigation
+- Click-outside close
+- Escape-to-close behavior
+- Image counter
+- Future-ready architecture for Phase III uploads
+
+Gallery rules currently established:
+
+- Years displayed: 2027–2035
+- Maximum Gallery files per year: 13
+- Maximum member uploads per year: 3
+- Featured images are admin-controlled
+- Member uploads require individual admin approval
+- Upload functionality will be implemented during Phase III
 
 ---
 
 # Shared Design Standards
 
-Every public page inherits the same design language.
+Every public page inherits the same visual language.
 
-Shared components include:
+Shared components and systems include:
 
 - Header
-- Navigation
+- Desktop navigation
+- Mobile navigation
 - Footer
+- Color palette
 - Typography
-- Color Palette
-- Animation Style
-- Button Styles
-- Card Design Language
-- Foxglove Branding
+- Hero framework
+- Gold divider system
+- Button styling
+- Card design language
+- Responsive breakpoints
+- Animation style
+- Foxglove crest and icons
 
-Each page should maintain its own personality while remaining unmistakably part of The Foxglove.
+Each page may have its own personality while remaining unmistakably part of The Foxglove.
 
 ---
 
@@ -131,97 +459,10 @@ Each page should maintain its own personality while remaining unmistakably part 
 - Past Winners
 - Gallery
 - Courses
-- RSVP
 - Player Directory *(Coming Soon)*
+- RSVP
 
-Player Directory becomes active during Phase III.
-
----
-
-# Current Progress
-
-## Homepage
-
-**Status:** ✅ Version 1.0 Complete
-
-Completed:
-
-- Hero
-- Welcome Section
-- Countdown
-- Navigation
-- Footer
-- Animations
-- Responsive Layout
-
----
-
-## RSVP
-
-**Status:** ✅ Version 1.0 Complete
-
-Completed:
-
-- Hero
-- RSVP Form
-- Form Validation
-- Shared Components
-- Responsive Layout
-
----
-
-## Past Winners
-
-**Status:** ✅ Version 1.0 Complete
-
-Completed:
-
-- Editorial Hero
-- Champions Grid
-- Winner Detail Panel
-- Hover Presentation Videos
-- Future Champion Architecture
-- Responsive Layout
-
----
-
-## Courses
-
-**Status:** ✅ Version 1.0 Complete
-
-Completed:
-
-- Hero Section
-- Editorial Introduction
-- Reusable Course Card Component
-- Responsive Two-Column Course Grid
-- Hover Animations
-- Scroll Reveal Animation
-- Shared Components
-- Responsive Layout
-
----
-
-## Gallery
-
-**Status:** ✅ Version 1.0 Complete
-
-Completed:
-
-- Custom Gallery hero
-- Year navigation for 2027–2035
-- Horizontally scrollable year navigation
-- Featured image for each year
-- Curated 13-image gallery layout
-- Year-based content switching
-- Fade transition between years
-- Gallery lightbox
-- Previous and next navigation
-- Keyboard controls
-- Click-outside and Escape-to-close behavior
-- Image counter
-- Featured-image lightbox mode
-- Future-ready architecture for Phase III admin and member uploads
+Player Directory will become active during Phase III.
 
 ---
 
@@ -230,81 +471,74 @@ Completed:
 Approved components currently in use:
 
 - Shared Header
-- Shared Navigation
+- Shared Desktop Navigation
+- Shared Mobile Navigation
 - Shared Footer
 - Hero Framework
 - Editorial Introduction Framework
 - Feature Card
 - Course Card
+- Winner Card
+- Winner Detail Panel
+- Gallery Year Selector
+- Gallery Placeholder
+- Gallery Lightbox
+- RSVP Form
+- RSVP Confirmation Panel
 - Scroll Reveal Animation
 
-Future reusable components:
+Future reusable components may include:
 
-- Gallery Grid
-- Timeline
-- Statistics Panels
-- Scorecards
-- Modal Windows
+- Member Profile Card
+- Admin Data Table
+- Upload Interface
+- Approval Queue
+- Authentication Form
+- Status Badge
+- Modal Window
+- Dashboard Panel
 
 ---
 
 # Project Rules
 
-1. Mockup approval before coding.
-2. White Glove Review before every Git commit.
-3. Every completed page receives Version 1.0 sign-off.
-4. Homepage Version 1.0 serves as the visual benchmark.
-5. Shared components remain consistent across every page.
-6. Assets should be gathered before implementation begins.
-7. Reusable components are built once, approved, then duplicated.
-8. Make one design adjustment at a time.
-9. Never sacrifice consistency for speed.
+1. Mockup approval before major visual implementation.
+2. White Glove Review before page sign-off.
+3. Responsive review before page completion.
+4. Every completed page receives Version 1.0 approval.
+5. Homepage Version 1.0 serves as the visual benchmark.
+6. Shared components remain consistent across every page.
+7. Assets should be prepared before implementation begins.
+8. Reusable components should be built once and reused.
+9. Make one design adjustment at a time during visual refinement.
+10. Never sacrifice consistency for speed.
+11. Public designs remain locked unless a redesign is explicitly requested.
+12. Recommend changes only when they materially improve design, functionality, performance, accessibility, security, scalability, or long-term website maintainability.
 
 ---
 
 # Documentation
 
-Current
+Current project documentation includes:
 
-- README.md
-- homepage-style-guide.md
+- brand-guide.md
+- changelog.md
+- design-principles.md
 - homepage-signoff.md
+- homepage-style-guide.md
+- master-project-roadmap.md
+- project-standards.md
+- README.md
+- roadmap.md
+- rsvp-signoff.md
 
-Planned
-
-- component-library.md
-- website-style-guide.md
-- change-log.md
-- release-notes.md
-
----
-
-# Working Relationship
-
-Development philosophy:
-
-- Design first.
-- Build intentionally.
-- Approve before implementation.
-- Build one reusable component at a time.
-- Review thoroughly.
-- Refine instead of redesign.
-- Prioritize long-term maintainability.
-
-The objective is to build a website capable of growing with The Foxglove Invitational for many years while preserving one cohesive visual language.
+Additional sign-off and technical documents may be created when they directly support the website or future platform functionality.
 
 ---
 
-# Current Milestone
+# Version Control
 
-## Gallery Page
+Current official release:
 
-Current objective:
-
-Develop the complete visual direction for the Gallery page before implementation begins.
-
----
-
-# Guiding Principle
-
-> "A visitor should leave remembering how **The Foxglove felt**, not how many features it had."
+```text
+v1.0-responsive
