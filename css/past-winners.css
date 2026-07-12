@@ -494,3 +494,184 @@ margin: 0 auto;
         0 0 0 1px rgba(198,161,91,.35),
         0 24px 52px rgba(0,0,0,.30);
 }
+
+@media (max-width: 700px) {
+
+  /* Full-width mobile hero */
+
+  .winners-hero {
+    width: 100%;
+    height: 72vh;
+    min-height: 560px;
+
+    justify-content: center;
+  }
+
+  .winners-hero::before {
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-image:
+      linear-gradient(
+        rgba(2, 11, 28, 0.28),
+        rgba(2, 11, 28, 0.72)
+      ),
+      url("../assets/photos/past-winners-hero.png");
+
+    background-position: center top;
+  }
+
+  .winners-hero::after {
+    height: 180px;
+  }
+
+  .winners-hero-content {
+    width: 100%;
+    max-width: 430px;
+
+    margin: 70px auto 0;
+    padding: 0 22px;
+  }
+
+  .winners-hero h1 {
+    display: block;
+
+    font-size: 2rem;
+    letter-spacing: 4px;
+    white-space: normal;
+  }
+
+  .winners-hero-divider {
+    width: 100%;
+    gap: 14px;
+  }
+
+  .winners-hero-divider img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .winners-hero p {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+
+
+  /* Detail panel above winner grid */
+
+  .winners-content {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 28px;
+    padding: 28px 18px 78px;
+  }
+
+  .winner-detail {
+    order: 1;
+
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+  }
+
+  .winners-grid {
+    order: 2;
+
+    width: 100%;
+    min-width: 0;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+
+  /* Mobile detail proportions */
+
+  .winner-media {
+    height: 360px;
+  }
+
+  .winner-info {
+    padding: 28px 22px;
+  }
+
+  .winner-info h2 {
+    font-size: 2rem;
+    margin: 8px 0 18px;
+    line-height: 1;
+}
+
+  .winner-stats {
+    gap: 12px;
+    padding: 18px 0;
+    margin-bottom: 18px;
+}
+
+.winner-stats span,
+.winner-courses span,
+.winner-reflection span {
+    font-size: 0.58rem;
+    letter-spacing: 1.8px;
+    margin-bottom: 5px;
+}
+
+.winner-stats strong {
+    font-size: 1.05rem;
+}
+
+.winner-courses {
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+}
+
+  .winner-courses p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+  .winner-reflection blockquote {
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+
+  /* Preserve compact winner grid */
+
+  .winner-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 210px;
+
+    padding: 12px 8px 10px;
+  }
+
+  .winner-card-year {
+    font-size: 1.1rem;
+  }
+
+  .winner-card-name {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+
+  .winner-card img {
+    width: 100%;
+    height: 125px;
+  }
+
+  .trophy-placeholder img {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.winner-year {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+}

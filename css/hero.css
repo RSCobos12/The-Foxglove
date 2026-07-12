@@ -17,8 +17,15 @@
   z-index: 2;
 
   background:
-    linear-gradient(rgba(2, 11, 28, 0.22), rgba(2, 11, 28, 0.78)),
-    radial-gradient(circle at center, rgba(198, 161, 91, 0.1), transparent 48%);
+    linear-gradient(
+      rgba(2, 11, 28, 0.22),
+      rgba(2, 11, 28, 0.78)
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(198, 161, 91, 0.1),
+      transparent 48%
+    );
 }
 
 .hero-title {
@@ -63,6 +70,13 @@
   font-size: 18px;
 }
 
+.hero-divider-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
 .hero-button {
   display: inline-block;
   margin-top: 14px;
@@ -74,7 +88,9 @@
   letter-spacing: 2.6px;
   font-size: 11px;
   background: rgba(2, 11, 28, 0.18);
-  transition: all 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .hero-button:hover {
@@ -84,27 +100,16 @@
 
 .hero-established {
   margin-top: 10px;
-
   color: rgba(198, 161, 91, 0.32);
-
   font-family: inherit;
-
   font-size: 12px;
-
   font-weight: 300;
-
   letter-spacing: 10px;
-
   text-transform: uppercase;
-
   line-height: 1;
-
-  opacity: .55;
-
-  transform: scale(.45);
-
+  opacity: 0.55;
+  transform: scale(0.45);
   transform-origin: center;
-
   user-select: none;
 }
 
@@ -112,10 +117,8 @@
 .hero-video {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 }
 
@@ -127,27 +130,20 @@
 .hero-video {
   z-index: 1;
   opacity: 0;
-
-  transition: opacity 2.8s ease-in-out;
-
+  visibility: hidden;
   pointer-events: none;
+  transition: opacity 2.8s ease-in-out;
+}
+
+.hero-video.is-ready {
+  visibility: visible;
 }
 
 .hero.video-active .hero-video {
   opacity: 1;
 }
 
-.hero-shade {
-  z-index: 2;
-}
-
-.hero-title {
-  position: relative;
-  z-index: 3;
-}
-
 @media (max-width: 700px) {
-
   .hero {
     min-height: 100vh;
     padding-top: 90px;
@@ -159,27 +155,24 @@
     max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
-
-    transform: translateY(-55px);
-
     text-align: center;
+    transform: translateY(-55px);
     overflow: hidden;
   }
 
   .hero-title p {
+    margin-bottom: 12px;
     font-size: 22px;
     letter-spacing: 6px;
-    margin-bottom: 12px;
   }
 
   .hero-title h1 {
     display: block;
     width: 100%;
     margin: 0 auto;
-
     font-size: clamp(40px, 10.5vw, 50px);
     letter-spacing: 2px;
-    line-height: .9;
+    line-height: 0.9;
     white-space: nowrap;
     text-align: center;
   }
@@ -190,105 +183,13 @@
   }
 
   .divider span {
-    width: 80px;
-  }
-
-  .hero-established {
-    transform: scale(.75);
-    letter-spacing: 7px;
-    margin-top: 14px;
-  }
-
-  .hero-button {
-    margin-top: 24px;
-    padding: 12px 22px;
-  }
-
-}
-
-  .hero-title {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 18px;
-
-  transform: translateY(-55px);
-
-  text-align: center;
-  overflow: hidden;
-}
-
-  .hero-title p {
-    font-size: 22px;
-    letter-spacing: 6px;
-    margin-bottom: 12px;
-  }
-
-  .hero-title h1 {
-  font-size: clamp(42px, 11vw, 50px);
-  letter-spacing: 2px;
-  line-height: .9;
-  white-space: nowrap;
-}
-
-  .divider {
-    margin-top: 28px;
-    gap: 12px;
-  }
-
-  .divider span {
-    width: 80px;
-  }
-
-  .hero-established {
-    transform: scale(.75);
-    letter-spacing: 7px;
-    margin-top: 14px;
-  }
-
-  .hero-button {
-    margin-top: 24px;
-    padding: 12px 22px;
-  }
-
-}
-
-  .hero-title {
-    margin-top: 0;
-    transform: translateY(-70px);
-    width: 100%;
-    padding: 0 24px;
-  }
-
-  .hero-title p {
-    margin-bottom: 12px;
-    letter-spacing: 6px;
-    font-size: 24px;
-  }
-
-  .hero-title h1 {
-    width: 100%;
-    font-size: clamp(54px, 15vw, 72px);
-    letter-spacing: 5px;
-    line-height: 0.9;
-    white-space: nowrap;
-  }
-
-  .divider {
-    margin-top: 30px;
-    gap: 12px;
-  }
-
-  .divider span {
-    width: 82px;
+    width: 110px;
   }
 
   .hero-established {
     margin-top: 14px;
-    font-size: 11px;
     letter-spacing: 7px;
-    transform: none;
-    opacity: 0.45;
+    transform: scale(0.75);
   }
 
   .hero-button {
@@ -296,12 +197,4 @@
     padding: 12px 22px;
     max-width: 280px;
   }
-}
-
-.hero-video {
-  visibility: hidden;
-}
-
-.hero-video.is-ready {
-  visibility: visible;
 }

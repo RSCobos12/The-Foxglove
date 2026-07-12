@@ -34,53 +34,104 @@
     </p>
   </div>
 
-  <form class="rsvp-form">
-    <div class="form-row">
-      <div class="form-field">
-        <label for="firstName">First Name</label>
-        <input id="firstName" type="text" name="firstName">
-      </div>
-
-      <div class="form-field">
-        <label for="lastName">Last Name</label>
-        <input id="lastName" type="text" name="lastName">
-      </div>
+  <form class="rsvp-form" id="rsvpForm">
+  <div class="form-row">
+    <div class="form-field">
+      <label for="firstName">First Name</label>
+      <input id="firstName" type="text" name="firstName">
     </div>
 
     <div class="form-field">
-      <label for="attendance">Will You Be Attending?</label>
-      <select id="attendance" name="attendance">
-        <option value=""></option>
-        <option value="yes">Yes, thank you.</option>
-        <option value="no">Unfortunately, I am unable to attend.</option>
-      </select>
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type="text" name="lastName">
     </div>
+  </div>
 
-    <div class="form-field">
-      <label for="email">Email Address</label>
-      <input id="email" type="email" name="email">
-    </div>
+  <div class="form-field">
+    <label for="attendance">Will You Be Attending?</label>
+    <select id="attendance" name="attendance">
+      <option value=""></option>
+      <option value="yes">Yes, thank you.</option>
+      <option value="no">Unfortunately, I am unable to attend.</option>
+    </select>
+  </div>
 
-    <div class="form-field">
-      <label for="dietary">Dietary Restrictions?</label>
-      <textarea id="dietary" name="dietary"></textarea>
-    </div>
+  <div class="form-field">
+    <label for="email">Email Address</label>
+    <input id="email" type="email" name="email">
+  </div>
 
-    <div class="form-field">
-      <label for="requests">Special Requests?</label>
-      <textarea id="requests" name="requests"></textarea>
-    </div>
+  <div class="form-field">
+    <label for="dietary">Dietary Restrictions?</label>
+    <textarea id="dietary" name="dietary"></textarea>
+  </div>
 
-    <div class="form-actions">
-      <button type="submit">Submit</button>
-    </div>
-  </form>
+  <div class="form-field">
+    <label for="requests">Special Requests?</label>
+    <textarea id="requests" name="requests"></textarea>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit">Submit</button>
+  </div>
+</form>
+
+<div
+  class="rsvp-confirmation"
+  id="rsvpConfirmation"
+  hidden>
+
+  <img
+    src="../assets/icons/foxglove-icon-gold-transparent.png"
+    alt="">
+
+  <h2>Your RSVP has been received.</h2>
+
+  <p>
+    Thank you for responding to this year's Foxglove Invitational.
+  </p>
+
+  <p>
+    A confirmation has been recorded, and your gracious host looks
+    forward to welcoming you to another unforgettable gathering.
+  </p>
+
+  <p class="rsvp-confirmation-closing">
+    See you on the first tee.
+  </p>
+
+  <p class="rsvp-confirmation-signature">
+    — The Foxglove
+  </p>
+
+</div>
 </section>
 
 <div id="site-footer"></div>
 
 <script src="../js/components.js"></script>
 <script src="../js/script.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("#rsvpForm");
+  const confirmation = document.querySelector("#rsvpConfirmation");
+
+  if (!form || !confirmation) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    form.hidden = true;
+    confirmation.hidden = false;
+
+    confirmation.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  });
+});
+</script>
 
 </body>
 </html>

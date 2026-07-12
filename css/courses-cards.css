@@ -159,3 +159,70 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+@media (max-width: 700px) {
+  .course-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    border-radius: 6px;
+  }
+
+  .course-image {
+    width: 100%;
+    height: 125px;
+    flex-shrink: 0;
+  }
+
+  .course-content {
+    padding: 16px 12px 14px;
+  }
+
+  .course-content h3 {
+    font-size: 1.05rem;
+    line-height: 1.1;
+    letter-spacing: 0.03em;
+  }
+
+  .course-location {
+    margin-top: 6px;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .course-description {
+    margin: 12px 0;
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .course-divider {
+    margin-bottom: 12px;
+  }
+
+  .course-stats {
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .course-stats span {
+    font-size: 0.52rem;
+    letter-spacing: 0.05em;
+  }
+
+  .course-stats strong {
+    margin-top: 3px;
+    font-size: 1.05rem;
+  }
+
+  .course-link {
+    align-self: flex-start;
+    font-size: 0.68rem;
+  }
+
+  .course-card:hover {
+    transform: none;
+  }
+}

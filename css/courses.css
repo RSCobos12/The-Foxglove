@@ -140,3 +140,50 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 700px) {
+  .courses-hero {
+    height: 58vh;
+    min-height: 470px;
+  }
+
+  .courses-hero-content {
+    width: calc(100% - 36px);
+    margin-top: 95px;
+    transform: translateY(-28px);
+  }
+
+  .courses-hero h1 {
+    margin-bottom: 14px;
+    font-size: 2.5rem;
+  }
+
+  .courses-hero-divider {
+    width: min(330px, 92%);
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .courses-hero-divider img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .courses-hero p {
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+
+  .courses-intro {
+    display: none;
+  }
+
+  .courses-list {
+    padding: 28px 12px 68px;
+  }
+
+  .courses-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}

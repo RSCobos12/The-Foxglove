@@ -156,31 +156,49 @@
   }
 
   .mobile-menu {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
 
-    padding: 110px 30px 50px;
-    background: rgba(2, 11, 28, .98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
 
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+  padding: 110px 30px 50px;
+  background: rgb(2, 11, 28);
 
-    transition: opacity .3s ease, visibility .3s ease;
-  }
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+}
 
   .mobile-menu.is-open {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
   }
+
+  .mobile-header {
+  position: relative;
+  z-index: 31;
+}
+
+body.mobile-menu-open .site-header {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
 
   .mobile-menu a {
     color: var(--cream);
