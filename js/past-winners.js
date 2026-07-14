@@ -1,5 +1,3 @@
-console.log("The Foxglove Invitational is live.");
-
 const winnerPresentations = document.querySelectorAll(".winner-presentation");
 const mobileWinnerView = window.matchMedia("(max-width: 700px)");
 

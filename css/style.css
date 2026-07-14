@@ -33,3 +33,24 @@ body{
     color:var(--cream);
     font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
 }
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .course-card,
+    .winner-presentation,
+    .gallery-image,
+    .featured-image {
+        transition: none !important;
+        animation: none !important;
+    }
+
+}

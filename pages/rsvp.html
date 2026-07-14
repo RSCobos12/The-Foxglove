@@ -28,7 +28,7 @@
   </div>
 
   <div class="rsvp-intro">
-    <h2>Your presence is what makes The Foxglove what it is.</h2>
+  <h1>Your presence is what makes The Foxglove what it is.</h1>
     <p>
       Kindly respond by confirming your attendance for our
       <strong>2027 event.</strong>
@@ -39,18 +39,28 @@
   <div class="form-row">
     <div class="form-field">
       <label for="firstName">First Name</label>
-      <input id="firstName" type="text" name="firstName">
+      <input
+  id="firstName"
+  type="text"
+  name="firstName"
+  autocomplete="given-name"
+  required>
     </div>
 
     <div class="form-field">
       <label for="lastName">Last Name</label>
-      <input id="lastName" type="text" name="lastName">
+      <input
+  id="lastName"
+  type="text"
+  name="lastName"
+  autocomplete="family-name"
+  required>
     </div>
   </div>
 
   <div class="form-field">
     <label for="attendance">Will You Be Attending?</label>
-    <select id="attendance" name="attendance">
+    <select id="attendance" name="attendance" required>
       <option value=""></option>
       <option value="yes">Yes, thank you.</option>
       <option value="no">Unfortunately, I am unable to attend.</option>
@@ -59,7 +69,12 @@
 
   <div class="form-field">
     <label for="email">Email Address</label>
-    <input id="email" type="email" name="email">
+    <input
+  id="email"
+  type="email"
+  name="email"
+  autocomplete="email"
+  required>
   </div>
 
   <div class="form-field">
