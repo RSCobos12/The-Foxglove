@@ -11,18 +11,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const galleryData = {
-        2027: buildYearData(2027),
-        2028: buildYearData(2028),
-        2029: buildYearData(2029),
-
-        // Temporary placeholders until these years have real photography.
-        2030: buildYearData(2030, 2027),
-        2031: buildYearData(2031, 2027),
-        2032: buildYearData(2032, 2027),
-        2033: buildYearData(2033, 2027),
-        2034: buildYearData(2034, 2027),
-        2035: buildYearData(2035, 2027)
-    };
+    2027: {
+        featured: null,
+        images: Array(13).fill(null)
+    },
+    2028: {
+        featured: null,
+        images: Array(13).fill(null)
+    },
+    2029: {
+        featured: null,
+        images: Array(13).fill(null)
+    },
+    2030: {
+        featured: null,
+        images: Array(13).fill(null)
+    },
+    2031: {
+        featured: null,
+        images: Array(13).fill(null)
+    },
+    2032: {
+        featured: null,
+        images: Array(13).fill(null)
+    },
+    2033: {
+        featured: null,
+        images: Array(13).fill(null)
+    },
+    2034: {
+        featured: null,
+        images: Array(13).fill(null)
+    },
+    2035: {
+        featured: null,
+        images: Array(13).fill(null)
+    }
+};
 
     const yearButtons = document.querySelectorAll(".gallery-year");
 
@@ -88,8 +113,17 @@ document.addEventListener("DOMContentLoaded", () => {
             featuredPlaceholder.style.display = "flex";
         };
 
-        featuredImage.src = selectedGallery.featured;
-        featuredImage.alt = `The Foxglove Invitational ${year}`;
+        if (selectedGallery.featured) {
+    featuredImage.style.display = "block";
+    featuredImage.src = selectedGallery.featured;
+    featuredImage.alt = `The Foxglove Invitational ${year}`;
+    featuredPlaceholder.style.display = "none";
+} else {
+    featuredImage.removeAttribute("src");
+    featuredImage.alt = "";
+    featuredImage.style.display = "block";
+    featuredPlaceholder.style.display = "flex";
+}
 
         galleryImages.forEach((image, index) => {
     const placeholder = galleryPlaceholders[index];
@@ -110,9 +144,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    image.src = selectedGallery.images[index];
+    const imageSource = selectedGallery.images[index];
+
+if (imageSource) {
+    image.src = imageSource;
     image.alt =
         `The Foxglove Invitational ${year} gallery image ${index + 1}`;
+} else {
+    image.removeAttribute("src");
+    image.alt = "";
+    image.style.display = "none";
+
+    if (placeholder) {
+        placeholder.style.display = "flex";
+    }
+}
 });
     }
 
