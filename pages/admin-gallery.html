@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Gallery Management | The Foxglove</title>
+
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body data-admin-page="gallery">
+
+  <div class="admin-layout">
+
+    <div id="admin-sidebar-placeholder"></div>
+
+    <main class="admin-content">
+
+      <header class="admin-header admin-section-header">
+
+        <div>
+          <p class="admin-eyebrow">Content Management</p>
+          <h1>Gallery</h1>
+          <p id="admin-welcome">Loading administrator access...</p>
+        </div>
+
+        <div class="gallery-year-control">
+          <label for="gallery-year">Tournament Year</label>
+
+          <select id="gallery-year"></select>
+        </div>
+
+      </header>
+
+      <div
+        id="gallery-admin-message"
+        class="admin-status-message"
+        role="status"
+        aria-live="polite">
+        Loading Gallery...
+      </div>
+
+      <section
+        id="gallery-manager"
+        class="gallery-manager"
+        hidden>
+
+        <article class="gallery-featured-section">
+          <div class="gallery-section-heading">
+            <div>
+              <p class="overview-label">Featured</p>
+              <h2>Featured Image</h2>
+            </div>
+          </div>
+
+          <div id="featured-slot"></div>
+        </article>
+
+        <article class="gallery-standard-section">
+          <div class="gallery-section-heading">
+            <div>
+              <p class="overview-label">Gallery</p>
+              <h2>Standard Images</h2>
+            </div>
+
+            <p>13 available positions</p>
+          </div>
+
+          <div
+            id="gallery-slots"
+            class="gallery-admin-grid">
+          </div>
+        </article>
+
+      </section>
+
+    </main>
+
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/admin-components.js"></script>
+<script src="../js/admin-gallery.js"></script>
+
+</body>
+</html>

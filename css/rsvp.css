@@ -288,3 +288,14 @@
         font-size: 1rem;
     }
 }
+
+#rsvpStatus {
+  max-width: 760px;
+  margin: 20px auto 0;
+  padding: 14px 16px;
+  border-radius: 6px;
+  background: #f8e8e8;
+  color: #7b2020;
+  line-height: 1.5;
+  text-align: center;
+}

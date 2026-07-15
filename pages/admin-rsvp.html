@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>RSVP Management | The Foxglove</title>
+
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body data-admin-page="rsvp">
+
+  <div class="admin-layout">
+
+    <div id="admin-sidebar-placeholder"></div>
+
+    <main class="admin-content">
+
+      <header class="admin-header admin-section-header">
+
+        <div>
+          <p class="admin-eyebrow">Tournament Management</p>
+          <h1>RSVP</h1>
+          <p id="admin-welcome">
+            Loading administrator access...
+          </p>
+        </div>
+
+        <div class="rsvp-admin-controls">
+
+          <div>
+            <label for="rsvp-year">
+              Tournament Year
+            </label>
+
+            <select id="rsvp-year"></select>
+          </div>
+
+          <div>
+            <label for="rsvp-filter">
+              Filter
+            </label>
+
+            <select id="rsvp-filter">
+              <option value="all">All Responses</option>
+              <option value="new">New</option>
+              <option value="reviewed">Reviewed</option>
+              <option value="attending">Attending</option>
+              <option value="declined">Declined</option>
+            </select>
+          </div>
+
+        </div>
+
+      </header>
+
+      <section
+        class="admin-table-panel"
+        aria-labelledby="rsvp-heading">
+
+        <div class="admin-table-heading">
+
+          <div>
+            <h2 id="rsvp-heading">
+              Responses
+            </h2>
+
+            <p id="rsvp-count">
+              Loading responses...
+            </p>
+          </div>
+
+        </div>
+
+        <div
+          id="rsvp-admin-message"
+          class="admin-status-message"
+          role="status"
+          aria-live="polite">
+          Loading RSVP responses...
+        </div>
+
+        <div
+          id="rsvp-table-wrapper"
+          class="admin-table-wrapper"
+          hidden>
+
+          <table class="admin-table rsvp-admin-table">
+
+            <thead>
+              <tr>
+                <th scope="col">Player</th>
+                <th scope="col">Attendance</th>
+                <th scope="col">Email</th>
+                <th scope="col">Dietary Restrictions</th>
+                <th scope="col">Special Requests</th>
+                <th scope="col">Submitted</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="rsvp-table-body"></tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin-components.js"></script>
+  <script src="../js/admin-rsvp.js"></script>
+
+</body>
+</html>

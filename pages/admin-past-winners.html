@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Past Winners Management | The Foxglove</title>
+
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body data-admin-page="past-winners">
+
+  <div class="admin-layout">
+
+    <div id="admin-sidebar-placeholder"></div>
+
+    <main class="admin-content">
+
+      <header class="admin-header admin-section-header">
+
+        <div>
+          <p class="admin-eyebrow">Content Management</p>
+          <h1>Past Winners</h1>
+          <p id="admin-welcome">
+            Loading administrator access...
+          </p>
+        </div>
+
+        <div class="winner-year-control">
+          <label for="winner-year">Tournament Year</label>
+          <select id="winner-year"></select>
+        </div>
+
+      </header>
+
+      <div
+        id="winner-admin-message"
+        class="admin-status-message"
+        role="status"
+        aria-live="polite">
+        Loading winner information...
+      </div>
+
+      <form
+        id="winner-form"
+        class="winner-admin-form"
+        hidden>
+
+        <section class="winner-form-panel">
+
+          <div class="gallery-section-heading">
+            <div>
+              <p class="overview-label">Champion Details</p>
+              <h2>Winner Information</h2>
+            </div>
+          </div>
+
+          <div class="winner-form-grid">
+
+            <div class="winner-form-field">
+              <label for="winner-name">Winner Name</label>
+              <input
+                id="winner-name"
+                type="text"
+                required>
+            </div>
+
+            <div class="winner-form-field">
+              <label for="winning-score">Winning Score</label>
+              <input
+                id="winning-score"
+                type="text"
+                placeholder="Example: +4">
+            </div>
+
+            <div class="winner-form-field">
+              <label for="winner-dinner">Winner Dinner</label>
+              <input
+                id="winner-dinner"
+                type="text">
+            </div>
+
+            <div class="winner-form-field">
+              <label for="courses-played">Courses Played</label>
+              <input
+                id="courses-played"
+                type="text">
+            </div>
+
+          </div>
+
+          <div class="winner-form-field">
+            <label for="winner-reflection">
+              Winner’s Reflection
+            </label>
+
+            <textarea
+              id="winner-reflection"
+              rows="7">
+            </textarea>
+          </div>
+
+        </section>
+
+        <section class="winner-form-panel">
+
+          <div class="gallery-section-heading">
+            <div>
+              <p class="overview-label">Media</p>
+              <h2>Winner Images and Video</h2>
+            </div>
+          </div>
+
+          <div class="winner-media-grid">
+
+            <div class="winner-media-field">
+              <h3>Winner Card Image</h3>
+
+              <div
+                id="card-image-preview"
+                class="winner-media-preview">
+                No image uploaded
+              </div>
+
+              <label class="admin-secondary-button">
+                Choose Image
+                <input
+                  id="card-image-file"
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  hidden>
+              </label>
+            </div>
+
+            <div class="winner-media-field">
+              <h3>Main Winner Image</h3>
+
+              <div
+                id="main-image-preview"
+                class="winner-media-preview">
+                No image uploaded
+              </div>
+
+              <label class="admin-secondary-button">
+                Choose Image
+                <input
+                  id="main-image-file"
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  hidden>
+              </label>
+            </div>
+
+            <div class="winner-media-field">
+              <h3>Presentation Video</h3>
+
+              <div
+                id="video-preview"
+                class="winner-media-preview">
+                No video uploaded
+              </div>
+
+              <label class="admin-secondary-button">
+                Choose Video
+                <input
+                  id="presentation-video-file"
+                  type="file"
+                  accept="video/mp4,video/webm"
+                  hidden>
+              </label>
+            </div>
+
+          </div>
+
+        </section>
+
+        <div class="winner-form-actions">
+
+          <button
+            id="save-winner-button"
+            class="admin-primary-button"
+            type="submit">
+            Save Winner
+          </button>
+
+        </div>
+
+      </form>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin-components.js"></script>
+  <script src="../js/admin-past-winners.js"></script>
+
+</body>
+</html>

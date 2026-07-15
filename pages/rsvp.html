@@ -93,6 +93,12 @@
 </form>
 
 <div
+  id="rsvpStatus"
+  class="login-message"
+  hidden>
+</div>
+
+<div
   class="rsvp-confirmation"
   id="rsvpConfirmation"
   hidden>
@@ -125,19 +131,93 @@
 
 <div id="site-footer"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/auth.js"></script>
 <script src="../js/components.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("#rsvpForm");
   const confirmation = document.querySelector("#rsvpConfirmation");
+  const statusMessage = document.querySelector("#rsvpStatus");
+  const submitButton = form?.querySelector('button[type="submit"]');
 
-  if (!form || !confirmation) return;
+  if (!form || !confirmation || !statusMessage || !submitButton) {
+    return;
+  }
 
-  form.addEventListener("submit", (event) => {
+  function showStatus(message, isError = false) {
+    statusMessage.textContent = message;
+    statusMessage.classList.toggle("is-error", isError);
+    statusMessage.hidden = false;
+  }
+
+  function clearStatus() {
+    statusMessage.textContent = "";
+    statusMessage.classList.remove("is-error");
+    statusMessage.hidden = true;
+  }
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    clearStatus();
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    const formData = new FormData(form);
+
+    const { data: tournament, error: tournamentError } =
+      await foxgloveSupabase
+        .from("tournaments")
+        .select("id")
+        .eq("year", 2027)
+        .eq("status", "open")
+        .single();
+
+    if (tournamentError || !tournament) {
+      showStatus(
+        "The RSVP form is temporarily unavailable. Please try again later.",
+        true
+      );
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit";
+      return;
+    }
+
+    const attendanceValue = formData.get("attendance");
+
+    const { error: submissionError } =
+      await foxgloveSupabase
+        .from("rsvps")
+        .insert({
+          tournament_id: tournament.id,
+          first_name: formData.get("firstName").trim(),
+          last_name: formData.get("lastName").trim(),
+          email: formData.get("email").trim(),
+          attendance_status:
+            attendanceValue === "yes" ? "attending" : "declined",
+          dietary_restrictions:
+            formData.get("dietary").trim() || null,
+          special_requests:
+            formData.get("requests").trim() || null,
+          review_status: "new"
+        });
+
+    if (submissionError) {
+      showStatus(
+        "Your RSVP could not be submitted. Please try again.",
+        true
+      );
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit";
+      return;
+    }
 
     form.hidden = true;
+    statusMessage.hidden = true;
     confirmation.hidden = false;
 
     confirmation.scrollIntoView({

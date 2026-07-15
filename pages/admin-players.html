@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Player Directory | The Foxglove</title>
+
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body data-admin-page="players">
+
+  <div class="admin-layout">
+
+    <div id="admin-sidebar-placeholder"></div>
+
+    <main class="admin-content">
+
+      <header class="admin-header admin-section-header">
+
+        <div>
+          <p class="admin-eyebrow">Member Management</p>
+          <h1>Player Directory</h1>
+          <p id="admin-welcome">Loading administrator access...</p>
+        </div>
+
+        <button
+          id="add-member-button"
+          class="admin-primary-button"
+          type="button"
+          disabled>
+          Add Member
+        </button>
+
+      </header>
+
+      <section
+        class="admin-table-panel"
+        aria-labelledby="players-heading">
+
+        <div class="admin-table-heading">
+          <div>
+            <h2 id="players-heading">Members</h2>
+            <p id="member-count">Loading members...</p>
+          </div>
+        </div>
+
+        <div
+          id="players-message"
+          class="admin-status-message"
+          role="status"
+          aria-live="polite">
+          Loading Player Directory...
+        </div>
+
+        <div
+          id="players-table-wrapper"
+          class="admin-table-wrapper"
+          hidden>
+
+          <table class="admin-table">
+
+            <thead>
+              <tr>
+                <th scope="col">Member</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+
+            <tbody id="players-table-body"></tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/admin-components.js"></script>
+<script src="../js/admin-players.js"></script>
+
+</body>
+</html>

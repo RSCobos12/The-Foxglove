@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create Administrator | The Foxglove</title>
+
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body class="login-page">
+
+<main class="login-main">
+
+<section class="login-panel">
+
+<div class="login-brand">
+
+<img
+  src="../assets/logos/foxglove-logo-clean.png"
+  alt="Foxglove Crest"
+  class="login-logo">
+
+<p class="login-eyebrow">
+The Foxglove
+</p>
+
+<h1>Create Administrator</h1>
+
+<p class="login-intro">
+Create the first administrator account for The Foxglove Platform.
+</p>
+
+</div>
+
+<form id="admin-signup-form" class="login-form">
+
+<div class="login-field">
+<label>First Name</label>
+<input
+type="text"
+id="first-name"
+required>
+</div>
+
+<div class="login-field">
+<label>Last Name</label>
+<input
+type="text"
+id="last-name"
+required>
+</div>
+
+<div class="login-field">
+<label>Email</label>
+<input
+type="email"
+id="signup-email"
+required>
+</div>
+
+<div class="login-field">
+<label>Password</label>
+<input
+type="password"
+id="signup-password"
+minlength="12"
+required>
+</div>
+
+<div
+id="signup-message"
+class="login-message"
+hidden>
+</div>
+
+<button
+class="login-submit"
+type="submit">
+Create Administrator
+</button>
+
+</form>
+
+</section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/auth.js"></script>
+
+</body>
+
+</html>

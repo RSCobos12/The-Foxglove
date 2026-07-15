@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | The Foxglove</title>
+
+<link rel="icon" href="../favicon.ico">
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+
+</head>
+
+<body data-admin-page="overview">
+
+<div class="admin-layout">
+
+<div id="admin-sidebar-placeholder"></div>
+
+<main class="admin-content">
+
+  <header class="admin-header">
+
+    <div>
+      <p class="admin-eyebrow">Admin Dashboard</p>
+      <h1>Overview</h1>
+      <p id="admin-welcome">Welcome back.</p>
+    </div>
+
+  </header>
+
+  <section class="overview-grid" aria-label="Dashboard notifications">
+
+    <article class="overview-card">
+
+      <div class="overview-card-header">
+        <div>
+          <p class="overview-label">Gallery</p>
+          <h2>Photo Submissions</h2>
+        </div>
+
+        <span class="overview-count">0</span>
+      </div>
+
+      <p class="overview-description">
+        Review new photographs submitted by members.
+      </p>
+
+      <div class="overview-empty">
+        No new photo submissions.
+      </div>
+
+      <a class="overview-action" href="#">
+        Open Gallery Management
+      </a>
+
+    </article>
+
+    <article class="overview-card">
+
+      <div class="overview-card-header">
+        <div>
+          <p class="overview-label">Members</p>
+          <h2>Account Requests</h2>
+        </div>
+
+        <span class="overview-count">0</span>
+      </div>
+
+      <p class="overview-description">
+        Review password, email, and account-access requests.
+      </p>
+
+      <div class="overview-empty">
+        No new account requests.
+      </div>
+
+      <a class="overview-action" href="#">
+        Open Player Directory
+      </a>
+
+    </article>
+
+    <article class="overview-card">
+
+      <div class="overview-card-header">
+        <div>
+          <p class="overview-label">Tournament</p>
+          <h2>New RSVPs</h2>
+        </div>
+
+        <span
+  id="overview-rsvp-count"
+  class="overview-count">
+  0
+</span>
+      </div>
+
+      <p class="overview-description">
+        Review newly submitted attendance responses.
+      </p>
+
+      <div
+  id="overview-rsvp-message"
+  class="overview-empty">
+  Loading new RSVP submissions...
+</div>
+
+      <a
+  class="overview-action"
+  href="admin-rsvp.html">
+  Open RSVP Management
+</a>
+
+    </article>
+
+  </section>
+
+</main>
+
+</p>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/admin-components.js"></script>
+<script src="../js/admin.js"></script>
+
+</body>
+
+</html>
