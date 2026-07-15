@@ -300,6 +300,13 @@ margin: 0 auto;
   z-index: 3;
 }
 
+.winner-photo.is-placeholder {
+  box-sizing: border-box;
+  padding: 80px;
+  object-fit: contain;
+  opacity: 0.35;
+}
+
 .winner-video {
   opacity: 0;
   z-index: 2;

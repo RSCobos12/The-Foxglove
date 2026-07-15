@@ -178,53 +178,109 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function renderWinnerDetail(year, champion) {
-    if (!champion) return;
+  if (!champion) return;
 
-    detailYear.textContent = `${year} Winner`;
-    detailName.textContent = champion.winner_name;
+  detailYear.textContent = `${year} Winner`;
+  detailName.textContent = champion.winner_name;
 
-    winningScore.textContent =
-      champion.winning_score || "—";
+  winningScore.textContent =
+    champion.winning_score || "—";
 
-    winnerDinner.textContent =
-      champion.winner_dinner || "—";
+  winnerDinner.textContent =
+    champion.winner_dinner || "—";
 
-    coursesPlayed.textContent =
-      champion.courses_played || "—";
+  coursesPlayed.textContent =
+    champion.courses_played || "—";
 
-    reflection.textContent =
-      champion.reflection || "—";
+  reflection.textContent =
+    champion.reflection || "—";
 
-    const mainImagePath =
-      champion.main_image_path ||
-      champion.card_image_path;
+  const mainImagePath =
+    champion.main_image_path ||
+    champion.card_image_path;
 
-    if (mainImagePath) {
-      winnerPhoto.src = getPublicUrl(mainImagePath);
-      winnerPhoto.alt = champion.winner_name;
-      winnerPhoto.style.display = "block";
-    } else {
-      winnerPhoto.removeAttribute("src");
-      winnerPhoto.alt = "";
-      winnerPhoto.style.display = "none";
-    }
-
-    if (champion.presentation_video_path) {
-      winnerVideo.src = getPublicUrl(
-        champion.presentation_video_path
-      );
-
-      winnerVideo.style.display = "block";
-      winnerVideo.load();
-    } else {
-      winnerVideo.pause();
-      winnerVideo.removeAttribute("src");
-      winnerVideo.style.display = "none";
-      winnerVideo.load();
-    }
-
-    initializePresentation();
+  if (mainImagePath) {
+    winnerPhoto.src = getPublicUrl(mainImagePath);
+winnerPhoto.alt = champion.winner_name;
+winnerPhoto.style.display = "block";
+winnerPhoto.classList.remove("is-placeholder");
+  } else {
+    winnerPhoto.removeAttribute("src");
+    winnerPhoto.alt = "";
+    winnerPhoto.style.display = "none";
   }
+
+  if (champion.presentation_video_path) {
+    winnerVideo.src = getPublicUrl(
+      champion.presentation_video_path
+    );
+
+    winnerVideo.style.display = "block";
+    winnerVideo.load();
+  } else {
+    winnerVideo.pause();
+    winnerVideo.removeAttribute("src");
+    winnerVideo.style.display = "none";
+    winnerVideo.load();
+  }
+
+  initializePresentation();
+}
+
+function renderEmptyWinnerDetail(year = "2027") {
+  showPhoto();
+
+  detailYear.textContent = `${year} Winner`;
+  detailName.textContent = `Reserved for ${year} Winner`;
+
+  winningScore.textContent = "—";
+  winnerDinner.textContent = "—";
+  coursesPlayed.textContent = "—";
+
+  reflection.textContent =
+    "The next chapter of Foxglove history will be written here.";
+
+  winnerPhoto.src =
+  "../assets/icons/foxglove-icon-gold-transparent.png";
+
+winnerPhoto.alt = "Foxglove placeholder";
+winnerPhoto.style.display = "block";
+
+  winnerVideo.pause();
+  winnerVideo.removeAttribute("src");
+  winnerVideo.style.display = "none";
+  winnerVideo.load();
+
+  winnerPresentation.classList.remove("is-playing");
+}
+
+function renderEmptyWinnerDetail(year = "2027") {
+  showPhoto();
+
+  detailYear.textContent = `${year} Winner`;
+  detailName.textContent = `Reserved for ${year} Winner`;
+
+  winningScore.textContent = "—";
+  winnerDinner.textContent = "—";
+  coursesPlayed.textContent = "—";
+
+  reflection.textContent =
+    "The next chapter of Foxglove history will be written here.";
+
+  winnerPhoto.src =
+  "../assets/icons/foxglove-icon-gold.png";
+
+winnerPhoto.alt = "Foxglove placeholder";
+winnerPhoto.style.display = "block";
+winnerPhoto.classList.add("is-placeholder");
+
+  winnerVideo.pause();
+  winnerVideo.removeAttribute("src");
+  winnerVideo.style.display = "none";
+  winnerVideo.load();
+
+  winnerPresentation.classList.remove("is-playing");
+}
 
   function activateWinner(year) {
     const champion = championsByYear.get(
@@ -318,8 +374,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
 
     if (firstAvailableCard) {
-      activateWinner(firstAvailableCard.dataset.year);
-    }
+  activateWinner(firstAvailableCard.dataset.year);
+} else {
+  renderEmptyWinnerDetail("2027");
+}
   }
 
   winnerCards.forEach((card) => {
