@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Courses Management | The Foxglove</title>
+
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body data-admin-page="courses">
+
+  <div class="admin-layout">
+
+    <div id="admin-sidebar-placeholder"></div>
+
+    <main class="admin-content">
+
+      <header class="admin-header admin-section-header">
+
+        <div>
+          <p class="admin-eyebrow">Content Management</p>
+          <h1>Courses</h1>
+
+          <p id="admin-welcome">
+            Loading administrator access...
+          </p>
+        </div>
+
+        <button
+          id="add-course-button"
+          class="admin-primary-button"
+          type="button">
+          Add Course
+        </button>
+
+      </header>
+
+      <section
+        class="admin-table-panel"
+        aria-labelledby="courses-management-heading">
+
+        <div class="admin-table-heading">
+
+          <div>
+            <h2 id="courses-management-heading">
+              Course Library
+            </h2>
+
+            <p id="course-count">
+              Loading courses...
+            </p>
+          </div>
+
+        </div>
+
+        <div
+          id="courses-admin-message"
+          class="admin-status-message"
+          role="status"
+          aria-live="polite">
+          Loading course library...
+        </div>
+
+        <div
+          id="courses-admin-list"
+          class="courses-admin-list"
+          hidden>
+        </div>
+
+      </section>
+
+      <section
+        id="course-editor-panel"
+        class="course-editor-panel"
+        hidden>
+
+        <div class="gallery-section-heading">
+
+          <div>
+            <p class="overview-label">Course Editor</p>
+            <h2 id="course-editor-title">Add Course</h2>
+          </div>
+
+        </div>
+
+        <form id="course-editor-form">
+
+          <input
+            id="course-id"
+            type="hidden">
+
+          <div class="winner-form-grid">
+
+            <div class="winner-form-field">
+              <label for="course-name">
+                Course Name
+              </label>
+
+              <input
+                id="course-name"
+                type="text"
+                required>
+            </div>
+
+            <div class="winner-form-field">
+              <label for="course-location">
+                Location
+              </label>
+
+              <input
+                id="course-location"
+                type="text"
+                required>
+            </div>
+
+            <div class="winner-form-field">
+              <label for="course-par">
+                Par
+              </label>
+
+              <input
+                id="course-par"
+                type="number"
+                min="1"
+                required>
+            </div>
+
+            <div class="winner-form-field">
+              <label for="course-rating">
+                Rating
+              </label>
+
+              <input
+                id="course-rating"
+                type="number"
+                min="0"
+                step="0.1"
+                required>
+            </div>
+
+            <div class="winner-form-field">
+              <label for="course-slope">
+                Slope
+              </label>
+
+              <input
+                id="course-slope"
+                type="number"
+                min="1"
+                required>
+            </div>
+
+            <div class="winner-form-field">
+              <label for="course-display-order">
+                Display Order
+              </label>
+
+              <input
+                id="course-display-order"
+                type="number"
+                min="1"
+                required>
+            </div>
+
+            <div class="winner-form-field">
+              <label for="course-image-path">
+                Image Filename
+              </label>
+
+              <input
+                id="course-image-path"
+                type="text"
+                placeholder="spanish-bay.jpg"
+                required>
+            </div>
+
+            <div class="winner-form-field">
+              <label for="course-website">
+                Official Website
+              </label>
+
+              <input
+                id="course-website"
+                type="url"
+                required>
+            </div>
+
+          </div>
+
+          <div class="winner-form-field">
+            <label for="course-description">
+              Description
+            </label>
+
+            <textarea
+              id="course-description"
+              rows="7"
+              required>
+            </textarea>
+          </div>
+
+          <div class="course-editor-actions">
+
+            <button
+              id="cancel-course-button"
+              class="admin-secondary-button"
+              type="button">
+              Cancel
+            </button>
+
+            <button
+              id="save-course-button"
+              class="admin-primary-button"
+              type="submit">
+              Save Course
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin-components.js"></script>
+  <script src="../js/admin-courses.js"></script>
+
+</body>
+</html>
