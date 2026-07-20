@@ -783,3 +783,500 @@ body {
     width: 100%;
   }
 }
+
+/* ========================================
+   MEMBER'S LOUNGE CURRENT SEASON
+======================================== */
+
+.overview-card--season {
+  grid-column: 1 / -1;
+  min-height: auto;
+}
+
+.season-admin-fields {
+  display: grid;
+  grid-template-columns:
+    minmax(220px, 0.65fr)
+    minmax(320px, 1.35fr);
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+.season-admin-field {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.season-admin-field label {
+  color: #10243f;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.season-admin-field select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 46px;
+  padding: 0 12px;
+  border: 1px solid rgba(16, 36, 63, 0.24);
+  border-radius: 5px;
+  background: #ffffff;
+  color: #10243f;
+  font: inherit;
+}
+
+.season-admin-field select:focus {
+  border-color: #a87d24;
+  outline: 3px solid rgba(168, 125, 36, 0.14);
+}
+
+.season-description-preview {
+  min-height: 72px;
+  margin: 4px 0 0;
+  padding: 14px 16px;
+  border-left: 3px solid #a87d24;
+  background: rgba(168, 125, 36, 0.07);
+  color: #4f5664;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.overview-card--season .admin-primary-button {
+  width: fit-content;
+}
+
+.admin-status-message {
+  margin: 0 0 18px;
+  color: #346b43;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.admin-status-message.is-error {
+  color: #9b2f2f;
+}
+
+@media (max-width: 760px) {
+  .season-admin-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-card--season .admin-primary-button {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   CONCIERGE MANAGEMENT
+======================================== */
+
+.concierge-admin-layout {
+  display: grid;
+  grid-template-columns:
+    minmax(270px, 0.72fr)
+    minmax(500px, 1.55fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.concierge-list-panel,
+.concierge-editor-panel {
+  padding: 24px;
+  border: 1px solid rgba(16, 36, 63, 0.12);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(16, 36, 63, 0.07);
+}
+
+.concierge-list-panel {
+  position: sticky;
+  top: 24px;
+}
+
+.concierge-panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.concierge-panel-heading h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.concierge-count {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #10243f;
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.concierge-list {
+  display: grid;
+  gap: 9px;
+}
+
+.concierge-list-item {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(16, 36, 63, 0.12);
+  border-radius: 6px;
+  background: #faf9f5;
+  color: #10243f;
+  cursor: pointer;
+  text-align: left;
+}
+
+.concierge-list-item:hover,
+.concierge-list-item:focus-visible {
+  border-color: rgba(168, 125, 36, 0.6);
+  outline: none;
+}
+
+.concierge-list-item.is-selected {
+  border-color: #a87d24;
+  background: rgba(168, 125, 36, 0.08);
+}
+
+.concierge-list-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 5px;
+  background: rgba(16, 36, 63, 0.08);
+  object-fit: cover;
+}
+
+.concierge-list-copy {
+  min-width: 0;
+}
+
+.concierge-list-copy strong {
+  display: block;
+  overflow: hidden;
+  font-size: 0.9rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.concierge-list-copy small {
+  display: block;
+  margin-top: 4px;
+  color: rgba(16, 36, 63, 0.62);
+  font-size: 0.75rem;
+  text-transform: capitalize;
+}
+
+.concierge-list-status {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #a4a4a4;
+}
+
+.concierge-list-status.is-active {
+  background: #3f8a54;
+}
+
+.concierge-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.concierge-form-field {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.concierge-form-field--full {
+  grid-column: 1 / -1;
+}
+
+.concierge-form-field label,
+.concierge-image-label {
+  margin: 0;
+  color: #10243f;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.concierge-form-field input,
+.concierge-form-field select,
+.concierge-form-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid rgba(16, 36, 63, 0.22);
+  border-radius: 5px;
+  background: #ffffff;
+  color: #10243f;
+  font: inherit;
+}
+
+.concierge-form-field input,
+.concierge-form-field select {
+  min-height: 46px;
+  padding: 0 12px;
+}
+
+.concierge-form-field textarea {
+  min-height: 125px;
+  padding: 12px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.concierge-form-field input:focus,
+.concierge-form-field select:focus,
+.concierge-form-field textarea:focus {
+  border-color: #a87d24;
+  outline: 3px solid rgba(168, 125, 36, 0.13);
+}
+
+.concierge-form-field small,
+.concierge-image-help {
+  margin: 0;
+  color: rgba(16, 36, 63, 0.58);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.concierge-image-editor {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.65fr) minmax(280px, 1.35fr);
+  gap: 22px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid rgba(16, 36, 63, 0.12);
+  border-radius: 7px;
+  background: #faf9f5;
+}
+
+.concierge-upload-button {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 14px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.concierge-image-preview-frame {
+  display: grid;
+  min-height: 190px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px dashed rgba(16, 36, 63, 0.25);
+  border-radius: 7px;
+  background: #ffffff;
+}
+
+.concierge-image-preview-frame img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.concierge-image-preview-frame p {
+  color: rgba(16, 36, 63, 0.52);
+  font-size: 0.85rem;
+}
+
+.concierge-active-control {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin-top: 22px;
+  padding: 16px;
+  border-radius: 6px;
+  background: rgba(16, 36, 63, 0.05);
+  color: #10243f;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.concierge-active-control input {
+  margin-top: 3px;
+}
+
+.concierge-editor-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(16, 36, 63, 0.12);
+}
+
+.concierge-editor-actions > div {
+  display: flex;
+  gap: 10px;
+}
+
+.admin-secondary-button {
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid rgba(16, 36, 63, 0.24);
+  border-radius: 5px;
+  background: #ffffff;
+  color: #10243f;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-secondary-button:hover {
+  border-color: #a87d24;
+}
+
+.admin-secondary-button.is-danger {
+  border-color: rgba(139, 40, 40, 0.35);
+  color: #8b2828;
+}
+
+@media (max-width: 1050px) {
+  .concierge-admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .concierge-list-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 680px) {
+  .concierge-form-grid,
+  .concierge-image-editor {
+    grid-template-columns: 1fr;
+  }
+
+  .concierge-editor-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .concierge-editor-actions > div {
+    display: grid;
+  }
+
+  .concierge-editor-actions button {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   MEMBER'S LOUNGE MESSAGE
+======================================== */
+
+.overview-card--member-message {
+  grid-column: 1 / -1;
+  min-height: auto;
+}
+
+.member-message-admin-fields {
+  display: grid;
+  grid-template-columns:
+    minmax(220px, 1fr)
+    minmax(220px, 0.7fr);
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.member-message-admin-field {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.member-message-admin-field--full {
+  grid-column: 1 / -1;
+}
+
+.member-message-admin-field label {
+  color: #10243f;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.member-message-admin-field input,
+.member-message-admin-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid rgba(16, 36, 63, 0.24);
+  border-radius: 5px;
+  background: #ffffff;
+  color: #10243f;
+  font: inherit;
+}
+
+.member-message-admin-field input {
+  min-height: 46px;
+  padding: 0 12px;
+}
+
+.member-message-admin-field textarea {
+  min-height: 150px;
+  padding: 12px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.member-message-admin-field input:focus,
+.member-message-admin-field textarea:focus {
+  border-color: #a87d24;
+  outline: 3px solid rgba(168, 125, 36, 0.14);
+}
+
+.member-message-publish-control {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border-radius: 6px;
+  background: rgba(16, 36, 63, 0.05);
+  color: #10243f;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.member-message-publish-control input {
+  margin-top: 3px;
+}
+
+.member-message-admin-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+@media (max-width: 760px) {
+  .member-message-admin-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .member-message-admin-field--full {
+    grid-column: auto;
+  }
+
+  .member-message-admin-actions {
+    display: grid;
+  }
+
+  .member-message-admin-actions button {
+    width: 100%;
+  }
+}

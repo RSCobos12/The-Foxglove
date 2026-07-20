@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="The private Member's Lounge for The Foxglove Invitational.">
+
+  <title>Member's Lounge | The Foxglove Invitational</title>
+
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/member-lounge.css">
+</head>
+
+<body class="member-lounge-page">
+
+  <div class="member-lounge-shell">
+
+    <!-- =====================================
+         MEMBER SIDEBAR
+    ====================================== -->
+
+    <aside class="member-sidebar">
+
+      <div class="member-sidebar-brand">
+
+        <img
+          src="../assets/logos/foxglove-logo-clean.png"
+          alt="The Foxglove Invitational"
+          class="member-sidebar-logo">
+
+       <p class="member-sidebar-brand-name">
+  The<br>
+  <span>Foxglove</span>
+</p>
+
+      </div>
+
+      <div class="member-sidebar-heading">
+
+        <h1>
+          The Member’s<br>
+          Lounge
+        </h1>
+
+        <span class="member-sidebar-heading-line"></span>
+
+      </div>
+
+      <nav
+        class="member-navigation"
+        aria-label="Member navigation">
+
+        <a
+          class="member-nav-link is-active"
+          href="member-lounge.html"
+          aria-current="page">
+
+          <span class="member-nav-icon" aria-hidden="true">⌂</span>
+          <span>Home</span>
+
+        </a>
+
+        <a
+          class="member-nav-link"
+          href="#member-gallery">
+
+          <span class="member-nav-icon" aria-hidden="true">▧</span>
+          <span>Gallery</span>
+
+        </a>
+
+        <a
+          class="member-nav-link"
+          href="#member-directory">
+
+          <span class="member-nav-icon" aria-hidden="true">♙</span>
+          <span>Member Directory</span>
+
+        </a>
+
+        <a
+          class="member-nav-link"
+          href="#member-concierge">
+
+          <span class="member-nav-icon" aria-hidden="true">⌘</span>
+          <span>Concierge</span>
+
+        </a>
+
+        <a
+          class="member-nav-link"
+          href="#member-rules">
+
+          <span class="member-nav-icon" aria-hidden="true">▤</span>
+          <span>Rules</span>
+
+        </a>
+
+      </nav>
+
+      <div class="member-sidebar-footer">
+
+        <a
+          class="member-account-link"
+          href="#member-profile">
+
+          <span
+            class="member-account-initials"
+            id="member-sidebar-initials">
+            SC
+          </span>
+
+          <span class="member-account-copy">
+            <strong id="member-sidebar-name">Scott Cobos</strong>
+            <small>View Profile</small>
+          </span>
+
+          <span class="member-account-arrow" aria-hidden="true">›</span>
+
+        </a>
+
+        <button
+          class="member-logout-button"
+          id="member-logout-button"
+          type="button">
+
+          <span aria-hidden="true">↪</span>
+          <span>Log Out</span>
+
+        </button>
+
+      </div>
+
+    </aside>
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+
+    <main class="member-main">
+
+      <!-- HERO -->
+
+      <section class="member-hero">
+
+        <div class="member-hero-overlay"></div>
+
+        <div class="member-hero-content">
+
+          <p class="member-welcome-label">
+            Welcome,
+          </p>
+
+          <h2 id="member-first-name">
+            Scott.
+          </h2>
+
+          <span class="member-gold-divider"></span>
+
+          <p class="member-welcome-message">
+            Come on in, bromigo.
+          </p>
+
+        </div>
+
+        <section
+  class="member-weather-card"
+  aria-label="Current weather">
+
+  <div class="member-weather-locations">
+
+    <!-- MEMBER'S LOCAL WEATHER -->
+
+    <article class="member-weather-location">
+
+      <p
+        id="member-local-weather-location"
+        class="member-card-eyebrow">
+        Local Weather
+      </p>
+
+      <div class="member-weather-reading">
+
+        <span
+          id="member-local-weather-icon"
+          class="member-weather-symbol"
+          aria-hidden="true">
+          —
+        </span>
+
+        <strong id="member-local-weather-temperature">
+          --°F
+        </strong>
+
+      </div>
+
+      <p id="member-local-weather-condition">
+        Requesting your location...
+      </p>
+
+    </article>
+
+    <!-- MONTEREY WEATHER -->
+
+    <article class="member-weather-location">
+
+      <p class="member-card-eyebrow">
+        Monterey, CA
+      </p>
+
+      <div class="member-weather-reading">
+
+        <span
+          id="member-monterey-weather-icon"
+          class="member-weather-symbol"
+          aria-hidden="true">
+          —
+        </span>
+
+        <strong id="member-monterey-weather-temperature">
+          --°F
+        </strong>
+
+      </div>
+
+      <p id="member-monterey-weather-condition">
+        Loading current weather...
+      </p>
+
+    </article>
+
+  </div>
+
+  <a
+    id="member-weather-forecast-link"
+    class="member-weather-link"
+    href="https://forecast.weather.gov/MapClick.php?lat=36.6002&lon=-121.8947"
+    target="_blank"
+    rel="noopener noreferrer">
+    View Monterey Forecast
+    <span aria-hidden="true">›</span>
+  </a>
+
+</section>
+
+      </section>
+
+      <!-- CONTENT WRAPPER -->
+
+      <div class="member-content">
+
+        <!-- CURRENT SEASON -->
+
+        <section class="member-season-card">
+
+          <div class="member-season-copy">
+
+            <p class="member-card-eyebrow">
+              Current Season
+            </p>
+
+            <h2 id="member-season-title">
+  The Foxglove
+</h2>
+
+<p id="member-season-description">
+  Current season information is being prepared.
+</p>
+
+          </div>
+
+          <div class="member-season-emblem">
+
+  <img
+    src="../assets/logos/foxglove-logo-clean.png"
+    alt=""
+    aria-hidden="true">
+
+</div>
+
+        </section>
+
+        <!-- SUMMARY CARDS -->
+
+        <section class="member-summary-grid">
+
+          <article class="member-summary-card">
+
+  <p class="member-card-eyebrow">
+    RSVP Status
+  </p>
+
+  <div class="member-summary-heading">
+
+    <span
+      id="member-rsvp-icon"
+      class="member-summary-icon"
+      aria-hidden="true">
+      ?
+    </span>
+
+    <h2 id="member-rsvp-status">
+      Awaiting Response
+    </h2>
+
+  </div>
+
+  <p id="member-rsvp-description">
+    Your RSVP status is being checked.
+  </p>
+
+  <a
+    id="member-rsvp-link"
+    class="member-outline-button"
+    href="rsvp.html">
+    Respond
+    <span aria-hidden="true">›</span>
+  </a>
+
+</article>
+
+          <article class="member-summary-card">
+
+  <p class="member-card-eyebrow">
+    Committee Notes
+  </p>
+
+  <div class="member-summary-heading">
+
+    <span
+      class="member-summary-icon"
+      aria-hidden="true">
+      ✉
+    </span>
+
+    <h2 id="member-message-card-title">
+      A note from<br>
+      the committee
+    </h2>
+
+  </div>
+
+  <p id="member-message-card-preview">
+    Thank you for being part of The Foxglove tradition.
+  </p>
+
+  <button
+    id="open-member-message-dialog"
+    class="member-outline-button member-message-open-button"
+    type="button">
+    Read Message
+    <span aria-hidden="true">›</span>
+  </button>
+
+</article>
+
+          <article
+  class="member-summary-card"
+  id="member-profile">
+
+  <p class="member-card-eyebrow">
+    Member Profile
+  </p>
+
+  <div class="member-summary-heading">
+
+    <span
+      class="member-summary-icon"
+      aria-hidden="true">
+      ♧
+    </span>
+
+    <h2>
+      Jacket Size<br>
+      <strong id="member-jacket-size">
+        Not Set
+      </strong>
+    </h2>
+
+  </div>
+
+  <p>
+    This helps us prepare your champion jacket experience.
+  </p>
+
+  <button
+    id="open-jacket-size-dialog"
+    class="member-outline-button"
+    type="button">
+    Update Size
+    <span aria-hidden="true">›</span>
+  </button>
+
+</article>
+
+        </section>
+
+        <dialog
+  id="member-jacket-dialog"
+  class="member-jacket-dialog">
+
+  <form
+    class="member-jacket-dialog-card"
+    method="dialog">
+
+    <div class="member-jacket-dialog-header">
+
+      <div>
+        <p class="member-card-eyebrow">
+          Member Profile
+        </p>
+
+        <h2>Update Jacket Size</h2>
+      </div>
+
+      <button
+        id="close-jacket-size-dialog"
+        class="member-dialog-close"
+        type="button"
+        aria-label="Close jacket-size window">
+        ×
+      </button>
+
+    </div>
+
+    <p class="member-jacket-dialog-copy">
+      Select the size that should be used when preparing
+      your Foxglove jacket.
+    </p>
+
+    <label
+      class="member-jacket-label"
+      for="member-jacket-size-select">
+      Jacket size
+    </label>
+
+    <select id="member-jacket-size-select">
+
+      <option value="">
+        Choose a size
+      </option>
+
+      <optgroup label="Short">
+        <option value="36S">36S</option>
+        <option value="38S">38S</option>
+        <option value="40S">40S</option>
+        <option value="42S">42S</option>
+        <option value="44S">44S</option>
+        <option value="46S">46S</option>
+        <option value="48S">48S</option>
+      </optgroup>
+
+      <optgroup label="Regular">
+        <option value="36R">36R</option>
+        <option value="38R">38R</option>
+        <option value="40R">40R</option>
+        <option value="42R">42R</option>
+        <option value="44R">44R</option>
+        <option value="46R">46R</option>
+        <option value="48R">48R</option>
+        <option value="50R">50R</option>
+        <option value="52R">52R</option>
+        <option value="54R">54R</option>
+      </optgroup>
+
+      <optgroup label="Long">
+        <option value="36L">36L</option>
+        <option value="38L">38L</option>
+        <option value="40L">40L</option>
+        <option value="42L">42L</option>
+        <option value="44L">44L</option>
+        <option value="46L">46L</option>
+        <option value="48L">48L</option>
+        <option value="50L">50L</option>
+        <option value="52L">52L</option>
+        <option value="54L">54L</option>
+      </optgroup>
+
+    </select>
+
+    <p
+      id="member-jacket-message"
+      class="member-jacket-message"
+      role="status"
+      aria-live="polite"
+      hidden>
+    </p>
+
+    <div class="member-jacket-dialog-actions">
+
+      <button
+        id="cancel-jacket-size"
+        class="member-outline-button"
+        type="button">
+        Cancel
+      </button>
+
+      <button
+        id="save-member-jacket-size"
+        class="member-primary-button"
+        type="button">
+        Save Jacket Size
+      </button>
+
+    </div>
+
+  </form>
+
+</dialog>
+
+<dialog
+  id="member-message-dialog"
+  class="member-message-dialog">
+
+  <article class="member-message-dialog-card">
+
+    <div class="member-message-dialog-header">
+
+      <div>
+        <p class="member-card-eyebrow">
+          Message from the Committee
+        </p>
+
+        <h2 id="member-message-dialog-title">
+          A Note from the Committee
+        </h2>
+      </div>
+
+      <button
+        id="close-member-message-dialog"
+        class="member-dialog-close"
+        type="button"
+        aria-label="Close committee message">
+        ×
+      </button>
+
+    </div>
+
+    <div
+      id="member-message-dialog-body"
+      class="member-message-dialog-body">
+    </div>
+
+    <footer class="member-message-dialog-footer">
+
+      <p>
+        — <span id="member-message-dialog-author">
+          Tournament Committee
+        </span>
+      </p>
+
+      <time
+        id="member-message-dialog-date"
+        datetime="">
+      </time>
+
+    </footer>
+
+  </article>
+
+</dialog>
+
+        <!-- GALLERY AND CONCIERGE -->
+
+        <section class="member-feature-grid">
+
+          <article
+            class="member-gallery-card"
+            id="member-gallery">
+
+            <p class="member-card-eyebrow">
+              Share Your Memories
+            </p>
+
+            <p class="member-gallery-description">
+              Upload up to 5 of your favorite photos from the 2027
+              Invitational. Submissions are reviewed before appearing
+              in the public Gallery.
+            </p>
+
+            <div class="member-upload-grid">
+
+              <button class="member-upload-slot" type="button">
+                <span aria-hidden="true">▧+</span>
+                <strong>Add Photo</strong>
+                <small>or drag &amp; drop</small>
+              </button>
+
+              <button class="member-upload-slot" type="button">
+                <span aria-hidden="true">▧+</span>
+                <strong>Add Photo</strong>
+                <small>or drag &amp; drop</small>
+              </button>
+
+              <button class="member-upload-slot" type="button">
+                <span aria-hidden="true">▧+</span>
+                <strong>Add Photo</strong>
+                <small>or drag &amp; drop</small>
+              </button>
+
+              <button class="member-upload-slot" type="button">
+                <span aria-hidden="true">▧+</span>
+                <strong>Add Photo</strong>
+                <small>or drag &amp; drop</small>
+              </button>
+
+              <button class="member-upload-slot" type="button">
+                <span aria-hidden="true">▧+</span>
+                <strong>Add Photo</strong>
+                <small>or drag &amp; drop</small>
+              </button>
+
+            </div>
+
+            <div class="member-upload-footer">
+
+              <p>JPG, PNG up to 10MB each</p>
+
+              <button
+                class="member-primary-button"
+                type="button">
+                Upload Photos
+              </button>
+
+            </div>
+
+          </article>
+
+          <article
+  class="member-concierge-card"
+  id="member-concierge">
+
+  <div class="member-concierge-image-wrap">
+
+    <img
+      id="member-concierge-image"
+      class="member-concierge-image"
+      src="../images/monterey-hero.jpg"
+      alt="Concierge recommendation">
+
+  </div>
+
+  <div class="member-concierge-content">
+
+    <p class="member-card-eyebrow">
+      Concierge Recommendation
+    </p>
+
+    <h2 id="member-concierge-name">
+      Monterey Recommendations
+    </h2>
+
+    <p
+      id="member-concierge-headline"
+      class="member-concierge-headline">
+      Curated for Foxglove members
+    </p>
+
+    <p
+      id="member-concierge-description"
+      class="member-concierge-description">
+      Concierge recommendations are currently being prepared
+      for the next edition of The Foxglove.
+    </p>
+
+    <div
+      id="member-concierge-actions"
+      class="member-concierge-actions"
+      hidden>
+
+      <a
+        id="member-concierge-website"
+        class="member-outline-button"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        hidden>
+        Visit Website
+        <span aria-hidden="true">›</span>
+      </a>
+
+      <a
+        id="member-concierge-map"
+        class="member-outline-button"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        hidden>
+        Directions
+        <span aria-hidden="true">›</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+
+        </section>
+
+        <!-- AT A GLANCE -->
+
+        <section class="member-glance-card">
+
+          <p class="member-card-eyebrow">
+            At a Glance
+          </p>
+
+          <div class="member-glance-grid">
+
+            <article class="member-glance-item">
+
+              <div class="member-glance-heading">
+                <span aria-hidden="true">▣</span>
+                <h2>Plan Your Trip</h2>
+              </div>
+
+              <p>
+                Hotel options, flights, transportation and local tips.
+              </p>
+
+              <a href="#travel">
+                Explore <span aria-hidden="true">›</span>
+              </a>
+
+            </article>
+
+            <article class="member-glance-item">
+
+              <div class="member-glance-heading">
+                <span aria-hidden="true">♜</span>
+                <h2>Dining</h2>
+              </div>
+
+              <p>
+                Curated restaurant recommendations in Monterey.
+              </p>
+
+              <a href="#dining">
+                Explore <span aria-hidden="true">›</span>
+              </a>
+
+            </article>
+
+            <article class="member-glance-item">
+
+              <div class="member-glance-heading">
+                <span aria-hidden="true">⌾</span>
+                <h2>Things To Do</h2>
+              </div>
+
+              <p>
+                Experience the best Monterey has to offer.
+              </p>
+
+              <a href="#activities">
+                Explore <span aria-hidden="true">›</span>
+              </a>
+
+            </article>
+
+            <article class="member-glance-item">
+
+              <div class="member-glance-heading">
+                <span aria-hidden="true">⚑</span>
+                <h2>Play More Golf</h2>
+              </div>
+
+              <p>
+                Nearby courses, practice facilities and more.
+              </p>
+
+              <a href="#golf">
+                Explore <span aria-hidden="true">›</span>
+              </a>
+
+            </article>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/member-lounge.js"></script>
+
+</body>
+</html>

@@ -43,11 +43,57 @@
   const { data: profiles, error: profilesError } =
     await foxgloveSupabase
       .from("profiles")
-      .select(
-        "id, first_name, last_name, email, role, is_active"
-      )
+      .select(`
+  id,
+  first_name,
+  last_name,
+  email,
+  role,
+  is_active,
+  jacket_size,
+  jacket_size_updated_at
+`)
       .order("last_name", { ascending: true })
       .order("first_name", { ascending: true });
+
+      const {
+  data: activeTournament,
+  error: activeTournamentError,
+} = await foxgloveSupabase
+  .from("tournaments")
+  .select("id")
+  .eq("is_member_lounge_season", true)
+  .limit(1)
+  .maybeSingle();
+
+let activeRsvps = [];
+
+if (
+  !activeTournamentError &&
+  activeTournament
+) {
+  const {
+    data: rsvpData,
+    error: rsvpError,
+  } = await foxgloveSupabase
+    .from("rsvps")
+    .select("email, attendance_status")
+    .eq(
+      "tournament_id",
+      activeTournament.id
+    );
+
+  if (!rsvpError) {
+    activeRsvps = rsvpData || [];
+  }
+}
+
+const rsvpByEmail = new Map(
+  activeRsvps.map((response) => [
+    response.email?.trim().toLowerCase(),
+    response.attendance_status,
+  ])
+);
 
   if (profilesError) {
     playersMessage.textContent =
@@ -66,9 +112,12 @@
       const row = document.createElement("tr");
 
       const nameCell = document.createElement("td");
-      const emailCell = document.createElement("td");
-      const roleCell = document.createElement("td");
-      const statusCell = document.createElement("td");
+const emailCell = document.createElement("td");
+const roleCell = document.createElement("td");
+const rsvpCell = document.createElement("td");
+const jacketSizeCell = document.createElement("td");
+const jacketUpdatedCell = document.createElement("td");
+const statusCell = document.createElement("td");
 
       const fullName =
         `${profile.first_name ?? ""} ${profile.last_name ?? ""}`.trim();
@@ -76,9 +125,56 @@
       nameCell.textContent = fullName || "Unnamed Member";
       emailCell.textContent = profile.email || "No email";
       roleCell.textContent =
-        profile.role === "admin" ? "Administrator" : "Member";
+  profile.role === "admin"
+    ? "Administrator"
+    : "Member";
 
-      const statusBadge = document.createElement("span");
+const memberRsvpStatus =
+  rsvpByEmail.get(
+    profile.email?.trim().toLowerCase()
+  );
+
+const rsvpBadge =
+  document.createElement("span");
+
+if (memberRsvpStatus === "attending") {
+  rsvpBadge.className =
+    "admin-status-badge is-active";
+
+  rsvpBadge.textContent = "Attending";
+} else if (
+  memberRsvpStatus === "declined"
+) {
+  rsvpBadge.className =
+    "admin-status-badge is-inactive";
+
+  rsvpBadge.textContent = "Declined";
+} else {
+  rsvpBadge.className =
+    "admin-status-badge";
+
+  rsvpBadge.textContent = "No Response";
+}
+
+rsvpCell.appendChild(rsvpBadge);
+
+jacketSizeCell.textContent =
+  profile.jacket_size || "Not Set";
+
+if (profile.jacket_size_updated_at) {
+  jacketUpdatedCell.textContent =
+    new Date(
+      profile.jacket_size_updated_at
+    ).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+} else {
+  jacketUpdatedCell.textContent = "—";
+}
+
+const statusBadge = document.createElement("span");
       statusBadge.className =
         `admin-status-badge ${
           profile.is_active ? "is-active" : "is-inactive"
@@ -88,7 +184,15 @@
 
       statusCell.appendChild(statusBadge);
 
-      row.append(nameCell, emailCell, roleCell, statusCell);
+     row.append(
+  nameCell,
+  emailCell,
+  roleCell,
+  rsvpCell,
+  jacketSizeCell,
+  jacketUpdatedCell,
+  statusCell
+);
       tableBody.appendChild(row);
     });
 

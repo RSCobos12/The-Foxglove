@@ -118,13 +118,203 @@
 
     </article>
 
+    <article class="overview-card overview-card--season">
+
+      <div class="overview-card-header">
+
+        <div>
+          <p class="overview-label">Member’s Lounge</p>
+          <h2>Current Season</h2>
+        </div>
+
+      </div>
+
+      <p class="overview-description">
+        Select the tournament season displayed in the
+        Member’s Lounge.
+      </p>
+
+      <div class="season-admin-fields">
+
+        <div class="season-admin-field">
+
+          <label for="member-season-select">
+            Tournament Season
+          </label>
+
+          <select id="member-season-select">
+            <option value="">
+              Loading tournament seasons...
+            </option>
+          </select>
+
+        </div>
+
+        <div class="season-admin-field">
+
+  <label for="member-season-description">
+    Season Description
+  </label>
+
+  <select id="member-season-description">
+
+    <option value="">
+      Select a season message...
+    </option>
+
+    <option value="Planning is currently underway for next year's event. The committee appreciates your patience while they construct another unforgettable week.">
+      Planning Underway
+    </option>
+
+    <option value="Invitations are currently being compiled and sent. Please check your mailbox soon for an invitation to the next edition of The Foxglove. Once received, the committee asks for your quick response. We look forward to seeing you there!">
+      Invitations Being Sent
+    </option>
+
+    <option value="Two weeks to go! Now's the time to get those last-minute range sessions in before the next edition of The Foxglove. We'll see you soon!">
+      Two Weeks to Go
+    </option>
+
+    <option value="Congratulations to this year's winner! Photos and videos from this year's event will be posted shortly in the Gallery. Be sure to submit your five best photos and videos below for approval in our image mosaic. Until next year!">
+      Tournament Complete
+    </option>
+
+  </select>
+
+  <p
+    id="member-season-description-preview"
+    class="season-description-preview">
+    Select a message to preview what members will see.
+  </p>
+
+</div>
+
+      </div>
+
+      <p
+        id="member-season-admin-message"
+        class="admin-status-message"
+        role="status"
+        aria-live="polite"
+        hidden>
+      </p>
+
+      <button
+        id="save-member-season"
+        class="admin-primary-button"
+        type="button">
+        Save Current Season
+      </button>
+
+    </article>
+
+    <article class="overview-card overview-card--member-message">
+
+  <div class="overview-card-header">
+
+    <div>
+      <p class="overview-label">
+        Member’s Lounge
+      </p>
+
+      <h2>Message from the Committee</h2>
+    </div>
+
+  </div>
+
+  <p class="overview-description">
+    Publish the announcement shown in the Member’s Lounge.
+    Only one message is displayed at a time.
+  </p>
+
+  <div class="member-message-admin-fields">
+
+    <div class="member-message-admin-field">
+
+      <label for="member-message-title">
+        Message Title
+      </label>
+
+      <input
+        id="member-message-title"
+        type="text"
+        maxlength="100"
+        placeholder="Example: A Note from the Committee">
+
+    </div>
+
+    <div class="member-message-admin-field">
+
+      <label for="member-message-author">
+        Author
+      </label>
+
+      <input
+        id="member-message-author"
+        type="text"
+        maxlength="100"
+        value="Tournament Committee">
+
+    </div>
+
+    <div class="member-message-admin-field member-message-admin-field--full">
+
+      <label for="member-message-body">
+        Message
+      </label>
+
+      <textarea
+        id="member-message-body"
+        rows="7"
+        maxlength="2000"
+        placeholder="Enter the message Foxglove members will see."></textarea>
+
+    </div>
+
+  </div>
+
+  <label class="member-message-publish-control">
+
+    <input
+      id="member-message-published"
+      type="checkbox"
+      checked>
+
+    <span>
+      Publish this message in the Member’s Lounge
+    </span>
+
+  </label>
+
+  <p
+    id="member-message-admin-status"
+    class="admin-status-message"
+    role="status"
+    aria-live="polite"
+    hidden>
+  </p>
+
+  <div class="member-message-admin-actions">
+
+    <button
+      id="clear-member-message"
+      class="admin-secondary-button"
+      type="button">
+      Clear
+    </button>
+
+    <button
+      id="save-member-message"
+      class="admin-primary-button"
+      type="button">
+      Save Message
+    </button>
+
+  </div>
+
+</article>
+    
+
   </section>
-
-</main>
-
-</p>
-
-</section>
 
 </main>
 

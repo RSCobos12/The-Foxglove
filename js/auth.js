@@ -56,9 +56,37 @@ loginForm.addEventListener("submit", async (event) => {
     return;
   }
 
- showLoginMessage("Sign-in successful.", "success");
+ const { data: profile, error: profileError } =
+  await foxgloveSupabase
+    .from("profiles")
+    .select("role, is_active")
+    .eq("id", data.user.id)
+    .single();
 
-window.location.href = "admin.html";
+if (
+  profileError ||
+  !profile ||
+  !profile.is_active
+) {
+  await foxgloveSupabase.auth.signOut();
+
+  showLoginMessage(
+    "Your account is not currently available."
+  );
+
+  loginSubmit.disabled = false;
+  loginSubmit.textContent = "Sign In";
+  return;
+}
+
+showLoginMessage("Sign-in successful.", "success");
+
+if (profile.role === "admin") {
+  window.location.href = "admin.html";
+} else {
+  window.location.href = "member-lounge.html";
+}
+
 });
 
 }

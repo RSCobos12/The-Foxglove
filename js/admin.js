@@ -87,6 +87,527 @@
 
   await loadNewRsvpCount();
 
+  /* =====================================
+     MEMBER'S LOUNGE CURRENT SEASON
+  ====================================== */
+
+  const memberSeasonSelect =
+    document.querySelector("#member-season-select");
+
+  const memberSeasonDescription =
+    document.querySelector("#member-season-description");
+
+  const saveMemberSeasonButton =
+    document.querySelector("#save-member-season");
+
+  const memberSeasonMessage =
+    document.querySelector("#member-season-admin-message");
+
+  let memberSeasonTournaments = [];
+
+  function showMemberSeasonMessage(
+    message,
+    isError = false
+  ) {
+    if (!memberSeasonMessage) {
+      return;
+    }
+
+    memberSeasonMessage.textContent = message;
+    memberSeasonMessage.hidden = false;
+
+    memberSeasonMessage.classList.toggle(
+      "is-error",
+      isError
+    );
+  }
+
+  function clearMemberSeasonMessage() {
+    if (!memberSeasonMessage) {
+      return;
+    }
+
+    memberSeasonMessage.textContent = "";
+    memberSeasonMessage.hidden = true;
+    memberSeasonMessage.classList.remove("is-error");
+  }
+
+  function populateMemberSeasonSelect() {
+    memberSeasonSelect.innerHTML = "";
+
+    if (memberSeasonTournaments.length === 0) {
+      const emptyOption =
+        document.createElement("option");
+
+      emptyOption.value = "";
+      emptyOption.textContent =
+        "No tournament seasons available";
+
+      memberSeasonSelect.appendChild(emptyOption);
+      memberSeasonSelect.disabled = true;
+      saveMemberSeasonButton.disabled = true;
+      return;
+    }
+
+    memberSeasonTournaments.forEach((tournament) => {
+      const option =
+        document.createElement("option");
+
+      option.value = tournament.id;
+      option.textContent =
+        `The ${tournament.year} Foxglove`;
+
+      memberSeasonSelect.appendChild(option);
+    });
+
+    const activeTournament =
+      memberSeasonTournaments.find(
+        (tournament) =>
+          tournament.is_member_lounge_season
+      );
+
+    const selectedTournament =
+      activeTournament || memberSeasonTournaments[0];
+
+    memberSeasonSelect.value =
+      selectedTournament.id;
+
+    setMemberSeasonDescription(
+  selectedTournament.member_lounge_description
+);
+  }
+
+  function updateMemberSeasonDescriptionPreview() {
+  const preview = document.querySelector(
+    "#member-season-description-preview"
+  );
+
+  if (!preview) {
+    return;
+  }
+
+  preview.textContent =
+    memberSeasonDescription.value ||
+    "Select a message to preview what members will see.";
+}
+
+function setMemberSeasonDescription(description) {
+  const savedDescription = description || "";
+
+  const matchingOption = Array.from(
+    memberSeasonDescription.options
+  ).some((option) => option.value === savedDescription);
+
+  memberSeasonDescription.value =
+    matchingOption ? savedDescription : "";
+
+  updateMemberSeasonDescriptionPreview();
+}
+
+function updateMemberSeasonDescription() {
+  const selectedTournament =
+    memberSeasonTournaments.find(
+      (tournament) =>
+        String(tournament.id) ===
+        memberSeasonSelect.value
+    );
+
+  setMemberSeasonDescription(
+    selectedTournament?.member_lounge_description
+  );
+
+  clearMemberSeasonMessage();
+}
+
+  async function loadMemberSeasonOptions() {
+    const { data, error } =
+      await foxgloveSupabase
+        .from("tournaments")
+        .select(`
+          id,
+          year,
+          is_member_lounge_season,
+          member_lounge_description
+        `)
+        .order("year", { ascending: true });
+
+    if (error) {
+      memberSeasonSelect.innerHTML = `
+        <option value="">
+          Unable to load seasons
+        </option>
+      `;
+
+      memberSeasonSelect.disabled = true;
+      saveMemberSeasonButton.disabled = true;
+
+      showMemberSeasonMessage(
+        "Unable to load tournament seasons.",
+        true
+      );
+
+      return;
+    }
+
+    memberSeasonTournaments = data || [];
+
+    populateMemberSeasonSelect();
+  }
+
+  async function saveMemberSeason() {
+    const selectedTournamentId =
+      memberSeasonSelect.value;
+
+    const description =
+      memberSeasonDescription.value.trim();
+
+    if (!selectedTournamentId) {
+      showMemberSeasonMessage(
+        "Select a tournament season.",
+        true
+      );
+
+      return;
+    }
+
+    saveMemberSeasonButton.disabled = true;
+    saveMemberSeasonButton.textContent = "Saving...";
+
+    clearMemberSeasonMessage();
+
+    const { error: clearError } =
+      await foxgloveSupabase
+        .from("tournaments")
+        .update({
+          is_member_lounge_season: false,
+        })
+        .eq("is_member_lounge_season", true);
+
+    if (clearError) {
+      showMemberSeasonMessage(
+        "Unable to update the current season.",
+        true
+      );
+
+      saveMemberSeasonButton.disabled = false;
+      saveMemberSeasonButton.textContent =
+        "Save Current Season";
+
+      return;
+    }
+
+    const {
+  data: savedTournament,
+  error: saveError,
+} = await foxgloveSupabase
+  .from("tournaments")
+  .update({
+    is_member_lounge_season: true,
+    member_lounge_description:
+      description || null,
+  })
+  .eq("id", selectedTournamentId)
+  .select(`
+    id,
+    year,
+    is_member_lounge_season,
+    member_lounge_description
+  `)
+  .single();
+
+if (saveError || !savedTournament) {
+  console.error(
+    "Current season save failed:",
+    saveError
+  );
+
+  showMemberSeasonMessage(
+    "Unable to save the current season. Please try again.",
+    true
+  );
+
+  saveMemberSeasonButton.disabled = false;
+  saveMemberSeasonButton.textContent =
+    "Save Current Season";
+
+  return;
+}
+
+    memberSeasonTournaments =
+      memberSeasonTournaments.map(
+        (tournament) => ({
+          ...tournament,
+
+          is_member_lounge_season:
+            String(tournament.id) ===
+            selectedTournamentId,
+
+          member_lounge_description:
+            String(tournament.id) ===
+            selectedTournamentId
+              ? description
+              : tournament.member_lounge_description,
+        })
+      );
+
+    showMemberSeasonMessage(
+      "The Member’s Lounge season has been updated."
+    );
+
+    saveMemberSeasonButton.disabled = false;
+    saveMemberSeasonButton.textContent =
+      "Save Current Season";
+  }
+
+  if (
+    memberSeasonSelect &&
+    memberSeasonDescription &&
+    saveMemberSeasonButton
+  ) {
+    memberSeasonSelect.addEventListener(
+  "change",
+  updateMemberSeasonDescription
+);
+
+memberSeasonDescription.addEventListener(
+  "change",
+  () => {
+    updateMemberSeasonDescriptionPreview();
+    clearMemberSeasonMessage();
+  }
+);
+
+saveMemberSeasonButton.addEventListener(
+  "click",
+  saveMemberSeason
+);
+
+    await loadMemberSeasonOptions();
+  }
+
+  /* =====================================
+   MEMBER'S LOUNGE MESSAGE
+===================================== */
+
+const memberMessageTitle =
+  document.querySelector("#member-message-title");
+
+const memberMessageAuthor =
+  document.querySelector("#member-message-author");
+
+const memberMessageBody =
+  document.querySelector("#member-message-body");
+
+const memberMessagePublished =
+  document.querySelector("#member-message-published");
+
+const memberMessageStatus =
+  document.querySelector("#member-message-admin-status");
+
+const saveMemberMessageButton =
+  document.querySelector("#save-member-message");
+
+const clearMemberMessageButton =
+  document.querySelector("#clear-member-message");
+
+let currentMemberMessageId = null;
+
+function showMemberMessageStatus(
+  message,
+  isError = false
+) {
+  if (!memberMessageStatus) return;
+
+  memberMessageStatus.textContent = message;
+  memberMessageStatus.hidden = false;
+
+  memberMessageStatus.classList.toggle(
+    "is-error",
+    isError
+  );
+}
+
+function clearMemberMessageStatus() {
+  if (!memberMessageStatus) return;
+
+  memberMessageStatus.hidden = true;
+  memberMessageStatus.textContent = "";
+  memberMessageStatus.classList.remove("is-error");
+}
+
+function resetMemberMessageEditor() {
+  currentMemberMessageId = null;
+
+  memberMessageTitle.value = "";
+  memberMessageAuthor.value =
+    "Tournament Committee";
+  memberMessageBody.value = "";
+  memberMessagePublished.checked = true;
+
+  clearMemberMessageStatus();
+}
+
+async function loadMemberMessage() {
+
+  const { data, error } =
+    await foxgloveSupabase
+      .from("member_lounge_messages")
+      .select("*")
+      .order("updated_at", {
+        ascending: false,
+      })
+      .limit(1)
+      .maybeSingle();
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  if (!data) {
+    resetMemberMessageEditor();
+    return;
+  }
+
+  currentMemberMessageId = data.id;
+
+  memberMessageTitle.value =
+    data.title;
+
+  memberMessageAuthor.value =
+    data.author_name;
+
+  memberMessageBody.value =
+    data.message_body;
+
+  memberMessagePublished.checked =
+    data.is_published;
+}
+
+async function saveMemberMessage() {
+
+  const record = {
+
+    title:
+      memberMessageTitle.value.trim(),
+
+    author_name:
+      memberMessageAuthor.value.trim(),
+
+    message_body:
+      memberMessageBody.value.trim(),
+
+    is_published:
+      memberMessagePublished.checked,
+
+    published_at:
+      memberMessagePublished.checked
+        ? new Date().toISOString()
+        : null,
+
+  };
+
+  if (
+    !record.title ||
+    !record.author_name ||
+    !record.message_body
+  ) {
+
+    showMemberMessageStatus(
+      "All fields are required.",
+      true
+    );
+
+    return;
+
+  }
+
+  saveMemberMessageButton.disabled = true;
+  saveMemberMessageButton.textContent =
+    "Saving...";
+
+  clearMemberMessageStatus();
+
+  if (record.is_published) {
+
+    await foxgloveSupabase
+      .from("member_lounge_messages")
+      .update({
+        is_published: false,
+      })
+      .eq("is_published", true);
+
+  }
+
+  let response;
+
+  if (currentMemberMessageId) {
+
+    response =
+      await foxgloveSupabase
+        .from("member_lounge_messages")
+        .update(record)
+        .eq("id", currentMemberMessageId)
+        .select()
+        .single();
+
+  } else {
+
+    response =
+      await foxgloveSupabase
+        .from("member_lounge_messages")
+        .insert(record)
+        .select()
+        .single();
+
+  }
+
+  if (response.error) {
+
+    console.error(response.error);
+
+    showMemberMessageStatus(
+      response.error.message,
+      true
+    );
+
+  } else {
+
+    currentMemberMessageId =
+      response.data.id;
+
+    showMemberMessageStatus(
+      "Message saved successfully."
+    );
+
+  }
+
+  saveMemberMessageButton.disabled = false;
+  saveMemberMessageButton.textContent =
+    "Save Message";
+}
+
+if (
+  memberMessageTitle &&
+  memberMessageAuthor &&
+  memberMessageBody &&
+  saveMemberMessageButton
+) {
+
+  saveMemberMessageButton.addEventListener(
+    "click",
+    saveMemberMessage
+  );
+
+  clearMemberMessageButton.addEventListener(
+    "click",
+    resetMemberMessageEditor
+  );
+
+  await loadMemberMessage();
+
+}
+  
   const logoutButton = document.querySelector("#logout-button");
 
   logoutButton.addEventListener("click", async () => {
