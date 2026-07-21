@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Rules Management | The Foxglove</title>
+
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body data-admin-page="rules">
+
+  <div class="admin-layout">
+
+    <div id="admin-sidebar-placeholder"></div>
+
+    <main class="admin-content">
+
+      <header class="admin-header">
+
+        <div>
+          <p class="admin-eyebrow">
+            Document Management
+          </p>
+
+          <h1>Rules</h1>
+
+          <p id="admin-welcome">
+            Loading administrator access...
+          </p>
+        </div>
+
+      </header>
+
+      <section class="rules-admin-layout">
+
+        <article class="rules-upload-panel">
+
+          <div class="admin-table-heading">
+
+            <h2>Upload Document</h2>
+
+            <p>
+              Add a document and choose the title members will see.
+            </p>
+
+          </div>
+
+          <div class="rules-upload-form">
+
+            <div class="rules-admin-field">
+
+              <label for="rule-display-name">
+                Visible Name
+              </label>
+
+              <input
+                id="rule-display-name"
+                type="text"
+                maxlength="120"
+                placeholder="Example: Official Foxglove Rulebook">
+
+            </div>
+
+            <div class="rules-admin-field">
+
+              <label for="rule-document-file">
+                Document
+              </label>
+
+              <input
+                id="rule-document-file"
+                type="file"
+                accept=".pdf,.doc,.docx">
+
+              <small>
+                PDF, DOC, or DOCX files.
+              </small>
+
+            </div>
+
+            <label class="rules-active-control">
+
+              <input
+                id="rule-document-active"
+                type="checkbox"
+                checked>
+
+              <span>
+                Visible to members
+              </span>
+
+            </label>
+
+            <p
+              id="rule-upload-message"
+              class="admin-status-message"
+              role="status"
+              aria-live="polite"
+              hidden>
+            </p>
+
+            <button
+              id="upload-rule-document"
+              class="admin-primary-button"
+              type="button">
+              Upload Document
+            </button>
+
+          </div>
+
+        </article>
+
+        <article class="rules-list-panel">
+
+          <div class="rules-list-header">
+
+            <div>
+              <p class="admin-eyebrow">
+                Document Library
+              </p>
+
+              <h2>Uploaded Documents</h2>
+            </div>
+
+            <span
+              id="rules-document-count"
+              class="rules-document-count">
+              0
+            </span>
+
+          </div>
+
+          <p
+            id="rules-list-message"
+            class="admin-status-message"
+            role="status"
+            aria-live="polite">
+            Loading documents...
+          </p>
+
+          <div
+            id="rules-document-list"
+            class="rules-document-list">
+          </div>
+
+        </article>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin-components.js"></script>
+  <script src="../js/admin-rules.js"></script>
+
+</body>
+
+</html>

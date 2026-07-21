@@ -280,6 +280,11 @@ window.setTimeout(() => {
   const memberSeasonTitle =
     document.querySelector("#member-season-title");
 
+    const memberGallerySeasonYear =
+  document.querySelector(
+    "#member-gallery-season-year"
+  );
+
   const memberSeasonDescription =
     document.querySelector(
       "#member-season-description"
@@ -310,6 +315,12 @@ window.setTimeout(() => {
     memberSeasonDescription.textContent =
       currentSeason.member_lounge_description ||
       "Planning for the next Foxglove gathering is underway.";
+
+      if (memberGallerySeasonYear) {
+  memberGallerySeasonYear.textContent =
+    currentSeason.year;
+}
+
   } else if (
     memberSeasonTitle &&
     memberSeasonDescription
@@ -1121,7 +1132,1015 @@ memberMessageDialog?.addEventListener(
 
 await loadMemberMessage();
 
-    /* =====================================
+/* =====================================
+   PLAYER DIRECTORY
+===================================== */
+
+const memberDirectoryDialog =
+  document.querySelector(
+    "#member-directory-dialog"
+  );
+
+const openMemberDirectoryButton =
+  document.querySelector(
+    "#open-member-directory"
+  );
+
+const closeMemberDirectoryButton =
+  document.querySelector(
+    "#close-member-directory"
+  );
+
+const memberDirectoryList =
+  document.querySelector(
+    "#member-directory-list"
+  );
+
+const memberDirectoryMessage =
+  document.querySelector(
+    "#member-directory-message"
+  );
+
+let memberDirectoryLoaded = false;
+
+function closeMemberDirectory() {
+  if (memberDirectoryDialog?.open) {
+    memberDirectoryDialog.close();
+  }
+}
+
+function showMemberDirectoryMessage(
+  message,
+  isError = false
+) {
+  if (!memberDirectoryMessage) {
+    return;
+  }
+
+  memberDirectoryMessage.textContent =
+    message;
+
+  memberDirectoryMessage.hidden = false;
+
+  memberDirectoryMessage.classList.toggle(
+    "is-error",
+    isError
+  );
+}
+
+function clearMemberDirectoryMessage() {
+  if (!memberDirectoryMessage) {
+    return;
+  }
+
+  memberDirectoryMessage.textContent = "";
+  memberDirectoryMessage.hidden = true;
+
+  memberDirectoryMessage.classList.remove(
+    "is-error"
+  );
+}
+
+function formatDirectoryHandicap(
+  value
+) {
+  if (
+    value === null ||
+    value === undefined ||
+    value === ""
+  ) {
+    return "Not Set";
+  }
+
+  const numericValue =
+    Number(value);
+
+  if (!Number.isFinite(numericValue)) {
+    return "Not Set";
+  }
+
+  return numericValue.toFixed(1);
+}
+
+function createMemberDirectoryRow(
+  player
+) {
+  const row =
+    document.createElement("div");
+
+  row.className =
+    "member-directory-row";
+
+  const playerName =
+    document.createElement("strong");
+
+  const fullName =
+    `${player.first_name || ""} ${
+      player.last_name || ""
+    }`.trim();
+
+  playerName.textContent =
+    fullName || "Foxglove Member";
+
+  const handicapArea =
+    document.createElement("div");
+
+  handicapArea.className =
+    "member-directory-handicap";
+
+  const handicapLabel =
+    document.createElement("span");
+
+  handicapLabel.textContent =
+    "Handicap Index";
+
+  const handicapValue =
+    document.createElement("strong");
+
+  handicapValue.textContent =
+    formatDirectoryHandicap(
+      player.handicap_index
+    );
+
+  handicapArea.append(
+    handicapLabel,
+    handicapValue
+  );
+
+  row.append(
+    playerName,
+    handicapArea
+  );
+
+  return row;
+}
+
+async function loadMemberDirectory() {
+  if (
+    !memberDirectoryList ||
+    memberDirectoryLoaded
+  ) {
+    return;
+  }
+
+  showMemberDirectoryMessage(
+    "Loading Player Directory..."
+  );
+
+  const {
+    data,
+    error,
+  } = await supabase.rpc(
+    "get_member_directory"
+  );
+
+  if (error) {
+    console.error(
+      "Unable to load Player Directory:",
+      error
+    );
+
+    showMemberDirectoryMessage(
+      "Unable to load the Player Directory.",
+      true
+    );
+
+    return;
+  }
+
+  const players =
+    Array.isArray(data)
+      ? data
+      : [];
+
+  memberDirectoryList.innerHTML = "";
+
+  if (players.length === 0) {
+    showMemberDirectoryMessage(
+      "No active players are currently listed."
+    );
+
+    return;
+  }
+
+  players.forEach((player) => {
+    memberDirectoryList.append(
+      createMemberDirectoryRow(player)
+    );
+  });
+
+  memberDirectoryLoaded = true;
+  clearMemberDirectoryMessage();
+}
+
+openMemberDirectoryButton?.addEventListener(
+  "click",
+  async () => {
+    if (!memberDirectoryDialog) {
+      return;
+    }
+
+    memberDirectoryDialog.showModal();
+
+    await loadMemberDirectory();
+  }
+);
+
+closeMemberDirectoryButton?.addEventListener(
+  "click",
+  closeMemberDirectory
+);
+
+memberDirectoryDialog?.addEventListener(
+  "click",
+  (event) => {
+    if (
+      event.target ===
+      memberDirectoryDialog
+    ) {
+      closeMemberDirectory();
+    }
+  }
+);
+
+/* =====================================
+   GALLERY UPLOAD
+===================================== */
+
+const galleryInput =
+  document.querySelector(
+    "#member-gallery-file-input"
+  );
+
+const galleryUploadButton =
+  document.querySelector(
+    "#member-gallery-upload-button"
+  );
+
+const galleryUploadStatus =
+  document.querySelector(
+    "#member-gallery-upload-status"
+  );
+
+const uploadSlots = Array.from(
+  document.querySelectorAll(
+    ".member-upload-slot"
+  )
+);
+
+const selectedGalleryFiles =
+  new Array(5).fill(null);
+
+let activeUploadSlot = 0;
+
+function showGalleryUploadStatus(
+  message,
+  isError = false
+) {
+  if (!galleryUploadStatus) {
+    return;
+  }
+
+  galleryUploadStatus.textContent = message;
+  galleryUploadStatus.hidden = false;
+
+  galleryUploadStatus.classList.toggle(
+    "is-error",
+    isError
+  );
+}
+
+function clearGalleryUploadStatus() {
+  if (!galleryUploadStatus) {
+    return;
+  }
+
+  galleryUploadStatus.textContent = "";
+  galleryUploadStatus.hidden = true;
+  galleryUploadStatus.classList.remove("is-error");
+}
+
+function updateGalleryUploadButton() {
+  if (!galleryUploadButton) {
+    return;
+  }
+
+  const selectedCount =
+    selectedGalleryFiles.filter(Boolean).length;
+
+  galleryUploadButton.disabled =
+    selectedCount === 0;
+
+  galleryUploadButton.textContent =
+    selectedCount === 1
+      ? "Upload 1 Photo"
+      : `Upload ${selectedCount} Photos`;
+}
+
+function clearGallerySlot(slotIndex) {
+  const slot = uploadSlots[slotIndex];
+
+  if (!slot) {
+    return;
+  }
+
+  const selectedFile =
+    selectedGalleryFiles[slotIndex];
+
+  if (selectedFile?.previewUrl) {
+    URL.revokeObjectURL(
+      selectedFile.previewUrl
+    );
+  }
+
+  selectedGalleryFiles[slotIndex] = null;
+
+  const preview =
+    slot.querySelector(
+      ".member-upload-preview"
+    );
+
+  const placeholder =
+    slot.querySelector(
+      ".member-upload-slot-placeholder"
+    );
+
+  const label =
+    slot.querySelector(
+      ".member-upload-slot-label"
+    );
+
+  const help =
+    slot.querySelector(
+      ".member-upload-slot-help"
+    );
+
+  const remove =
+    slot.querySelector(
+      ".member-upload-remove"
+    );
+
+  if (preview) {
+    preview.removeAttribute("src");
+    preview.alt = "";
+    preview.hidden = true;
+  }
+
+  if (placeholder) {
+    placeholder.hidden = false;
+  }
+
+  if (label) {
+    label.hidden = false;
+  }
+
+  if (help) {
+    help.hidden = false;
+  }
+
+  if (remove) {
+    remove.hidden = true;
+  }
+
+  slot.classList.remove(
+    "has-selected-file"
+  );
+
+  slot.setAttribute(
+    "aria-label",
+    `Select photo ${slotIndex + 1}`
+  );
+
+  updateGalleryUploadButton();
+  clearGalleryUploadStatus();
+}
+
+function displayGalleryPreview(
+  slotIndex,
+  file
+) {
+  const slot = uploadSlots[slotIndex];
+
+  if (!slot) {
+    return;
+  }
+
+  clearGallerySlot(slotIndex);
+
+  const previewUrl =
+    URL.createObjectURL(file);
+
+  selectedGalleryFiles[slotIndex] = {
+    file,
+    previewUrl,
+  };
+
+  const preview =
+    slot.querySelector(
+      ".member-upload-preview"
+    );
+
+  const placeholder =
+    slot.querySelector(
+      ".member-upload-slot-placeholder"
+    );
+
+  const label =
+    slot.querySelector(
+      ".member-upload-slot-label"
+    );
+
+  const help =
+    slot.querySelector(
+      ".member-upload-slot-help"
+    );
+
+  const remove =
+    slot.querySelector(
+      ".member-upload-remove"
+    );
+
+  if (preview) {
+    preview.src = previewUrl;
+    preview.alt =
+      `Selected photo ${slotIndex + 1}: ${file.name}`;
+    preview.hidden = false;
+  }
+
+  if (placeholder) {
+    placeholder.hidden = true;
+  }
+
+  if (label) {
+    label.hidden = true;
+  }
+
+  if (help) {
+    help.hidden = true;
+  }
+
+  if (remove) {
+    remove.hidden = false;
+  }
+
+  slot.classList.add(
+    "has-selected-file"
+  );
+
+  slot.setAttribute(
+    "aria-label",
+    `Replace selected photo ${slotIndex + 1}`
+  );
+
+  updateGalleryUploadButton();
+  clearGalleryUploadStatus();
+}
+
+function validateGalleryFile(file) {
+  const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+  ];
+
+  const maximumFileSize =
+    10 * 1024 * 1024;
+
+  if (!allowedTypes.includes(file.type)) {
+    return "Only JPG, PNG and WebP images are allowed.";
+  }
+
+  if (file.size > maximumFileSize) {
+    return `${file.name} is larger than 10 MB.`;
+  }
+
+  return "";
+}
+
+function addGalleryFiles(
+  files,
+  startingSlot = 0
+) {
+  const fileList =
+    Array.from(files || []);
+
+  if (fileList.length === 0) {
+    return;
+  }
+
+  let nextSlot = startingSlot;
+
+  for (const file of fileList) {
+    const validationError =
+      validateGalleryFile(file);
+
+    if (validationError) {
+      showGalleryUploadStatus(
+        validationError,
+        true
+      );
+
+      continue;
+    }
+
+    while (
+      nextSlot < selectedGalleryFiles.length &&
+      selectedGalleryFiles[nextSlot]
+    ) {
+      nextSlot += 1;
+    }
+
+    if (
+      nextSlot >=
+      selectedGalleryFiles.length
+    ) {
+      showGalleryUploadStatus(
+        "You may select up to five photos.",
+        true
+      );
+
+      break;
+    }
+
+    displayGalleryPreview(
+      nextSlot,
+      file
+    );
+
+    nextSlot += 1;
+  }
+
+  updateGalleryUploadButton();
+}
+
+uploadSlots.forEach(
+  (slot, slotIndex) => {
+    slot.addEventListener(
+      "click",
+      (event) => {
+        const removeButton =
+          event.target.closest(
+            ".member-upload-remove"
+          );
+
+        if (removeButton) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          clearGallerySlot(slotIndex);
+          return;
+        }
+
+        activeUploadSlot = slotIndex;
+
+        if (galleryInput) {
+          galleryInput.value = "";
+          galleryInput.click();
+        }
+      }
+    );
+
+    slot.addEventListener(
+      "dragover",
+      (event) => {
+        event.preventDefault();
+
+        slot.classList.add(
+          "is-dragging"
+        );
+      }
+    );
+
+    slot.addEventListener(
+      "dragleave",
+      () => {
+        slot.classList.remove(
+          "is-dragging"
+        );
+      }
+    );
+
+    slot.addEventListener(
+      "drop",
+      (event) => {
+        event.preventDefault();
+
+        slot.classList.remove(
+          "is-dragging"
+        );
+
+        addGalleryFiles(
+          event.dataTransfer.files,
+          slotIndex
+        );
+      }
+    );
+  }
+);
+
+galleryInput?.addEventListener(
+  "change",
+  () => {
+    addGalleryFiles(
+      galleryInput.files,
+      activeUploadSlot
+    );
+
+    galleryInput.value = "";
+  }
+);
+
+updateGalleryUploadButton();
+
+function getGalleryFileExtension(file) {
+  const extension =
+    file.name
+      .split(".")
+      .pop()
+      ?.toLowerCase();
+
+  if (extension === "jpeg") {
+    return "jpg";
+  }
+
+  if (
+    extension === "jpg" ||
+    extension === "png" ||
+    extension === "webp"
+  ) {
+    return extension;
+  }
+
+  return "jpg";
+}
+
+function createGalleryStoragePath(
+  tournamentYear,
+  file
+) {
+  const extension =
+    getGalleryFileExtension(file);
+
+  return (
+    `${tournamentYear}/member-submissions/` +
+    `${session.user.id}/` +
+    `${crypto.randomUUID()}.${extension}`
+  );
+}
+
+async function removeGalleryStorageFile(
+  storagePath
+) {
+  if (!storagePath) {
+    return;
+  }
+
+  const { error } =
+    await supabase.storage
+      .from("gallery-images")
+      .remove([storagePath]);
+
+  if (error) {
+    console.error(
+      "Unable to remove Gallery upload:",
+      error
+    );
+  }
+}
+
+async function loadActiveGalleryTournament() {
+  const { data, error } =
+    await supabase
+      .from("tournaments")
+      .select("id, year")
+      .eq("is_member_lounge_season", true)
+      .limit(1)
+      .maybeSingle();
+
+  if (error) {
+    throw new Error(
+      `Unable to load the current tournament: ${error.message}`
+    );
+  }
+
+  if (!data) {
+    throw new Error(
+      "No current tournament season has been selected."
+    );
+  }
+
+  return data;
+}
+
+async function createGalleryFileHash(file) {
+  if (!window.crypto?.subtle) {
+    throw new Error(
+      "Your browser cannot verify duplicate photos."
+    );
+  }
+
+  const fileBuffer =
+    await file.arrayBuffer();
+
+  const hashBuffer =
+    await window.crypto.subtle.digest(
+      "SHA-256",
+      fileBuffer
+    );
+
+  return Array.from(
+    new Uint8Array(hashBuffer)
+  )
+    .map((byte) =>
+      byte
+        .toString(16)
+        .padStart(2, "0")
+    )
+    .join("");
+}
+
+async function uploadMemberGalleryFile(
+  selectedFile,
+  tournament
+) {
+  const file =
+    selectedFile.file;
+
+  const fileHash =
+    await createGalleryFileHash(file);
+
+  const {
+    data: existingSubmission,
+    error: duplicateCheckError,
+  } = await supabase
+    .from("gallery_images")
+    .select("id, submission_status")
+    .eq("tournament_id", tournament.id)
+    .eq(
+      "uploaded_by_profile_id",
+      session.user.id
+    )
+    .eq("file_hash", fileHash)
+    .in(
+      "submission_status",
+      ["pending", "approved"]
+    )
+    .limit(1)
+    .maybeSingle();
+
+  if (duplicateCheckError) {
+    throw new Error(
+      `${file.name}: unable to verify whether this photo was already submitted.`
+    );
+  }
+
+  if (existingSubmission) {
+    return {
+      skipped: true,
+      duplicate: true,
+      filename: file.name,
+    };
+  }
+
+  const storagePath =
+    createGalleryStoragePath(
+      tournament.year,
+      file
+    );
+
+  const { error: storageError } =
+    await supabase.storage
+      .from("gallery-images")
+      .upload(storagePath, file, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type,
+      });
+
+  if (storageError) {
+    throw new Error(
+      `${file.name}: ${storageError.message}`
+    );
+  }
+
+  const filenameWithoutExtension =
+    file.name.replace(/\.[^/.]+$/, "");
+
+  const { error: databaseError } =
+    await supabase
+      .from("gallery_images")
+      .insert({
+        tournament_id: tournament.id,
+
+        uploaded_by_profile_id:
+          session.user.id,
+
+        reviewed_by_profile_id: null,
+
+        storage_path: storagePath,
+
+        file_hash: fileHash,
+
+        position: null,
+
+        is_featured: false,
+
+        submission_status: "pending",
+
+        alt_text:
+          filenameWithoutExtension ||
+          `${tournament.year} Foxglove member submission`,
+
+        is_active: true,
+
+        reviewed_at: null,
+      });
+
+  if (databaseError) {
+    await removeGalleryStorageFile(
+      storagePath
+    );
+
+    if (
+      databaseError.code === "23505"
+    ) {
+      return {
+        skipped: true,
+        duplicate: true,
+        filename: file.name,
+      };
+    }
+
+    throw new Error(
+      `${file.name}: ${databaseError.message}`
+    );
+  }
+
+  return {
+    skipped: false,
+    duplicate: false,
+    storagePath,
+    filename: file.name,
+  };
+}
+
+function setGalleryControlsDisabled(
+  isDisabled
+) {
+  uploadSlots.forEach((slot) => {
+    slot.disabled = isDisabled;
+  });
+
+  if (galleryInput) {
+    galleryInput.disabled = isDisabled;
+  }
+
+  if (galleryUploadButton) {
+    galleryUploadButton.disabled =
+      isDisabled ||
+      !selectedGalleryFiles.some(Boolean);
+  }
+}
+
+function clearAllGallerySlots() {
+  selectedGalleryFiles.forEach(
+    (_, slotIndex) => {
+      clearGallerySlot(slotIndex);
+    }
+  );
+
+  activeUploadSlot = 0;
+
+  if (galleryInput) {
+    galleryInput.value = "";
+  }
+
+  updateGalleryUploadButton();
+}
+
+async function submitGalleryUploads() {
+  const filesToUpload =
+    selectedGalleryFiles.filter(Boolean);
+
+  if (filesToUpload.length === 0) {
+    showGalleryUploadStatus(
+      "Select at least one photo before uploading.",
+      true
+    );
+
+    return;
+  }
+
+  setGalleryControlsDisabled(true);
+
+  if (galleryUploadButton) {
+    galleryUploadButton.textContent =
+      `Checking 0 of ${filesToUpload.length}...`;
+  }
+
+  clearGalleryUploadStatus();
+
+  const uploadedFiles = [];
+  const duplicateFiles = [];
+
+  try {
+    const activeTournament =
+      await loadActiveGalleryTournament();
+
+    for (
+      let index = 0;
+      index < filesToUpload.length;
+      index += 1
+    ) {
+      if (galleryUploadButton) {
+        galleryUploadButton.textContent =
+          `Processing ${index + 1} of ${filesToUpload.length}...`;
+      }
+
+      showGalleryUploadStatus(
+        `Checking photo ${index + 1} of ${filesToUpload.length}...`
+      );
+
+      const result =
+        await uploadMemberGalleryFile(
+          filesToUpload[index],
+          activeTournament
+        );
+
+      if (result.duplicate) {
+        duplicateFiles.push(
+          result.filename
+        );
+      } else {
+        uploadedFiles.push(result);
+      }
+    }
+
+    clearAllGallerySlots();
+
+    if (
+      uploadedFiles.length > 0 &&
+      duplicateFiles.length === 0
+    ) {
+      showGalleryUploadStatus(
+        uploadedFiles.length === 1
+          ? "Your photo was submitted for Gallery approval."
+          : `${uploadedFiles.length} photos were submitted for Gallery approval.`
+      );
+
+      return;
+    }
+
+    if (
+      uploadedFiles.length === 0 &&
+      duplicateFiles.length > 0
+    ) {
+      showGalleryUploadStatus(
+        duplicateFiles.length === 1
+          ? "That photo has already been submitted."
+          : `${duplicateFiles.length} selected photos have already been submitted.`,
+        true
+      );
+
+      return;
+    }
+
+    showGalleryUploadStatus(
+      `${uploadedFiles.length} ${
+        uploadedFiles.length === 1
+          ? "photo was"
+          : "photos were"
+      } submitted. ${
+        duplicateFiles.length
+      } ${
+        duplicateFiles.length === 1
+          ? "duplicate was"
+          : "duplicates were"
+      } skipped.`
+    );
+  } catch (error) {
+    console.error(
+      "Gallery submission failed:",
+      error
+    );
+
+    showGalleryUploadStatus(
+      error?.message ||
+      "Unable to submit your Gallery photos.",
+      true
+    );
+  } finally {
+    setGalleryControlsDisabled(false);
+    updateGalleryUploadButton();
+  }
+}
+
+galleryUploadButton?.addEventListener(
+  "click",
+  submitGalleryUploads
+);
+
+  /* =====================================
      CONCIERGE RECOMMENDATION
   ====================================== */
 
@@ -1327,3 +2346,5 @@ await loadMemberMessage();
     });
   }
 })();
+
+lucide.createIcons();

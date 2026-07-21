@@ -51,7 +51,7 @@
   role,
   is_active,
   jacket_size,
-  jacket_size_updated_at
+  handicap_index
 `)
       .order("last_name", { ascending: true })
       .order("first_name", { ascending: true });
@@ -116,7 +116,8 @@ const emailCell = document.createElement("td");
 const roleCell = document.createElement("td");
 const rsvpCell = document.createElement("td");
 const jacketSizeCell = document.createElement("td");
-const jacketUpdatedCell = document.createElement("td");
+const handicapCell =
+  document.createElement("td");
 const statusCell = document.createElement("td");
 
       const fullName =
@@ -161,18 +162,165 @@ rsvpCell.appendChild(rsvpBadge);
 jacketSizeCell.textContent =
   profile.jacket_size || "Not Set";
 
-if (profile.jacket_size_updated_at) {
-  jacketUpdatedCell.textContent =
-    new Date(
-      profile.jacket_size_updated_at
-    ).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
-} else {
-  jacketUpdatedCell.textContent = "—";
-}
+const handicapEditor =
+  document.createElement("div");
+
+handicapEditor.className =
+  "player-handicap-editor";
+
+const handicapInput =
+  document.createElement("input");
+
+handicapInput.type = "number";
+handicapInput.step = "0.1";
+handicapInput.min = "-10";
+handicapInput.max = "60";
+handicapInput.inputMode = "decimal";
+handicapInput.placeholder = "Not Set";
+
+handicapInput.value =
+  profile.handicap_index === null ||
+  profile.handicap_index === undefined
+    ? ""
+    : Number(
+        profile.handicap_index
+      ).toFixed(1);
+
+handicapInput.setAttribute(
+  "aria-label",
+  `Handicap index for ${
+    fullName || "member"
+  }`
+);
+
+const handicapSaveButton =
+  document.createElement("button");
+
+handicapSaveButton.type = "button";
+handicapSaveButton.className =
+  "admin-secondary-button";
+handicapSaveButton.textContent = "Save";
+
+const handicapStatus =
+  document.createElement("span");
+
+handicapStatus.className =
+  "player-handicap-status";
+
+handicapStatus.setAttribute(
+  "role",
+  "status"
+);
+
+handicapSaveButton.addEventListener(
+  "click",
+  async () => {
+    const rawValue =
+      handicapInput.value.trim();
+
+    let handicapValue = null;
+
+    if (rawValue !== "") {
+      const numericValue =
+        Number(rawValue);
+
+      if (
+        !Number.isFinite(numericValue) ||
+        numericValue < -10 ||
+        numericValue > 60
+      ) {
+        handicapStatus.textContent =
+          "Enter -10.0 to 60.0.";
+
+        handicapStatus.classList.add(
+          "is-error"
+        );
+
+        return;
+      }
+
+      handicapValue =
+        Math.round(
+          numericValue * 10
+        ) / 10;
+    }
+
+    handicapSaveButton.disabled = true;
+    handicapSaveButton.textContent =
+      "Saving...";
+
+    handicapStatus.textContent = "";
+    handicapStatus.classList.remove(
+      "is-error"
+    );
+
+    const { error: handicapError } =
+      await foxgloveSupabase
+        .from("profiles")
+        .update({
+          handicap_index:
+            handicapValue,
+        })
+        .eq("id", profile.id);
+
+    if (handicapError) {
+      console.error(
+        "Unable to save handicap:",
+        handicapError
+      );
+
+      handicapStatus.textContent =
+        "Unable to save.";
+
+      handicapStatus.classList.add(
+        "is-error"
+      );
+
+      handicapSaveButton.disabled = false;
+      handicapSaveButton.textContent =
+        "Save";
+
+      return;
+    }
+
+    profile.handicap_index =
+      handicapValue;
+
+    handicapInput.value =
+      handicapValue === null
+        ? ""
+        : handicapValue.toFixed(1);
+
+    handicapStatus.textContent =
+      handicapValue === null
+        ? "Cleared"
+        : "Saved";
+
+    handicapSaveButton.disabled = false;
+    handicapSaveButton.textContent =
+      "Save";
+  }
+);
+
+handicapInput.addEventListener(
+  "keydown",
+  (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handicapSaveButton.click();
+    }
+  }
+);
+
+handicapEditor.append(
+  handicapInput,
+  handicapSaveButton,
+  handicapStatus
+);
+
+handicapCell.appendChild(
+  handicapEditor
+);
 
 const statusBadge = document.createElement("span");
       statusBadge.className =
@@ -190,7 +338,7 @@ const statusBadge = document.createElement("span");
   roleCell,
   rsvpCell,
   jacketSizeCell,
-  jacketUpdatedCell,
+  handicapCell,
   statusCell
 );
       tableBody.appendChild(row);

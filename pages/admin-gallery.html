@@ -39,17 +39,137 @@
       </header>
 
       <div
-        id="gallery-admin-message"
-        class="admin-status-message"
-        role="status"
-        aria-live="polite">
-        Loading Gallery...
-      </div>
+  id="gallery-admin-message"
+  class="admin-status-message"
+  role="status"
+  aria-live="polite">
+  Loading Gallery...
+</div>
 
-      <section
-        id="gallery-manager"
-        class="gallery-manager"
-        hidden>
+<nav
+  class="gallery-admin-tabs"
+  aria-label="Gallery management sections">
+
+  <button
+    id="gallery-submissions-tab"
+    class="gallery-admin-tab is-active"
+    type="button"
+    data-gallery-view="submissions"
+    aria-selected="true">
+    Submissions
+  </button>
+
+  <button
+    id="gallery-placement-tab"
+    class="gallery-admin-tab"
+    type="button"
+    data-gallery-view="placement"
+    aria-selected="false">
+    Gallery Placement
+  </button>
+
+</nav>
+
+<section
+  id="gallery-submissions-manager"
+  class="gallery-submissions-manager">
+
+  <div class="gallery-review-header">
+
+    <div>
+      <p class="overview-label">
+        Member Uploads
+      </p>
+
+      <h2>
+        Gallery Submissions
+      </h2>
+
+      <p>
+        Review member photos before making them
+        available for Gallery placement.
+      </p>
+    </div>
+
+  </div>
+
+  <div
+    class="gallery-review-filters"
+    role="tablist"
+    aria-label="Submission status">
+
+    <button
+      class="gallery-review-filter is-active"
+      type="button"
+      data-submission-status="pending"
+      role="tab"
+      aria-selected="true">
+
+      Pending
+
+      <span
+        id="gallery-pending-count"
+        class="gallery-review-count">
+        0
+      </span>
+
+    </button>
+
+    <button
+      class="gallery-review-filter"
+      type="button"
+      data-submission-status="approved"
+      role="tab"
+      aria-selected="false">
+
+      Approved
+
+      <span
+        id="gallery-approved-count"
+        class="gallery-review-count">
+        0
+      </span>
+
+    </button>
+
+    <button
+      class="gallery-review-filter"
+      type="button"
+      data-submission-status="rejected"
+      role="tab"
+      aria-selected="false">
+
+      Rejected
+
+      <span
+        id="gallery-rejected-count"
+        class="gallery-review-count">
+        0
+      </span>
+
+    </button>
+
+  </div>
+
+  <div
+    id="gallery-review-message"
+    class="admin-status-message"
+    role="status"
+    aria-live="polite">
+    Loading submissions...
+  </div>
+
+  <div
+    id="gallery-submission-grid"
+    class="gallery-submission-grid">
+  </div>
+
+</section>
+
+<section
+  id="gallery-manager"
+  class="gallery-manager"
+  hidden>
 
         <article class="gallery-featured-section">
           <div class="gallery-section-heading">
@@ -79,6 +199,49 @@
         </article>
 
       </section>
+
+      <dialog
+  id="approved-image-picker"
+  class="approved-image-picker">
+
+  <div class="approved-image-picker-panel">
+
+    <header class="approved-image-picker-header">
+
+      <div>
+        <p class="overview-label">
+          Approved Library
+        </p>
+
+        <h2 id="approved-image-picker-title">
+          Select an Approved Image
+        </h2>
+      </div>
+
+      <button
+        id="close-approved-image-picker"
+        class="admin-secondary-button"
+        type="button">
+        Close
+      </button>
+
+    </header>
+
+    <div
+      id="approved-image-picker-message"
+      class="admin-status-message"
+      role="status"
+      aria-live="polite">
+    </div>
+
+    <div
+      id="approved-image-picker-grid"
+      class="approved-image-picker-grid">
+    </div>
+
+  </div>
+
+</dialog>
 
     </main>
 

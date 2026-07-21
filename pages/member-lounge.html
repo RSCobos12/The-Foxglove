@@ -68,35 +68,29 @@
         </a>
 
         <a
-          class="member-nav-link"
-          href="#member-gallery">
+  class="member-nav-link"
+  href="gallery.html">
 
           <span class="member-nav-icon" aria-hidden="true">▧</span>
           <span>Gallery</span>
 
         </a>
 
-        <a
-          class="member-nav-link"
-          href="#member-directory">
+       <button
+  id="open-member-directory"
+  class="member-nav-link member-nav-button"
+  type="button">
 
-          <span class="member-nav-icon" aria-hidden="true">♙</span>
-          <span>Member Directory</span>
+  <span class="member-nav-icon" aria-hidden="true">♙</span>
+  <span>Member Directory</span>
 
-        </a>
+</button>
 
-        <a
-          class="member-nav-link"
-          href="#member-concierge">
 
-          <span class="member-nav-icon" aria-hidden="true">⌘</span>
-          <span>Concierge</span>
-
-        </a>
 
         <a
-          class="member-nav-link"
-          href="#member-rules">
+  class="member-nav-link"
+  href="member-rules.html">
 
           <span class="member-nav-icon" aria-hidden="true">▤</span>
           <span>Rules</span>
@@ -567,6 +561,53 @@
 
 </dialog>
 
+<dialog
+  id="member-directory-dialog"
+  class="member-directory-dialog">
+
+  <article class="member-directory-dialog-card">
+
+    <header class="member-directory-dialog-header">
+
+      <div>
+        <p class="member-card-eyebrow">
+          Foxglove Members
+        </p>
+
+        <h2>Player Directory</h2>
+
+        <p>
+          Current active members and their handicap indexes.
+        </p>
+      </div>
+
+      <button
+        id="close-member-directory"
+        class="member-dialog-close"
+        type="button"
+        aria-label="Close Player Directory">
+        ×
+      </button>
+
+    </header>
+
+    <p
+      id="member-directory-message"
+      class="member-directory-message"
+      role="status"
+      aria-live="polite">
+      Loading Player Directory...
+    </p>
+
+    <div
+      id="member-directory-list"
+      class="member-directory-list">
+    </div>
+
+  </article>
+
+</dialog>
+
         <!-- GALLERY AND CONCIERGE -->
 
         <section class="member-feature-grid">
@@ -580,56 +621,227 @@
             </p>
 
             <p class="member-gallery-description">
-              Upload up to 5 of your favorite photos from the 2027
-              Invitational. Submissions are reviewed before appearing
-              in the public Gallery.
+              Upload up to 5 of your favorite photos from the
+<span id="member-gallery-season-year">current</span>
+Invitational.
             </p>
 
-            <div class="member-upload-grid">
+            <div
+  id="member-upload-grid"
+  class="member-upload-grid">
 
-              <button class="member-upload-slot" type="button">
-                <span aria-hidden="true">▧+</span>
-                <strong>Add Photo</strong>
-                <small>or drag &amp; drop</small>
-              </button>
+  <button
+    class="member-upload-slot"
+    type="button"
+    data-upload-slot="0"
+    aria-label="Select photo 1">
 
-              <button class="member-upload-slot" type="button">
-                <span aria-hidden="true">▧+</span>
-                <strong>Add Photo</strong>
-                <small>or drag &amp; drop</small>
-              </button>
+    <span
+      class="member-upload-slot-placeholder"
+      aria-hidden="true">
+      ▧+
+    </span>
 
-              <button class="member-upload-slot" type="button">
-                <span aria-hidden="true">▧+</span>
-                <strong>Add Photo</strong>
-                <small>or drag &amp; drop</small>
-              </button>
+    <strong class="member-upload-slot-label">
+      Add Photo
+    </strong>
 
-              <button class="member-upload-slot" type="button">
-                <span aria-hidden="true">▧+</span>
-                <strong>Add Photo</strong>
-                <small>or drag &amp; drop</small>
-              </button>
+    <small class="member-upload-slot-help">
+      or drag &amp; drop
+    </small>
 
-              <button class="member-upload-slot" type="button">
-                <span aria-hidden="true">▧+</span>
-                <strong>Add Photo</strong>
-                <small>or drag &amp; drop</small>
-              </button>
+    <img
+      class="member-upload-preview"
+      alt=""
+      hidden>
 
-            </div>
+    <span
+      class="member-upload-remove"
+      role="button"
+      tabindex="0"
+      aria-label="Remove selected photo"
+      hidden>
+      ×
+    </span>
 
-            <div class="member-upload-footer">
+  </button>
 
-              <p>JPG, PNG up to 10MB each</p>
+  <button
+    class="member-upload-slot"
+    type="button"
+    data-upload-slot="1"
+    aria-label="Select photo 2">
 
-              <button
-                class="member-primary-button"
-                type="button">
-                Upload Photos
-              </button>
+    <span
+      class="member-upload-slot-placeholder"
+      aria-hidden="true">
+      ▧+
+    </span>
 
-            </div>
+    <strong class="member-upload-slot-label">
+      Add Photo
+    </strong>
+
+    <small class="member-upload-slot-help">
+      or drag &amp; drop
+    </small>
+
+    <img
+      class="member-upload-preview"
+      alt=""
+      hidden>
+
+    <span
+      class="member-upload-remove"
+      role="button"
+      tabindex="0"
+      aria-label="Remove selected photo"
+      hidden>
+      ×
+    </span>
+
+  </button>
+
+  <button
+    class="member-upload-slot"
+    type="button"
+    data-upload-slot="2"
+    aria-label="Select photo 3">
+
+    <span
+      class="member-upload-slot-placeholder"
+      aria-hidden="true">
+      ▧+
+    </span>
+
+    <strong class="member-upload-slot-label">
+      Add Photo
+    </strong>
+
+    <small class="member-upload-slot-help">
+      or drag &amp; drop
+    </small>
+
+    <img
+      class="member-upload-preview"
+      alt=""
+      hidden>
+
+    <span
+      class="member-upload-remove"
+      role="button"
+      tabindex="0"
+      aria-label="Remove selected photo"
+      hidden>
+      ×
+    </span>
+
+  </button>
+
+  <button
+    class="member-upload-slot"
+    type="button"
+    data-upload-slot="3"
+    aria-label="Select photo 4">
+
+    <span
+      class="member-upload-slot-placeholder"
+      aria-hidden="true">
+      ▧+
+    </span>
+
+    <strong class="member-upload-slot-label">
+      Add Photo
+    </strong>
+
+    <small class="member-upload-slot-help">
+      or drag &amp; drop
+    </small>
+
+    <img
+      class="member-upload-preview"
+      alt=""
+      hidden>
+
+    <span
+      class="member-upload-remove"
+      role="button"
+      tabindex="0"
+      aria-label="Remove selected photo"
+      hidden>
+      ×
+    </span>
+
+  </button>
+
+  <button
+    class="member-upload-slot"
+    type="button"
+    data-upload-slot="4"
+    aria-label="Select photo 5">
+
+    <span
+      class="member-upload-slot-placeholder"
+      aria-hidden="true">
+      ▧+
+    </span>
+
+    <strong class="member-upload-slot-label">
+      Add Photo
+    </strong>
+
+    <small class="member-upload-slot-help">
+      or drag &amp; drop
+    </small>
+
+    <img
+      class="member-upload-preview"
+      alt=""
+      hidden>
+
+    <span
+      class="member-upload-remove"
+      role="button"
+      tabindex="0"
+      aria-label="Remove selected photo"
+      hidden>
+      ×
+    </span>
+
+  </button>
+
+</div>
+
+<input
+  id="member-gallery-file-input"
+  type="file"
+  accept="image/jpeg,image/png,image/webp"
+  multiple
+  hidden>
+
+<div class="member-upload-footer">
+
+  <div>
+    <p>JPG, PNG or WebP up to 10MB each</p>
+
+    <p
+      id="member-gallery-upload-status"
+      class="member-gallery-upload-status"
+      role="status"
+      aria-live="polite"
+      hidden>
+    </p>
+  </div>
+
+  <button
+    id="member-gallery-upload-button"
+    class="member-primary-button"
+    type="button"
+    disabled>
+    Upload Photos
+  </button>
+
+</div>
 
           </article>
 
@@ -718,24 +930,27 @@
             <article class="member-glance-item">
 
               <div class="member-glance-heading">
-                <span aria-hidden="true">▣</span>
+                <i data-lucide="hotel"></i>
                 <h2>Plan Your Trip</h2>
               </div>
 
               <p>
-                Hotel options, flights, transportation and local tips.
+                Discover local hotel accommodations throughout the Monterey Peninsula.
               </p>
 
-              <a href="#travel">
-                Explore <span aria-hidden="true">›</span>
-              </a>
+              <a
+  href="https://www.hotels.com"
+  target="_blank"
+  rel="noopener noreferrer">
+  Explore <span aria-hidden="true">›</span>
+</a>
 
             </article>
 
             <article class="member-glance-item">
 
               <div class="member-glance-heading">
-                <span aria-hidden="true">♜</span>
+                <i data-lucide="utensils-crossed"></i>
                 <h2>Dining</h2>
               </div>
 
@@ -743,7 +958,10 @@
                 Curated restaurant recommendations in Monterey.
               </p>
 
-              <a href="#dining">
+              <a
+  href="https://www.opentable.com"
+  target="_blank"
+  rel="noopener noreferrer">
                 Explore <span aria-hidden="true">›</span>
               </a>
 
@@ -752,7 +970,7 @@
             <article class="member-glance-item">
 
               <div class="member-glance-heading">
-                <span aria-hidden="true">⌾</span>
+                <i data-lucide="footprints"></i>
                 <h2>Things To Do</h2>
               </div>
 
@@ -760,7 +978,10 @@
                 Experience the best Monterey has to offer.
               </p>
 
-              <a href="#activities">
+              <a
+  href="https://monterey.gov/playing_here/index.php"
+  target="_blank"
+  rel="noopener noreferrer">
                 Explore <span aria-hidden="true">›</span>
               </a>
 
@@ -769,7 +990,7 @@
             <article class="member-glance-item">
 
               <div class="member-glance-heading">
-                <span aria-hidden="true">⚑</span>
+                <i data-lucide="flag"></i>
                 <h2>Play More Golf</h2>
               </div>
 
@@ -777,7 +998,10 @@
                 Nearby courses, practice facilities and more.
               </p>
 
-              <a href="#golf">
+              <a
+  href="https://www.golfnow.com"
+  target="_blank"
+  rel="noopener noreferrer">
                 Explore <span aria-hidden="true">›</span>
               </a>
 
@@ -794,6 +1018,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="../js/auth.js"></script>
   <script src="../js/member-lounge.js"></script>
 

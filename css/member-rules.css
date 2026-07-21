@@ -1,0 +1,201 @@
+.member-rules-hero {
+  padding: 54px 54px 34px;
+  border-bottom: 1px solid rgba(16, 36, 63, 0.1);
+  background: #f4f1e8;
+}
+
+.member-rules-hero h2 {
+  margin: 0;
+  color: #10243f;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.member-rules-hero > p:last-child {
+  max-width: 660px;
+  margin: 12px 0 0;
+  color: rgba(16, 36, 63, 0.66);
+  line-height: 1.6;
+}
+
+.member-rules-panel {
+  padding: 28px;
+  border: 1px solid rgba(16, 36, 63, 0.12);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(16, 36, 63, 0.07);
+}
+
+.member-rules-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.member-rules-header h2 {
+  margin: 0;
+  color: #10243f;
+  font-size: 1.45rem;
+}
+
+.member-rules-count {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border-radius: 50%;
+  background: #10243f;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.member-rules-message {
+  margin: 0;
+  padding: 20px;
+  border: 1px dashed rgba(16, 36, 63, 0.2);
+  border-radius: 6px;
+  background: #faf9f5;
+  color: rgba(16, 36, 63, 0.62);
+  text-align: center;
+}
+
+.member-rules-message.is-error {
+  border-color: rgba(139, 40, 40, 0.28);
+  background: #f8e8e8;
+  color: #8b2828;
+}
+
+.member-rules-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.member-rule-document-card {
+  display: grid;
+  grid-template-columns:
+    64px
+    minmax(0, 1fr)
+    auto;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-height: 128px;
+  padding: 20px;
+  border: 1px solid rgba(16, 36, 63, 0.13);
+  border-radius: 8px;
+  background: #faf9f5;
+  color: #10243f;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.member-rule-document-card:hover {
+  border-color: rgba(168, 125, 36, 0.55);
+  box-shadow: 0 10px 24px rgba(16, 36, 63, 0.1);
+  transform: translateY(-2px);
+}
+
+.member-rule-document-card:focus-visible {
+  outline: 3px solid rgba(168, 125, 36, 0.25);
+  outline-offset: 3px;
+}
+
+.member-rule-document-card.is-loading {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.member-rule-document-icon {
+  display: grid;
+  width: 58px;
+  height: 68px;
+  place-items: center;
+  border: 1px solid rgba(16, 36, 63, 0.16);
+  border-radius: 6px;
+  background: #ffffff;
+  color: #10243f;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.member-rule-document-icon.is-pdf {
+  color: #8b2828;
+}
+
+.member-rule-document-icon.is-doc,
+.member-rule-document-icon.is-docx {
+  color: #28558b;
+}
+
+.member-rule-document-content {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
+}
+
+.member-rule-document-badge {
+  width: fit-content;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(168, 125, 36, 0.12);
+  color: #8a651e;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.member-rule-document-content strong {
+  overflow-wrap: anywhere;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.member-rule-document-content small {
+  color: rgba(16, 36, 63, 0.56);
+  font-size: 0.78rem;
+}
+
+.member-rule-document-arrow {
+  color: #a87d24;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .member-rules-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .member-rules-hero {
+    padding: 36px 20px 26px;
+  }
+
+  .member-rules-panel {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .member-rule-document-card {
+    grid-template-columns:
+      54px
+      minmax(0, 1fr);
+  }
+
+  .member-rule-document-arrow {
+    display: none;
+  }
+}

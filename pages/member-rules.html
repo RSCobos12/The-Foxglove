@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Official Foxglove Invitational documents and rules.">
+
+  <title>Official Documents | The Foxglove Invitational</title>
+
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/member-lounge.css">
+  <link rel="stylesheet" href="../css/member-rules.css">
+</head>
+
+<body class="member-lounge-page">
+
+  <div class="member-lounge-shell">
+
+    <aside class="member-sidebar">
+
+      <div class="member-sidebar-brand">
+
+        <img
+          src="../assets/logos/foxglove-logo-clean.png"
+          alt="The Foxglove Invitational"
+          class="member-sidebar-logo">
+
+        <p class="member-sidebar-brand-name">
+          The<br>
+          <span>Foxglove</span>
+        </p>
+
+      </div>
+
+      <div class="member-sidebar-heading">
+
+        <h1>
+          The Member’s<br>
+          Lounge
+        </h1>
+
+        <span class="member-sidebar-heading-line"></span>
+
+      </div>
+
+      <nav
+        class="member-navigation"
+        aria-label="Member navigation">
+
+        <a
+          class="member-nav-link"
+          href="member-lounge.html">
+
+          <span class="member-nav-icon" aria-hidden="true">⌂</span>
+          <span>Home</span>
+
+        </a>
+
+        <a
+          class="member-nav-link"
+          href="gallery.html">
+
+          <span class="member-nav-icon" aria-hidden="true">▧</span>
+          <span>Gallery</span>
+
+        </a>
+
+        <button
+          id="open-member-directory"
+          class="member-nav-link member-nav-button"
+          type="button">
+
+          <span class="member-nav-icon" aria-hidden="true">♙</span>
+          <span>Member Directory</span>
+
+        </button>
+
+        <a
+          class="member-nav-link is-active"
+          href="member-rules.html"
+          aria-current="page">
+
+          <span class="member-nav-icon" aria-hidden="true">▤</span>
+          <span>Rules</span>
+
+        </a>
+
+      </nav>
+
+      <div class="member-sidebar-footer">
+
+        <a
+          class="member-account-link"
+          href="member-lounge.html#member-profile">
+
+          <span
+            class="member-account-initials"
+            id="member-sidebar-initials">
+            FG
+          </span>
+
+          <span class="member-account-copy">
+            <strong id="member-sidebar-name">
+              Foxglove Member
+            </strong>
+
+            <small>View Profile</small>
+          </span>
+
+          <span
+            class="member-account-arrow"
+            aria-hidden="true">
+            ›
+          </span>
+
+        </a>
+
+        <button
+          class="member-logout-button"
+          id="member-logout-button"
+          type="button">
+
+          <span aria-hidden="true">↪</span>
+          <span>Log Out</span>
+
+        </button>
+
+      </div>
+
+    </aside>
+
+    <main class="member-main">
+
+      <section class="member-rules-hero">
+
+        <p class="member-card-eyebrow">
+          Tournament Library
+        </p>
+
+        <h2>Official Documents</h2>
+
+        <p>
+          Rules, policies, and tournament documents published by
+          The Foxglove Committee.
+        </p>
+
+      </section>
+
+      <div class="member-content">
+
+        <section class="member-rules-panel">
+
+          <div class="member-rules-header">
+
+            <div>
+              <p class="member-card-eyebrow">
+                Document Library
+              </p>
+
+              <h2>Available Documents</h2>
+            </div>
+
+            <span
+              id="member-rules-count"
+              class="member-rules-count">
+              0
+            </span>
+
+          </div>
+
+          <p
+            id="member-rules-message"
+            class="member-rules-message"
+            role="status"
+            aria-live="polite">
+            Loading official documents...
+          </p>
+
+          <div
+            id="member-rules-grid"
+            class="member-rules-grid">
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/member-rules.js"></script>
+
+</body>
+
+</html>

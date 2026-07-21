@@ -88,6 +88,112 @@
   await loadNewRsvpCount();
 
   /* =====================================
+   GALLERY SUBMISSION COUNT
+===================================== */
+
+const gallerySubmissionCount =
+  document.querySelector(
+    "#overview-gallery-count"
+  );
+
+const gallerySubmissionMessage =
+  document.querySelector(
+    "#overview-gallery-message"
+  );
+
+async function loadGallerySubmissionCount() {
+  if (
+    !gallerySubmissionCount ||
+    !gallerySubmissionMessage
+  ) {
+    return;
+  }
+
+  const {
+    data: currentGallerySeason,
+    error: seasonError,
+  } = await foxgloveSupabase
+    .from("tournaments")
+    .select("id, year")
+    .eq(
+      "is_member_lounge_season",
+      true
+    )
+    .limit(1)
+    .maybeSingle();
+
+  if (
+    seasonError ||
+    !currentGallerySeason
+  ) {
+    if (seasonError) {
+      console.error(
+        "Unable to load Gallery season:",
+        seasonError
+      );
+    }
+
+    gallerySubmissionCount.textContent =
+      "0";
+
+    gallerySubmissionMessage.textContent =
+      "No current Member’s Lounge season is selected.";
+
+    return;
+  }
+
+  const {
+    count,
+    error: galleryCountError,
+  } = await foxgloveSupabase
+    .from("gallery_images")
+    .select("id", {
+      count: "exact",
+      head: true,
+    })
+    .eq(
+      "tournament_id",
+      currentGallerySeason.id
+    )
+    .eq(
+      "submission_status",
+      "pending"
+    )
+    .eq("is_active", true);
+
+  if (galleryCountError) {
+    console.error(
+      "Unable to load Gallery submission count:",
+      galleryCountError
+    );
+
+    gallerySubmissionCount.textContent =
+      "—";
+
+    gallerySubmissionMessage.textContent =
+      "Unable to load photo submissions.";
+
+    return;
+  }
+
+  const total = count || 0;
+
+  gallerySubmissionCount.textContent =
+    String(total);
+
+  gallerySubmissionMessage.textContent =
+    total === 0
+      ? `No pending photo submissions for ${currentGallerySeason.year}.`
+      : `${total} pending ${
+          total === 1
+            ? "photo requires"
+            : "photos require"
+        } review for ${currentGallerySeason.year}.`;
+}
+
+await loadGallerySubmissionCount();
+
+  /* =====================================
      MEMBER'S LOUNGE CURRENT SEASON
   ====================================== */
 
@@ -353,6 +459,8 @@ if (saveError || !savedTournament) {
     showMemberSeasonMessage(
       "The Member’s Lounge season has been updated."
     );
+
+    await loadGallerySubmissionCount();
 
     saveMemberSeasonButton.disabled = false;
     saveMemberSeasonButton.textContent =
