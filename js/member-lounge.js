@@ -1007,12 +1007,14 @@ function createMessagePreview(message) {
   const normalized =
     message.replace(/\s+/g, " ").trim();
 
-  if (normalized.length <= 110) {
+  const maximumLength = 300;
+
+  if (normalized.length <= maximumLength) {
     return normalized;
   }
 
   return `${normalized
-    .slice(0, 107)
+    .slice(0, maximumLength - 3)
     .trim()}...`;
 }
 
@@ -1362,6 +1364,32 @@ memberDirectoryDialog?.addEventListener(
     }
   }
 );
+
+async function openMemberDirectoryFromHash() {
+  if (
+    window.location.hash !==
+    "#member-directory"
+  ) {
+    return;
+  }
+
+  if (!memberDirectoryDialog) {
+    return;
+  }
+
+  memberDirectoryDialog.showModal();
+
+  await loadMemberDirectory();
+
+  history.replaceState(
+    null,
+    "",
+    window.location.pathname +
+      window.location.search
+  );
+}
+
+await openMemberDirectoryFromHash();
 
 /* =====================================
    GALLERY UPLOAD
