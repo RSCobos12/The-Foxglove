@@ -1,104 +1,53 @@
-# The Foxglove Invitational Website
+# The Foxglove Invitational
 
 # Master Project Roadmap
 
-**Project Version:** v1.0-responsive  
-**Project Status: Public Website Production Ready | Phase III Active  
+**Project Version:** v2.0.0  
+**Project Status:** Phase III Complete | Phase IV Ready  
 **Owner:** Scott Cobos  
 **Development Partner:** ChatGPT (OpenAI)  
-**Last Updated: July 13, 2026
+**Last Updated:** July 22, 2026
 
 ---
 
 # Project Vision
 
-The Foxglove Invitational website is more than a golf tournament website.
+The Foxglove Invitational is more than a golf tournament website.
 
 It is intended to become the permanent digital home of The Foxglove Invitational, preserving its history while supporting future tournaments through thoughtful design, premium presentation, and long-term scalability.
 
-Every feature should reinforce:
+The platform is built around four guiding principles:
 
-- Tradition
-- Brotherhood
-- Championship Golf
-- Premium Hospitality
-- Timeless Design
+- Timeless design over trends
+- Function over unnecessary complexity
+- Long-term maintainability
+- Premium member experience
 
-The objective is to build a platform that grows with the tournament while preserving one cohesive identity.
-
----
-
-# Guiding Philosophy
-
-Design first.
-
-Approve before coding.
-
-Build reusable systems.
-
-Refine before expanding.
-
-Every feature should feel intentional.
-
-Luxury is communicated through restraint.
-
-Long-term maintainability is as important as visual quality.
+Every feature added to the platform should reinforce these principles.
 
 ---
 
-# Development Workflow
+# Current Project Status
 
-Every major feature follows the same process.
-
-1. Vision
-2. Story
-3. Visual Direction / Mockup
-4. Approval
-5. VS Code Implementation
-6. White Glove Review
-7. Responsive Review
-8. Git Commit
-9. Documentation Update
-10. Version Sign-Off
-
-No feature begins before design approval.
-
-No feature is considered complete until both desktop and mobile experiences have been approved.
-
----
-
-# Overall Project Roadmap
-
----
-
-# ✅ Phase I — Foundation
+## ✅ Phase I — Foundation
 
 **Status:** Complete
 
-Completed:
+Delivered:
 
 - Brand Identity
-- Foxglove Crest
-- Foxglove Visual Language
-- Homepage Framework
-- Shared Navigation
-- Shared Footer
-- Shared Design System
-- Initial Documentation
-
-Deliverables:
-
+- Homepage Design System
 - Homepage
-- Homepage Style Guide
-- Homepage Sign-Off
+- Global Design Language
+- Shared Components
 
 ---
 
-# ✅ Phase II — Public Website
+## ✅ Phase II — Public Website
 
 **Status:** Complete
 
-Completed Pages:
+Delivered:
 
 - Homepage
 - RSVP
@@ -106,228 +55,243 @@ Completed Pages:
 - Courses
 - Gallery
 
-Completed Systems:
-
-- Shared Header
-- Shared Desktop Navigation
-- Shared Mobile Navigation
-- Shared Footer
-- Hero Framework
-- Card Framework
-- Editorial Layout Framework
-- Gallery Framework
-- Gallery Lightbox
-- Winner Presentation System
-- Scroll Reveal Animation
-- Responsive Design System
-
-Result:
-
-**Public Website Version 1.0 Complete**
+All public-facing pages have passed White Glove review.
 
 ---
 
-# ✅ Phase II.5 — Production Readiness
+## ✅ Phase II.5 — Production Readiness
 
 **Status:** Complete
 
-Objective:
+Delivered:
 
-Prepare the complete public website for long-term development before beginning the member platform.
-
-Completed:
-
-## Architecture
-
-- Modular JavaScript architecture
-- Shared component hardening
-- Repository cleanup
-- Improved code organization
-
-## Accessibility
-
-- Reduced-motion support
-- Mobile keyboard focus management
-- Improved heading hierarchy
-- Native RSVP validation
-- Semantic HTML improvements
-
-## Performance
-
-- Hero video optimization
-- Targeted image optimization
-- Reduced unnecessary asset loading
-
-## Stability
-
+- Performance improvements
+- Accessibility improvements
+- Shared component cleanup
 - Console cleanup
-- Removal of obsolete files
-- Production logging removed
-- Git repository cleanup
-
-## Deliverable
-
-**Public Website v1.0 Production-Ready Approval**
+- Image optimization
+- Responsive improvements
+- Production hardening
 
 ---
 
-# 🚧 Phase III — Admin & Member Platform
+## ✅ Phase III — Member Platform
 
-**Status:** Active Phase
+**Status:** Complete
 
-Development begins only after Phase II.5 approval.
+Delivered:
 
----
+### Authentication
 
-## Authentication
+- Secure Login
+- Session Persistence
+- Role-Based Routing
+- Secure Logout
 
-Build:
+### Member Experience
 
-- Member Login
-- Administrator Login
-- Password Recovery
-- Session Management
-- Role-Based Permissions
+- Member's Lounge
+- Rules Library
+- Shared Mobile Navigation
+- Responsive iPhone Support
+- Committee Messaging
+- Concierge Recommendation
+- Member Profile
+- RSVP Status
+- Share Your Memories
 
----
-
-## Administration
-
-Build:
+### Administration
 
 - Admin Dashboard
-- Tournament-Year Management
-- Member Management
-- RSVP Management
-- Gallery Management
-- Featured Image Management
-- Upload Approval System
-- Champion Management
+- Current Season Management
+- Committee Message Management
+- Course Administration
+- Functional Workflow Improvements
+
+### Validation
+
+- Desktop White Glove Review
+- iPhone 16 Responsive Validation
+- Console Verification
+
+Phase III is considered feature complete.
 
 ---
 
-## Member Experience
-
-Build:
-
-- Member Dashboard
-- Player Directory
-- Gallery Uploads
-- Upload Status
-- Profile Management
-- Protected Content
-
----
-
-## Tournament Management
-
-Build:
-
-- Tournament Administration
-- Handicap Management
-- Player Pairings
-- Live Scoring
-- Leaderboards
-- Score Validation
-
----
-
-## Infrastructure
-
-Implement:
-
-- Database
-- Authentication Provider
-- Cloud Storage
-- Secure Form Processing
-- Audit Logging
-- Backup Strategy
-
----
-
-# ⏳ Phase IV — Production Launch
+# 🚧 Phase IV — Tournament Operations
 
 **Status:** Planned
 
-Launch Preparation:
+## Objective
 
-- Production Deployment
-- Domain Configuration
-- SSL
-- Analytics
-- Security Review
-- Cross-Browser Validation
-- Final Regression Testing
-- Backup Verification
-- Go-Live Approval
+Transform the Admin Dashboard into the primary operational tool for running The Foxglove Invitational.
+
+The goal of Phase IV is that tournament administration can be performed entirely through the web platform without editing source code.
 
 ---
 
-# Future Roadmap
+## Planned Deliverables
 
-Potential future enhancements:
+### Player Management
 
-- Native iOS App
-- Native Android App
-- Rules & Regulations App
-- Historical Tournament Archive
-- Apparel Store
-- Tournament Statistics
-- Member Messaging
-- Push Notifications
-- Live Event Updates
-- Tournament Committee Tools
-- Multi-Year Tournament Administration
-
-Each enhancement will receive its own planning, approval, implementation, and sign-off process.
+- Add players
+- Edit players
+- Remove players
+- Store handicap information
+- Player profile management
+- Returning player tracking
 
 ---
 
-# Current Project Status
+### Tournament Management
 
-| Phase | Status |
-|--------|:------:|
-| Phase I — Foundation | ✅ Complete |
-| Phase II — Public Website | ✅ Complete |
-| Phase II.5 — Production Readiness | ✅ Complete |
-| Phase III — Admin & Member Platform | 🚧 Active |
-| Phase IV — Production Launch | ⬜ Planned |
+- Create future tournament years
+- Archive previous years
+- Duplicate tournament settings
+- Manage tournament metadata
 
 ---
 
-# Current Objective
+### RSVP Operations
 
-## Phase III — Admin & Member Platform
-
-Immediate priorities:
-
-1. Authentication architecture
-2. Member account system
-3. Administrator dashboard
-4. Database integration
-5. RSVP backend
-6. Gallery upload management
-7. Player Directory
-8. Live scoring architecture
-
-The public website is considered production-ready and design-locked.
-
-Future development should expand functionality while preserving the approved public experience.
+- RSVP reporting
+- Attendance summaries
+- Dietary summaries
+- Export attendee information
 
 ---
 
-# Current Release
+### Gallery Administration
 
-**v1.0-responsive**
-
-Official GitHub Release:
-
-**The Foxglove Website v1.0 – Public Experience**
-
-This release marks the completion of the public-facing Foxglove website and serves as the foundation for all future development.
+- Submission moderation
+- Approve / Reject workflow
+- Featured image management
+- Bulk upload support
 
 ---
 
-# Guiding Principle
+### Past Winners Administration
 
-> **Build something worthy of becoming a tradition.**
+- Champion information editing
+- Winner reflections
+- Tournament statistics
+- Historical media management
+
+---
+
+### Operational Improvements
+
+- Better dashboard workflows
+- Additional administrator safeguards
+- Bulk editing where appropriate
+- Administrative reporting
+
+---
+
+# 🔮 Future Development
+
+The following initiatives remain part of the long-term Foxglove vision but are intentionally outside the current website roadmap.
+
+## Companion Mobile Application
+
+Future iOS and Android application including:
+
+- Live scoring
+- Real-time leaderboard
+- Mobile scorecards
+- Tournament notifications
+
+---
+
+## Rules Companion
+
+Dedicated Rules & Regulations application.
+
+---
+
+## Merchandise Platform
+
+Foxglove apparel and merchandise storefront.
+
+---
+
+## Historical Archive
+
+Expanded tournament statistics and historical content.
+
+---
+
+## Member Enhancements
+
+Future member-facing capabilities including:
+
+- Enhanced member profiles
+- Tournament history
+- Notification preferences
+- Additional personalization
+
+---
+
+# Development Standards
+
+The following standards are now considered permanent project policy.
+
+## Development Workflow
+
+Every feature follows this lifecycle:
+
+1. Requirements
+2. Visual Planning
+3. Approval
+4. Implementation
+5. White Glove Review
+6. Responsive Validation
+7. Documentation Update
+8. Git Commit
+9. Version Sign-Off
+
+---
+
+## White Glove Review
+
+No feature is considered complete until it passes:
+
+- Desktop validation
+- Responsive validation
+- Console verification
+- Functional review
+
+---
+
+## Design Philosophy
+
+Public-facing pages prioritize presentation.
+
+Administrative pages prioritize efficiency.
+
+Whenever a conflict exists between aesthetics and administrator productivity, **function takes precedence**.
+
+---
+
+## Architecture Philosophy
+
+- Keep the platform simple.
+- Prefer one stable implementation over multiple alternatives.
+- Avoid unnecessary complexity.
+- Build with long-term maintainability in mind.
+
+---
+
+# Current Stable Release
+
+## v2.0.0
+
+Phase I: ✅ Complete
+
+Phase II: ✅ Complete
+
+Phase II.5: ✅ Complete
+
+Phase III: ✅ Complete
+
+Phase IV: Ready to Begin

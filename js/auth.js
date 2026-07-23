@@ -3,7 +3,14 @@ const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_rTCxc-eEx7qi45mB93j19w_eQ7Lv1UI
 
 const foxgloveSupabase = window.supabase.createClient(
   SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
+  SUPABASE_PUBLISHABLE_KEY,
+  {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+    },
+  }
 );
 
 window.foxgloveSupabase = foxgloveSupabase;
@@ -11,6 +18,82 @@ window.foxgloveSupabase = foxgloveSupabase;
 const loginForm = document.querySelector("#login-form");
 const loginMessage = document.querySelector("#login-message");
 const loginSubmit = document.querySelector(".login-submit");
+
+const loginPassword =
+  document.querySelector("#login-password");
+
+const loginPasswordToggle =
+  document.querySelector("#login-password-toggle");
+
+  if (loginPassword && loginPasswordToggle) {
+  loginPasswordToggle.addEventListener(
+    "click",
+    () => {
+      const passwordIsVisible =
+        loginPassword.type === "text";
+
+      loginPassword.type =
+        passwordIsVisible ? "password" : "text";
+
+      loginPasswordToggle.textContent =
+        passwordIsVisible ? "Show" : "Hide";
+
+      loginPasswordToggle.setAttribute(
+        "aria-label",
+        passwordIsVisible
+          ? "Show password"
+          : "Hide password"
+      );
+
+      loginPasswordToggle.setAttribute(
+        "aria-pressed",
+        String(!passwordIsVisible)
+      );
+
+      loginPassword.focus();
+    }
+  );
+}
+
+async function redirectExistingSession() {
+  if (!loginForm) return;
+
+  const {
+    data: { session },
+    error: sessionError,
+  } = await foxgloveSupabase.auth.getSession();
+
+  if (sessionError || !session) {
+    return;
+  }
+
+  const {
+    data: profile,
+    error: profileError,
+  } = await foxgloveSupabase
+    .from("profiles")
+    .select("role, is_active")
+    .eq("id", session.user.id)
+    .single();
+
+  if (
+    profileError ||
+    !profile ||
+    !profile.is_active
+  ) {
+    await foxgloveSupabase.auth.signOut();
+    return;
+  }
+
+  if (profile.role === "admin") {
+    window.location.replace("admin.html");
+    return;
+  }
+
+  window.location.replace("member-lounge.html");
+}
+
+redirectExistingSession();
 
 function showLoginMessage(message, type = "error") {
   loginMessage.textContent = message;
@@ -82,9 +165,9 @@ if (
 showLoginMessage("Sign-in successful.", "success");
 
 if (profile.role === "admin") {
-  window.location.href = "admin.html";
+  window.location.replace("admin.html");
 } else {
-  window.location.href = "member-lounge.html";
+  window.location.replace("member-lounge.html");
 }
 
 });

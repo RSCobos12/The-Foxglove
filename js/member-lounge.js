@@ -1,6 +1,160 @@
 (async () => {
   const supabase = window.foxgloveSupabase;
 
+    const mobileMenuButton =
+    document.querySelector(
+      "#member-mobile-menu-button"
+    );
+
+  const memberSidebar =
+    document.querySelector(
+      "#member-sidebar"
+    );
+
+  const mobileOverlay =
+    document.querySelector(
+      "#member-mobile-overlay"
+    );
+
+  function openMobileMenu() {
+    if (
+      !mobileMenuButton ||
+      !memberSidebar ||
+      !mobileOverlay
+    ) {
+      return;
+    }
+
+    memberSidebar.classList.add(
+      "is-mobile-open"
+    );
+
+    mobileOverlay.classList.add(
+      "is-visible"
+    );
+
+    mobileMenuButton.classList.add(
+      "is-open"
+    );
+
+    mobileMenuButton.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+    mobileMenuButton.setAttribute(
+      "aria-label",
+      "Close member navigation"
+    );
+
+    document.body.classList.add(
+      "member-mobile-menu-open"
+    );
+  }
+
+  function closeMobileMenu() {
+    if (
+      !mobileMenuButton ||
+      !memberSidebar ||
+      !mobileOverlay
+    ) {
+      return;
+    }
+
+    memberSidebar.classList.remove(
+      "is-mobile-open"
+    );
+
+    mobileOverlay.classList.remove(
+      "is-visible"
+    );
+
+    mobileMenuButton.classList.remove(
+      "is-open"
+    );
+
+    mobileMenuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    mobileMenuButton.setAttribute(
+      "aria-label",
+      "Open member navigation"
+    );
+
+    document.body.classList.remove(
+      "member-mobile-menu-open"
+    );
+  }
+
+  if (mobileMenuButton) {
+    mobileMenuButton.addEventListener(
+      "click",
+      () => {
+        const menuIsOpen =
+          memberSidebar?.classList.contains(
+            "is-mobile-open"
+          );
+
+        if (menuIsOpen) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+    );
+  }
+
+  if (mobileOverlay) {
+    mobileOverlay.addEventListener(
+      "click",
+      closeMobileMenu
+    );
+  }
+
+  if (memberSidebar) {
+    memberSidebar.addEventListener(
+      "click",
+      (event) => {
+        const navigationItem =
+          event.target.closest(
+            ".member-nav-link"
+          );
+
+        if (
+          navigationItem &&
+          window.innerWidth <= 767
+        ) {
+          closeMobileMenu();
+        }
+      }
+    );
+  }
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+      if (
+        event.key === "Escape" &&
+        memberSidebar?.classList.contains(
+          "is-mobile-open"
+        )
+      ) {
+        closeMobileMenu();
+      }
+    }
+  );
+
+  window.addEventListener(
+    "resize",
+    () => {
+      if (window.innerWidth > 767) {
+        closeMobileMenu();
+      }
+    }
+  );
+
   if (!supabase) {
     window.location.replace("login.html");
     return;

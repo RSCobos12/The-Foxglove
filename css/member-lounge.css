@@ -14,11 +14,12 @@
   --member-ink: #182238;
   --member-muted: #66655f;
   --member-border: rgba(6, 23, 53, 0.14);
-  --member-sidebar-width: 280px;
+  --member-sidebar-width: 230px;
 }
 
 .member-lounge-page {
-  min-width: 320px;
+  min-width: 1280px;
+  overflow-x: auto;
   background: var(--member-cream);
   color: var(--member-ink);
   font-family: Arial, Helvetica, sans-serif;
@@ -34,6 +35,7 @@
 }
 
 .member-lounge-shell {
+  min-width: 1280px;
   min-height: 100vh;
 }
 
@@ -134,38 +136,77 @@
 }
 
 .member-nav-link {
+  position: relative;
   display: flex;
   min-height: 56px;
   align-items: center;
   gap: 18px;
+  overflow: hidden;
   padding: 12px 20px;
-  border-radius: 7px;
+  border: 1px solid transparent;
+  border-radius: 9px;
   color: rgba(255, 255, 255, 0.9);
   font-size: 15px;
   transition:
+    border-color 180ms ease,
     background-color 180ms ease,
-    color 180ms ease;
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
-.member-nav-link:hover,
+.member-nav-link:hover {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.065);
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
 .member-nav-link:focus-visible {
-  background: rgba(255, 255, 255, 0.07);
-  color: #fff;
+  outline: 2px solid var(--member-gold);
+  outline-offset: 2px;
+  background: rgba(255, 255, 255, 0.065);
+  color: #ffffff;
 }
 
 .member-nav-link.is-active {
-  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(198, 161, 91, 0.22);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(198, 161, 91, 0.13) 0%,
+      rgba(255, 255, 255, 0.075) 48%,
+      rgba(255, 255, 255, 0.045) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 7px 18px rgba(0, 9, 24, 0.15);
   color: var(--member-gold-light);
+}
+
+.member-nav-link.is-active::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  bottom: 11px;
+  left: 0;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--member-gold);
+  box-shadow: 0 0 10px rgba(198, 161, 91, 0.26);
+}
+
+.member-nav-link.is-active:hover {
+  transform: none;
 }
 
 .member-nav-link.is-active .member-nav-icon img {
   width: 19px;
   height: 19px;
+  filter: drop-shadow(
+    0 2px 4px rgba(0, 0, 0, 0.18)
+  );
   transform: scale(1.08);
-  transition:
-    transform 180ms ease,
-    width 180ms ease,
-    height 180ms ease;
 }
 
 .member-nav-icon {
@@ -429,9 +470,9 @@
   z-index: 4;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  width: min(1180px, calc(100% - 64px));
-  margin: -130px auto 0;
+  gap: 20px;
+  width: 980px;
+  margin: -118px auto 0;
 }
 
 /* CURRENT SEASON */
@@ -455,7 +496,7 @@
 }
 
 .member-season-copy {
-  padding: 34px 46px;
+  padding: 38px 48px;
 }
 
 .member-season-copy .member-card-eyebrow {
@@ -522,6 +563,28 @@
   border: 1px solid #b99b75;
   background: transparent;
   color: var(--member-ink);
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.member-outline-button:hover {
+  border-color: var(--member-navy);
+  background: var(--member-navy);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.member-outline-button:focus-visible {
+  outline: 2px solid var(--member-gold);
+  outline-offset: 3px;
+}
+
+.member-outline-button:active {
+  transform: translateY(0);
 }
 
 .member-outline-button--dark {
@@ -559,6 +622,9 @@
   border: 1px solid var(--member-border);
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.64);
+    box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 10px 28px rgba(8, 24, 48, 0.07);
 }
 
 .member-summary-card {
@@ -571,13 +637,102 @@
 .member-summary-grid
   .member-summary-card:nth-child(2) {
   min-height: 190px;
-  background: #f8f4eb;
 }
 
 .member-summary-grid
   .member-summary-card:nth-child(2)
   > p:not(.member-card-eyebrow) {
   max-width: 620px;
+}
+
+/* ========================================
+   COMMITTEE NOTES
+======================================== */
+
+.member-committee-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 34px 36px 30px;
+  border-color: rgba(198, 161, 91, 0.48);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.045) 0%,
+      rgba(255, 255, 255, 0) 42%
+    ),
+    linear-gradient(
+      145deg,
+      #0a2146 0%,
+      var(--member-navy) 56%,
+      #04132d 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 14px 34px rgba(2, 11, 28, 0.12);
+  color: #ffffff;
+}
+
+.member-committee-card::before {
+  content: "“";
+  position: absolute;
+  z-index: -1;
+  top: -38px;
+  right: 28px;
+  color: rgba(198, 161, 91, 0.09);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 190px;
+  font-weight: 600;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.member-committee-card::after {
+  content: "";
+  position: absolute;
+  right: 28px;
+  bottom: 0;
+  left: 28px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(198, 161, 91, 0.4),
+    transparent
+  );
+}
+
+.member-committee-card .member-card-eyebrow {
+  color: var(--member-gold);
+}
+
+.member-committee-card .member-summary-icon {
+  border: 1px solid rgba(198, 161, 91, 0.58);
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--member-gold);
+  box-shadow: inset 0 0 0 4px rgba(198, 161, 91, 0.06);
+}
+
+.member-committee-card .member-summary-heading h2 {
+  color: #ffffff;
+}
+
+.member-committee-card
+  > p:not(.member-card-eyebrow) {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.member-committee-card .member-outline-button {
+  border-color: rgba(198, 161, 91, 0.7);
+  background: rgba(255, 255, 255, 0.025);
+  color: #ffffff;
+}
+
+.member-committee-card .member-outline-button:hover {
+  border-color: var(--member-gold);
+  background: var(--member-gold);
+  color: var(--member-navy);
+  transform: translateY(-1px);
 }
 
 /* Compact Member Profile and RSVP cards */
@@ -646,6 +801,10 @@
   align-items: flex-start;
   gap: 16px;
   margin-bottom: 20px;
+}
+
+.member-committee-card .member-summary-heading {
+  margin-bottom: 26px;
 }
 
 .member-summary-icon {
@@ -734,7 +893,7 @@
 }
 
 .member-gallery-card {
-  padding: 24px 24px 20px;
+  padding: 32px 24px 20px;
 }
 
 .member-concierge-card {
@@ -957,6 +1116,7 @@
 .member-glance-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  margin-top: 8px;
 }
 
 .member-glance-item {
@@ -967,7 +1127,7 @@
     auto;
   gap: 14px;
   height: 100%;
-  padding: 20px 22px;
+  padding: 20px 30px;
   border-right: 1px solid rgba(16, 36, 63, 0.14);
 }
 
@@ -991,7 +1151,7 @@
 .member-glance-heading {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 2px;
 }
 
@@ -999,14 +1159,21 @@
 .member-glance-heading > i,
 .member-glance-heading > svg {
   display: grid;
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
   place-items: center;
+  border: 1px solid rgba(198, 161, 91, 0.32);
+  border-radius: 50%;
+  background: rgba(198, 161, 91, 0.1);
+  color: var(--member-gold);
 }
 
 .member-glance-heading svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
+  color: var(--member-gold);
+  stroke-width: 1.8;
 }
 
 .member-glance-heading h2 {
@@ -1021,26 +1188,6 @@
 .member-glance-item > a {
   width: fit-content;
   margin-top: auto;
-}
-
-.member-glance-heading svg {
-  width: 18px;
-  height: 18px;
-  color: var(--color-gold);
-  stroke-width: 2;
-  flex-shrink: 0;
-}
-
-.member-glance-heading > span {
-  display: grid;
-  width: 42px;
-  min-width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--member-navy);
-  color: #fff;
-  font-size: 19px;
 }
 
 .member-glance-heading h2 {
@@ -1200,251 +1347,6 @@
    RESPONSIVE FOUNDATION
 ======================================== */
 
-@media (max-width: 1180px) {
-
-  :root {
-    --member-sidebar-width: 240px;
-  }
-
-  .member-sidebar-heading {
-    padding-inline: 27px;
-  }
-
-  .member-hero-content {
-    padding-left: 48px;
-  }
-
-  .member-weather-card {
-    right: 30px;
-    width: 410px;
-  }
-
-  .member-content {
-    width: min(100% - 40px, 1080px);
-  }
-
-  .member-upload-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .member-glance-grid {
-    display: grid;
-grid-template-columns: repeat(4, minmax(0, 1fr));
-align-items: stretch;
-    gap: 30px 0;
-  }
-
-  .member-glance-item:nth-child(3) {
-    padding-left: 0;
-    border-left: 0;
-  }
-}
-
-@media (max-width: 920px) {
-
-  .member-sidebar {
-    position: relative;
-    width: 100%;
-    min-height: auto;
-  }
-
-  .member-sidebar-brand,
-  .member-sidebar-heading,
-  .member-account-identity {
-    display: none;
-  }
-
-  .member-navigation {
-    display: flex;
-    overflow-x: auto;
-    padding: 12px;
-  }
-
-  .member-nav-link {
-    flex: 0 0 auto;
-  }
-
-  .member-sidebar-footer {
-    margin: 0;
-  }
-
-  .member-logout-button {
-    min-height: 54px;
-    justify-content: center;
-  }
-
-  .member-main {
-    margin-left: 0;
-  }
-
-  .member-hero {
-    min-height: 650px;
-  }
-
-  .member-hero-content {
-    padding: 90px 36px 40px;
-  }
-
-  .member-weather-card {
-    top: auto;
-    right: 30px;
-    bottom: 36px;
-    left: 30px;
-    width: auto;
-  }
-
-  .member-content {
-    margin-top: -1px;
-  }
-
-  .member-content {
-  grid-template-columns: 1fr;
-}
-
-.member-season-card,
-.member-summary-grid
-  .member-summary-card:nth-child(1),
-.member-summary-grid
-  .member-summary-card:nth-child(2),
-.member-summary-grid
-  .member-summary-card:nth-child(3),
-.member-gallery-card,
-.member-concierge-card,
-.member-glance-card {
-  grid-column: 1;
-  grid-row: auto;
-}
-
-.member-season-card {
-  order: 1;
-}
-
-.member-summary-grid
-  .member-summary-card:nth-child(2) {
-  order: 2;
-}
-
-.member-concierge-card {
-  order: 3;
-}
-
-.member-gallery-card {
-  order: 4;
-}
-
-.member-summary-grid
-  .member-summary-card:nth-child(3) {
-  order: 5;
-}
-
-.member-summary-grid
-  .member-summary-card:nth-child(1) {
-  order: 6;
-}
-
-.member-glance-card {
-  order: 7;
-}
-
-  .member-season-emblem {
-    margin: 0 44px 35px;
-    padding: 35px 20px 0;
-    border-top: 1px solid rgba(198, 148, 69, 0.5);
-    border-left: 0;
-  }
-
-}
-
-@media (max-width: 640px) {
-
-  .member-navigation {
-    gap: 4px;
-  }
-
-  .member-nav-link {
-    min-height: 48px;
-    padding: 9px 13px;
-    font-size: 13px;
-  }
-
-  .member-nav-icon {
-    display: none;
-  }
-
-  .member-hero {
-    min-height: 690px;
-  }
-
-  .member-hero-content {
-    width: 100%;
-    padding: 70px 24px 30px;
-  }
-
-  .member-weather-card {
-    right: 18px;
-    bottom: 22px;
-    left: 18px;
-  }
-
-  .member-weather-locations {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 23px;
-  }
-
-  .member-weather-location + .member-weather-location {
-    padding-top: 22px;
-    padding-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    border-left: 0;
-  }
-
-  .member-weather-link {
-    margin-inline: 23px;
-  }
-
-  .member-content {
-    width: calc(100% - 24px);
-  }
-
-  .member-season-copy,
-  .member-summary-card,
-  .member-gallery-card,
-  .member-concierge-card,
-  .member-glance-card {
-    padding-inline: 22px;
-  }
-
-  .member-season-copy h2 {
-    font-size: 34px;
-  }
-
-  .member-upload-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .member-upload-footer {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .member-glance-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .member-glance-item,
-  .member-glance-item:nth-child(3) {
-    padding: 24px 0 0;
-    border-top: 1px solid var(--member-border);
-    border-left: 0;
-  }
-
-  .member-glance-item:first-child {
-    padding-top: 0;
-    border-top: 0;
-  }
-
-}
 
 /* ========================================
    MEMBER MESSAGE
@@ -1668,5 +1570,387 @@ align-items: stretch;
 
   .member-directory-handicap {
     justify-items: start;
+  }
+}
+
+/* ========================================
+   MOBILE MEMBER'S LOUNGE
+======================================== */
+
+.member-mobile-header,
+.member-mobile-overlay {
+  display: none;
+}
+
+@media (max-width: 767px) {
+
+  .member-lounge-page {
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .member-lounge-shell {
+    min-width: 0;
+  }
+
+  .member-mobile-menu-open {
+    overflow: hidden;
+  }
+
+  /* MOBILE HEADER */
+
+  .member-mobile-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    min-height: 68px;
+    align-items: center;
+    justify-content: space-between;
+    padding:
+      max(10px, env(safe-area-inset-top))
+      18px
+      10px;
+    border-bottom:
+      1px solid rgba(198, 161, 91, 0.25);
+    background: rgba(6, 23, 53, 0.98);
+    box-shadow:
+      0 8px 24px rgba(2, 11, 28, 0.15);
+  }
+
+  .member-mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: #ffffff;
+    font-family:
+      "Cormorant Garamond",
+      Georgia,
+      serif;
+    font-size: 19px;
+    letter-spacing: 0.03em;
+  }
+
+  .member-mobile-brand img {
+    display: block;
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+  }
+
+  .member-mobile-menu-button {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-content: center;
+    gap: 5px;
+    padding: 0;
+    border:
+      1px solid rgba(198, 161, 91, 0.35);
+    border-radius: 8px;
+    background:
+      rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+  }
+
+  .member-mobile-menu-button span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--member-gold-light);
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
+  }
+
+  .member-mobile-menu-button.is-open
+    span:nth-child(1) {
+    transform: translateY(7px)
+      rotate(45deg);
+  }
+
+  .member-mobile-menu-button.is-open
+    span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .member-mobile-menu-button.is-open
+    span:nth-child(3) {
+    transform: translateY(-7px)
+      rotate(-45deg);
+  }
+
+  /* MOBILE DRAWER */
+
+  .member-sidebar {
+    position: fixed;
+    inset:
+      0
+      auto
+      0
+      0;
+    z-index: 60;
+    width: min(82vw, 320px);
+    min-height: 100dvh;
+    transform: translateX(-105%);
+    transition:
+      transform 220ms ease;
+  }
+
+  .member-sidebar.is-mobile-open {
+    transform: translateX(0);
+  }
+
+  .member-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: block;
+    border: 0;
+    background: rgba(2, 11, 28, 0.58);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 220ms ease;
+  }
+
+  .member-mobile-overlay.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .member-sidebar-brand {
+    padding:
+      max(30px, env(safe-area-inset-top))
+      24px
+      22px;
+  }
+
+  .member-sidebar-heading {
+    padding: 24px 28px 18px;
+  }
+
+  .member-navigation {
+    display: grid;
+    overflow: visible;
+    gap: 7px;
+    padding: 4px 16px 24px;
+  }
+
+  .member-nav-link {
+    width: 100%;
+    min-height: 52px;
+    justify-content: flex-start;
+    padding: 10px 17px;
+    font-size: 15px;
+  }
+
+  .member-nav-icon {
+    display: grid;
+  }
+
+  .member-sidebar-footer {
+    margin-top: auto;
+  }
+
+  .member-logout-button {
+    min-height: 62px;
+    justify-content: flex-start;
+  }
+
+  /* MOBILE MAIN CANVAS */
+
+  .member-main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .member-hero {
+    min-height: 540px;
+  }
+
+  .member-hero-content {
+    width: auto;
+    padding: 58px 22px 30px;
+  }
+
+  .member-hero-content h2 {
+    font-size: clamp(54px, 17vw, 72px);
+  }
+
+  .member-weather-card {
+    top: auto;
+    right: 14px;
+    bottom: 20px;
+    left: 14px;
+    width: auto;
+  }
+
+  .member-weather-locations {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .member-weather-location
+    + .member-weather-location {
+    padding-top: 18px;
+    padding-left: 0;
+    border-top:
+      1px solid rgba(255, 255, 255, 0.15);
+    border-left: 0;
+  }
+
+  .member-weather-link {
+    margin-inline: 20px;
+  }
+
+  .member-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    width: calc(100% - 24px);
+    margin: 12px auto 0;
+  }
+
+  .member-season-card,
+  .member-summary-grid,
+  .member-gallery-card,
+  .member-concierge-card,
+  .member-glance-card {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .member-season-card {
+    grid-template-columns: 1fr;
+  }
+
+  .member-season-copy {
+    padding: 28px 22px;
+  }
+
+  .member-season-emblem {
+    margin: 0 22px 26px;
+    padding: 26px 0 0;
+    border-top:
+      1px solid rgba(198, 161, 91, 0.5);
+    border-left: 0;
+  }
+
+  .member-summary-grid,
+  .member-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .member-summary-card,
+  .member-committee-card,
+  .member-gallery-card,
+  .member-concierge-card,
+  .member-glance-card {
+    min-width: 0;
+  }
+
+  .member-gallery-card,
+  .member-concierge-copy,
+  .member-glance-card {
+    padding-inline: 20px;
+  }
+
+  .member-upload-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .member-glance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-glance-item {
+    padding: 22px 0;
+    border-right: 0;
+    border-bottom:
+      1px solid var(--member-border);
+  }
+
+  .member-glance-item:last-child {
+    border-bottom: 0;
+  }
+
+    /* RESET DESKTOP CARD POSITIONS */
+
+  .member-summary-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  .member-summary-grid
+    > .member-summary-card:nth-child(1),
+  .member-summary-grid
+    > .member-summary-card:nth-child(2),
+  .member-summary-grid
+    > .member-summary-card:nth-child(3) {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .member-feature-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  .member-feature-grid
+    > .member-gallery-card,
+  .member-feature-grid
+    > .member-concierge-card {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+    min-width: 0;
+  }
+
+    .member-summary-grid
+    > .member-summary-card:nth-child(1),
+  .member-summary-grid
+    > .member-summary-card:nth-child(3) {
+    min-height: 0;
+    padding: 24px 22px;
+  }
+
+  .member-summary-grid
+    > .member-summary-card:nth-child(1)
+    .member-summary-heading,
+  .member-summary-grid
+    > .member-summary-card:nth-child(3)
+    .member-summary-heading {
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .member-summary-grid
+    > .member-summary-card:nth-child(1)
+    .member-summary-heading h2,
+  .member-summary-grid
+    > .member-summary-card:nth-child(3)
+    .member-summary-heading h2 {
+    font-size: 25px;
+  }
+
+  .member-summary-grid
+    > .member-summary-card:nth-child(1)
+    .member-summary-heading h2 strong,
+  .member-summary-grid
+    > .member-summary-card:nth-child(3)
+    .member-summary-heading h2 strong {
+    font-size: 34px;
   }
 }

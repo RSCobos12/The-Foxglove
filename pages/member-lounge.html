@@ -22,11 +22,45 @@
 
   <div class="member-lounge-shell">
 
+<header class="member-mobile-header">
+
+  <a
+    class="member-mobile-brand"
+    href="member-lounge.html">
+
+    <img
+      src="../assets/logos/foxglove-logo-clean.png"
+      alt="The Foxglove">
+
+    <span>
+      Member’s Lounge
+    </span>
+
+  </a>
+
+  <button
+    class="member-mobile-menu-button"
+    id="member-mobile-menu-button"
+    type="button"
+    aria-label="Open member navigation"
+    aria-controls="member-sidebar"
+    aria-expanded="false">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+</header>
+
     <!-- =====================================
          MEMBER SIDEBAR
     ====================================== -->
 
-    <aside class="member-sidebar">
+    <aside
+  class="member-sidebar"
+  id="member-sidebar">
 
       <div class="member-sidebar-brand">
 
@@ -155,6 +189,13 @@
       </div>
 
     </aside>
+
+    <button
+  class="member-mobile-overlay"
+  id="member-mobile-overlay"
+  type="button"
+  aria-label="Close member navigation">
+</button>
 
     <!-- =====================================
          MAIN CONTENT
@@ -342,7 +383,7 @@
 
 </article>
 
-          <article class="member-summary-card">
+          <article class="member-summary-card member-committee-card">
 
   <p class="member-card-eyebrow">
     Committee Notes

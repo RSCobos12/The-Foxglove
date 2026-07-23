@@ -24,7 +24,41 @@
 
   <div class="member-lounge-shell">
 
-    <aside class="member-sidebar">
+  <header class="member-mobile-header">
+
+  <a
+    class="member-mobile-brand"
+    href="member-lounge.html">
+
+    <img
+      src="../assets/logos/foxglove-logo-clean.png"
+      alt="The Foxglove">
+
+    <span>
+      Member’s Lounge
+    </span>
+
+  </a>
+
+  <button
+    class="member-mobile-menu-button"
+    id="member-mobile-menu-button"
+    type="button"
+    aria-label="Open member navigation"
+    aria-controls="member-sidebar"
+    aria-expanded="false">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+</header>
+
+    <aside
+  class="member-sidebar"
+  id="member-sidebar">
 
       <div class="member-sidebar-brand">
 
@@ -150,7 +184,14 @@
 
       </div>
 
-    </aside>
+        </aside>
+
+    <button
+      class="member-mobile-overlay"
+      id="member-mobile-overlay"
+      type="button"
+      aria-label="Close member navigation">
+    </button>
 
     <main class="member-main">
 

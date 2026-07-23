@@ -95,6 +95,7 @@
     `Welcome back, ${currentProfile.first_name}.`;
 
   let courses = [];
+  let courseEditorInitialState = "";
 
   function showMessage(message, isError = false) {
     statusMessage.textContent = message;
@@ -112,12 +113,40 @@
       `${courses.length} ${courses.length === 1 ? "course" : "courses"}`;
   }
 
-  function resetEditor() {
-    editorForm.reset();
-    courseId.value = "";
-    editorTitle.textContent = "Add Course";
-    editorPanel.hidden = true;
-  }
+  function getCourseEditorState() {
+  return JSON.stringify({
+    id: courseId.value,
+    name: courseName.value,
+    location: courseLocation.value,
+    par: coursePar.value,
+    rating: courseRating.value,
+    slope: courseSlope.value,
+    displayOrder: courseDisplayOrder.value,
+    imagePath: courseImagePath.value,
+    website: courseWebsite.value,
+    description: courseDescription.value,
+  });
+}
+
+function rememberCourseEditorState() {
+  courseEditorInitialState =
+    getCourseEditorState();
+}
+
+function courseEditorHasUnsavedChanges() {
+  return (
+    getCourseEditorState() !==
+    courseEditorInitialState
+  );
+}
+
+function resetEditor() {
+  editorForm.reset();
+  courseId.value = "";
+  editorTitle.textContent = "Add Course";
+  editorPanel.hidden = true;
+  courseEditorInitialState = "";
+}
 
   function openAddEditor() {
     editorForm.reset();
@@ -133,6 +162,7 @@
     courseDisplayOrder.value = nextDisplayOrder;
     editorTitle.textContent = "Add Course";
     editorPanel.hidden = false;
+    rememberCourseEditorState();
 
     editorPanel.scrollIntoView({
       behavior: "smooth",
@@ -154,6 +184,7 @@
 
     editorTitle.textContent = `Edit ${course.name}`;
     editorPanel.hidden = false;
+    rememberCourseEditorState();
 
     editorPanel.scrollIntoView({
       behavior: "smooth",
@@ -186,61 +217,118 @@
     const actions = document.createElement("div");
     actions.className = "courses-admin-actions";
 
-    const moveUpButton = document.createElement("button");
-    moveUpButton.type = "button";
-    moveUpButton.className = "admin-secondary-button";
-    moveUpButton.textContent = "Move Up";
-    moveUpButton.disabled =
-      course.display_order ===
-      Math.min(...courses.map((item) => item.display_order));
+    const lowestDisplayOrder =
+  Math.min(
+    ...courses.map(
+      (item) => item.display_order
+    )
+  );
 
-    moveUpButton.addEventListener("click", async () => {
-      await moveCourse(course, -1);
-    });
+const highestDisplayOrder =
+  Math.max(
+    ...courses.map(
+      (item) => item.display_order
+    )
+  );
 
-    const moveDownButton = document.createElement("button");
-    moveDownButton.type = "button";
-    moveDownButton.className = "admin-secondary-button";
-    moveDownButton.textContent = "Move Down";
-    moveDownButton.disabled =
-      course.display_order ===
-      Math.max(...courses.map((item) => item.display_order));
+const moveUpButton =
+  document.createElement("button");
 
-    moveDownButton.addEventListener("click", async () => {
-      await moveCourse(course, 1);
-    });
+moveUpButton.type = "button";
+moveUpButton.className =
+  "admin-secondary-button";
+moveUpButton.textContent = "Move Up";
+moveUpButton.disabled =
+  course.display_order ===
+  lowestDisplayOrder;
 
-    const editButton = document.createElement("button");
-    editButton.type = "button";
-    editButton.className = "admin-secondary-button";
-    editButton.textContent = "Edit";
+const moveDownButton =
+  document.createElement("button");
 
-    editButton.addEventListener("click", () => {
-      openEditEditor(course);
-    });
+moveDownButton.type = "button";
+moveDownButton.className =
+  "admin-secondary-button";
+moveDownButton.textContent = "Move Down";
+moveDownButton.disabled =
+  course.display_order ===
+  highestDisplayOrder;
 
-    const removeButton = document.createElement("button");
-    removeButton.type = "button";
-    removeButton.className =
-      "admin-secondary-button is-danger";
-    removeButton.textContent = "Remove";
+const editButton =
+  document.createElement("button");
 
-    removeButton.addEventListener("click", async () => {
-      const confirmed = window.confirm(
+editButton.type = "button";
+editButton.className =
+  "admin-secondary-button";
+editButton.textContent = "Edit";
+
+const removeButton =
+  document.createElement("button");
+
+removeButton.type = "button";
+removeButton.className =
+  "admin-secondary-button is-danger";
+removeButton.textContent = "Remove";
+
+function disableCourseActions() {
+  moveUpButton.disabled = true;
+  moveDownButton.disabled = true;
+  editButton.disabled = true;
+  removeButton.disabled = true;
+}
+
+moveUpButton.addEventListener(
+  "click",
+  async () => {
+    disableCourseActions();
+    moveUpButton.textContent =
+      "Moving...";
+
+    await moveCourse(course, -1);
+  }
+);
+
+moveDownButton.addEventListener(
+  "click",
+  async () => {
+    disableCourseActions();
+    moveDownButton.textContent =
+      "Moving...";
+
+    await moveCourse(course, 1);
+  }
+);
+
+editButton.addEventListener(
+  "click",
+  () => {
+    openEditEditor(course);
+  }
+);
+
+removeButton.addEventListener(
+  "click",
+  async () => {
+    const confirmed =
+      window.confirm(
         `Remove ${course.name} from the public Courses page?`
       );
 
-      if (!confirmed) return;
+    if (!confirmed) return;
 
-      await removeCourse(course);
-    });
+    disableCourseActions();
+    removeButton.textContent =
+      "Removing...";
 
-    actions.append(
-      moveUpButton,
-      moveDownButton,
-      editButton,
-      removeButton
-    );
+    await removeCourse(course);
+  }
+);
+
+actions.append(
+  moveUpButton,
+  moveDownButton,
+  editButton,
+  removeButton
+);
 
     row.append(summary, actions);
 
@@ -517,10 +605,23 @@
     openAddEditor
   );
 
-  cancelCourseButton.addEventListener(
-    "click",
-    resetEditor
-  );
+cancelCourseButton.addEventListener(
+  "click",
+  () => {
+    if (
+      courseEditorHasUnsavedChanges()
+    ) {
+      const confirmed =
+        window.confirm(
+          "Discard your unsaved course changes?"
+        );
+
+      if (!confirmed) return;
+    }
+
+    resetEditor();
+  }
+);
 
   logoutButton.addEventListener(
     "click",

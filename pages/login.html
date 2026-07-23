@@ -56,16 +56,27 @@
         </div>
 
         <div class="login-field">
-          <label for="login-password">Password</label>
+  <label for="login-password">Password</label>
 
-          <input
-            id="login-password"
-            name="password"
-            type="password"
-            autocomplete="current-password"
-            minlength="12"
-            required>
-        </div>
+  <div class="login-password-control">
+    <input
+      id="login-password"
+      name="password"
+      type="password"
+      autocomplete="current-password"
+      minlength="12"
+      required>
+
+    <button
+      class="login-password-toggle"
+      id="login-password-toggle"
+      type="button"
+      aria-label="Show password"
+      aria-pressed="false">
+      Show
+    </button>
+  </div>
+</div>
 
         <div
           id="login-message"

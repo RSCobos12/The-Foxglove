@@ -636,8 +636,8 @@ async function saveMemberMessage() {
 
   clearMemberMessageStatus();
 
-  if (record.is_published) {
-
+if (record.is_published) {
+  const { error: unpublishError } =
     await foxgloveSupabase
       .from("member_lounge_messages")
       .update({
@@ -645,7 +645,24 @@ async function saveMemberMessage() {
       })
       .eq("is_published", true);
 
+  if (unpublishError) {
+    console.error(
+      "Unable to unpublish the previous message:",
+      unpublishError
+    );
+
+    showMemberMessageStatus(
+      "Unable to replace the currently published message. Please try again.",
+      true
+    );
+
+    saveMemberMessageButton.disabled = false;
+    saveMemberMessageButton.textContent =
+      "Save Message";
+
+    return;
   }
+}
 
   let response;
 
