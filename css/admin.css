@@ -250,6 +250,7 @@ body {
   color: #ffffff;
   font: inherit;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .admin-primary-button:disabled {
@@ -278,14 +279,33 @@ body {
 .admin-status-message {
   margin-top: 22px;
   padding: 18px;
+  border: 1px solid transparent;
   border-radius: 6px;
   background: #faf9f5;
   color: rgba(16, 36, 63, 0.7);
 }
 
+.admin-status-message.is-success {
+  border-color: rgba(37, 112, 74, 0.22);
+  background: rgba(37, 112, 74, 0.08);
+  color: #256f4a;
+}
+
 .admin-status-message.is-error {
+  border-color: rgba(123, 32, 32, 0.18);
   background: #f8e8e8;
   color: #7b2020;
+}
+
+.admin-status-message.is-fading {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+#member-editor-message {
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
 }
 
 .admin-table-wrapper {
@@ -1244,17 +1264,6 @@ body {
   width: fit-content;
 }
 
-.admin-status-message {
-  margin: 0 0 18px;
-  color: #346b43;
-  font-size: 0.88rem;
-  font-weight: 600;
-}
-
-.admin-status-message.is-error {
-  color: #9b2f2f;
-}
-
 @media (max-width: 760px) {
   .season-admin-fields {
     grid-template-columns: 1fr;
@@ -1995,6 +2004,161 @@ body {
   }
 
   .rules-document-actions button {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   MEMBER EDITOR
+======================================== */
+
+.member-editor-panel {
+  margin-top: 28px;
+  padding: 28px;
+  border: 1px solid rgba(16, 36, 63, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    0 10px 28px rgba(8, 24, 48, 0.07);
+}
+
+.member-editor-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(16, 36, 63, 0.12);
+}
+
+.member-editor-header h2 {
+  margin: 0;
+}
+
+.member-editor-header p:last-child {
+  margin: 8px 0 0;
+  color: rgba(16, 36, 63, 0.66);
+}
+
+.member-editor-section {
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(16, 36, 63, 0.1);
+}
+
+.member-editor-section:last-of-type {
+  border-bottom: 0;
+}
+
+.member-editor-section-heading {
+  margin-bottom: 18px;
+}
+
+.member-editor-section-heading h3 {
+  margin: 0;
+  color: #10243f;
+  font-size: 1.05rem;
+}
+
+.member-editor-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.member-editor-grid label {
+  display: grid;
+  gap: 8px;
+  color: #10243f;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.member-editor-grid input,
+.member-editor-grid select {
+  width: 100%;
+  min-height: 46px;
+  box-sizing: border-box;
+  padding: 0 13px;
+  border: 1px solid rgba(16, 36, 63, 0.22);
+  border-radius: 6px;
+  background: #ffffff;
+  color: #10243f;
+  font: inherit;
+  font-weight: 400;
+}
+
+.member-editor-grid input:focus,
+.member-editor-grid select:focus {
+  border-color: #b28a3b;
+  outline: 2px solid rgba(178, 138, 59, 0.16);
+  outline-offset: 1px;
+}
+
+.member-editor-grid input[readonly] {
+  background: rgba(16, 36, 63, 0.045);
+  color: rgba(16, 36, 63, 0.65);
+}
+
+.member-editor-field-wide {
+  grid-column: 1 / -1;
+}
+
+.member-editor-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 24px;
+}
+
+.member-name-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #10243f;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.member-name-button:hover {
+  color: #a87d24;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.member-name-button:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid rgba(168, 125, 36, 0.45);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .member-editor-panel {
+    padding: 20px;
+  }
+
+  .member-editor-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .member-editor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-editor-field-wide {
+    grid-column: 1;
+  }
+
+  .member-editor-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .member-editor-actions button {
     width: 100%;
   }
 }

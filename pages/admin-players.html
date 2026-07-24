@@ -35,7 +35,7 @@
           class="admin-primary-button"
           type="button"
           disabled>
-          Add Member
+          Invite Member
         </button>
 
       </header>
@@ -70,11 +70,14 @@
   <tr>
     <th scope="col">Member</th>
     <th scope="col">Email</th>
-    <th scope="col">Role</th>
-    <th scope="col">RSVP</th>
+    <th scope="col">Status</th>
+    <th
+      id="rsvp-column-heading"
+      scope="col">
+      RSVP
+    </th>
     <th scope="col">Jacket Size</th>
     <th scope="col">Handicap Index</th>
-    <th scope="col">Status</th>
   </tr>
 </thead>
 
@@ -83,6 +86,291 @@
           </table>
 
         </div>
+
+      </section>
+
+            <section
+        id="member-editor-panel"
+        class="member-editor-panel"
+        aria-labelledby="member-editor-title"
+        hidden>
+
+        <div class="member-editor-header">
+
+          <div>
+            <p class="admin-eyebrow">
+              Member Record
+            </p>
+
+            <h2 id="member-editor-title">
+              Edit Member
+            </h2>
+
+            <p id="member-editor-season">
+              Loading current season...
+            </p>
+          </div>
+
+          <button
+            id="close-member-editor"
+            class="admin-secondary-button"
+            type="button">
+            Close
+          </button>
+
+        </div>
+
+        <form
+  id="member-editor-form"
+  novalidate>
+
+          <input
+            id="member-editor-id"
+            type="hidden">
+
+          <section class="member-editor-section">
+
+            <div class="member-editor-section-heading">
+              <h3>Personal Information</h3>
+            </div>
+
+            <div class="member-editor-grid">
+
+              <label>
+                <span>First Name</span>
+
+                <input
+                  id="member-first-name"
+                  type="text"
+                  autocomplete="given-name"
+                  required>
+              </label>
+
+              <label>
+                <span>Last Name</span>
+
+                <input
+                  id="member-last-name"
+                  type="text"
+                  autocomplete="family-name"
+                  required>
+              </label>
+
+              <label>
+                <span>Email</span>
+
+                <input
+  id="member-email"
+  type="email"
+  autocomplete="email"
+  readonly>
+              </label>
+
+              <label>
+                <span>Phone</span>
+
+                <input
+                  id="member-phone"
+                  type="tel"
+                  autocomplete="tel">
+              </label>
+
+            </div>
+
+          </section>
+
+          <section class="member-editor-section">
+
+            <div class="member-editor-section-heading">
+              <h3>Mailing Address</h3>
+            </div>
+
+            <div class="member-editor-grid">
+
+              <label class="member-editor-field-wide">
+                <span>Street Address</span>
+
+                <input
+                  id="member-address-line-1"
+                  type="text"
+                  autocomplete="address-line1">
+              </label>
+
+              <label class="member-editor-field-wide">
+                <span>Address Line 2</span>
+
+                <input
+                  id="member-address-line-2"
+                  type="text"
+                  autocomplete="address-line2">
+              </label>
+
+              <label>
+                <span>City</span>
+
+                <input
+                  id="member-city"
+                  type="text"
+                  autocomplete="address-level2">
+              </label>
+
+              <label>
+                <span>State</span>
+
+                <input
+                  id="member-state"
+                  type="text"
+                  autocomplete="address-level1">
+              </label>
+
+              <label>
+                <span>ZIP Code</span>
+
+                <input
+                  id="member-postal-code"
+                  type="text"
+                  inputmode="numeric"
+                  autocomplete="postal-code">
+              </label>
+
+            </div>
+
+          </section>
+
+          <section class="member-editor-section">
+
+            <div class="member-editor-section-heading">
+              <h3>Tournament Information</h3>
+            </div>
+
+            <div class="member-editor-grid">
+
+              <label>
+                <span>Handicap Index</span>
+
+                <input
+                  id="member-handicap-index"
+                  type="number"
+                  min="-10"
+                  max="60"
+                  step="0.1"
+                  inputmode="decimal">
+              </label>
+
+              <label>
+                <span>Jacket Size</span>
+
+                <input
+                  id="member-jacket-size"
+                  type="text">
+              </label>
+
+              <label>
+                <span id="member-rsvp-label">
+                  RSVP Status
+                </span>
+
+                <select id="member-rsvp-status">
+                  <option value="no_response">
+                    No Response
+                  </option>
+
+                  <option value="attending">
+                    Attending
+                  </option>
+
+                  <option value="declined">
+                    Declined
+                  </option>
+                </select>
+              </label>
+
+            </div>
+
+          </section>
+
+          <section class="member-editor-section">
+
+            <div class="member-editor-section-heading">
+              <h3>Account Settings</h3>
+            </div>
+
+            <div class="member-editor-grid">
+
+              <label>
+                <span>Role</span>
+
+                <select id="member-role">
+                  <option value="member">
+                    Member
+                  </option>
+
+                  <option value="admin">
+                    Administrator
+                  </option>
+                </select>
+              </label>
+
+              <label>
+                <span>Status</span>
+
+                <select id="member-account-status">
+                  <option value="invited">
+                    Invited
+                  </option>
+
+                  <option value="active">
+                    Active
+                  </option>
+
+                  <option value="inactive">
+                    Inactive
+                  </option>
+                </select>
+              </label>
+
+              <label>
+                <span>Last Login</span>
+
+                <input
+                  id="member-last-login"
+                  type="text"
+                  value="Not available"
+                  readonly>
+              </label>
+
+            </div>
+
+          </section>
+
+          <div
+            id="member-editor-message"
+            class="admin-status-message"
+            role="status"
+            aria-live="polite"
+            hidden>
+          </div>
+
+          <div class="member-editor-actions">
+
+            <button
+              id="cancel-member-editor"
+              class="admin-secondary-button"
+              type="button">
+              Cancel
+            </button>
+
+            <button
+              id="save-member-editor"
+              class="admin-primary-button"
+              type="submit"
+              disabled>
+              Save Changes
+            </button>
+
+          </div>
+
+        </form>
 
       </section>
 
