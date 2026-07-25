@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>
+    Complete Registration | The Foxglove
+  </title>
+
+  <link
+    rel="icon"
+    href="../favicon.ico">
+
+  <link
+    rel="stylesheet"
+    href="../css/style.css">
+
+  <link
+    rel="stylesheet"
+    href="../css/login.css">
+</head>
+
+<body class="login-page">
+
+  <main class="login-main">
+
+    <section class="login-panel">
+
+      <div class="login-brand">
+
+        <img
+          src="../assets/logos/foxglove-logo-clean.png"
+          alt="The Foxglove crest"
+          class="login-logo">
+
+        <p class="login-eyebrow">
+          The Foxglove
+        </p>
+
+        <h1>
+          Complete Registration
+        </h1>
+
+        <p class="login-intro">
+          Create your password to activate your
+          Foxglove account.
+        </p>
+
+      </div>
+
+      <form
+        id="complete-registration-form"
+        class="login-form"
+        hidden>
+
+        <div class="login-field">
+
+          <label for="registration-password">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="registration-password"
+            name="password"
+            minlength="12"
+            autocomplete="new-password"
+            required>
+
+        </div>
+
+        <div class="login-field">
+
+          <label for="registration-password-confirmation">
+            Confirm Password
+          </label>
+
+          <input
+            type="password"
+            id="registration-password-confirmation"
+            name="passwordConfirmation"
+            minlength="12"
+            autocomplete="new-password"
+            required>
+
+        </div>
+
+        <div
+          id="registration-message"
+          class="login-message"
+          aria-live="polite"
+          hidden>
+        </div>
+
+        <button
+          id="complete-registration-submit"
+          class="login-submit"
+          type="submit">
+
+          Activate Account
+
+        </button>
+
+      </form>
+
+      <div
+        id="registration-loading"
+        class="login-message"
+        aria-live="polite">
+
+        Validating your invitation...
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+  <script src="../js/auth.js"></script>
+
+  <script src="../js/complete-registration.js"></script>
+
+</body>
+
+</html>

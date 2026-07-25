@@ -205,17 +205,28 @@ export default {
   error: invitationError,
 } = await supabaseAdmin.auth.admin
   .inviteUserByEmail(
-    email,
-    {
-      data: {
-        first_name: firstName,
-        last_name: lastName,
-        role,
-        account_status: "invited",
-        is_active: false,
-      },
-    }
-  );
+  email,
+  {
+    redirectTo:
+      "https://thefoxglove.us/pages/complete-registration.html",
+
+    data: {
+      first_name:
+        firstName,
+
+      last_name:
+        lastName,
+
+      role,
+
+      account_status:
+        "invited",
+
+      is_active:
+        false,
+    },
+  }
+);
 
 if (invitationError) {
   console.error(
