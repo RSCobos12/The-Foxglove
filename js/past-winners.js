@@ -241,33 +241,6 @@ function renderEmptyWinnerDetail(year = "2027") {
     "The next chapter of Foxglove history will be written here.";
 
   winnerPhoto.src =
-  "../assets/icons/foxglove-icon-gold-transparent.png";
-
-winnerPhoto.alt = "Foxglove placeholder";
-winnerPhoto.style.display = "block";
-
-  winnerVideo.pause();
-  winnerVideo.removeAttribute("src");
-  winnerVideo.style.display = "none";
-  winnerVideo.load();
-
-  winnerPresentation.classList.remove("is-playing");
-}
-
-function renderEmptyWinnerDetail(year = "2027") {
-  showPhoto();
-
-  detailYear.textContent = `${year} Winner`;
-  detailName.textContent = `Reserved for ${year} Winner`;
-
-  winningScore.textContent = "—";
-  winnerDinner.textContent = "—";
-  coursesPlayed.textContent = "—";
-
-  reflection.textContent =
-    "The next chapter of Foxglove history will be written here.";
-
-  winnerPhoto.src =
   "../assets/icons/foxglove-icon-gold.png";
 
 winnerPhoto.alt = "Foxglove placeholder";
