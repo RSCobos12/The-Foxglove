@@ -1,35 +1,52 @@
-# The Foxglove Invitational
+# The Foxglove
 
-**Project Version:** v2.0.0  
-**Project Status:** Phase III Complete | Phase IV Ready  
+**Project Version:** v2.1.0  
+**Project Status:** Phase III In Progress  
 **Owner:** Scott Cobos  
 **Development Partner:** ChatGPT (OpenAI)  
-**Last Updated:** July 22, 2026
+**Production Website:** https://thefoxglove.us  
+**Last Updated:** July 24, 2026
 
 ---
 
 # Project Overview
 
-The Foxglove Invitational is more than a golf tournament website.
+The Foxglove is the permanent digital home of The Foxglove Invitational.
 
-It is the permanent digital home of an annual tradition built around championship golf, brotherhood, premium hospitality, and lasting memories.
+The platform preserves tournament history while providing a secure administrative system capable of managing future tournaments with minimal technical maintenance.
 
-The platform has been designed with two primary audiences:
+The project has two primary audiences:
 
-- **Public visitors** learning about The Foxglove Invitational.
-- **Tournament members and committee administrators** managing the tournament through a secure member platform.
+- Public visitors
+- Members and tournament administrators
 
-Every design and development decision emphasizes timeless presentation, long-term maintainability, and operational simplicity.
+Every design and engineering decision emphasizes:
+
+- Timeless presentation
+- Long-term maintainability
+- Operational simplicity
+- Premium user experience
 
 ---
 
-# Current Release — v2.0.0
+# Current Release
 
-Version 2.0.0 marks the completion of the Phase III Member Platform.
+## Version 2.1.0
 
-This release includes:
+Version 2.1.0 marks the successful deployment of The Foxglove into a live production environment.
 
-## Public Website
+Major accomplishments include:
+
+### Production Infrastructure
+
+- Live production website
+- GitHub Pages deployment
+- Custom domain (thefoxglove.us)
+- HTTPS enabled
+- Production DNS
+- Production email infrastructure
+
+### Public Website
 
 - Homepage
 - RSVP
@@ -37,73 +54,34 @@ This release includes:
 - Courses
 - Gallery
 
-## Authentication
+### Authentication
 
-- Secure member login
-- Persistent login sessions
+- Secure login
+- Session persistence
 - Role-based routing
 - Secure logout
 - Password visibility toggle
 
-## Member Platform
+### Member Platform
 
 - Member's Lounge
-- Rules Library
-- Shared mobile navigation
-- Responsive iPhone support
+- Player Directory
+- Member Profile Editor
 - Committee messaging
-- Concierge recommendations
-- Member profile
-- RSVP status
+- Rules Library
 - Share Your Memories
+- Concierge recommendations
+- Responsive member experience
 
-## Administration
+### Administration
 
 - Admin Dashboard
+- Member invitations
+- Production email delivery
+- Member management
 - Current Season management
 - Committee Message management
 - Course management
-- Responsive administration interface
-- Functional workflow protections
-
----
-
-# Design Philosophy
-
-The Foxglove follows one guiding principle:
-
-> Build experiences that feel timeless rather than trendy.
-
-Design decisions emphasize:
-
-- Simplicity
-- Consistency
-- Premium presentation
-- Function over decoration
-- Long-term maintainability
-
-Public-facing pages prioritize atmosphere and storytelling.
-
-Administrative pages prioritize speed, clarity, and reliability.
-
----
-
-# Development Workflow
-
-Every major feature follows the same lifecycle:
-
-1. Vision
-2. Functional Requirements
-3. Visual Direction / Mockup
-4. Approval
-5. Implementation
-6. White Glove Review
-7. Responsive Validation
-8. Git Commit
-9. Documentation Update
-10. Version Sign-Off
-
-No feature is considered complete until it passes both desktop and real-device mobile validation.
 
 ---
 
@@ -113,11 +91,13 @@ No feature is considered complete until it passes both desktop and real-device m
 
 Complete
 
+---
+
 ## ✅ Phase II — Public Website
 
 Complete
 
-### Public Pages
+Completed pages:
 
 - Homepage
 - RSVP
@@ -131,70 +111,130 @@ Complete
 
 Complete
 
-Included:
+Completed:
 
-- Performance optimization
+- Responsive optimization
+- Performance improvements
 - Accessibility improvements
 - Console cleanup
-- Shared component refinement
-- Responsive optimization
-- Production hardening
+- Asset optimization
+- Production QA
+- GitHub Pages deployment
+- Custom domain configuration
+- HTTPS
+- Live production validation
 
 ---
 
-## ✅ Phase III — Member Platform
+## 🚧 Phase III — Member Platform
 
-Complete
+Currently In Progress
 
-Included:
+Completed:
 
 ### Authentication
 
 - Secure login
 - Session persistence
 - Role-based navigation
-- Member/Admin routing
 
 ### Member Experience
 
 - Member's Lounge
-- Rules page
-- Mobile navigation
-- Responsive support
-- Gallery integration
+- Player Directory
+- Member Profile Editor
+- Rules Library
+- Committee messaging
+- Responsive member interface
 
 ### Administration
 
-- Dashboard
-- Current Season editor
-- Committee Message editor
-- Course administration
-- Functional workflow improvements
+- Admin Dashboard
+- Current Season management
+- Committee Message management
+- Course management
+- Member invitation workflow
+- Resend email integration
+- Production SMTP
 
-### Validation
+Completed Validation
 
 - Desktop White Glove Review
-- iPhone 16 responsive validation
-- Console verification
-- Production-ready UI
+- Mobile validation
+- Production deployment
+- End-to-end invitation testing
+- Production console verification
+
+Remaining
+
+- Tournament Administration
+- Handicap Administration
+- RSVP Administration
+- Gallery Administration
+- Past Winners Administration
 
 ---
 
-# Next Phase
+# Development Philosophy
 
-## 🚧 Phase IV — Tournament Operations
+The Foxglove follows one guiding principle:
 
-Phase IV will expand administrative capabilities so the Foxglove committee can operate the tournament without modifying source code.
+> Build experiences that feel timeless rather than trendy.
 
-Planned areas include:
+Design priorities:
 
-- Player management
-- Handicap administration
-- RSVP reporting
-- Tournament year management
-- Gallery moderation
-- Past Winners management
-- Operational workflow improvements
+- Simplicity
+- Consistency
+- Premium presentation
+- Function before decoration
+- Long-term maintainability
+
+Administrative pages prioritize speed, clarity, and reliability.
+
+Public pages prioritize storytelling and atmosphere.
+
+---
+
+# Development Workflow
+
+Every major feature follows this lifecycle:
+
+1. Vision
+2. Functional Requirements
+3. Visual Mockup
+4. Approval
+5. Implementation
+6. White Glove Review
+7. Responsive Validation
+8. Production Validation
+9. Git Commit
+10. Documentation Update
+11. Version Sign-Off
+
+---
+
+# Technology Stack
+
+Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+
+Backend
+
+- Supabase
+- Supabase Authentication
+- Supabase Storage
+- Supabase Edge Functions
+
+Infrastructure
+
+- GitHub
+- GitHub Pages
+- Porkbun DNS
+- Resend Email
+- Custom SMTP
 
 ---
 
@@ -211,31 +251,20 @@ supabase/
 
 ---
 
-# Technology
+# Current Stable Release
 
-- HTML5
-- CSS3
-- JavaScript (ES Modules)
-- Supabase
-- Git
-- GitHub
+```
+v2.1.0
+```
+
+Production Status
+
+- Production Website: ✅ Live
+- HTTPS: ✅ Enabled
+- Member Authentication: ✅ Operational
+- Invitation System: ✅ Operational
+- Email Delivery: ✅ Operational
 
 ---
 
-# Release Status
-
-**Current Stable Release**
-
-```
-v2.0.0
-```
-
-Desktop White Glove Review: ✅ Complete
-
-Responsive Validation (iPhone 16): ✅ Complete
-
-Production UI: ✅ Complete
-
----
-
-The Foxglove platform is now ready to enter Phase IV development.
+The Foxglove is now operating in a live production environment while Phase III administrative capabilities continue to expand toward complete tournament management.
