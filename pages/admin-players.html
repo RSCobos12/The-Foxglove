@@ -374,6 +374,120 @@
 
       </section>
 
+<section
+  id="invite-member-panel"
+  class="member-editor-panel"
+  aria-labelledby="invite-member-title"
+  hidden>
+
+  <div class="member-editor-header">
+
+    <div>
+      <p class="admin-eyebrow">
+        Member Invitation
+      </p>
+
+      <h2 id="invite-member-title">
+        Invite Member
+      </h2>
+
+      <p>
+        Send a secure invitation to a new Foxglove member.
+      </p>
+    </div>
+
+    <button
+      id="close-invite-member"
+      class="admin-secondary-button"
+      type="button">
+      Close
+    </button>
+
+  </div>
+
+  <form
+    id="invite-member-form"
+    novalidate>
+
+    <section class="member-editor-section">
+
+      <div class="member-editor-grid">
+
+        <label>
+          <span>First Name</span>
+
+          <input
+            id="invite-first-name"
+            type="text"
+            autocomplete="given-name">
+        </label>
+
+        <label>
+          <span>Last Name</span>
+
+          <input
+            id="invite-last-name"
+            type="text"
+            autocomplete="family-name">
+        </label>
+
+        <label class="member-editor-field-wide">
+          <span>Email Address</span>
+
+          <input
+            id="invite-email"
+            type="email"
+            autocomplete="email">
+        </label>
+
+        <label>
+          <span>Role</span>
+
+          <select id="invite-role">
+            <option value="member">
+              Member
+            </option>
+
+            <option value="admin">
+              Administrator
+            </option>
+          </select>
+        </label>
+
+      </div>
+
+    </section>
+
+    <div
+      id="invite-member-message"
+      class="admin-status-message"
+      role="status"
+      aria-live="polite"
+      hidden>
+    </div>
+
+    <div class="member-editor-actions">
+
+      <button
+        id="cancel-invite-member"
+        class="admin-secondary-button"
+        type="button">
+        Cancel
+      </button>
+
+      <button
+        id="send-member-invitation"
+        class="admin-primary-button"
+        type="submit">
+        Send Invitation
+      </button>
+
+    </div>
+
+  </form>
+
+</section>
+    
     </main>
 
   </div>

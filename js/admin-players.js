@@ -67,6 +67,58 @@
       "#add-member-button"
     );
 
+    const inviteMemberPanel =
+  document.querySelector(
+    "#invite-member-panel"
+  );
+
+const inviteMemberForm =
+  document.querySelector(
+    "#invite-member-form"
+  );
+
+const closeInviteMemberButton =
+  document.querySelector(
+    "#close-invite-member"
+  );
+
+const cancelInviteMemberButton =
+  document.querySelector(
+    "#cancel-invite-member"
+  );
+
+const inviteFirstName =
+  document.querySelector(
+    "#invite-first-name"
+  );
+
+const inviteLastName =
+  document.querySelector(
+    "#invite-last-name"
+  );
+
+const inviteEmail =
+  document.querySelector(
+    "#invite-email"
+  );
+
+const inviteRole =
+  document.querySelector(
+    "#invite-role"
+  );
+
+const inviteMemberMessage =
+  document.querySelector(
+    "#invite-member-message"
+  );
+
+const sendMemberInvitationButton =
+  document.querySelector(
+    "#send-member-invitation"
+  );
+
+  let inviteMemberInitialState = "";
+
   const logoutButton =
     document.querySelector(
       "#logout-button"
@@ -549,146 +601,165 @@ memberRsvpLabel.textContent =
 
     tableBody.innerHTML = "";
 
-    profiles.forEach((profile) => {
-      const row = document.createElement("tr");
+function createPlayerRow(profile) {
+  const row =
+    document.createElement("tr");
 
-      const nameCell =
-  document.createElement("td");
+  const nameCell =
+    document.createElement("td");
 
-const emailCell =
-  document.createElement("td");
+  const emailCell =
+    document.createElement("td");
 
-const statusCell =
-  document.createElement("td");
+  const statusCell =
+    document.createElement("td");
 
-const rsvpCell =
-  document.createElement("td");
+  const rsvpCell =
+    document.createElement("td");
 
-const jacketSizeCell =
-  document.createElement("td");
+  const jacketSizeCell =
+    document.createElement("td");
 
-const handicapCell =
-  document.createElement("td");
+  const handicapCell =
+    document.createElement("td");
 
-const fullName =
-  `${profile.first_name ?? ""} ${
-    profile.last_name ?? ""
-  }`.trim();
+  const fullName =
+    `${profile.first_name ?? ""} ${
+      profile.last_name ?? ""
+    }`.trim();
 
-const memberButton =
-  document.createElement("button");
+  const memberButton =
+    document.createElement("button");
 
-memberButton.type = "button";
+  memberButton.type = "button";
 
-memberButton.className =
-  "member-name-button";
+  memberButton.className =
+    "member-name-button";
 
-memberButton.textContent =
-  fullName || "Unnamed Member";
+  memberButton.textContent =
+    fullName || "Unnamed Member";
 
-memberButton.addEventListener(
-  "click",
-  () => {
-    openBasicMemberEditor(profile);
-  }
-);
-
-nameCell.appendChild(memberButton);
-
-emailCell.textContent =
-  profile.email || "No email";
-
-/* ACCOUNT STATUS */
-
-const statusBadge =
-  document.createElement("span");
-
-if (profile.account_status === "active") {
-  statusBadge.className =
-    "admin-status-badge is-active";
-
-  statusBadge.textContent =
-    "Active";
-} else if (
-  profile.account_status === "invited"
-) {
-  statusBadge.className =
-    "admin-status-badge";
-
-  statusBadge.textContent =
-    "Invited";
-} else {
-  statusBadge.className =
-    "admin-status-badge is-inactive";
-
-  statusBadge.textContent =
-    "Inactive";
-}
-
-statusCell.appendChild(
-  statusBadge
-);
-
-/* CURRENT-SEASON RSVP */
-
-const memberRsvpStatus =
-  rsvpByProfileId.get(
-    profile.id
+  memberButton.addEventListener(
+    "click",
+    () => {
+      openBasicMemberEditor(profile);
+    }
   );
 
-const rsvpBadge =
-  document.createElement("span");
+  nameCell.appendChild(
+    memberButton
+  );
 
-if (memberRsvpStatus === "attending") {
-  rsvpBadge.className =
-    "admin-status-badge is-active";
+  emailCell.textContent =
+    profile.email || "No email";
 
-  rsvpBadge.textContent =
-    "Attending";
-} else if (
-  memberRsvpStatus === "declined"
-) {
-  rsvpBadge.className =
-    "admin-status-badge is-inactive";
+  /* ACCOUNT STATUS */
 
-  rsvpBadge.textContent =
-    "Declined";
-} else {
-  rsvpBadge.className =
-    "admin-status-badge";
+  const statusBadge =
+    document.createElement("span");
 
-  rsvpBadge.textContent =
-    "No Response";
+  if (
+    profile.account_status ===
+    "active"
+  ) {
+    statusBadge.className =
+      "admin-status-badge is-active";
+
+    statusBadge.textContent =
+      "Active";
+  } else if (
+    profile.account_status ===
+    "invited"
+  ) {
+    statusBadge.className =
+      "admin-status-badge";
+
+    statusBadge.textContent =
+      "Invitation Pending";
+  } else {
+    statusBadge.className =
+      "admin-status-badge is-inactive";
+
+    statusBadge.textContent =
+      "Inactive";
+  }
+
+  statusCell.appendChild(
+    statusBadge
+  );
+
+  /* CURRENT-SEASON RSVP */
+
+  const memberRsvpStatus =
+    rsvpByProfileId.get(
+      profile.id
+    );
+
+  const rsvpBadge =
+    document.createElement("span");
+
+  if (
+    memberRsvpStatus ===
+    "attending"
+  ) {
+    rsvpBadge.className =
+      "admin-status-badge is-active";
+
+    rsvpBadge.textContent =
+      "Attending";
+  } else if (
+    memberRsvpStatus ===
+    "declined"
+  ) {
+    rsvpBadge.className =
+      "admin-status-badge is-inactive";
+
+    rsvpBadge.textContent =
+      "Declined";
+  } else {
+    rsvpBadge.className =
+      "admin-status-badge";
+
+    rsvpBadge.textContent =
+      "No Response";
+  }
+
+  rsvpCell.appendChild(
+    rsvpBadge
+  );
+
+  /* TOURNAMENT INFORMATION */
+
+  jacketSizeCell.textContent =
+    profile.jacket_size ||
+    "Not Set";
+
+  handicapCell.textContent =
+    profile.handicap_index === null ||
+    profile.handicap_index ===
+      undefined
+      ? "Not Set"
+      : Number(
+          profile.handicap_index
+        ).toFixed(1);
+
+  row.append(
+    nameCell,
+    emailCell,
+    statusCell,
+    rsvpCell,
+    jacketSizeCell,
+    handicapCell
+  );
+
+  return row;
 }
 
-rsvpCell.appendChild(
-  rsvpBadge
-);
-
-/* TOURNAMENT INFORMATION */
-
-jacketSizeCell.textContent =
-  profile.jacket_size ||
-  "Not Set";
-
-handicapCell.textContent =
-  profile.handicap_index === null ||
-  profile.handicap_index === undefined
-    ? "Not Set"
-    : Number(
-        profile.handicap_index
-      ).toFixed(1);
-
-row.append(
-  nameCell,
-  emailCell,
-  statusCell,
-  rsvpCell,
-  jacketSizeCell,
-  handicapCell
-);
-      tableBody.appendChild(row);
-    });
+profiles.forEach((profile) => {
+  tableBody.appendChild(
+    createPlayerRow(profile)
+  );
+});
 
     playersMessage.hidden = true;
     tableWrapper.hidden = false;
@@ -1043,6 +1114,268 @@ memberEditorForm.addEventListener(
   }
 );
 
+function getInviteMemberState() {
+  return JSON.stringify({
+    firstName:
+      inviteFirstName.value,
+    lastName:
+      inviteLastName.value,
+    email:
+      inviteEmail.value,
+    role:
+      inviteRole.value,
+  });
+}
+
+function rememberInviteMemberState() {
+  inviteMemberInitialState =
+    getInviteMemberState();
+}
+
+function openInviteMemberPanel() {
+  memberEditorPanel.hidden = true;
+
+  inviteMemberPanel.hidden = false;
+
+  inviteMemberForm.reset();
+
+  inviteRole.value = "member";
+
+  inviteMemberMessage.hidden = true;
+  inviteMemberMessage.textContent = "";
+
+  inviteMemberPanel.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+
+  rememberInviteMemberState();
+
+  inviteFirstName.focus();
+}
+
+function closeInviteMemberPanel() {
+  const hasUnsavedChanges =
+    !inviteMemberPanel.hidden &&
+    getInviteMemberState() !==
+      inviteMemberInitialState;
+
+  if (hasUnsavedChanges) {
+    const confirmed =
+      window.confirm(
+        "Discard your unsaved invitation information?"
+      );
+
+    if (!confirmed) {
+      return;
+    }
+  }
+
+  inviteMemberPanel.hidden = true;
+
+  inviteMemberForm.reset();
+
+  inviteRole.value = "member";
+
+  inviteMemberMessage.hidden = true;
+  inviteMemberMessage.textContent = "";
+
+  inviteMemberInitialState = "";
+}
+
+async function submitMemberInvitation(
+  event
+) {
+  event.preventDefault();
+
+  const firstName =
+    inviteFirstName.value.trim();
+
+  const lastName =
+    inviteLastName.value.trim();
+
+  const email =
+    inviteEmail.value
+      .trim()
+      .toLowerCase();
+
+  const role =
+    inviteRole.value;
+
+  inviteMemberMessage.hidden = true;
+  inviteMemberMessage.textContent = "";
+
+  if (!firstName) {
+    inviteMemberMessage.textContent =
+      "First name is required.";
+
+    inviteMemberMessage.className =
+      "admin-status-message is-error";
+
+    inviteMemberMessage.hidden = false;
+
+    return;
+  }
+
+  if (!lastName) {
+    inviteMemberMessage.textContent =
+      "Last name is required.";
+
+    inviteMemberMessage.className =
+      "admin-status-message is-error";
+
+    inviteMemberMessage.hidden = false;
+
+    return;
+  }
+
+  if (!email) {
+    inviteMemberMessage.textContent =
+      "Email address is required.";
+
+    inviteMemberMessage.className =
+      "admin-status-message is-error";
+
+    inviteMemberMessage.hidden = false;
+
+    return;
+  }
+
+  sendMemberInvitationButton.disabled =
+    true;
+
+  sendMemberInvitationButton.textContent =
+    "Sending...";
+
+  const {
+    data,
+    error,
+  } = await foxgloveSupabase.functions.invoke(
+    "invite-member",
+    {
+      body: {
+        firstName,
+        lastName,
+        email,
+        role,
+      },
+    }
+  );
+
+  sendMemberInvitationButton.disabled =
+    false;
+
+  sendMemberInvitationButton.textContent =
+    "Send Invitation";
+
+  if (error) {
+    let errorMessage =
+      "Unable to send the member invitation.";
+
+    if (error.context) {
+      try {
+        const errorBody =
+          await error.context.json();
+
+        if (errorBody?.error) {
+          errorMessage =
+            errorBody.error;
+        }
+      } catch {
+        // Keep the default message.
+      }
+    }
+
+    inviteMemberMessage.textContent =
+      errorMessage;
+
+    inviteMemberMessage.className =
+      "admin-status-message is-error";
+
+    inviteMemberMessage.hidden = false;
+
+    return;
+  }
+
+  inviteMemberMessage.textContent =
+    data?.message ||
+    "Member invitation sent successfully.";
+
+  inviteMemberMessage.className =
+    "admin-status-message is-success";
+
+  inviteMemberMessage.hidden = false;
+
+  const invitedMember = {
+  id:
+    data?.member?.id ||
+    null,
+
+  first_name:
+    firstName,
+
+  last_name:
+    lastName,
+
+  email,
+
+  role,
+
+  account_status:
+    "invited",
+
+  is_active:
+    false,
+
+  jacket_size:
+    null,
+
+  handicap_index:
+    null,
+};
+
+profiles.push(
+  invitedMember
+);
+
+tableBody.appendChild(
+  createPlayerRow(
+    invitedMember
+  )
+);
+
+memberCount.textContent =
+  profiles.length;
+
+inviteMemberInitialState = "";
+
+window.setTimeout(() => {
+  closeInviteMemberPanel();
+}, 900);
+}
+
+inviteMemberButton.disabled = false;
+
+inviteMemberButton.addEventListener(
+  "click",
+  openInviteMemberPanel
+);
+
+closeInviteMemberButton.addEventListener(
+  "click",
+  closeInviteMemberPanel
+);
+
+cancelInviteMemberButton.addEventListener(
+  "click",
+  closeInviteMemberPanel
+);
+
+inviteMemberForm.addEventListener(
+  "submit",
+  submitMemberInvitation
+);
+
 closeMemberEditorButton.addEventListener(
   "click",
   closeBasicMemberEditor
@@ -1056,10 +1389,16 @@ cancelMemberEditorButton.addEventListener(
 document.addEventListener(
   "keydown",
   (event) => {
-    if (
-      event.key === "Escape" &&
-      !memberEditorPanel.hidden
-    ) {
+    if (event.key !== "Escape") {
+      return;
+    }
+
+    if (!inviteMemberPanel.hidden) {
+      closeInviteMemberPanel();
+      return;
+    }
+
+    if (!memberEditorPanel.hidden) {
       closeBasicMemberEditor();
     }
   }
