@@ -167,32 +167,40 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const {
-    data: tournament,
-    error: tournamentError
-  } = await foxgloveSupabase
-    .from("tournaments")
-    .select("id, year")
-    .eq("is_member_lounge_season", true)
-    .eq("status", "open")
-    .limit(1)
-    .maybeSingle();
+  data: tournament,
+  error: tournamentError
+} = await foxgloveSupabase
+  .from("tournaments")
+  .select("id, year, status")
+  .eq("is_member_lounge_season", true)
+  .limit(1)
+  .maybeSingle();
 
   if (tournamentError || !tournament) {
-    showStatus(
-      "The RSVP form is temporarily unavailable. Please try again later.",
-      true
-    );
+  showStatus(
+    "The RSVP form is temporarily unavailable. Please try again later.",
+    true
+  );
 
-    submitButton.disabled = true;
-    return;
-  }
+  submitButton.disabled = true;
+  return;
+}
 
-  currentTournament = tournament;
+currentTournament = tournament;
 
-  if (eventYear && currentTournament.year) {
-    eventYear.textContent =
-      `${currentTournament.year} event.`;
-  }
+if (eventYear && currentTournament.year) {
+  eventYear.textContent =
+    `${currentTournament.year} event.`;
+}
+
+if (currentTournament.status !== "open") {
+  showStatus(
+    `RSVP is not currently open for the ${currentTournament.year} event.`
+  );
+
+  submitButton.disabled = true;
+  return;
+}
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
