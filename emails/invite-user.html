@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="en">
-  <body style="margin:0; padding:0; background-color:#f4f0e7;">
+  <body style="margin:0; padding:0; background-color:#020b1c;">
+
     <table
       role="presentation"
       width="100%"
       cellspacing="0"
       cellpadding="0"
       border="0"
-      style="width:100%; background-color:#f4f0e7;"
+      style="width:100%; background-color:#020b1c;"
     >
       <tr>
-        <td align="center" style="padding:32px 16px;">
+        <td align="center" style="padding:44px 16px;">
+
           <table
             role="presentation"
             width="600"
@@ -26,16 +28,14 @@
               overflow:hidden;
             "
           >
-            <!-- Header -->
+
+            <!-- Header Seal -->
             <tr>
-              <td
-                align="center"
-                style="padding:42px 32px 12px;"
-              >
+              <td align="center" style="padding:42px 32px 34px;">
                 <img
                   src="https://thefoxglove.us/assets/email/foxglove-seal-email.png"
                   width="112"
-                  alt="The Foxglove"
+                  alt="The Foxglove seal"
                   style="
                     display:block;
                     width:112px;
@@ -48,96 +48,66 @@
               </td>
             </tr>
 
+            <!-- Thin Header Divider -->
             <tr>
-              <td
-                align="center"
-                style="
-                  padding:0 32px;
-                  color:#c6a15b;
-                  font-family:Georgia, 'Times New Roman', serif;
-                  font-size:15px;
-                  letter-spacing:5px;
-                  text-transform:uppercase;
-                "
-              >
-                The
-              </td>
-            </tr>
+              <td align="center" style="padding:0 32px 42px;">
 
-            <tr>
-              <td
-                align="center"
-                style="
-                  padding:5px 32px 24px;
-                  color:#0e2847;
-                  font-family:Georgia, 'Times New Roman', serif;
-                  font-size:42px;
-                  line-height:1;
-                  letter-spacing:7px;
-                  text-transform:uppercase;
-                "
-              >
-                Foxglove
-              </td>
-            </tr>
-
-            <tr>
-              <td align="center" style="padding:0 32px 34px;">
                 <table
-  role="presentation"
-  width="280"
-  cellspacing="0"
-  cellpadding="0"
-  border="0"
-  style="width:100%; max-width:280px;"
->
-  <tr>
-    <td
-      style="
-        border-top:1px solid #c6a15b;
-        font-size:0;
-        line-height:0;
-      "
-    >
-      &nbsp;
-    </td>
+                  role="presentation"
+                  width="280"
+                  cellspacing="0"
+                  cellpadding="0"
+                  border="0"
+                  style="width:100%; max-width:280px;"
+                >
+                  <tr>
+                    <td
+                      style="
+                        border-top:1px solid #c6a15b;
+                        font-size:0;
+                        line-height:0;
+                      "
+                    >
+                      &nbsp;
+                    </td>
 
-    <td
-      align="center"
-      width="22"
-      style="
-        color:#c6a15b;
-        font-size:10px;
-        line-height:1;
-      "
-    >
-      ◆
-    </td>
+                    <td
+                      align="center"
+                      width="22"
+                      style="
+                        color:#c6a15b;
+                        font-size:10px;
+                        line-height:1;
+                      "
+                    >
+                      ◆
+                    </td>
 
-    <td
-      style="
-        border-top:1px solid #c6a15b;
-        font-size:0;
-        line-height:0;
-      "
-    >
-      &nbsp;
-    </td>
-  </tr>
-</table>
+                    <td
+                      style="
+                        border-top:1px solid #c6a15b;
+                        font-size:0;
+                        line-height:0;
+                      "
+                    >
+                      &nbsp;
+                    </td>
+                  </tr>
+                </table>
+
               </td>
             </tr>
 
-            <!-- Main Content -->
+            <!-- Email Title -->
             <tr>
               <td
                 align="center"
                 style="
-                  padding:0 46px 24px;
+                  padding:0 46px 32px;
                   color:#0e2847;
                   font-family:Georgia, 'Times New Roman', serif;
-                  font-size:28px;
-                  line-height:1.3;
+                  font-size:29px;
+                  line-height:1.35;
                   font-weight:bold;
                 "
               >
@@ -145,6 +115,53 @@
               </td>
             </tr>
 
+            <!-- Personalized Editorial Opening -->
+            <tr>
+              <td
+                style="
+                  padding:0 46px 30px;
+                  color:#0e2847;
+                  font-family:Georgia, 'Times New Roman', serif;
+                "
+              >
+                <p
+  style="
+    margin:0 0 44px;
+    font-size:16px;
+    line-height:1.5;
+    font-weight:600;
+    color:#0e2847;
+  "
+>
+  {{ .Data.first_name }},
+</p>
+
+                <p
+                  style="
+                    margin:0 0 22px;
+                    font-size:21px;
+                    line-height:1.5;
+                    font-style:italic;
+                  "
+                >
+                  Every tradition begins with an invitation.
+                </p>
+
+                <p
+                  style="
+                    margin:0 0 34px;
+                    font-size:21px;
+                    line-height:1.5;
+                    font-style:normal;
+                    font-weight:bold;
+                  "
+                >
+                  This one is for you.
+                </p>
+              </td>
+            </tr>
+
+            <!-- Main Invitation Copy -->
             <tr>
               <td
                 style="
@@ -152,60 +169,49 @@
                   color:#18263a;
                   font-family:Georgia, 'Times New Roman', serif;
                   font-size:17px;
-                  line-height:1.65;
+                  line-height:1.7;
                 "
               >
-                <p style="margin:0 0 20px;">
-                  Hello,
+                <p style="margin:0 0 22px;">
+                  An invitation to join
+                  <strong>The Foxglove</strong>
+                  means more than a reserved spot in an annual golf
+                  tournament—it’s an invitation into a tradition built
+                  around championship golf, enduring friendships, and
+                  unforgettable experiences.
                 </p>
 
-                <p style="margin:0 0 20px;">
-                  You’ve been invited to join
-                  <strong>The Foxglove</strong> member platform.
+                <p style="margin:0 0 22px;">
+                  Your membership provides year-round access to exclusive
+                  tournament information, committee updates, member
+                  resources, and the growing history of The Foxglove
+                  Invitational.
                 </p>
 
-                <p style="margin:0 0 20px;">
-                  Stay connected with The Foxglove throughout the year
-                  while accessing exclusive member content, tournament
-                  information, and annual updates.
+                <p style="margin:0 0 30px;">
+                  Throughout the year, your membership keeps you connected
+                  to the tournament, the committee, and the traditions that
+                  continue to shape The Foxglove.
                 </p>
 
-                <p style="margin:0 0 12px;">
-                  Once your account is activated, you’ll be able to:
-                </p>
-
-                <ul
+                <p
                   style="
-                    margin:0 0 28px;
-                    padding-left:22px;
+                    margin:0;
+                    color:#0e2847;
+                    font-weight:bold;
+                    text-align:center;
                   "
                 >
-                  <li style="margin-bottom:8px;">
-                    RSVP for upcoming tournaments
-                  </li>
-
-                  <li style="margin-bottom:8px;">
-                    Receive committee updates
-                  </li>
-
-                  <li style="margin-bottom:8px;">
-                    Access tournament rules
-                  </li>
-
-                  <li style="margin-bottom:8px;">
-                    View exclusive member content
-                  </li>
-
-                  <li>
-                    Help preserve the history of The Foxglove Invitational
-                  </li>
-                </ul>
+                  Accept your invitation using the button below to begin
+                  your membership with The Foxglove.
+                </p>
               </td>
             </tr>
 
-            <!-- CTA -->
+            <!-- CTA Button -->
             <tr>
-              <td align="center" style="padding:0 46px 34px;">
+              <td align="center" style="padding:28px 46px 12px;">
+
                 <table
                   role="presentation"
                   cellspacing="0"
@@ -225,27 +231,48 @@
                         href="{{ .ConfirmationURL }}"
                         style="
                           display:inline-block;
-                          padding:16px 34px;
+                          padding:16px 36px;
                           color:#0e2847;
                           font-family:Arial, Helvetica, sans-serif;
                           font-size:15px;
                           line-height:1;
                           font-weight:bold;
-                          letter-spacing:1.4px;
+                          letter-spacing:1.5px;
                           text-decoration:none;
                           text-transform:uppercase;
                         "
                       >
-                        Complete Registration
+                        Accept Invitation
                       </a>
                     </td>
                   </tr>
                 </table>
+
               </td>
             </tr>
 
+            <!-- Expiration Notice -->
             <tr>
-              <td align="center" style="padding:0 46px 28px;">
+              <td
+                align="center"
+                style="
+                  padding:0 46px 36px;
+                  color:#777168;
+                  font-family:Arial, Helvetica, sans-serif;
+                  font-size:13px;
+                  line-height:1.5;
+                  font-style:italic;
+                "
+              >
+                This invitation will remain available for
+                <strong>24 hours</strong>.
+              </td>
+            </tr>
+
+            <!-- Closing Divider -->
+            <tr>
+              <td align="center" style="padding:0 46px 30px;">
+
                 <table
                   role="presentation"
                   width="100%"
@@ -256,8 +283,7 @@
                   <tr>
                     <td
                       style="
-                        height:1px;
-                        background-color:#d7bb82;
+                        border-top:1px solid #d7bb82;
                         font-size:0;
                         line-height:0;
                       "
@@ -266,23 +292,23 @@
                     </td>
                   </tr>
                 </table>
+
               </td>
             </tr>
 
+            <!-- Closing -->
             <tr>
               <td
                 style="
-                  padding:0 46px 38px;
+                  padding:0 46px 42px;
                   color:#18263a;
                   font-family:Georgia, 'Times New Roman', serif;
-                  font-size:15px;
-                  line-height:1.6;
+                  font-size:16px;
+                  line-height:1.65;
                 "
               >
                 <p style="margin:0 0 22px;">
-                  This invitation is intended exclusively for invited
-                  Foxglove members. If you received it in error, no further
-                  action is required.
+                  We look forward to welcoming you.
                 </p>
 
                 <p style="margin:0;">
@@ -292,63 +318,120 @@
               </td>
             </tr>
 
-            <!-- Homepage-style Footer -->
-            <tr>
-              <td
-                style="
-                  background-color:#020b1c;
-                  border-top:1px solid #c6a15b;
-                  padding:28px 30px;
-                "
-              >
-                <table
-                  role="presentation"
-                  width="100%"
-                  cellspacing="0"
-                  cellpadding="0"
-                  border="0"
-                >
-                  <tr>
-                    <td width="33%" style="font-size:0; line-height:0;">
-                      &nbsp;
-                    </td>
+ <!-- Standard Foxglove Email Footer -->
+<tr>
+  <td
+    align="center"
+    style="
+      background-color:#020b1c;
+      padding:42px 30px 42px;
+    "
+  >
 
-                    <td align="center" width="34%">
-                      <img
-                        src="https://thefoxglove.us/assets/logos/foxglove-logo-clean.png"
-                        width="78"
-                        alt="The Foxglove crest"
-                        style="
-                          display:block;
-                          width:78px;
-                          max-width:78px;
-                          height:auto;
-                          margin:0 auto;
-                          border:0;
-                        "
-                      >
-                    </td>
+    <!-- Centered Gold Divider -->
+    <table
+      role="presentation"
+      width="220"
+      cellspacing="0"
+      cellpadding="0"
+      border="0"
+      style="
+        width:220px;
+        margin:0 auto 30px;
+      "
+    >
+      <tr>
+        <td
+          style="
+            border-top:1px solid #c6a15b;
+            font-size:0;
+            line-height:0;
+          "
+        >
+          &nbsp;
+        </td>
+      </tr>
+    </table>
 
-                    <td
-                      align="right"
-                      width="33%"
-                      style="
-                        color:#c6a15b;
-                        font-family:Georgia, 'Times New Roman', serif;
-                        font-size:16px;
-                        line-height:1.4;
-                        letter-spacing:3px;
-                        text-transform:uppercase;
-                      "
-                    >
-                      The Foxglove
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
+    <table
+      role="presentation"
+      width="100%"
+      cellspacing="0"
+      cellpadding="0"
+      border="0"
+    >
 
+      <tr>
+        <td align="center">
+          <img
+            src="https://thefoxglove.us/assets/email/foxglove-seal-email.png"
+            width="82"
+            alt="The Foxglove seal"
+            style="
+              display:block;
+              width:82px;
+              max-width:82px;
+              height:auto;
+              margin:0 auto;
+              border:0;
+            "
+          >
+        </td>
+      </tr>
+
+      <tr>
+        <td
+          align="center"
+          style="
+            padding:15px 20px 0;
+            color:#ffffff;
+            font-family:Georgia, 'Times New Roman', serif;
+            font-size:17px;
+            line-height:1.3;
+            letter-spacing:6px;
+            text-transform:uppercase;
+          "
+        >
+          The Foxglove
+        </td>
+      </tr>
+
+      <tr>
+        <td
+          align="center"
+          style="
+            padding:20px 20px 0;
+            color:#9f8752;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:10px;
+            line-height:1.5;
+            letter-spacing:3px;
+            text-transform:uppercase;
+          "
+        >
+          Official Correspondence
+        </td>
+      </tr>
+
+      <tr>
+        <td
+          align="center"
+          style="
+            padding:22px 20px 0;
+            color:#7f7a72;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:10px;
+            line-height:1.5;
+          "
+        >
+          © 2026 The Foxglove
+        </td>
+      </tr>
+
+    </table>
+
+  </td>
+</tr>
           <table
             role="presentation"
             width="600"
@@ -365,12 +448,13 @@
                   color:#776f63;
                   font-family:Arial, Helvetica, sans-serif;
                   font-size:12px;
-                  line-height:1.5;
+                  line-height:1.55;
                 "
               >
                 If the button does not work, copy and paste this link into
                 your browser:
                 <br>
+
                 <a
                   href="{{ .ConfirmationURL }}"
                   style="
@@ -383,8 +467,10 @@
               </td>
             </tr>
           </table>
+
         </td>
       </tr>
     </table>
+
   </body>
 </html>
