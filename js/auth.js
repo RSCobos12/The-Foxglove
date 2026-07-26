@@ -95,6 +95,25 @@ async function redirectExistingSession() {
 
 redirectExistingSession();
 
+const loginUrl =
+  new URL(window.location.href);
+
+if (
+  loginForm &&
+  loginUrl.searchParams.get("password") === "updated"
+) {
+  showLoginMessage(
+    "Your password has been updated successfully. You may now sign in.",
+    "success"
+  );
+
+  window.history.replaceState(
+    {},
+    document.title,
+    window.location.pathname
+  );
+}
+
 function showLoginMessage(message, type = "error") {
   loginMessage.textContent = message;
   loginMessage.classList.remove("is-error", "is-success");

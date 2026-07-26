@@ -200,3 +200,28 @@
   height: auto;
   margin: 0 auto 10px;
 }
+
+.login-forgot-password {
+  display: block;
+  width: fit-content;
+  margin: 18px auto 0;
+  color: var(--foxglove-navy, #0e2847);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.login-forgot-password:hover,
+.login-forgot-password:focus-visible {
+  color: var(--foxglove-gold, #c6a15b);
+}
+
+.login-forgot-password:focus-visible {
+  outline: 2px solid var(--foxglove-gold, #c6a15b);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
