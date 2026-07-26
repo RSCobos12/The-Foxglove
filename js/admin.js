@@ -373,6 +373,15 @@ function updateMemberSeasonDescription() {
     const description =
       memberSeasonDescription.value.trim();
 
+      const selectedDescriptionOption =
+  memberSeasonDescription.options[
+    memberSeasonDescription.selectedIndex
+  ];
+
+const tournamentStatus =
+  selectedDescriptionOption?.dataset
+    .tournamentStatus || "planning";
+
     if (!selectedTournamentId) {
       showMemberSeasonMessage(
         "Select a tournament season.",
@@ -414,14 +423,16 @@ function updateMemberSeasonDescription() {
 } = await foxgloveSupabase
   .from("tournaments")
   .update({
-    is_member_lounge_season: true,
-    member_lounge_description:
-      description || null,
-  })
+  is_member_lounge_season: true,
+  member_lounge_description:
+    description || null,
+  status: tournamentStatus,
+})
   .eq("id", selectedTournamentId)
   .select(`
     id,
     year,
+    status,
     is_member_lounge_season,
     member_lounge_description
   `)
