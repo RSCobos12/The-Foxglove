@@ -289,31 +289,45 @@
   }
 
   const {
-    data: tournamentData,
-    error: tournamentError,
-  } = await foxgloveSupabase
-    .from("tournaments")
-    .select("id, year")
-    .order("year", { ascending: true });
+  data: tournamentData,
+  error: tournamentError,
+} = await foxgloveSupabase
+  .from("tournaments")
+  .select(
+    "id, year, is_member_lounge_season"
+  )
+  .order("year", { ascending: true });
 
-  if (tournamentError) {
-    showMessage(
-      "Unable to load tournament years.",
-      true
-    );
-    return;
-  }
+if (tournamentError) {
+  showMessage(
+    "Unable to load tournament years.",
+    true
+  );
+  return;
+}
 
-  tournaments = tournamentData || [];
+tournaments = tournamentData || [];
 
-  tournaments.forEach((tournament) => {
-    const option = document.createElement("option");
+tournaments.forEach((tournament) => {
+  const option =
+    document.createElement("option");
 
-    option.value = tournament.id;
-    option.textContent = tournament.year;
+  option.value = tournament.id;
+  option.textContent = tournament.year;
 
-    yearSelect.appendChild(option);
-  });
+  yearSelect.appendChild(option);
+});
+
+const currentTournament =
+  tournaments.find(
+    (tournament) =>
+      tournament.is_member_lounge_season
+  );
+
+if (currentTournament) {
+  yearSelect.value =
+    currentTournament.id;
+}
 
   yearSelect.addEventListener(
     "change",

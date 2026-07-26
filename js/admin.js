@@ -40,52 +40,58 @@
     document.querySelector("#overview-rsvp-message");
 
   async function loadNewRsvpCount() {
-    const { data: tournament, error: tournamentError } =
-      await foxgloveSupabase
-        .from("tournaments")
-        .select("id")
-        .eq("status", "open")
-        .order("year", { ascending: false })
-        .limit(1)
-        .single();
+  const { data: tournament, error: tournamentError } =
+    await foxgloveSupabase
+      .from("tournaments")
+      .select("id, year, status")
+      .eq("is_member_lounge_season", true)
+      .limit(1)
+      .maybeSingle();
 
-    if (tournamentError || !tournament) {
-      rsvpCount.textContent = "0";
-      rsvpMessage.textContent =
-        "No open tournament is currently available.";
-      return;
-    }
-
-    const { count, error: rsvpError } =
-      await foxgloveSupabase
-        .from("rsvps")
-        .select("id", {
-          count: "exact",
-          head: true,
-        })
-        .eq("tournament_id", tournament.id)
-        .eq("review_status", "new");
-
-    if (rsvpError) {
-      rsvpCount.textContent = "—";
-      rsvpMessage.textContent =
-        "Unable to load new RSVP submissions.";
-      return;
-    }
-
-    const total = count || 0;
-
-    rsvpCount.textContent = total;
-
+  if (tournamentError || !tournament) {
+    rsvpCount.textContent = "0";
     rsvpMessage.textContent =
-      total === 0
-        ? "No new RSVP submissions."
-        : `${total} new ${
-            total === 1 ? "response requires" : "responses require"
-          } review.`;
+      "No current season is currently selected.";
+    return;
   }
 
-  await loadNewRsvpCount();
+  if (tournament.status !== "open") {
+    rsvpCount.textContent = "0";
+    rsvpMessage.textContent =
+      `RSVP is not currently open for the ${tournament.year} season.`;
+    return;
+  }
+
+  const { count, error: rsvpError } =
+    await foxgloveSupabase
+      .from("rsvps")
+      .select("id", {
+        count: "exact",
+        head: true,
+      })
+      .eq("tournament_id", tournament.id)
+      .eq("review_status", "new");
+
+  if (rsvpError) {
+    rsvpCount.textContent = "—";
+    rsvpMessage.textContent =
+      "Unable to load new RSVP submissions.";
+    return;
+  }
+
+  const total = count || 0;
+
+  rsvpCount.textContent = total;
+
+  rsvpMessage.textContent =
+    total === 0
+      ? `No new RSVP submissions for ${tournament.year}.`
+      : `${total} new ${
+          total === 1 ? "response requires" : "responses require"
+        } review for ${tournament.year}.`;
+}
+
+await loadNewRsvpCount();
 
   /* =====================================
    GALLERY SUBMISSION COUNT

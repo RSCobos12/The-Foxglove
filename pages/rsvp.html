@@ -31,7 +31,7 @@
   <h1>Your presence is what makes The Foxglove what it is.</h1>
     <p>
       Kindly respond by confirming your attendance for our
-      <strong>2027 event.</strong>
+      <strong id="rsvp-event-year">upcoming event.</strong>
     </p>
   </div>
 
@@ -136,15 +136,23 @@
 <script src="../js/components.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const form = document.querySelector("#rsvpForm");
   const confirmation = document.querySelector("#rsvpConfirmation");
   const statusMessage = document.querySelector("#rsvpStatus");
+  const eventYear = document.querySelector("#rsvp-event-year");
   const submitButton = form?.querySelector('button[type="submit"]');
 
-  if (!form || !confirmation || !statusMessage || !submitButton) {
+  if (
+    !form ||
+    !confirmation ||
+    !statusMessage ||
+    !submitButton
+  ) {
     return;
   }
+
+  let currentTournament = null;
 
   function showStatus(message, isError = false) {
     statusMessage.textContent = message;
@@ -158,52 +166,75 @@ document.addEventListener("DOMContentLoaded", () => {
     statusMessage.hidden = true;
   }
 
+  const {
+    data: tournament,
+    error: tournamentError
+  } = await foxgloveSupabase
+    .from("tournaments")
+    .select("id, year")
+    .eq("is_member_lounge_season", true)
+    .eq("status", "open")
+    .limit(1)
+    .maybeSingle();
+
+  if (tournamentError || !tournament) {
+    showStatus(
+      "The RSVP form is temporarily unavailable. Please try again later.",
+      true
+    );
+
+    submitButton.disabled = true;
+    return;
+  }
+
+  currentTournament = tournament;
+
+  if (eventYear && currentTournament.year) {
+    eventYear.textContent =
+      `${currentTournament.year} event.`;
+  }
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     clearStatus();
 
-    submitButton.disabled = true;
-    submitButton.textContent = "Submitting...";
-
-    const formData = new FormData(form);
-
-    const { data: tournament, error: tournamentError } =
-      await foxgloveSupabase
-        .from("tournaments")
-        .select("id")
-        .eq("year", 2027)
-        .eq("status", "open")
-        .single();
-
-    if (tournamentError || !tournament) {
+    if (!currentTournament) {
       showStatus(
         "The RSVP form is temporarily unavailable. Please try again later.",
         true
       );
 
-      submitButton.disabled = false;
-      submitButton.textContent = "Submit";
       return;
     }
 
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    const formData = new FormData(form);
     const attendanceValue = formData.get("attendance");
 
-    const { error: submissionError } =
-      await foxgloveSupabase
-        .from("rsvps")
-        .insert({
-          tournament_id: tournament.id,
-          first_name: formData.get("firstName").trim(),
-          last_name: formData.get("lastName").trim(),
-          email: formData.get("email").trim(),
-          attendance_status:
-            attendanceValue === "yes" ? "attending" : "declined",
-          dietary_restrictions:
-            formData.get("dietary").trim() || null,
-          special_requests:
-            formData.get("requests").trim() || null,
-          review_status: "new"
-        });
+    const {
+      error: submissionError
+    } = await foxgloveSupabase
+      .from("rsvps")
+      .insert({
+        tournament_id: currentTournament.id,
+        first_name:
+          formData.get("firstName").trim(),
+        last_name:
+          formData.get("lastName").trim(),
+        email:
+          formData.get("email").trim(),
+        attendance_status:
+          attendanceValue === "yes"
+            ? "attending"
+            : "declined",
+        dietary_restrictions:
+          formData.get("dietary").trim() || null,
+        special_requests:
+          formData.get("requests").trim() || null,
+        review_status: "new"
+      });
 
     if (submissionError) {
       showStatus(
