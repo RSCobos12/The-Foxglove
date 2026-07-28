@@ -1470,12 +1470,32 @@ function createGallerySubmissionCard(
     placementButton.textContent =
       "Send to Gallery Placement";
 
-    placementButton.dataset.submissionId =
-      submission.id;
-
-    actions.append(
-      placementButton
+    placementButton.addEventListener(
+  "click",
+  () => {
+    switchGalleryAdminView(
+      "placement"
     );
+
+    galleryPlacementManager
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+    showMessage(
+      `${submission.first_name || "Member"} ${
+        submission.last_name || ""
+      }'s approved photo is available in the approved-image picker. Choose a Gallery position to place it.`
+        .replace(/\s+/g, " ")
+        .trim()
+    );
+  }
+);
+
+actions.append(
+  placementButton
+);
   }
 
   details.append(

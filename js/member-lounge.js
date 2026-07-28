@@ -2226,14 +2226,77 @@ async function submitGalleryUploads() {
   const duplicateFiles = [];
 
   try {
-    const activeTournament =
-      await loadActiveGalleryTournament();
+  const activeTournament =
+    await loadActiveGalleryTournament();
 
-    for (
-      let index = 0;
-      index < filesToUpload.length;
-      index += 1
-    ) {
+  const {
+    count: existingSubmissionCount,
+    error: submissionCountError,
+  } = await supabase
+    .from("gallery_images")
+    .select("id", {
+      count: "exact",
+      head: true,
+    })
+    .eq(
+      "tournament_id",
+      activeTournament.id
+    )
+    .eq(
+      "uploaded_by_profile_id",
+      session.user.id
+    )
+    .in(
+      "submission_status",
+      ["pending", "approved"]
+    );
+
+  if (submissionCountError) {
+    throw new Error(
+      "Unable to verify your remaining Gallery submissions."
+    );
+  }
+
+  const maximumSubmissions = 5;
+
+  const currentSubmissionCount =
+    existingSubmissionCount || 0;
+
+  const remainingSubmissionCount =
+    Math.max(
+      maximumSubmissions -
+        currentSubmissionCount,
+      0
+    );
+
+  if (remainingSubmissionCount === 0) {
+    showGalleryUploadStatus(
+      "You have already submitted the maximum of five photos for this tournament.",
+      true
+    );
+
+    return;
+  }
+
+  if (
+    filesToUpload.length >
+    remainingSubmissionCount
+  ) {
+    showGalleryUploadStatus(
+      remainingSubmissionCount === 1
+        ? "You may submit one more photo for this tournament."
+        : `You may submit ${remainingSubmissionCount} more photos for this tournament.`,
+      true
+    );
+
+    return;
+  }
+
+  for (
+    let index = 0;
+    index < filesToUpload.length;
+    index += 1
+  ) {
       if (galleryUploadButton) {
         galleryUploadButton.textContent =
           `Processing ${index + 1} of ${filesToUpload.length}...`;
