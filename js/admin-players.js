@@ -1347,7 +1347,7 @@ tableBody.appendChild(
 memberCount.textContent =
   profiles.length;
 
-inviteMemberInitialState = "";
+rememberInviteMemberState();
 
 window.setTimeout(() => {
   closeInviteMemberPanel();
