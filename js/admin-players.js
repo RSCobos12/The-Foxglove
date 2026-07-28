@@ -331,16 +331,6 @@ function clearMemberEditorMessage() {
   );
 }
 
-function clearMemberEditorMessage() {
-  memberEditorMessage.textContent = "";
-
-  memberEditorMessage.hidden = true;
-
-  memberEditorMessage.classList.remove(
-    "is-error"
-  );
-}
-
 function getMemberEditorState() {
   return JSON.stringify({
     firstName:
@@ -1028,9 +1018,34 @@ async function saveMemberRsvpStatus() {
     rsvpByProfileId.get(profileId);
 
   if (
-    existingRsvpStatus ===
-    rsvpStatus
+    existingRsvpStatus === rsvpStatus ||
+    (
+      !existingRsvpStatus &&
+      rsvpStatus === "no_response"
+    )
   ) {
+    return;
+  }
+
+  if (rsvpStatus === "no_response") {
+    const { error: deleteError } =
+      await foxgloveSupabase
+        .from("rsvps")
+        .delete()
+        .eq(
+          "tournament_id",
+          activeTournament.id
+        )
+        .eq(
+          "profile_id",
+          profileId
+        );
+
+    if (deleteError) {
+      throw deleteError;
+    }
+
+    rsvpByProfileId.delete(profileId);
     return;
   }
 
