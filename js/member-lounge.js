@@ -2527,47 +2527,72 @@ galleryUploadButton?.addEventListener(
   }
 
   async function loadRandomConciergeRecommendation() {
-    const { data, error } =
-      await supabase
-        .from("concierge_recommendations")
-        .select(`
-          id,
-          category,
-          name,
-          headline,
-          description,
-          image_url,
-          website_url,
-          google_maps_url
-        `)
-        .eq("is_active", true);
+  const { data, error } =
+    await supabase
+      .from("concierge_recommendations")
+      .select(`
+        id,
+        category,
+        name,
+        headline,
+        description,
+        image_url,
+        website_url,
+        google_maps_url
+      `)
+      .eq("is_active", true);
 
-    if (
-      error ||
-      !Array.isArray(data) ||
-      data.length === 0
-    ) {
-      if (error) {
-        console.error(
-          "Unable to load concierge recommendations:",
-          error
-        );
-      }
-
-      showConciergeFallback();
-      return;
+  if (
+    error ||
+    !Array.isArray(data) ||
+    data.length === 0
+  ) {
+    if (error) {
+      console.error(
+        "Unable to load concierge recommendations:",
+        error
+      );
     }
 
-    const randomIndex =
-      Math.floor(Math.random() * data.length);
-
-    const randomRecommendation =
-      data[randomIndex];
-
-    displayConciergeRecommendation(
-      randomRecommendation
-    );
+    showConciergeFallback();
+    return;
   }
+
+  const storageKey =
+    "foxglove-last-concierge-recommendation";
+
+  const previousRecommendationId =
+    window.localStorage.getItem(
+      storageKey
+    );
+
+  const availableRecommendations =
+    data.length > 1
+      ? data.filter(
+          (recommendation) =>
+            String(recommendation.id) !==
+            previousRecommendationId
+        )
+      : data;
+
+  const randomIndex =
+    Math.floor(
+      Math.random() *
+        availableRecommendations.length
+    );
+
+  const randomRecommendation =
+    availableRecommendations[randomIndex];
+
+  window.localStorage.setItem(
+    storageKey,
+    String(randomRecommendation.id)
+  );
+
+  displayConciergeRecommendation(
+    randomRecommendation
+  );
+}
 
   await loadRandomConciergeRecommendation();
   
