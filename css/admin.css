@@ -149,6 +149,93 @@ body {
   font-size: 1.25rem;
 }
 
+/* =====================================
+   FOXGLOVE WISDOM
+===================================== */
+
+.overview-card--wisdom {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(168, 125, 36, 0.30);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16, 36, 63, 0.98),
+      rgba(7, 22, 43, 0.98)
+    );
+  color: #ffffff;
+}
+
+.overview-card--wisdom::after {
+  position: absolute;
+  right: -42px;
+  bottom: -60px;
+  width: 170px;
+  height: 170px;
+  border: 1px solid rgba(198, 161, 91, 0.12);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.overview-card--wisdom .overview-label {
+  color: #c6a15b;
+}
+
+.overview-card--wisdom h2 {
+  color: #ffffff;
+}
+
+.foxglove-wisdom-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.foxglove-wisdom-heading {
+  min-width: 0;
+}
+
+.foxglove-wisdom-heading h2 {
+  white-space: nowrap;
+}
+
+.foxglove-wisdom-seal {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  object-fit: contain;
+}
+
+.foxglove-wisdom-quote {
+  position: relative;
+  z-index: 1;
+  margin: 24px 0 0;
+  padding: 20px 22px;
+  border: 1px solid rgba(198, 161, 91, 0.48);
+}
+
+.foxglove-wisdom-quote p {
+  margin: 0;
+  color: rgba(255,255,255,0.94);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.foxglove-wisdom-quote footer {
+  margin-top: 16px;
+  color: #c6a15b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .overview-count {
   display: grid;
   width: 38px;

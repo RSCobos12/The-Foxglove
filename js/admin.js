@@ -93,6 +93,152 @@
 
 await loadNewRsvpCount();
 
+/* =====================================
+   FOXGLOVE WISDOM
+===================================== */
+
+const foxgloveWisdomText =
+  document.querySelector(
+    "#foxglove-wisdom-text"
+  );
+
+const foxgloveWisdomAuthor =
+  document.querySelector(
+    "#foxglove-wisdom-author"
+  );
+
+const foxgloveWisdomQuotes = [
+  {
+    quote:
+      "Leadership is the capacity to translate vision into reality.",
+    author:
+      "Warren Bennis",
+  },
+ 
+  {
+    quote:
+      "A leader is one who knows the way, goes the way, and shows the way.",
+    author:
+      "John C. Maxwell",
+  },
+  {
+    quote:
+      "Leadership and learning are indispensable to each other.",
+    author:
+      "John F. Kennedy",
+  },
+  {
+    quote:
+      "The function of leadership is to produce more leaders, not more followers.",
+    author:
+      "Ralph Nader",
+  },
+  {
+    quote:
+      "Example is not the main thing in influencing others. It is the only thing.",
+    author:
+      "Albert Schweitzer",
+  },
+  {
+    quote:
+      "Earn your leadership every day.",
+    author:
+      "Michael Jordan",
+  },
+  {
+    quote:
+      "Great leaders do not desire to lead but to serve.",
+    author:
+      "Myles Munroe",
+  },
+  {
+    quote:
+      "Leadership is practiced not so much in words as in attitude and in actions.",
+    author:
+      "Harold S. Geneen",
+  },
+   {
+    quote:
+      "Never doubt that a small group of thoughtful citizens can change the world.",
+    author:
+      "Margaret Mead",
+  },
+   {
+    quote:
+      "A genuine leader is not a searcher for consensus, but a molder of consensus.",
+    author:
+      "Martin Luther King Jr.",
+  },
+   {
+    quote:
+      "The ear of the leader must ring with the voices of the people.",
+    author:
+      "Woodrow Wilson",
+  },
+   {
+    quote:
+      "I hate Mondays.",
+    author:
+      "Mark A. Caswell",
+  },
+   {
+    quote:
+      "When the whole world is silent, even one voice becomes powerful.",
+    author:
+      "Malala Yousafzai",
+  },
+   {
+    quote:
+      "Never be limited by other people's limited imaginations.",
+    author:
+      "Mae Jemison",
+  },
+ {
+    quote:
+      "Happiness is when what you think, say, and do are in harmony.",
+    author:
+      "Mahatma Gandhi",
+  },
+   {
+    quote:
+      "Healing takes courage, and we all have courage.",
+    author:
+      "Maya Angelou",
+  },
+   {
+    quote:
+      "Emancipate yourselves from mental slavery.",
+    author:
+      "Bob Marley",
+  },
+];
+
+function displayFoxgloveWisdom() {
+  if (
+    !foxgloveWisdomText ||
+    !foxgloveWisdomAuthor
+  ) {
+    return;
+  }
+
+  const randomIndex =
+    Math.floor(
+      Math.random() *
+        foxgloveWisdomQuotes.length
+    );
+
+  const selectedQuote =
+    foxgloveWisdomQuotes[randomIndex];
+
+  foxgloveWisdomText.textContent =
+    selectedQuote.quote;
+
+  foxgloveWisdomAuthor.textContent =
+    `— ${selectedQuote.author}`;
+}
+
+displayFoxgloveWisdom();
+
   /* =====================================
    GALLERY SUBMISSION COUNT
 ===================================== */
