@@ -173,6 +173,11 @@ const sendMemberInvitationButton =
       "#save-member-editor"
     );
 
+    const deleteMemberButton =
+  document.querySelector(
+    "#delete-member"
+  );
+
   const memberEditorId =
     document.querySelector(
       "#member-editor-id"
@@ -466,6 +471,14 @@ function openBasicMemberEditor(profile) {
   currentEditingProfile =
   profile;
 
+  deleteMemberButton.disabled =
+  profile.id === session.user.id;
+
+deleteMemberButton.title =
+  profile.id === session.user.id
+    ? "You cannot delete your own administrator account."
+    : "";
+
 clearMemberEditorMessage();
 
   const fullName =
@@ -594,6 +607,9 @@ memberRsvpLabel.textContent =
 function createPlayerRow(profile) {
   const row =
     document.createElement("tr");
+
+    row.dataset.profileId =
+  profile.id;
 
   const nameCell =
     document.createElement("td");
@@ -1110,6 +1126,162 @@ async function saveMemberRsvpStatus() {
   );
 }
 
+async function deleteMemberProfile() {
+  if (!currentEditingProfile) {
+    return;
+  }
+
+  const profileId =
+    currentEditingProfile.id;
+
+  if (!profileId) {
+    return;
+  }
+
+  if (profileId === session.user.id) {
+    showMemberEditorMessage(
+      "You cannot delete your own administrator account.",
+      true
+    );
+
+    return;
+  }
+
+  const fullName =
+    `${currentEditingProfile.first_name || ""} ${
+      currentEditingProfile.last_name || ""
+    }`
+      .replace(/\s+/g, " ")
+      .trim() ||
+    currentEditingProfile.email ||
+    "this member";
+
+  const confirmed =
+    window.confirm(
+      `Permanently delete ${fullName}?\n\n` +
+      "This will remove the member's login account and Player Directory profile. " +
+      "This action cannot be undone."
+    );
+
+  if (!confirmed) {
+    return;
+  }
+
+  deleteMemberButton.disabled = true;
+  deleteMemberButton.textContent =
+    "Deleting...";
+
+  saveMemberEditorButton.disabled = true;
+
+  clearMemberEditorMessage();
+
+  const {
+    data,
+    error,
+  } =
+    await foxgloveSupabase.functions.invoke(
+      "delete-member",
+      {
+        body: {
+          profileId,
+        },
+      }
+    );
+
+  if (error) {
+    let errorMessage =
+      "Unable to delete the member.";
+
+    if (error.context) {
+      try {
+        const errorBody =
+          await error.context.json();
+
+        if (errorBody?.error) {
+          errorMessage =
+            errorBody.error;
+        }
+      } catch {
+        // Keep the default message.
+      }
+    }
+
+    showMemberEditorMessage(
+      errorMessage,
+      true
+    );
+
+    deleteMemberButton.disabled = false;
+    deleteMemberButton.textContent =
+      "Delete Member";
+
+    updateMemberEditorSaveState();
+    return;
+  }
+
+  const profileIndex =
+    profiles.findIndex(
+      (profile) =>
+        profile.id === profileId
+    );
+
+  if (profileIndex !== -1) {
+    profiles.splice(
+      profileIndex,
+      1
+    );
+  }
+
+  rsvpByProfileId.delete(
+    profileId
+  );
+
+  const deletedRow =
+    tableBody.querySelector(
+      `tr[data-profile-id="${profileId}"]`
+    );
+
+  deletedRow?.remove();
+
+  memberCount.textContent =
+    `${profiles.length} ${
+      profiles.length === 1
+        ? "member"
+        : "members"
+    }`;
+
+  currentEditingProfile = null;
+  memberEditorInitialState = "";
+
+  memberEditorPanel.hidden = true;
+  memberEditorForm.reset();
+  memberEditorId.value = "";
+
+  deleteMemberButton.disabled = false;
+  deleteMemberButton.textContent =
+    "Delete Member";
+
+  if (profiles.length === 0) {
+    tableWrapper.hidden = true;
+  }
+
+  playersMessage.textContent =
+    data?.message ||
+    `${fullName} was permanently deleted.`;
+
+  playersMessage.classList.remove(
+    "is-error"
+  );
+
+  playersMessage.hidden = false;
+
+  if (profiles.length > 0) {
+    window.setTimeout(() => {
+      playersMessage.hidden = true;
+    }, 3200);
+  }
+}
+
 memberEditorForm.addEventListener(
   "input",
   updateMemberEditorSaveState
@@ -1389,6 +1561,11 @@ cancelInviteMemberButton.addEventListener(
 inviteMemberForm.addEventListener(
   "submit",
   submitMemberInvitation
+);
+
+deleteMemberButton.addEventListener(
+  "click",
+  deleteMemberProfile
 );
 
 closeMemberEditorButton.addEventListener(
