@@ -300,6 +300,19 @@
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    
+const normalizedWinnerName =
+  winnerName.value.trim();
+
+if (!normalizedWinnerName) {
+  showMessage(
+    "Winner name is required.",
+    true
+  );
+
+  winnerName.focus();
+  return;
+}
 
     saveButton.disabled = true;
     saveButton.textContent = "Saving...";
@@ -379,7 +392,8 @@
 
       const championRecord = {
         tournament_id: selectedTournament.id,
-        winner_name: winnerName.value.trim(),
+        winner_name:
+  normalizedWinnerName,
         winning_score:
           winningScore.value.trim() || null,
         winner_dinner:

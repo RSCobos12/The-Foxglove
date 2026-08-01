@@ -475,12 +475,36 @@ actions.append(
         .eq("id", course.id);
 
     if (finalError) {
-      showMessage(
-        "Unable to update course order.",
-        true
-      );
-      return;
-    }
+  await Promise.all([
+    foxgloveSupabase
+      .from("courses")
+      .update({
+        display_order:
+          course.display_order,
+        updated_at:
+          new Date().toISOString(),
+      })
+      .eq("id", course.id),
+
+    foxgloveSupabase
+      .from("courses")
+      .update({
+        display_order:
+          targetCourse.display_order,
+        updated_at:
+          new Date().toISOString(),
+      })
+      .eq("id", targetCourse.id),
+  ]);
+
+  showMessage(
+    "Unable to update course order. The original order was restored.",
+    true
+  );
+
+  await loadCourses();
+  return;
+}
 
     await loadCourses();
   }
