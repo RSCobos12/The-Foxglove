@@ -76,6 +76,11 @@
   const saveButton =
     document.querySelector("#save-winner-button");
 
+    const deleteButton =
+  document.querySelector(
+    "#delete-winner-button"
+  );
+
   const logoutButton =
     document.querySelector("#logout-button");
 
@@ -230,6 +235,9 @@
 
     currentChampion = data || null;
 
+    deleteButton.hidden =
+  !currentChampion;
+
     winnerName.value =
       currentChampion?.winner_name || "";
 
@@ -297,6 +305,123 @@
 
     return storagePath;
   }
+
+  async function deleteCurrentChampion() {
+  if (!currentChampion) {
+    return;
+  }
+
+  const selectedTournament =
+    tournaments.find(
+      (tournament) =>
+        tournament.id ===
+        yearSelect.value
+    );
+
+  if (!selectedTournament) {
+    showMessage(
+      "Unable to identify the selected tournament.",
+      true
+    );
+
+    return;
+  }
+
+  const championName =
+    currentChampion.winner_name ||
+    "this winner";
+
+  const confirmed =
+    window.confirm(
+      `Delete the ${selectedTournament.year} winner entry for ${championName}?\n\n` +
+      "This will permanently remove the winner information and uploaded media. " +
+      "The public Past Winners page will return to its placeholder state. " +
+      "This action cannot be undone."
+    );
+
+  if (!confirmed) {
+    return;
+  }
+
+  deleteButton.disabled = true;
+  deleteButton.textContent =
+    "Deleting...";
+
+  saveButton.disabled = true;
+
+  showMessage(
+    "Deleting winner entry..."
+  );
+
+  const mediaPaths = [
+    currentChampion.card_image_path,
+    currentChampion.main_image_path,
+    currentChampion.presentation_video_path,
+  ].filter(Boolean);
+
+  const {
+    error: deleteError,
+  } = await foxgloveSupabase
+    .from("champions")
+    .delete()
+    .eq("id", currentChampion.id);
+
+  if (deleteError) {
+    console.error(
+      "Winner deletion failed:",
+      deleteError
+    );
+
+    showMessage(
+      "Unable to delete the winner entry.",
+      true
+    );
+
+    deleteButton.disabled = false;
+    deleteButton.textContent =
+      "Delete Winner Entry";
+
+    saveButton.disabled = false;
+    return;
+  }
+
+  let mediaCleanupFailed = false;
+
+  if (mediaPaths.length > 0) {
+    const {
+      error: storageError,
+    } = await foxgloveSupabase
+      .storage
+      .from("champions-media")
+      .remove(mediaPaths);
+
+    if (storageError) {
+      mediaCleanupFailed = true;
+
+      console.error(
+        "Winner media cleanup failed:",
+        storageError
+      );
+    }
+  }
+
+  currentChampion = null;
+
+  await loadChampion();
+
+  showMessage(
+    mediaCleanupFailed
+      ? `${selectedTournament.year} winner entry was deleted, but some unused media could not be removed from Storage.`
+      : `${selectedTournament.year} winner entry and media were deleted successfully.`,
+    mediaCleanupFailed
+  );
+
+  deleteButton.disabled = false;
+  deleteButton.textContent =
+    "Delete Winner Entry";
+
+  saveButton.disabled = false;
+}
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -461,6 +586,11 @@ if (!normalizedWinnerName) {
       saveButton.textContent = "Save Winner";
     }
   });
+
+  deleteButton.addEventListener(
+  "click",
+  deleteCurrentChampion
+);
 
   cardImageFile.addEventListener(
     "change",
