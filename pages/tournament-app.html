@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="The official Foxglove Invitational Tournament App for live scoring, tournament standings, digital scorecards, and player profiles.">
+
+  <title>
+    Tournament App | The Foxglove Invitational
+  </title>
+
+  <link
+    rel="icon"
+    href="../favicon.ico"
+    sizes="any">
+
+  <link
+    rel="stylesheet"
+    href="../css/style.css">
+
+  <link
+    rel="stylesheet"
+    href="../css/member-lounge.css">
+
+  <link
+    rel="stylesheet"
+    href="../css/tournament-app.css">
+</head>
+
+
+<body class="member-lounge-page tournament-app-page">
+
+  <div class="member-lounge-shell">
+
+
+    <!-- =====================================
+         MOBILE HEADER
+    ====================================== -->
+
+    <header class="member-mobile-header">
+
+      <a
+        class="member-mobile-brand"
+        href="member-lounge.html">
+
+        <img
+          src="../assets/logos/foxglove-logo-clean.png"
+          alt="The Foxglove">
+
+        <span>
+          Member’s Lounge
+        </span>
+
+      </a>
+
+
+      <button
+        class="member-mobile-menu-button"
+        id="member-mobile-menu-button"
+        type="button"
+        aria-label="Open member navigation"
+        aria-controls="member-sidebar"
+        aria-expanded="false">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </button>
+
+    </header>
+
+
+
+    <!-- =====================================
+         MEMBER SIDEBAR
+         Matches current Member's Lounge
+    ====================================== -->
+
+    <aside
+      class="member-sidebar"
+      id="member-sidebar">
+
+
+      <div class="member-sidebar-brand">
+
+        <img
+          src="../assets/logos/foxglove-logo-clean.png"
+          alt="The Foxglove Invitational"
+          class="member-sidebar-logo">
+
+        <p class="member-sidebar-brand-name">
+          The<br>
+          <span>Foxglove</span>
+        </p>
+
+      </div>
+
+
+      <div class="member-sidebar-heading">
+
+        <h1>
+          The Member’s<br>
+          Lounge
+        </h1>
+
+        <span class="member-sidebar-heading-line"></span>
+
+      </div>
+
+
+      <nav
+        class="member-navigation"
+        aria-label="Member navigation">
+
+
+        <!-- HOME -->
+
+        <a
+          class="member-nav-link"
+          href="member-lounge.html">
+
+          <span class="member-nav-icon">
+
+            <img
+              src="../assets/icons/foxglove-icon-gold-transparent.png"
+              alt="">
+
+          </span>
+
+          <span>
+            Home
+          </span>
+
+        </a>
+
+
+
+        <!-- TOURNAMENT APP -->
+
+        <a
+          class="member-nav-link is-active"
+          href="tournament-app.html"
+          aria-current="page">
+
+          <span class="member-nav-icon">
+
+            <img
+              src="../assets/icons/foxglove-icon-gold-transparent.png"
+              alt="">
+
+          </span>
+
+          <span>
+            Tournament App
+          </span>
+
+        </a>
+
+
+
+        <!-- GALLERY -->
+
+        <a
+          class="member-nav-link"
+          href="gallery.html">
+
+          <span class="member-nav-icon">
+
+            <img
+              src="../assets/icons/foxglove-icon-gold-transparent.png"
+              alt="">
+
+          </span>
+
+          <span>
+            Gallery
+          </span>
+
+        </a>
+
+
+
+        <!-- MEMBER DIRECTORY -->
+
+        <a
+          class="member-nav-link"
+          href="member-lounge.html#member-directory">
+
+          <span class="member-nav-icon">
+
+            <img
+              src="../assets/icons/foxglove-icon-gold-transparent.png"
+              alt="">
+
+          </span>
+
+          <span>
+            Member Directory
+          </span>
+
+        </a>
+
+
+
+        <!-- DOCUMENTS -->
+
+        <a
+          class="member-nav-link"
+          href="member-rules.html">
+
+          <span class="member-nav-icon">
+
+            <img
+              src="../assets/icons/foxglove-icon-gold-transparent.png"
+              alt="">
+
+          </span>
+
+          <span>
+            Documents
+          </span>
+
+        </a>
+
+      </nav>
+
+
+
+      <div class="member-sidebar-footer">
+
+        <div class="member-account-identity">
+
+          <span
+            class="member-account-initials"
+            id="member-sidebar-initials">
+
+            SC
+
+          </span>
+
+
+          <span class="member-account-copy">
+
+            <small>
+              Logged In As
+            </small>
+
+            <strong id="member-sidebar-name">
+              Scott Cobos
+            </strong>
+
+          </span>
+
+        </div>
+
+
+        <button
+          class="member-logout-button"
+          id="member-logout-button"
+          type="button">
+
+          <span aria-hidden="true">
+            ↪
+          </span>
+
+          <span>
+            Log Out
+          </span>
+
+        </button>
+
+      </div>
+
+    </aside>
+
+
+
+    <button
+      class="member-mobile-overlay"
+      id="member-mobile-overlay"
+      type="button"
+      aria-label="Close member navigation">
+    </button>
+
+
+
+    <!-- =====================================
+         TOURNAMENT APP CONTENT
+    ====================================== -->
+
+    <main class="member-main tournament-app-main">
+
+      <div class="tournament-app-canvas">
+
+
+        <!-- =====================================
+             HERO
+        ====================================== -->
+
+        <section class="tournament-app-hero">
+
+
+          <div class="tournament-app-hero-copy">
+
+            <p class="tournament-app-overline">
+              The Foxglove
+            </p>
+
+
+            <h1>
+              Tournament App
+            </h1>
+
+
+            <div class="tournament-app-divider">
+
+              <span></span>
+
+              <img
+                src="../assets/icons/foxglove-icon-gold-transparent.png"
+                alt="">
+
+              <span></span>
+
+            </div>
+
+
+            <p class="tournament-app-intro-label">
+              The Official App for The Foxglove Invitational
+            </p>
+
+
+            <p class="tournament-app-lead">
+              The Foxglove Tournament App is the official live
+              scoring platform used by members throughout the
+              tournament.
+            </p>
+
+
+            <p class="tournament-app-body-copy">
+              Stay connected from the first tee through the final
+              putt with live standings, accurate digital scorecards,
+              round information and your personal Foxglove player
+              profile—all directly from your phone.
+            </p>
+
+
+
+            <!-- PWA PLACEHOLDER -->
+
+            <div class="tournament-app-launch-card">
+
+              <div class="tournament-app-launch-symbol">
+                ↗
+              </div>
+
+
+              <div class="tournament-app-launch-copy">
+
+                <p>
+                  Tournament Access
+                </p>
+
+                <h2>
+                  Launch The Foxglove App
+                </h2>
+
+                <span>
+                  Open the tournament app in your phone’s browser
+                  and add it to your home screen for quick access
+                  throughout the weekend.
+                </span>
+
+              </div>
+
+
+              <a
+                class="tournament-app-launch-button tournament-app-launch-placeholder"
+                href="#"
+                aria-disabled="true"
+                onclick="return false;">
+
+                Open App
+
+                <span aria-hidden="true">
+                  ↗
+                </span>
+
+              </a>
+
+            </div>
+
+
+            <p class="tournament-app-placeholder-copy">
+              The launch link will become active when the official
+              PWA is live.
+            </p>
+
+          </div>
+
+
+
+          <!-- HERO APP SCREEN -->
+
+          <div class="tournament-app-hero-preview">
+
+            <div class="tournament-phone">
+
+              <img
+                src="../assets/app-preview/home-screen.png"
+                alt="The Foxglove Tournament App home screen">
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             FEATURES INTRO
+        ====================================== -->
+
+        <section class="tournament-app-features">
+
+          <header class="tournament-app-section-header">
+
+            <span></span>
+
+            <div>
+
+              <p>
+                Powerful Features. Built for the Game.
+              </p>
+
+              <h2>
+                Everything you need on tournament day.
+              </h2>
+
+            </div>
+
+            <span></span>
+
+          </header>
+
+
+
+          <!-- =====================================
+               FEATURE 1
+          ====================================== -->
+
+          <article class="tournament-app-feature">
+
+            <div class="tournament-app-feature-preview">
+
+              <span class="tournament-app-feature-number">
+                01
+              </span>
+
+              <div class="tournament-phone tournament-phone-feature">
+
+                <img
+                  src="../assets/app-preview/home-screen.png"
+                  alt="Foxglove Tournament App home screen">
+
+              </div>
+
+            </div>
+
+
+            <div class="tournament-app-feature-copy">
+
+              <p class="tournament-app-feature-label">
+                Home Screen
+              </p>
+
+              <h3>
+                Your tournament at a glance.
+              </h3>
+
+
+              <p>
+                The home screen gives members an immediate snapshot
+                of the tournament whenever they open the app.
+              </p>
+
+
+              <p>
+                A preview of the current live leaderboard keeps you
+                connected to the competition while the round card
+                displays the date of the upcoming round, your
+                scheduled tee time and current weather conditions
+                in the area.
+              </p>
+
+
+              <ul class="tournament-app-feature-list">
+
+                <li>
+                  Live leaderboard preview
+                </li>
+
+                <li>
+                  Upcoming round date
+                </li>
+
+                <li>
+                  Member tee time
+                </li>
+
+                <li>
+                  Local weather conditions
+                </li>
+
+              </ul>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- =====================================
+               FEATURE 2
+          ====================================== -->
+
+          <article class="tournament-app-feature tournament-app-feature-reverse">
+
+            <div class="tournament-app-feature-preview">
+
+              <span class="tournament-app-feature-number">
+                02
+              </span>
+
+              <div class="tournament-phone tournament-phone-feature">
+
+                <img
+                  src="../assets/app-preview/leaderboard-screen.png"
+                  alt="Foxglove Tournament App live leaderboard">
+
+              </div>
+
+            </div>
+
+
+            <div class="tournament-app-feature-copy">
+
+              <p class="tournament-app-feature-label">
+                Live Leaderboard
+              </p>
+
+              <h3>
+                Follow the tournament in real time.
+              </h3>
+
+
+              <p>
+                The live leaderboard shows the current tournament
+                standings as scores are submitted by groups
+                throughout the course.
+              </p>
+
+
+              <p>
+                Members can quickly see player position, current
+                score and progress through the round, making it
+                easy to know where everyone stands.
+              </p>
+
+
+              <ul class="tournament-app-feature-list">
+
+                <li>
+                  Real-time tournament standings
+                </li>
+
+                <li>
+                  Current player position
+                </li>
+
+                <li>
+                  Score and holes completed
+                </li>
+
+                <li>
+                  Overall and individual round views
+                </li>
+
+              </ul>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- =====================================
+               FEATURE 3
+          ====================================== -->
+
+          <article class="tournament-app-feature">
+
+            <div class="tournament-app-feature-preview">
+
+              <span class="tournament-app-feature-number">
+                03
+              </span>
+
+              <div class="tournament-phone tournament-phone-feature">
+
+                <img
+                  src="../assets/app-preview/scorecard-screen.png"
+                  alt="Foxglove Tournament App digital scorecard">
+
+              </div>
+
+            </div>
+
+
+            <div class="tournament-app-feature-copy">
+
+              <p class="tournament-app-feature-label">
+                Digital Scorecard
+              </p>
+
+              <h3>
+                Accurate scoring for the course you’re playing.
+              </h3>
+
+
+              <p>
+                Each scorecard accurately reflects the course and
+                tournament round being played, giving members the
+                same hole, par and scoring information they would
+                expect from a traditional scorecard.
+              </p>
+
+
+              <p>
+                Scores are entered quickly using the thumb scroller.
+                Members can move from player to player, allowing one
+                golfer to serve as the official scorer for the
+                entire group—or allowing each player to keep their
+                own individual score.
+              </p>
+
+
+              <ul class="tournament-app-feature-list">
+
+                <li>
+                  Course-specific scorecards
+                </li>
+
+                <li>
+                  Round-specific hole information
+                </li>
+
+                <li>
+                  Easy thumb-scroller score entry
+                </li>
+
+                <li>
+                  Score one player or the entire group
+                </li>
+
+              </ul>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- =====================================
+               FEATURE 4
+          ====================================== -->
+
+          <article class="tournament-app-feature tournament-app-feature-reverse">
+
+            <div class="tournament-app-feature-preview">
+
+              <span class="tournament-app-feature-number">
+                04
+              </span>
+
+              <div class="tournament-phone tournament-phone-feature">
+
+                <img
+                  src="../assets/app-preview/profile-screen.png"
+                  alt="Foxglove Tournament App player profile">
+
+              </div>
+
+            </div>
+
+
+            <div class="tournament-app-feature-copy">
+
+              <p class="tournament-app-feature-label">
+                Player Profile
+              </p>
+
+              <h3>
+                Your Foxglove record in one place.
+              </h3>
+
+
+              <p>
+                Every member has a personal profile containing their
+                player information and current handicap index.
+              </p>
+
+
+              <p>
+                As tournaments are completed, the profile becomes a
+                permanent record of each member’s Foxglove history,
+                including previous finishes and scoring results.
+              </p>
+
+
+              <ul class="tournament-app-feature-list">
+
+                <li>
+                  Personal member profile
+                </li>
+
+                <li>
+                  Current handicap index
+                </li>
+
+                <li>
+                  Previous tournament finishes
+                </li>
+
+                <li>
+                  Foxglove scoring history
+                </li>
+
+              </ul>
+
+            </div>
+
+          </article>
+
+        </section>
+
+
+
+        <!-- =====================================
+             INSTALLATION
+        ====================================== -->
+
+        <section class="tournament-app-install">
+
+
+          <header class="tournament-app-install-header">
+
+            <p>
+              Add It To Your Phone
+            </p>
+
+            <h2>
+              Install The Foxglove App
+            </h2>
+
+            <span></span>
+
+            <p class="tournament-app-install-intro">
+              The Foxglove Tournament App is a Progressive Web App,
+              so there is no traditional App Store download.
+              Open the app in your browser and add it directly to
+              your phone’s home screen.
+            </p>
+
+          </header>
+
+
+
+          <div class="tournament-app-install-grid">
+
+
+            <!-- IPHONE -->
+
+            <article class="tournament-app-install-card">
+
+              <div class="tournament-app-device-heading">
+
+                <div class="tournament-app-device-icon">
+                  
+                </div>
+
+                <div>
+
+                  <p>
+                    iPhone
+                  </p>
+
+                  <h3>
+                    iOS
+                  </h3>
+
+                </div>
+
+              </div>
+
+
+              <ol class="tournament-app-install-steps">
+
+                <li>
+
+                  <span>
+                    1
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Open Safari
+                    </strong>
+
+                    <p>
+                      Open the Foxglove Tournament App link using
+                      Safari on your iPhone.
+                    </p>
+
+                  </div>
+
+                </li>
+
+
+                <li>
+
+                  <span>
+                    2
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Tap Share
+                    </strong>
+
+                    <p>
+                      Tap the Share icon at the bottom of Safari.
+                    </p>
+
+                  </div>
+
+                </li>
+
+
+                <li>
+
+                  <span>
+                    3
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Add to Home Screen
+                    </strong>
+
+                    <p>
+                      Scroll through the Share menu and select
+                      “Add to Home Screen.”
+                    </p>
+
+                  </div>
+
+                </li>
+
+
+                <li>
+
+                  <span>
+                    4
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Tap Add
+                    </strong>
+
+                    <p>
+                      Confirm the name and tap Add. The Foxglove
+                      icon will appear on your home screen.
+                    </p>
+
+                  </div>
+
+                </li>
+
+              </ol>
+
+            </article>
+
+
+
+            <!-- ANDROID -->
+
+            <article class="tournament-app-install-card">
+
+              <div class="tournament-app-device-heading">
+
+                <div class="tournament-app-device-icon">
+                  A
+                </div>
+
+                <div>
+
+                  <p>
+                    Android
+                  </p>
+
+                  <h3>
+                    Chrome
+                  </h3>
+
+                </div>
+
+              </div>
+
+
+              <ol class="tournament-app-install-steps">
+
+                <li>
+
+                  <span>
+                    1
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Open Chrome
+                    </strong>
+
+                    <p>
+                      Open the Foxglove Tournament App link using
+                      Chrome on your Android phone.
+                    </p>
+
+                  </div>
+
+                </li>
+
+
+                <li>
+
+                  <span>
+                    2
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Open the Menu
+                    </strong>
+
+                    <p>
+                      Tap the three-dot Chrome menu in the
+                      upper-right corner.
+                    </p>
+
+                  </div>
+
+                </li>
+
+
+                <li>
+
+                  <span>
+                    3
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Install the App
+                    </strong>
+
+                    <p>
+                      Select “Install app” or “Add to Home screen,”
+                      depending on your version of Chrome.
+                    </p>
+
+                  </div>
+
+                </li>
+
+
+                <li>
+
+                  <span>
+                    4
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Confirm
+                    </strong>
+
+                    <p>
+                      Confirm the installation and the Foxglove
+                      icon will be added to your home screen.
+                    </p>
+
+                  </div>
+
+                </li>
+
+              </ol>
+
+            </article>
+
+          </div>
+
+
+
+          <!-- FINAL CTA -->
+
+          <div class="tournament-app-final-cta">
+
+            <img
+              src="../assets/logos/foxglove-logo-clean.png"
+              alt="">
+
+
+            <div>
+
+              <p>
+                Ready for Tournament Day?
+              </p>
+
+              <h2>
+                Take The Foxglove With You.
+              </h2>
+
+            </div>
+
+
+            <a
+              class="tournament-app-launch-button tournament-app-launch-placeholder"
+              href="#"
+              aria-disabled="true"
+              onclick="return false;">
+
+              Launch App
+
+              <span aria-hidden="true">
+                ↗
+              </span>
+
+            </a>
+
+          </div>
+
+
+          <p class="tournament-app-help">
+            Need help installing the app? Contact the Tournament
+            Committee for assistance.
+          </p>
+
+        </section>
+
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+
+  <!-- =====================================
+       EXISTING MEMBER AUTH / BEHAVIOR
+  ====================================== -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/member-lounge.js"></script>
+
+</body>
+
+</html>

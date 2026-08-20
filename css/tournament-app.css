@@ -1,0 +1,1279 @@
+/* =========================================================
+   THE FOXGLOVE TOURNAMENT APP
+   Member's Lounge page
+========================================================= */
+
+:root {
+  --ta-navy: #061735;
+  --ta-navy-deep: #020b1c;
+  --ta-navy-card: #0b2143;
+  --ta-navy-soft: #102b52;
+
+  --ta-gold: #c6a15b;
+  --ta-gold-light: #d8b46a;
+
+  --ta-cream: #f6efe1;
+  --ta-white: #ffffff;
+  --ta-muted: rgba(246, 239, 225, 0.72);
+
+  --ta-border: rgba(198, 161, 91, 0.34);
+  --ta-blue-border: rgba(154, 179, 218, 0.23);
+}
+
+
+/* =========================================================
+   CRITICAL PAGE OVERRIDES
+
+   The normal Member's Lounge uses a cream .member-main.
+   This page deliberately owns its entire content canvas.
+========================================================= */
+
+.tournament-app-page {
+  background: var(--ta-navy-deep);
+}
+
+.tournament-app-page .tournament-app-main {
+  min-height: 100vh;
+  background: var(--ta-navy-deep);
+  color: var(--ta-cream);
+}
+
+.tournament-app-page .tournament-app-canvas {
+  width: 100%;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 84% 4%,
+      rgba(32, 75, 126, 0.28),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 30%,
+      rgba(198, 161, 91, 0.035),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #041327 0%,
+      #020b1c 100%
+    );
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY RESET FOR THIS PAGE
+========================================================= */
+
+.tournament-app-canvas h1,
+.tournament-app-canvas h2,
+.tournament-app-canvas h3,
+.tournament-app-canvas p,
+.tournament-app-canvas ul,
+.tournament-app-canvas ol {
+  margin-top: 0;
+}
+
+.tournament-app-canvas h1,
+.tournament-app-canvas h2,
+.tournament-app-canvas h3 {
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+.tournament-app-canvas p,
+.tournament-app-canvas li,
+.tournament-app-canvas a {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.tournament-app-hero {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(300px, 0.8fr);
+
+  gap: 72px;
+  align-items: center;
+
+  max-width: 1280px;
+  margin: 0 auto;
+
+  padding:
+    80px
+    64px
+    96px;
+}
+
+.tournament-app-hero-copy {
+  max-width: 690px;
+}
+
+.tournament-app-overline {
+  margin-bottom: 8px;
+
+  color: var(--ta-gold-light);
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif !important;
+
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.tournament-app-hero h1 {
+  margin-bottom: 0;
+
+  color: var(--ta-cream);
+
+  font-size: clamp(58px, 6vw, 88px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+}
+
+.tournament-app-divider {
+  display: grid;
+  grid-template-columns:
+    minmax(50px, 1fr)
+    38px
+    minmax(50px, 1fr);
+
+  gap: 14px;
+  align-items: center;
+
+  width: min(500px, 100%);
+
+  margin:
+    27px
+    0
+    32px;
+}
+
+.tournament-app-divider > span {
+  height: 1px;
+  background: var(--ta-gold);
+}
+
+.tournament-app-divider img {
+  display: block;
+
+  width: 38px;
+  height: 38px;
+
+  object-fit: contain;
+}
+
+.tournament-app-intro-label {
+  margin-bottom: 18px;
+
+  color: var(--ta-gold-light);
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.tournament-app-lead {
+  margin-bottom: 14px;
+
+  max-width: 640px;
+
+  color: rgba(255, 255, 255, 0.95);
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.tournament-app-body-copy {
+  margin-bottom: 0;
+
+  max-width: 640px;
+
+  color: var(--ta-muted);
+
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   PWA LAUNCH CARD
+========================================================= */
+
+.tournament-app-launch-card {
+  display: grid;
+
+  grid-template-columns:
+    48px
+    minmax(0, 1fr)
+    auto;
+
+  gap: 18px;
+  align-items: center;
+
+  margin-top: 30px;
+
+  padding:
+    20px
+    22px;
+
+  border:
+    1px solid
+    var(--ta-gold);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(18, 50, 94, 0.88),
+      rgba(6, 23, 53, 0.92)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.045),
+    0 18px 46px rgba(0, 0, 0, 0.22);
+}
+
+.tournament-app-launch-symbol {
+  display: grid;
+  place-items: center;
+
+  width: 46px;
+  height: 46px;
+
+  border:
+    1px solid
+    var(--ta-gold);
+
+  border-radius: 50%;
+
+  color: var(--ta-gold-light);
+
+  font-size: 24px;
+}
+
+.tournament-app-launch-copy > p {
+  margin-bottom: 4px;
+
+  color: var(--ta-gold-light);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tournament-app-launch-copy h2 {
+  margin-bottom: 4px;
+
+  color: #ffffff;
+
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.tournament-app-launch-copy > span {
+  display: block;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.tournament-app-launch-button {
+  display: inline-flex;
+
+  min-height: 46px;
+
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding:
+    10px
+    18px;
+
+  border:
+    1px solid
+    var(--ta-gold-light);
+
+  border-radius: 5px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #d8b46a,
+      #bf9145
+    );
+
+  color:
+    var(--ta-navy-deep) !important;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.tournament-app-launch-placeholder {
+  cursor: default;
+}
+
+.tournament-app-placeholder-copy {
+  margin:
+    10px
+    0
+    0;
+
+  color: rgba(255, 255, 255, 0.4);
+
+  font-size: 11px;
+  font-style: italic;
+}
+
+
+/* =========================================================
+   PHONE FRAME
+========================================================= */
+
+.tournament-app-hero-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.tournament-phone {
+  position: relative;
+
+  width: min(100%, 315px);
+
+  padding: 8px;
+
+  border:
+    1px solid
+    rgba(216, 180, 106, 0.68);
+
+  border-radius: 38px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0.03)
+    );
+
+  box-shadow:
+    0 28px 52px rgba(0, 0, 0, 0.38),
+    0 0 32px rgba(198, 161, 91, 0.08);
+}
+
+.tournament-phone img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 30px;
+}
+
+
+/* =========================================================
+   FEATURES SECTION
+========================================================= */
+
+.tournament-app-features {
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  padding:
+    8px
+    64px
+    84px;
+}
+
+.tournament-app-section-header {
+  display: grid;
+
+  grid-template-columns:
+    minmax(80px, 1fr)
+    auto
+    minmax(80px, 1fr);
+
+  gap: 26px;
+  align-items: center;
+
+  margin-bottom: 52px;
+
+  text-align: center;
+}
+
+.tournament-app-section-header > span {
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--ta-gold)
+    );
+}
+
+.tournament-app-section-header > span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      var(--ta-gold),
+      transparent
+    );
+}
+
+.tournament-app-section-header p {
+  margin-bottom: 6px;
+
+  color: var(--ta-gold-light);
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tournament-app-section-header h2 {
+  margin-bottom: 0;
+
+  color: var(--ta-cream);
+
+  font-size: 37px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+
+/* =========================================================
+   FEATURE ROWS
+========================================================= */
+
+.tournament-app-feature {
+  display: grid;
+
+  grid-template-columns:
+    minmax(280px, 0.82fr)
+    minmax(0, 1.18fr);
+
+  gap: 72px;
+  align-items: center;
+
+  min-height: 590px;
+
+  padding:
+    54px
+    36px;
+
+  border-top:
+    1px solid
+    rgba(198, 161, 91, 0.15);
+}
+
+.tournament-app-feature:first-of-type {
+  border-top: none;
+}
+
+.tournament-app-feature-reverse {
+  grid-template-columns:
+    minmax(0, 1.18fr)
+    minmax(280px, 0.82fr);
+}
+
+.tournament-app-feature-reverse
+.tournament-app-feature-preview {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.tournament-app-feature-reverse
+.tournament-app-feature-copy {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.tournament-app-feature-preview {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+}
+
+.tournament-phone-feature {
+  width: min(100%, 285px);
+}
+
+.tournament-app-feature-number {
+  position: absolute;
+
+  z-index: 3;
+
+  top: -18px;
+  left: 2%;
+
+  display: grid;
+
+  width: 52px;
+  height: 52px;
+
+  place-items: center;
+
+  border:
+    1px solid
+    var(--ta-gold);
+
+  border-radius: 50%;
+
+  background:
+    var(--ta-gold);
+
+  color:
+    var(--ta-navy-deep);
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  box-shadow:
+    0 8px 24px
+    rgba(0, 0, 0, 0.25);
+}
+
+.tournament-app-feature-copy {
+  max-width: 550px;
+}
+
+.tournament-app-feature-label {
+  margin-bottom: 8px;
+
+  color: var(--ta-gold-light);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.tournament-app-feature-copy h3 {
+  margin-bottom: 20px;
+
+  color: var(--ta-cream);
+
+  font-size: 43px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.tournament-app-feature-copy > p:not(
+  .tournament-app-feature-label
+) {
+  margin-bottom: 13px;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  font-size: 14px;
+  line-height: 1.72;
+}
+
+.tournament-app-feature-list {
+  display: grid;
+  gap: 8px;
+
+  margin:
+    22px
+    0
+    0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.tournament-app-feature-list li {
+  position: relative;
+
+  padding:
+    10px
+    14px
+    10px
+    35px;
+
+  border:
+    1px solid
+    rgba(198, 161, 91, 0.13);
+
+  border-radius: 7px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.tournament-app-feature-list li::before {
+  content: "";
+
+  position: absolute;
+
+  left: 14px;
+  top: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  border:
+    1px solid
+    var(--ta-gold);
+
+  border-radius: 50%;
+
+  background:
+    rgba(198, 161, 91, 0.12);
+
+  transform:
+    translateY(-50%);
+}
+
+
+/* =========================================================
+   INSTALL SECTION
+========================================================= */
+
+.tournament-app-install {
+  padding:
+    80px
+    64px
+    60px;
+
+  border-top:
+    1px solid
+    rgba(198, 161, 91, 0.35);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 33, 67, 0.58),
+      rgba(2, 11, 28, 0.97)
+    );
+}
+
+.tournament-app-install-header {
+  max-width: 760px;
+
+  margin:
+    0
+    auto
+    46px;
+
+  text-align: center;
+}
+
+.tournament-app-install-header > p:first-child {
+  margin-bottom: 6px;
+
+  color: var(--ta-gold-light);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.tournament-app-install-header h2 {
+  margin-bottom: 0;
+
+  color: var(--ta-cream);
+
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.tournament-app-install-header > span {
+  display: block;
+
+  width: 72px;
+  height: 1px;
+
+  margin:
+    18px
+    auto;
+
+  background:
+    var(--ta-gold);
+}
+
+.tournament-app-install-intro {
+  margin-bottom: 0;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.tournament-app-install-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 22px;
+
+  max-width: 1120px;
+
+  margin: 0 auto;
+}
+
+.tournament-app-install-card {
+  padding:
+    28px
+    28px
+    24px;
+
+  border:
+    1px solid
+    var(--ta-border);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 46, 88, 0.72),
+      rgba(6, 23, 53, 0.92)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.tournament-app-device-heading {
+  display: flex;
+
+  gap: 14px;
+  align-items: center;
+
+  margin-bottom: 22px;
+}
+
+.tournament-app-device-icon {
+  display: grid;
+
+  width: 48px;
+  height: 48px;
+
+  place-items: center;
+
+  border:
+    1px solid
+    var(--ta-gold);
+
+  border-radius: 50%;
+
+  color:
+    var(--ta-gold-light);
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 23px;
+}
+
+.tournament-app-device-heading p {
+  margin-bottom: 2px;
+
+  color: var(--ta-gold-light);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tournament-app-device-heading h3 {
+  margin-bottom: 0;
+
+  color: var(--ta-cream);
+
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.tournament-app-install-steps {
+  display: grid;
+  gap: 0;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.tournament-app-install-steps li {
+  display: grid;
+
+  grid-template-columns:
+    34px
+    minmax(0, 1fr);
+
+  gap: 13px;
+
+  padding:
+    14px
+    0;
+
+  border-top:
+    1px solid
+    rgba(198, 161, 91, 0.12);
+}
+
+.tournament-app-install-steps li:first-child {
+  border-top: none;
+}
+
+.tournament-app-install-steps li > span {
+  display: grid;
+
+  width: 31px;
+  height: 31px;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(198, 161, 91, 0.7);
+
+  border-radius: 50%;
+
+  color:
+    var(--ta-gold-light);
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tournament-app-install-steps strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tournament-app-install-steps p {
+  margin-bottom: 0;
+
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.tournament-app-final-cta {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  gap: 20px;
+  align-items: center;
+
+  max-width: 1120px;
+
+  margin:
+    38px
+    auto
+    0;
+
+  padding:
+    22px
+    26px;
+
+  border:
+    1px solid
+    var(--ta-gold);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(18, 50, 94, 0.8),
+      rgba(4, 18, 38, 0.96)
+    );
+}
+
+.tournament-app-final-cta > img {
+  display: block;
+
+  width: 56px;
+  height: 56px;
+
+  object-fit: contain;
+}
+
+.tournament-app-final-cta p {
+  margin-bottom: 3px;
+
+  color: var(--ta-gold-light);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.tournament-app-final-cta h2 {
+  margin-bottom: 0;
+
+  color: var(--ta-cream);
+
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.tournament-app-help {
+  margin:
+    18px
+    0
+    0;
+
+  color: rgba(255, 255, 255, 0.46);
+
+  font-size: 11px;
+  text-align: center;
+}
+
+
+/* =========================================================
+   INTERMEDIATE DESKTOP
+
+   Existing Lounge remains desktop-locked until 767px.
+   These rules keep this page comfortable on smaller
+   laptop windows without changing the sidebar behavior.
+========================================================= */
+
+@media (max-width: 1120px) and (min-width: 768px) {
+
+  .tournament-app-hero {
+    gap: 46px;
+
+    padding-left: 42px;
+    padding-right: 42px;
+  }
+
+  .tournament-app-features {
+    padding-left: 42px;
+    padding-right: 42px;
+  }
+
+  .tournament-app-feature {
+    gap: 46px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .tournament-app-install {
+    padding-left: 42px;
+    padding-right: 42px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   Matches Member's Lounge 767px breakpoint
+========================================================= */
+
+@media (max-width: 767px) {
+
+  .tournament-app-page .tournament-app-main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .tournament-app-canvas {
+    min-width: 0;
+  }
+
+
+  /* HERO */
+
+  .tournament-app-hero {
+    grid-template-columns: 1fr;
+
+    gap: 42px;
+
+    padding:
+      52px
+      22px
+      68px;
+
+    text-align: center;
+  }
+
+  .tournament-app-hero-copy {
+    max-width: none;
+  }
+
+  .tournament-app-overline {
+    font-size: 17px;
+  }
+
+  .tournament-app-hero h1 {
+    font-size:
+      clamp(
+        48px,
+        14vw,
+        66px
+      );
+  }
+
+  .tournament-app-divider {
+    width: min(320px, 100%);
+
+    margin:
+      22px
+      auto
+      26px;
+  }
+
+  .tournament-app-intro-label {
+    font-size: 11px;
+  }
+
+  .tournament-app-lead {
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 16px;
+  }
+
+  .tournament-app-body-copy {
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 14px;
+  }
+
+
+  /* LAUNCH */
+
+  .tournament-app-launch-card {
+    grid-template-columns:
+      42px
+      minmax(0, 1fr);
+
+    gap: 14px;
+
+    text-align: left;
+
+    padding: 18px;
+  }
+
+  .tournament-app-launch-symbol {
+    width: 40px;
+    height: 40px;
+
+    font-size: 20px;
+  }
+
+  .tournament-app-launch-copy h2 {
+    font-size: 22px;
+  }
+
+  .tournament-app-launch-button {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    margin-top: 3px;
+  }
+
+  .tournament-app-placeholder-copy {
+    text-align: center;
+  }
+
+
+  /* HERO PHONE */
+
+  .tournament-phone {
+    width: min(100%, 285px);
+  }
+
+
+  /* FEATURES */
+
+  .tournament-app-features {
+    padding:
+      0
+      22px
+      58px;
+  }
+
+  .tournament-app-section-header {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    margin-bottom: 24px;
+  }
+
+  .tournament-app-section-header > span {
+    width: 90px;
+
+    margin: 0 auto;
+
+    background: var(--ta-gold);
+  }
+
+  .tournament-app-section-header > span:last-child {
+    background: var(--ta-gold);
+  }
+
+  .tournament-app-section-header h2 {
+    font-size: 31px;
+  }
+
+  .tournament-app-feature,
+  .tournament-app-feature-reverse {
+    grid-template-columns: 1fr;
+
+    gap: 34px;
+
+    min-height: 0;
+
+    padding:
+      48px
+      0;
+  }
+
+  .tournament-app-feature-reverse
+  .tournament-app-feature-preview,
+  .tournament-app-feature-reverse
+  .tournament-app-feature-copy {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .tournament-app-feature-preview {
+    order: 1;
+  }
+
+  .tournament-app-feature-copy {
+    order: 2;
+
+    max-width: none;
+  }
+
+  .tournament-app-feature-copy h3 {
+    font-size: 35px;
+  }
+
+  .tournament-phone-feature {
+    width: min(100%, 265px);
+  }
+
+  .tournament-app-feature-number {
+    top: -15px;
+    left: calc(50% - 157px);
+
+    width: 46px;
+    height: 46px;
+
+    font-size: 18px;
+  }
+
+
+  /* INSTALL */
+
+  .tournament-app-install {
+    padding:
+      62px
+      22px
+      46px;
+  }
+
+  .tournament-app-install-header {
+    margin-bottom: 34px;
+  }
+
+  .tournament-app-install-header h2 {
+    font-size: 39px;
+  }
+
+  .tournament-app-install-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tournament-app-install-card {
+    padding:
+      24px
+      20px;
+  }
+
+  .tournament-app-final-cta {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+  }
+
+  .tournament-app-final-cta > img {
+    margin: 0 auto;
+  }
+
+  .tournament-app-final-cta
+  .tournament-app-launch-button {
+    width: 100%;
+  }
+}
