@@ -49,24 +49,27 @@
   <link rel="manifest" href="manifest.json">
 
   <style>
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background-color: #020B1C;
-      overscroll-behavior: none;
-    }
+ html,
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #020B1C;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
 
-    body {
-      min-height: 100vh;
-      min-height: -webkit-fill-available;
-    }
+body {
+  position: fixed;
+  inset: 0;
+}
 
-    flutter-view {
-      background-color: #020B1C;
-    }
+flutter-view {
+  width: 100%;
+  height: 100%;
+  background-color: #020B1C;
+}
   </style>
 </head>
 
